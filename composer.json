@@ -1,0 +1,23 @@
+{
+  "name": "pckg/htmlbuilder",
+  "description": "Build advanced forms in PHP with datasources, decorators, handlers and validators",
+  "homepage": "https://bitbucket.org/lfw/htmlbuilder",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bojan Rajh",
+      "email": "schtr4jh@schtr4jh.net"
+    }
+  ],
+  "require": {
+    "pckg/framework": "dev-master",
+    "pckg/concept": "dev-master"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-0": {
+      "Pckg\\Htmlbuilder": ["src\\"],
+      "Pckg\\Htmlbuilder\\Test": ["test\\"]
+    }
+  }
+}
