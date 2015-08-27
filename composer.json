@@ -10,8 +10,7 @@
     }
   ],
   "require": {
-    "pckg/framework": "dev-master",
-    "pckg/concept": "dev-master"
+    "pckg/framework": "dev-master"
   },
   "minimum-stability": "dev",
   "autoload": {
