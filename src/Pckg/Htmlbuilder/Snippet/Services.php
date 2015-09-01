@@ -171,7 +171,7 @@ trait Services
     protected function initFactories()
     {
         foreach ($this->factories as $type => $factory) {
-            $this->{lcfirst($type) . 'Factory'} = context()->createOrBind(lcfirst($type) . 'Factory', $factory['factory']);
+            $this->{lcfirst($type) . 'Factory'} = context()->getOrCreate(lcfirst($type) . 'Factory', $factory['factory']);
         }
     }
 
