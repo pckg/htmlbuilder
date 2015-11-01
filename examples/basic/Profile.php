@@ -41,7 +41,7 @@ class Profile extends Bootstrap
 class UserPasswordValidator extends AbstractValidator
 {
 
-    public function overloadIsValid(AbstractObject $context)
+    public function overloadIsValid(callable $next, AbstractObject $context)
     {
         // we have form, element ...
         $password = $context->getElement()->getValue(); // since this is executed on post we get value from post
@@ -49,6 +49,8 @@ class UserPasswordValidator extends AbstractValidator
         if (!$password) {
             return true;
         }
+
+        return $next();
     }
 
 }

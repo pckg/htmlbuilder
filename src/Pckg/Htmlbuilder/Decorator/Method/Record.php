@@ -36,7 +36,7 @@ class Record extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetRecord(AbstractObject $context)
+    public function overloadSetRecord(callable $next, AbstractObject $context)
     {
         $this->record = $context->getArg(0);
         $element = $context->getElement();
@@ -46,21 +46,21 @@ class Record extends AbstractDecorator
             $element->setName($element->getID());
         }
 
-        return $this->next->setRecord($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
         $this->decorateID($element);
         $this->decorateName($element);
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**

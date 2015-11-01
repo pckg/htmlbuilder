@@ -14,6 +14,7 @@ class Multiple extends Bootstrap
         $attributes = $form->addFieldset('address');
 
         $attributes->addHidden('id');
+        $attributes->addSelect('title_id')->setLabel('Title')->required();
         $attributes->addText('name')->setLabel('Name')->required();
         $attributes->addText('surname')->setLabel('Surname');
         $attributes->addSelect('country')->setLabel('Country')->required();
@@ -36,7 +37,7 @@ class Multiple extends Bootstrap
         // what the hell, we'll allow user to add 3 addresses
         // $attributes->max(3);
 
-        $attributes->useRecordDatasource($userAdress);
+        // $attributes->useRecordDatasource($userAddress);
 
         $form->addSubmit('submit');
         $form->addCancel('reset', 'Just cancel it');

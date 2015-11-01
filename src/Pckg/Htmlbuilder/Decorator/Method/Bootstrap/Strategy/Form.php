@@ -8,9 +8,9 @@ use Pckg\Htmlbuilder\ElementObject;
 class Form extends AbstractDecorator
 {
 
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
 }

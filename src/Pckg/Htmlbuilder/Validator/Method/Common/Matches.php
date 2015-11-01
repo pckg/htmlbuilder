@@ -22,9 +22,9 @@ class Matches extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadMatches(AbstractObject $context)
+    public function overloadMatches(callable $next, AbstractObject $context)
     {
-        return $this->next->overloadMatches($context);
+        return $next();
     }
 
     /**

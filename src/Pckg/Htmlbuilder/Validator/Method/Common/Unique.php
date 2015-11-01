@@ -22,9 +22,9 @@ class Unique extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadUnique(AbstractObject $context)
+    public function overloadUnique(callable $next, AbstractObject $context)
     {
-        return $this->next->overloadUnique($context);
+        return $next();
     }
 
     /**

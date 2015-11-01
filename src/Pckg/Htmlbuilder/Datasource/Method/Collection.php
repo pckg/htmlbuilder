@@ -35,20 +35,20 @@ class Collection extends AbstractDatasource
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadUseCollectionDatasource(ElementObject $context)
+    public function overloadUseCollectionDatasource(callable $next, ElementObject $context)
     {
         $this->enabled = true;
 
         $this->entity = $context->getArg(0);
 
-        return $this->next->overloadUseCollectionDatasource($context);
+        return $next();
     }
 
     /**
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
         if ($this->enabled) {
             $element = $context->getElement();
@@ -58,7 +58,7 @@ class Collection extends AbstractDatasource
             }
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**
@@ -66,7 +66,7 @@ class Collection extends AbstractDatasource
      */
     protected function decorateSelect($element)
     {
-        $arr = $this->entity->findListID();
+        $arr = $this->entity->all()->getList();
 
         $element->addOptions($arr);
     }

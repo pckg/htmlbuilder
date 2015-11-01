@@ -27,11 +27,11 @@ class Min extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadMin(AbstractObject $context)
+    public function overloadMin(callable $next, AbstractObject $context)
     {
         $this->min = $context->getArg(0);
 
-        return $this->next->overloadMin($context);
+        return $next();
     }
 
     /**

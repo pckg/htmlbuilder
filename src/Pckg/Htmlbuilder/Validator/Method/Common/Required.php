@@ -30,13 +30,13 @@ class Required extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadRequired(AbstractObject $context)
+    public function overloadRequired(callable $next, AbstractObject $context)
     {
         $context->getElement()->emptyAttribute('required');
 
         $this->setEnabled();
 
-        return $this->next->overloadRequired($context);
+        return $next();
     }
 
     /**

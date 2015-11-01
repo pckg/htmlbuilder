@@ -10,13 +10,13 @@ trait Strategy
 
     // protected $strategy; // required in class
 
-    public function overloadUseStrategy(AbstractObject $context)
+    public function overloadUseStrategy(callable $next, AbstractObject $context)
     {
         $this->strategy = is_object($context->getArg(0))
             ? $context->getArg(0)
             : $context->getElement()->decoratorFactory->create($context->getArg(0));
 
-        return $this->next->overloadUseStrategy($context);
+        return $next();
     }
 
     protected function createStrategy(Element $element)

@@ -38,9 +38,9 @@ abstract class AbstractService extends AbstractChainOfReponsibility
         return $this->recursive;
     }
 
-    public function overloadInit(AbstractObject $context)
+    public function overloadInit(callable $next)
     {
-        return $this->next->overloadInit($context);
+        return $next();
     }
 
 }

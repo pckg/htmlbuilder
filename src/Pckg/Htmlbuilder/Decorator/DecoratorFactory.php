@@ -3,6 +3,17 @@
 namespace Pckg\Htmlbuilder\Decorator;
 
 use Pckg\Concept\AbstractFactory;
+use Pckg\Htmlbuilder\Decorator\Method\AngularJS;
+use Pckg\Htmlbuilder\Decorator\Method\AngularJSValidator;
+use Pckg\Htmlbuilder\Decorator\Method\Foundation;
+use Pckg\Htmlbuilder\Decorator\Method\Post;
+use Pckg\Htmlbuilder\Decorator\Method\Record;
+use Pckg\Htmlbuilder\Decorator\Method\Step;
+use Pckg\Htmlbuilder\Decorator\Method\Step\Horizontal;
+use Pckg\Htmlbuilder\Decorator\Method\Step\Tabbed;
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper;
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Foundation as FoundationWrapper;
 
 /**
  * Class DecoratorFactory
@@ -15,20 +26,20 @@ class DecoratorFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'AngularJS' => '\Pckg\Htmlbuilder\Decorator\Method\AngularJS',
-        'AngularJSValidator' => '\Pckg\Htmlbuilder\Decorator\Method\AngularJSValidator',
-        'Bootstrap' => '\Pckg\Htmlbuilder\Decorator\Method\Foundation',
+        'AngularJS' => AngularJS::class,
+        'AngularJSValidator' => AngularJSValidator::class,
+        'Bootstrap' => Foundation::class,
         'Csrf' => '\Pckg\Htmlbuilder\Decorator\Method\Csrf',
-        'Post' => '\Pckg\Htmlbuilder\Decorator\Method\Post',
-        'Record' => '\Pckg\Htmlbuilder\Decorator\Method\Record',
+        'Post' => Post::class,
+        'Record' => Record::class,
 
-        'Step' => '\Pckg\Htmlbuilder\Decorator\Method\Step',
-        'Step\Tabbed' => '\Pckg\Htmlbuilder\Decorator\Method\Step\Tabbed',
-        'Step\Horizontal' => '\Pckg\Htmlbuilder\Decorator\Method\Step\Horizontal',
+        'Step' => Step::class,
+        'Step\Tabbed' => Tabbed::class,
+        'Step\Horizontal' => Horizontal::class,
 
-        'Wrapper' => '\Pckg\Htmlbuilder\Decorator\Method\Wrapper',
-        'Wrapper\Bootstrap' => '\Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap',
-        'Wrapper\Foundation' => '\Pckg\Htmlbuilder\Decorator\Method\Wrapper\Foundation',
+        'Wrapper' => Wrapper::class,
+        'Wrapper\Bootstrap' => Bootstrap::class,
+        'Wrapper\Foundation' => FoundationWrapper::class,
     ];
 
 }

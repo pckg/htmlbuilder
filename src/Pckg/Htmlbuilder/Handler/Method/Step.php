@@ -27,7 +27,7 @@ class Step extends AbstractHandler
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadAddStep(AbstractObject $context)
+    public function overloadAddStep(callable $next, AbstractObject $context)
     {
         $form = $context->getElement();
 
@@ -46,7 +46,7 @@ class Step extends AbstractHandler
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetStepped(AbstractObject $context)
+    public function overloadSetStepped(callable $next, AbstractObject $context)
     {
         $form = $context->getElement();
 
@@ -54,27 +54,27 @@ class Step extends AbstractHandler
 
         $form->addClass('stepped');
 
-        return $this->next->overloadSetStepped($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetStep(AbstractObject $context)
+    public function overloadSetStep(callable $next, AbstractObject $context)
     {
         $fieldset = $context->getElement();
 
         $fieldset->addClass('step');
 
-        return $this->next->overloadSetStep($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadIsStepped(AbstractObject $context)
+    public function overloadIsStepped(callable $next, AbstractObject $context)
     {
         $form = $context->getElement();
 
@@ -85,7 +85,7 @@ class Step extends AbstractHandler
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadIsStep(AbstractObject $context)
+    public function overloadIsStep(callable $next, AbstractObject $context)
     {
         $fieldset = $context->getElement();
 

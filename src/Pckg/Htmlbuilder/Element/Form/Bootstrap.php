@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element\Form;
 
 use Pckg\Htmlbuilder\Element\Form;
+use Pckg\Htmlbuilder\Decorator\Method\Bootstrap as BootstrapDecorator;
 
 /**
  * Class Bootstrap
@@ -17,11 +18,11 @@ class Bootstrap extends Form
     {
         parent::__construct();
 
-        $this->setMethod('post');
-
         $this->setHorizontal();
 
-        $this->setMultipart();
+        foreach ($this->decoratorFactory->create([BootstrapDecorator::class]) as $decorator) {
+            $this->addDecorator($decorator);
+        }
     }
 
     /**

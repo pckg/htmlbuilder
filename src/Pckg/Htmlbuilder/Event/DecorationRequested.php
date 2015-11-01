@@ -22,7 +22,7 @@ class DecorationRequested extends AbstractEvent
      */
     public function __construct()
     {
-        $this->addEventHandler(new DecorateElement());
+        $this->handlers[] = new DecorateElement();
     }
 
 }

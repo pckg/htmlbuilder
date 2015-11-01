@@ -43,21 +43,21 @@ class Request extends AbstractDatasource
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadUseRequestDatasource(ElementObject $context)
+    public function overloadUseRequestDatasource(callable $next, ElementObject $context)
     {
         $this->enabled = true;
 
         $this->autofill($context, $context->getElement());
 
-        return $this->next->overloadUseRequestDatasource($context);
+        return $next();
     }
 
-    /*public function overloadDecorate(AbstractObject $context) {
+    /*public function overloadDecorate(callable $next, AbstractObject $context) {
         if ($this->enabled) {
             $this->autofill($context);
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }*/
 
     /**

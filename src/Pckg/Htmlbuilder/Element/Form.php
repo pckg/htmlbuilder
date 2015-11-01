@@ -2,7 +2,12 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
+use Pckg\Htmlbuilder\Datasource\Method\Entity;
+use Pckg\Htmlbuilder\Datasource\Method\Record;
+use Pckg\Htmlbuilder\Datasource\Method\Request;
+use Pckg\Htmlbuilder\Datasource\Method\Session;
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Handler\Method\Step;
 
 /**
  * Class Form
@@ -31,14 +36,14 @@ class Form extends Element
 
         $this->setID('form' . array_reverse(explode('\\', get_class($this)))[0]);
         $this->setName('form' . array_reverse(explode('\\', get_class($this)))[0]);
-
+        $this->setMethod('post');
         $this->setMultipart();
 
-        foreach ($this->handlerFactory->create(['Step']) AS $handler) {
+        foreach ($this->handlerFactory->create([Step::class]) AS $handler) {
             $this->addHandler($handler);
         }
 
-        foreach ($this->datasourceFactory->create(['Record', 'Request', 'Session', 'Entity']) AS $datasource) {
+        foreach ($this->datasourceFactory->create([Record::class, Request::class, Session::class, Entity::class]) AS $datasource) {
             $this->addDatasource($datasource);
         }
 

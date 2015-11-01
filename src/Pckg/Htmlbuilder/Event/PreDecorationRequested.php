@@ -22,7 +22,7 @@ class PreDecorationRequested extends AbstractEvent
      */
     public function __construct()
     {
-        $this->addEventHandler(new PreDecorateElement());
+        $this->handlers[] = new PreDecorateElement();
     }
 
 }

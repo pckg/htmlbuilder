@@ -87,7 +87,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
      * @param AbstractObject $context
      * @return bool
      */
-    public function overloadIsValid(AbstractObject $context)
+    public function overloadIsValid(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
         $value = $element->getValue();
@@ -103,7 +103,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
         // @DEBUG var_dump("overloadIsValid #valid", $valid);
 
         return $valid
-            ? $this->next->overloadIsValid($context)
+            ? $next()
             : $valid;
     }
 

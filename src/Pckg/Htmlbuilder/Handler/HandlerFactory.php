@@ -3,6 +3,9 @@
 namespace Pckg\Htmlbuilder\Handler;
 
 use Pckg\Concept\AbstractFactory;
+use Pckg\Htmlbuilder\Handler\Method\Basic;
+use Pckg\Htmlbuilder\Handler\Method\Query;
+use Pckg\Htmlbuilder\Handler\Method\Step;
 
 /**
  * Class HandlerFactory
@@ -15,9 +18,9 @@ class HandlerFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'Basic' => '\Pckg\Htmlbuilder\Handler\Method\Basic',
-        'Query' => '\Pckg\Htmlbuilder\Handler\Method\Query',
-        'Step' => '\Pckg\Htmlbuilder\Handler\Method\Step',
+        'Basic' => Basic::class,
+        'Query' => Query::class,
+        'Step' => Step::class,
     ];
 
 }

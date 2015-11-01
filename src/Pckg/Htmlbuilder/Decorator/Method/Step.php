@@ -34,7 +34,7 @@ class Step extends AbstractDecorator
      */
     public function __clone()
     {
-        $this->stepStrategy = clone $this->stepStrategy;
+        //$this->stepStrategy = clone $this->stepStrategy;
     }
 
     /**
@@ -45,16 +45,16 @@ class Step extends AbstractDecorator
         $this->methods = ['useStepStrategy', 'getStepStrategy', 'preDecorate', 'decorate', 'setTitle', 'setHeading'];
     }
 
-    public function overloadUseStepStrategy(AbstractObject $context)
+    public function overloadUseStepStrategy(callable $next, AbstractObject $context)
     {
         $this->stepStrategy = is_object($context->getArg(0))
             ? $context->getArg(0)
             : $context->getElement()->decoratorFactory->create($context->getArg(0));
 
-        return $this->next->overloadUseStepStrategy($context);
+        return $next();
     }
 
-    public function overloadGetStepStrategy(AbstractObject $context)
+    public function overloadGetStepStrategy(callable $next, AbstractObject $context)
     {
         $context->setReturn('result');
 
@@ -65,29 +65,29 @@ class Step extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetTitle(AbstractObject $context)
+    public function overloadSetTitle(callable $next, AbstractObject $context)
     {
         $this->title = $context->getArg(0);
 
-        return $this->next->overloadSetTitle($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetHeading(AbstractObject $context)
+    public function overloadSetHeading(callable $next, AbstractObject $context)
     {
         $this->heading = $context->getArg(0);
 
-        return $this->next->overloadSetHeading($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadPreDecorate(AbstractObject $context)
+    public function overloadPreDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -98,14 +98,14 @@ class Step extends AbstractDecorator
             $this->stepStrategy->overloadPreDecorate($context);
         }
 
-        return $this->next->overloadPreDecorate($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -113,6 +113,6 @@ class Step extends AbstractDecorator
             $this->stepStrategy->overloadDecorate($context);
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 }

@@ -28,16 +28,16 @@ class Post extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadIsValid(AbstractObject $context)
+    public function overloadIsValid(callable $next, AbstractObject $context)
     {
-        return $this->next->overloadIsValid($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -48,14 +48,14 @@ class Post extends AbstractDecorator
                 ->setDecoratable(false);
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return bool
      */
-    public function overloadIsValidPost(AbstractObject $context)
+    public function overloadIsValidPost(callable $next, AbstractObject $context)
     {
         $form = $context->getElement();
 
@@ -66,7 +66,7 @@ class Post extends AbstractDecorator
      * @param AbstractObject $context
      * @return bool
      */
-    public function overloadIsSubmitted(AbstractObject $context)
+    public function overloadIsSubmitted(callable $next, AbstractObject $context)
     {
         return isset($_POST['_form']) && $_POST['_form'] == $context->getElement()->getName();
     }

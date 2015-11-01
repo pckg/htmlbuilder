@@ -23,7 +23,7 @@ class Csrf extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -34,6 +34,6 @@ class Csrf extends AbstractValidator
             // save csrf value to session
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 }

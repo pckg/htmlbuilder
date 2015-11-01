@@ -28,7 +28,7 @@ class Query extends AbstractHandler
      * @param AbstractObject $context
      * @return bool
      */
-    public function overloadClosest(AbstractObject $context)
+    public function overloadClosest(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
 
@@ -50,7 +50,7 @@ class Query extends AbstractHandler
      * @param AbstractObject $context
      * @return $this
      */
-    public function overloadFarest(AbstractObject $context)
+    public function overloadFarest(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
 
@@ -67,14 +67,14 @@ class Query extends AbstractHandler
 
         $context->setReturn(false);
 
-        $this->next->overloadFarest();
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return null
      */
-    public function overloadFindFirstByName(AbstractObject $context)
+    public function overloadFindFirstByName(callable $next, AbstractObject $context)
     {
         $name = $context->getArg(0);
         $element = $context->getElement();
@@ -93,14 +93,14 @@ class Query extends AbstractHandler
 
         $context->setReturnMethod('null');
 
-        return $this->next->overloadFindFirstByName($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadFindChild(AbstractObject $context)
+    public function overloadFindChild(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
 
@@ -112,14 +112,14 @@ class Query extends AbstractHandler
 
         $context->handleReturnNull();
 
-        return $this->next->overloadFindChild($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return array
      */
-    public function overloadFindChildren(AbstractObject $context)
+    public function overloadFindChildren(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
 
@@ -137,7 +137,7 @@ class Query extends AbstractHandler
      * @param AbstractObject $context
      * @return array
      */
-    public function overloadRemoveChildren(AbstractObject $context)
+    public function overloadRemoveChildren(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
         $element = $context->getElement();
@@ -157,7 +157,7 @@ class Query extends AbstractHandler
      * @param AbstractObject $context
      * @return int|string
      */
-    public function overloadGetIndex(AbstractObject $context)
+    public function overloadGetIndex(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -172,7 +172,7 @@ class Query extends AbstractHandler
             }
         }
 
-        return $this->next->overloadGetIndex($context);
+        return $next();
     }
 
 }

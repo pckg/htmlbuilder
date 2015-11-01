@@ -22,11 +22,11 @@ class Unique extends AbstractValidator
      * @param $args
      * @return mixed
      */
-    public function unique(Element $element, $args)
+    public function unique(callable $next, Element $element, $args)
     {
         $this->isUnique = true;
 
-        return $this->next->unique($element, $args);
+        return $next();
     }
 
     /**

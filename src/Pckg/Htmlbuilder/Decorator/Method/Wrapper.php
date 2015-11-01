@@ -92,16 +92,16 @@ class Wrapper extends AbstractDecorator
         //$this->wrapperStrategy = clone $this->wrapperStrategy;
     }
 
-    public function overloadUseWrapperStrategy(AbstractObject $context)
+    public function overloadUseWrapperStrategy(callable $next, AbstractObject $context)
     {
         $this->wrapperStrategy = is_object($context->getArg(0))
             ? $context->getArg(0)
             : $context->getElement()->decoratorFactory->create($context->getArg(0));
 
-        return $this->next->overloadUseWrapperStrategy($context);
+        return $next();
     }
 
-    public function overloadWrapperStepStrategy(AbstractObject $context)
+    public function overloadWrapperStepStrategy(callable $next, AbstractObject $context)
     {
         $context->setReturn('result');
 
@@ -116,7 +116,7 @@ class Wrapper extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetDecoratorClasses(AbstractObject $context)
+    public function overloadSetDecoratorClasses(callable $next, AbstractObject $context)
     {
         $classes = $context->getArg(0);
 
@@ -126,7 +126,7 @@ class Wrapper extends AbstractDecorator
             }
         }
 
-        return $this->next->overloadSetDecoratorClasses($context);
+        return $next();
     }
 
     /*
@@ -136,33 +136,33 @@ class Wrapper extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetLabel(AbstractObject $context)
+    public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
 
-        return $this->next->overloadSetLabel($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetWrapped(AbstractObject $context)
+    public function overloadSetWrapped(callable $next, AbstractObject $context)
     {
         $this->wrapped = $context->getArg(0);
 
-        return $this->next->overloadSetWrapped($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetGrouped(AbstractObject $context)
+    public function overloadSetGrouped(callable $next, AbstractObject $context)
     {
         $this->grouped = $context->getArg(0);
 
-        return $this->next->overloadSetGrouped($context);
+        return $next();
     }
 
     /*
@@ -172,7 +172,7 @@ class Wrapper extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -186,7 +186,7 @@ class Wrapper extends AbstractDecorator
 
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next;
     }
 
     /**

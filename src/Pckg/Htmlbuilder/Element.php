@@ -70,7 +70,9 @@ class Element
         $context = $this->createContext();
         $context->setArgs($args);
 
-        $result = chain($handlers, $overloadMethod, ['context' => $context]);
+        $result = chain($handlers, $overloadMethod, ['context' => $context], function(){
+            return $this;
+        });
 
         return $result;
     }

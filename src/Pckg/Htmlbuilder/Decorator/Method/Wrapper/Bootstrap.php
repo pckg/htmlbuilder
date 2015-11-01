@@ -96,7 +96,7 @@ class Bootstrap extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetDecoratorClasses(AbstractObject $context)
+    public function overloadSetDecoratorClasses(callable $next, AbstractObject $context)
     {
         $classes = $context->getArg(0);
 
@@ -106,7 +106,7 @@ class Bootstrap extends AbstractDecorator
             }
         }
 
-        return $this->next->overloadSetDecoratorClasses($context);
+        return $next();
     }
 
     /*
@@ -116,33 +116,33 @@ class Bootstrap extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetLabel(AbstractObject $context)
+    public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
 
-        return $this->next->overloadSetLabel($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetWrapped(AbstractObject $context)
+    public function overloadSetWrapped(callable $next, AbstractObject $context)
     {
         $this->wrapped = $context->getArg(0);
 
-        return $this->next->overloadSetWrapped($context);
+        return $next();
     }
 
     /**
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadSetGrouped(AbstractObject $context)
+    public function overloadSetGrouped(callable $next, AbstractObject $context)
     {
         $this->grouped = $context->getArg(0);
 
-        return $this->next->overloadSetGrouped($context);
+        return $next();
     }
 
     /*
@@ -152,7 +152,7 @@ class Bootstrap extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
@@ -166,7 +166,7 @@ class Bootstrap extends AbstractDecorator
 
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**

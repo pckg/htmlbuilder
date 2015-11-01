@@ -16,14 +16,14 @@ class PreDecorateElement extends AbstractChainOfReponsibility
      * @param AbstractObject $context
      * @return mixed
      */
-    public function handle(AbstractObject $context)
+    public function handle(callable $next, AbstractObject $context)
     {
         if ($context->getElement()->hasDecorators() && !isset($context->getElement()->predecorated)) {
             $context->getElement()->predecorated = true;
             $context->getElement()->preDecorate();
         }
 
-        return $this->next->handle($context);
+        return $next();
     }
 
 }

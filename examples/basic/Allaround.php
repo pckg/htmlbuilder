@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Examples;
 
+use Pckg\Framework\Inter\Entity\Languages;
 use Pckg\Htmlbuilder\Element\Form\Bootstrap;
 
 class Allaround extends Bootstrap
@@ -69,12 +70,13 @@ class Allaround extends Bootstrap
 
         $country = $form->addSelect('country_id')// ... relation with countries
         ->setLabel('Country')
-            ->required()/*->autocomplete()*/
+            ->required()
+            /*->autocomplete()*/
         ; // enables autocomplete, sirjusli =)
 
         $language = $form->addSelect('language_id')
             ->setValue(2)
-            ->useEntityDatasource(entity('Base\Entity\Languages'))
+            ->useEntityDatasource(new Languages())
             ->setLabel('Language')
             ->required()/*->default('en')*/
         ;

@@ -7,11 +7,11 @@ use Pckg\Htmlbuilder\Element\Form\Bootstrap;
 class ForgotPassword extends Bootstrap
 {
 
-    public function initFields()
+    public function init()
     {
-        $this->addEmail('email')// also adds email validator
-        ->setLabel('Email:')
-            ->required(); // adds required validator
+        $this->addEmail('email')
+            ->setLabel('Email:')
+            ->required();
 
         $this->addSave();
 

@@ -40,11 +40,11 @@ class AngularJSValidator extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function setRecord(AbstractObject $context)
+    public function setRecord(callable $next, AbstractObject $context)
     {
         $this->record = $context->getArg(0);
 
-        return $this->next->setRecord($context);
+        return $next();
     }
 
     /*
@@ -54,13 +54,13 @@ class AngularJSValidator extends AbstractDecorator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadDecorate(AbstractObject $context)
+    public function overloadDecorate(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
 
         $this->decorateModel($element);
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /*

@@ -3,6 +3,18 @@
 namespace Pckg\Htmlbuilder\Validator;
 
 use Pckg\Concept\AbstractFactory;
+use Pckg\Htmlbuilder\Validator\Method\Common;
+use Pckg\Htmlbuilder\Validator\Method\Common\Matches;
+use Pckg\Htmlbuilder\Validator\Method\Common\Required;
+use Pckg\Htmlbuilder\Validator\Method\Common\Unique as CommonUnique;
+use Pckg\Htmlbuilder\Validator\Method\Csrf;
+use Pckg\Htmlbuilder\Validator\Method\Datetime;
+use Pckg\Htmlbuilder\Validator\Method\Number;
+use Pckg\Htmlbuilder\Validator\Method\Related;
+use Pckg\Htmlbuilder\Validator\Method\Text;
+use Pckg\Htmlbuilder\Validator\Method\Text\Max;
+use Pckg\Htmlbuilder\Validator\Method\Text\Min;
+use Pckg\Htmlbuilder\Validator\Method\Unique;
 
 /**
  * Class ValidatorFactory
@@ -15,21 +27,21 @@ class ValidatorFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'Csrf' => '\Pckg\Htmlbuilder\Validator\Method\Csrf',
+        'Csrf' => Csrf::class,
 
-        'Common' => '\Pckg\Htmlbuilder\Validator\Method\Common',
-        'Common\Required' => '\Pckg\Htmlbuilder\Validator\Method\Common\Required',
-        'Common\Unique' => '\Pckg\Htmlbuilder\Validator\Method\Common\Unique',
-        'Common\Matches' => '\Pckg\Htmlbuilder\Validator\Method\Common\Matches',
+        'Common' => Common::class,
+        'Common\Required' => Required::class,
+        'Common\Unique' => CommonUnique::class,
+        'Common\Matches' => Matches::class,
 
-        'Text' => '\Pckg\Htmlbuilder\Validator\Method\Text',
-        'Text\Min' => '\Pckg\Htmlbuilder\Validator\Method\Text\Min',
-        'Text\Max' => '\Pckg\Htmlbuilder\Validator\Method\Text\Max',
+        'Text' => Text::class,
+        'Text\Min' => Min::class,
+        'Text\Max' => Max::class,
 
-        'Number' => '\Pckg\Htmlbuilder\Validator\Method\Number',
-        'Unique' => '\Pckg\Htmlbuilder\Validator\Method\Unique',
-        'Datetime' => '\Pckg\Htmlbuilder\Validator\Method\Datetime',
-        'Related' => '\Pckg\Htmlbuilder\Validator\Method\Related',
+        'Number' => Number::class,
+        'Unique' => Unique::class,
+        'Datetime' => Datetime::class,
+        'Related' => Related::class,
     ];
 
 }

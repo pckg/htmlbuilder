@@ -31,6 +31,6 @@ interface DatasourceInterface
      * @param ElementObject $context
      * @return mixed
      */
-    public function populate(ElementObject $context);
+    public function populate(callable $next, ElementObject $context);
 
 }

@@ -25,7 +25,7 @@ interface ValidatorInterface
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadIsValid(AbstractObject $context);
+    public function overloadIsValid(callable $next, AbstractObject $context);
 
     /**
      * @param $error

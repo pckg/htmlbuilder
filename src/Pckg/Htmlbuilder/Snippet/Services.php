@@ -100,19 +100,19 @@ trait Services
      */
     protected $factories = [
         'Decorator' => [
-            'factory' => 'Pckg\Htmlbuilder\Decorator\DecoratorFactory',
+            'factory' => DecoratorFactory::class,
         ],
         'Handler' => [
-            'factory' => 'Pckg\Htmlbuilder\Handler\HandlerFactory',
+            'factory' => HandlerFactory::class,
         ],
         'Validator' => [
-            'factory' => 'Pckg\Htmlbuilder\Validator\ValidatorFactory',
+            'factory' => ValidatorFactory::class,
         ],
         'Datasource' => [
-            'factory' => 'Pckg\Htmlbuilder\Datasource\DatasourceFactory',
+            'factory' => DatasourceFactory::class,
         ],
         'Element' => [
-            'factory' => 'Pckg\Htmlbuilder\Element\ElementFactory',
+            'factory' => ElementFactory::class,
         ],
     ];
 

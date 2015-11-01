@@ -75,14 +75,14 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
      * @param AbstractObject $context
      * @return bool
      */
-    public function overloadIsValid(AbstractObject $context)
+    public function overloadIsValid(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
         $value = null;
         $valid = $this->validate($value);
 
         return $valid
-            ? $this->next->isValid($context)
+            ? $next()
             : $valid;
     }
 

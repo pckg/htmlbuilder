@@ -29,9 +29,9 @@ abstract class AbstractDatasource extends AbstractService implements DatasourceI
      * @param ElementObject $context
      * @return mixed
      */
-    public function populate(ElementObject $context)
+    public function populate(callable $next, ElementObject $context)
     {
-        return $this->next->populate($context);
+        return $next();
     }
 
 }

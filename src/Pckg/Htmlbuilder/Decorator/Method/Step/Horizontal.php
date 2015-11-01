@@ -13,12 +13,12 @@ class Horizontal extends AbstractDecorator
     public $heading;
     public $title;
 
-    public function overloadPreDecorate(ElementObject $context)
+    public function overloadPreDecorate(callable $next, ElementObject $context)
     {
-
+        return $next();
     }
 
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
         $element = $context->getElement();
 
@@ -34,6 +34,8 @@ class Horizontal extends AbstractDecorator
             }
 
         }
+
+        return $next();
     }
 
     protected function decorateStepFieldset($fieldset)

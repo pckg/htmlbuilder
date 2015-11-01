@@ -35,20 +35,20 @@ class Entity extends AbstractDatasource
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadUseEntityDatasource(ElementObject $context)
+    public function overloadUseEntityDatasource(callable $next, ElementObject $context)
     {
         $this->enabled = true;
 
         $this->entity = $context->getArg(0);
 
-        return $this->next->overloadUseEntityDatasource($context);
+        return $next();
     }
 
     /**
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
         if ($this->enabled) {
             $element = $context->getElement();
@@ -58,7 +58,7 @@ class Entity extends AbstractDatasource
             }
         }
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**
@@ -66,7 +66,7 @@ class Entity extends AbstractDatasource
      */
     protected function decorateSelect($element)
     {
-        $arr = $this->entity->findListID();
+        $arr = $this->entity->all()->getList();
 
         $element->addOptions($arr);
     }

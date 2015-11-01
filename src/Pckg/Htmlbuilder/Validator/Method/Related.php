@@ -17,9 +17,9 @@ class Related extends AbstractValidator
      * @param $args
      * @return mixed
      */
-    public function matchesField(Element $element, $args)
+    public function matchesField(callable $next, Element $element, $args)
     {
-        return $this->next->matchesField($element, $args);
+        return $next();
     }
 
 }

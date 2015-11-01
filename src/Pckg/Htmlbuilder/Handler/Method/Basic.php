@@ -101,7 +101,7 @@ class Basic extends AbstractHandler
      * @param AbstractObject $context
      * @return mixed|object
      */
-    public function overloadAddMapped(AbstractObject $context)
+    public function overloadAddMapped(callable $next, AbstractObject $context)
     {
         $child = $this->elementFactory->create(ucfirst($context->getArg(0)));
 

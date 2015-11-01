@@ -27,12 +27,12 @@ class Max extends AbstractValidator
      * @param AbstractObject $context
      * @return mixed
      */
-    public function overloadMax(AbstractObject $context)
+    public function overloadMax(callable $next, AbstractObject $context)
     {
         $this->max = $context->getArg(0);
         $context->getElement()->setAttribute('max', $this->max);
 
-        return $this->next->overloadMax($context);
+        return $next();
     }
 
     /**

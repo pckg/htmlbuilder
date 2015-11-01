@@ -38,50 +38,50 @@ class Record extends AbstractDatasource
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadSetRecord(ElementObject $context)
+    public function overloadSetRecord(callable $next, ElementObject $context)
     {
         $this->record = $context->getArg(0);
 
-        return $this->next->overloadSetRecord($context);
+        return $next();
     }
 
     /**
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadGetRecord(ElementObject $context)
+    public function overloadGetRecord(callable $next, ElementObject $context)
     {
         if ($this->record) {
             return $this->record;
         }
 
-        return $this->next->overloadGetRecord($context);
+        return $next();
     }
 
     /**
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadUseRecordDatasource(ElementObject $context)
+    public function overloadUseRecordDatasource(callable $next, ElementObject $context)
     {
         $this->enabled = true;
 
         // $this->overloadUseRecordDatasource($context);
 
-        return $this->next->overloadUseRecordDatasource($context);
+        return $next();
     }
 
     /**
      * @param ElementObject $context
      * @return mixed
      */
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
         $element = $context->getElement();
 
         $this->decorateValue($element);
 
-        return $this->next->overloadDecorate($context);
+        return $next();
     }
 
     /**
