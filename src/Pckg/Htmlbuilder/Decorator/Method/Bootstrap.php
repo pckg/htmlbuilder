@@ -175,13 +175,16 @@ class Bootstrap extends AbstractDecorator
      */
     public function decorateParent($element)
     {
-        if ($element->getTag() == 'input' && $element->getType() == 'checkbox') {
+        $tag = $element->getTag();
+        $type = $element->getType();
+
+        if ($tag == 'input' && $type == 'checkbox') {
             $this->decorateCheckbox($element);
 
-        } else if ($element->getTag() == 'input' && $element->getType() == 'radio') {
+        } else if ($tag == 'input' && $type == 'radio') {
             $this->decorateRadio($element);
 
-        } else if ($element->getTag() == 'input' && in_array($element->getType(), ['button', 'submit', 'reset'])) {
+        } else if ($tag == 'input' && in_array($type, ['button', 'submit', 'reset'])) {
             $this->decorateButton($element);
 
         } else {
