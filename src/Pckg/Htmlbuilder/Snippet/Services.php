@@ -162,7 +162,7 @@ trait Services
      */
     public function trigger($event, $args = [])
     {
-        trigger($event, 'handle', $args);
+        trigger($event, $args, 'handle');
     }
 
     /**

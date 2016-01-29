@@ -2,6 +2,8 @@
 
 namespace Pckg\Htmlbuilder;
 
+use Pckg\Htmlbuilder\Handler\Method\Basic;
+use Pckg\Htmlbuilder\Handler\Method\Query;
 use Pckg\Htmlbuilder\Snippet\Attributes;
 use Pckg\Htmlbuilder\Snippet\Builder;
 use Pckg\Htmlbuilder\Snippet\Children;
@@ -41,7 +43,7 @@ class Element
 
         $this->rebuildClass();
 
-        foreach ($this->handlerFactory->create(['Basic', 'Query']) AS $handler) {
+        foreach ($this->handlerFactory->create([Basic::class, Query::class,]) AS $handler) {
             $this->addHandler($handler);
         }
 
@@ -54,6 +56,7 @@ class Element
     /**
      * @param $method
      * @param $args
+     *
      * @return self
      */
     public function __call($method, $args)
@@ -70,7 +73,7 @@ class Element
         $context = $this->createContext();
         $context->setArgs($args);
 
-        $result = chain($handlers, $overloadMethod, ['context' => $context], function(){
+        $result = chain($handlers, $overloadMethod, ['context' => $context], function () {
             return $this;
         });
 
@@ -93,6 +96,7 @@ class Element
     */
     /**
      * @param null $tag
+     *
      * @return $this
      */
     public function setTag($tag = null)
@@ -115,6 +119,7 @@ class Element
 
     /**
      * @param $sibling
+     *
      * @return $this
      */
     public function addSibling($sibling)
@@ -140,9 +145,9 @@ class Element
         }
 
         $arr = [
-            'Decorator' => 'Decorators',
-            'Validator' => 'Validators',
-            'Handler' => 'Handlers',
+            'Decorator'  => 'Decorators',
+            'Validator'  => 'Validators',
+            'Handler'    => 'Handlers',
             'Datasource' => 'Datasources',
         ];
 
@@ -161,6 +166,7 @@ class Element
 
     /**
      * @param $regex
+     *
      * @return bool
      */
     public function matchesRegex($regex)
