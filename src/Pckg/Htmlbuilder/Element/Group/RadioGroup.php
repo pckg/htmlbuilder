@@ -17,6 +17,19 @@ class RadioGroup extends Element\Group
     protected $classes = ['row', 'group', 'radio-group'];
 
     /**
+     * @param $arrOptions
+     * @return $this
+     */
+    public function addOptions($arrOptions)
+    {
+        foreach ($arrOptions as $key => $val) {
+            $this->addOption($key, $val);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param $value
      * @param $label
      * @return mixed
@@ -32,19 +45,6 @@ class RadioGroup extends Element\Group
         $option->setName($this->getName());
 
         return $option;
-    }
-
-    /**
-     * @param $arrOptions
-     * @return $this
-     */
-    public function addOptions($arrOptions)
-    {
-        foreach ($arrOptions as $key => $val) {
-            $this->addOption($key, $val);
-        }
-
-        return $this;
     }
 
 }

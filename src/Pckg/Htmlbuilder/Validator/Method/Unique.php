@@ -19,7 +19,7 @@ class Unique extends AbstractValidator
 
     /**
      * @param Element $element
-     * @param $args
+     * @param         $args
      * @return mixed
      */
     public function unique(callable $next, Element $element, $args)

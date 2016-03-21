@@ -70,8 +70,7 @@ class Allaround extends Bootstrap
 
         $country = $form->addSelect('country_id')// ... relation with countries
         ->setLabel('Country')
-            ->required()
-            /*->autocomplete()*/
+            ->required()/*->autocomplete()*/
         ; // enables autocomplete, sirjusli =)
 
         $language = $form->addSelect('language_id')

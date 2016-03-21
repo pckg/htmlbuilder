@@ -29,14 +29,13 @@ class Fieldset extends Element
     protected $fields = [];
 
     /**
-     * @param $form
-     * @return $this
+     *
      */
-    public function setForm($form)
+    public function __construct()
     {
-        $this->form = $form;
+        parent::__construct();
 
-        return $this;
+        $this->addHandler($this->handlerFactory->create('Basic', 'Query', 'Step'));
     }
 
     /**
@@ -45,6 +44,17 @@ class Fieldset extends Element
     public function getForm()
     {
         return $this->form;
+    }
+
+    /**
+     * @param $form
+     * @return $this
+     */
+    public function setForm($form)
+    {
+        $this->form = $form;
+
+        return $this;
     }
 
     /**
@@ -58,16 +68,6 @@ class Fieldset extends Element
         }
 
         return parent::addChild($child);
-    }
-
-    /**
-     *
-     */
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->addHandler($this->handlerFactory->create('Basic', 'Query', 'Step'));
     }
 
     /**

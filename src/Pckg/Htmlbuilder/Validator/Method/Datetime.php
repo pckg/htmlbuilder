@@ -26,44 +26,42 @@ class Datetime extends Text
      */
     protected $arrBitwise = [
         // types
-        1 => [
-            'msg' => 'Must be date',
+        1  => [
+            'msg'      => 'Must be date',
             'function' => 'Date',
-            'exclude' => ['Datetime'],
+            'exclude'  => ['Datetime'],
         ],
-        2 => [
-            'msg' => 'Must be time',
+        2  => [
+            'msg'      => 'Must be time',
             'function' => 'Time',
-            'exclude' => ['Datetime'],
+            'exclude'  => ['Datetime'],
         ],
-        4 => [
-            'msg' => 'Must be datetime',
+        4  => [
+            'msg'      => 'Must be datetime',
             'function' => 'Datetime',
-            'exclude' => ['Date', 'Time'],
+            'exclude'  => ['Date', 'Time'],
         ],
-
         // ranges
-        8 => [
-            'msg' => 'Must be lower than ',
+        8  => [
+            'msg'      => 'Must be lower than ',
             'function' => 'Below',
-            'exclude' => ['Min'],
+            'exclude'  => ['Min'],
         ],
         16 => [
-            'msg' => 'Must be higher than ',
+            'msg'      => 'Must be higher than ',
             'function' => 'Above',
-            'exclude' => ['Max'],
+            'exclude'  => ['Max'],
         ],
-
         // ranges
         32 => [
-            'msg' => 'Must be lower or equals',
+            'msg'      => 'Must be lower or equals',
             'function' => 'Min',
-            'exclude' => ['Below'],
+            'exclude'  => ['Below'],
         ],
         64 => [
-            'msg' => 'Must be higher or equal ',
+            'msg'      => 'Must be higher or equal ',
             'function' => 'Max',
-            'exclude' => ['Above'],
+            'exclude'  => ['Above'],
         ],
     ];
 
@@ -129,7 +127,7 @@ class Datetime extends Text
 
     /**
      * @param Element $element
-     * @param $args
+     * @param         $args
      * @return bool
      */
     public function validate(Element $element, $args)

@@ -383,7 +383,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $text
+     * @param      $text
      * @param null $url
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Lib\InnerBrowser::dontSeeLink()
@@ -406,7 +406,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $text
+     * @param      $text
      * @param null $url
      * @see \Codeception\Lib\InnerBrowser::dontSeeLink()
      */
@@ -479,7 +479,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeInCurrentUrl($uri)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInCurrentUrl', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInCurrentUrl',
+            func_get_args()));
     }
 
     /**
@@ -521,7 +522,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeCurrentUrlEquals($uri)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCurrentUrlEquals', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCurrentUrlEquals',
+            func_get_args()));
     }
 
     /**
@@ -565,7 +567,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeCurrentUrlEquals($uri)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCurrentUrlEquals', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCurrentUrlEquals',
+            func_get_args()));
     }
 
     /**
@@ -608,7 +611,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeCurrentUrlMatches($uri)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCurrentUrlMatches', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCurrentUrlMatches',
+            func_get_args()));
     }
 
     /**
@@ -650,7 +654,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeCurrentUrlMatches($uri)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCurrentUrlMatches', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCurrentUrlMatches',
+            func_get_args()));
     }
 
     /**
@@ -718,7 +723,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeCheckboxIsChecked($checkbox)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCheckboxIsChecked', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeCheckboxIsChecked',
+            func_get_args()));
     }
 
     /**
@@ -761,7 +767,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeCheckboxIsChecked($checkbox)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCheckboxIsChecked', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeCheckboxIsChecked',
+            func_get_args()));
     }
 
     /**
@@ -1080,7 +1087,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeInFormFields($formSelector, $params)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInFormFields', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInFormFields',
+            func_get_args()));
     }
 
     /**
@@ -1508,8 +1516,8 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $name
-     * @param $val
+     * @param       $name
+     * @param       $val
      * @param array $params
      * @internal param $cookie
      * @internal param $value
@@ -1529,7 +1537,7 @@ class AcceptanceTester extends \Codeception\Actor
      * Grabs a cookie value.
      * You can set additional cookie params like `domain`, `path` in array passed as last argument.
      *
-     * @param $cookie
+     * @param       $cookie
      *
      * @param array $params
      * @return mixed
@@ -1553,7 +1561,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $cookie
+     * @param       $cookie
      * @param array $params
      * @return mixed
      * Conditional Assertion: Test won't be stopped on fail
@@ -1576,7 +1584,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $cookie
+     * @param       $cookie
      * @param array $params
      * @return mixed
      * @see \Codeception\Lib\InnerBrowser::seeCookie()
@@ -1593,7 +1601,7 @@ class AcceptanceTester extends \Codeception\Actor
      * Checks that there isn't a cookie with the given name.
      * You can set additional cookie params like `domain`, `path` as array passed in last argument.
      *
-     * @param $cookie
+     * @param       $cookie
      *
      * @param array $params
      * @return mixed
@@ -1611,7 +1619,7 @@ class AcceptanceTester extends \Codeception\Actor
      * Checks that there isn't a cookie with the given name.
      * You can set additional cookie params like `domain`, `path` as array passed in last argument.
      *
-     * @param $cookie
+     * @param       $cookie
      *
      * @param array $params
      * @return mixed
@@ -1629,7 +1637,7 @@ class AcceptanceTester extends \Codeception\Actor
      * Unsets cookie with the given name.
      * You can set additional cookie params like `domain`, `path` in array passed as last argument.
      *
-     * @param $cookie
+     * @param       $cookie
      *
      * @param array $params
      * @return mixed
@@ -1659,7 +1667,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $selector
+     * @param       $selector
      * @param array $attributes
      * @return
      * Conditional Assertion: Test won't be stopped on fail
@@ -1688,7 +1696,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $selector
+     * @param       $selector
      * @param array $attributes
      * @return
      * @see \Codeception\Lib\InnerBrowser::seeElement()
@@ -1714,7 +1722,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $selector
+     * @param       $selector
      * @param array $attributes
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Lib\InnerBrowser::dontSeeElement()
@@ -1739,7 +1747,7 @@ class AcceptanceTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $selector
+     * @param       $selector
      * @param array $attributes
      * @see \Codeception\Lib\InnerBrowser::dontSeeElement()
      */
@@ -1760,7 +1768,7 @@ class AcceptanceTester extends \Codeception\Actor
      * $I->seeNumberOfElements('tr', [0,10]); //between 0 and 10 elements
      * ?>
      * ```
-     * @param $selector
+     * @param       $selector
      * @param mixed $expected :
      * - string: strict number
      * - array: range of numbers [0,10]
@@ -1769,7 +1777,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeNumberOfElements($selector, $expected)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeNumberOfElements', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeNumberOfElements',
+            func_get_args()));
     }
 
     /**
@@ -1783,7 +1792,7 @@ class AcceptanceTester extends \Codeception\Actor
      * $I->seeNumberOfElements('tr', [0,10]); //between 0 and 10 elements
      * ?>
      * ```
-     * @param $selector
+     * @param       $selector
      * @param mixed $expected :
      * - string: strict number
      * - array: range of numbers [0,10]
@@ -1815,7 +1824,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeOptionIsSelected($select, $optionText)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeOptionIsSelected', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeOptionIsSelected',
+            func_get_args()));
     }
 
     /**
@@ -1861,7 +1871,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function cantSeeOptionIsSelected($select, $optionText)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeOptionIsSelected', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeOptionIsSelected',
+            func_get_args()));
     }
 
     /**
@@ -1924,7 +1935,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function canSeeResponseCodeIs($code)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIs', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeResponseCodeIs',
+            func_get_args()));
     }
 
     /**

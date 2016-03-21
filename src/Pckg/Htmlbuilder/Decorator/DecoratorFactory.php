@@ -26,19 +26,17 @@ class DecoratorFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'AngularJS' => AngularJS::class,
+        'AngularJS'          => AngularJS::class,
         'AngularJSValidator' => AngularJSValidator::class,
-        'Bootstrap' => Foundation::class,
-        'Csrf' => '\Pckg\Htmlbuilder\Decorator\Method\Csrf',
-        'Post' => Post::class,
-        'Record' => Record::class,
-
-        'Step' => Step::class,
-        'Step\Tabbed' => Tabbed::class,
-        'Step\Horizontal' => Horizontal::class,
-
-        'Wrapper' => Wrapper::class,
-        'Wrapper\Bootstrap' => Bootstrap::class,
+        'Bootstrap'          => Foundation::class,
+        'Csrf'               => '\Pckg\Htmlbuilder\Decorator\Method\Csrf',
+        'Post'               => Post::class,
+        'Record'             => Record::class,
+        'Step'               => Step::class,
+        'Step\Tabbed'        => Tabbed::class,
+        'Step\Horizontal'    => Horizontal::class,
+        'Wrapper'            => Wrapper::class,
+        'Wrapper\Bootstrap'  => Bootstrap::class,
         'Wrapper\Foundation' => FoundationWrapper::class,
     ];
 

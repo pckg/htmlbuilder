@@ -43,7 +43,12 @@ class Form extends Element
             $this->addHandler($handler);
         }
 
-        foreach ($this->datasourceFactory->create([Record::class, Request::class, Session::class, Entity::class]) AS $datasource) {
+        foreach ($this->datasourceFactory->create([
+            Record::class,
+            Request::class,
+            Session::class,
+            Entity::class
+        ]) AS $datasource) {
             $this->addDatasource($datasource);
         }
 

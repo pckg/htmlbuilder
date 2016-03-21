@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Element\Form;
 
-use Pckg\Htmlbuilder\Element\Form;
 use Pckg\Htmlbuilder\Decorator\Method\Bootstrap as BootstrapDecorator;
+use Pckg\Htmlbuilder\Element\Form;
 
 /**
  * Class Bootstrap

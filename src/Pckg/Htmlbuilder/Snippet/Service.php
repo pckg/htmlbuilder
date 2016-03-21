@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Snippet;
 
-use Pckg\Htmlbuilder\AbstractService;
 use Pckg\Concept\AbstractFactory;
+use Pckg\Htmlbuilder\AbstractService;
 
 /**
  * Class Service
@@ -31,7 +31,7 @@ trait Service
 
     /**
      * @param AbstractService $service
-     * @param $stack
+     * @param                 $stack
      */
     private function addUnique(AbstractService $service, &$stack)
     {

@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Handler\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Field;
 use Pckg\Htmlbuilder\Handler\AbstractHandler;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Query
@@ -21,7 +21,15 @@ class Query extends AbstractHandler
     {
         parent::initOverloadMethods();
 
-        $this->mergeOverloadMethods(['closest', 'farest', 'findFirstByName', 'findChild', 'findChildren', 'removeChildren', 'getIndex']);
+        $this->mergeOverloadMethods([
+            'closest',
+            'farest',
+            'findFirstByName',
+            'findChild',
+            'findChildren',
+            'removeChildren',
+            'getIndex'
+        ]);
     }
 
     /**

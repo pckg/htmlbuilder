@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Validator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Csrf

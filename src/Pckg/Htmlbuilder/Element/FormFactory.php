@@ -2,9 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
-/*
- * Factory for creating basic elements without validation, datasources or decorators
- * */
+    /*
+     * Factory for creating basic elements without validation, datasources or decorators
+     * */
 
 /**
  * Class ElementFactory
@@ -17,15 +17,13 @@ class FormFactory extends ElementFactory
      * @var array
      */
     protected $mapper = [
-        'Order' => '\Test\Form\Order',
-        'Order\Payee' => '\Test\Form\Order\Payee',
+        'Order'          => '\Test\Form\Order',
+        'Order\Payee'    => '\Test\Form\Order\Payee',
         'Order\Shipping' => '\Test\Form\Order\Shipping',
-        'Order\Payment' => '\Test\Form\Order\Payment',
-
-        'Vipster' => '\Test\Form\Vipster',
-
-        'Login' => '\Weblab\User\Form\Login',
-        'Register' => '\Weblab\User\Form\Register',
+        'Order\Payment'  => '\Test\Form\Order\Payment',
+        'Vipster'        => '\Test\Form\Vipster',
+        'Login'          => '\Weblab\User\Form\Login',
+        'Register'       => '\Weblab\User\Form\Register',
     ];
 
     /**
@@ -33,12 +31,12 @@ class FormFactory extends ElementFactory
      */
     protected $services = [
         'Pckg\Htmlbuilder\Element\Form' => [
-            'decorator' => [
+            'decorator'  => [
                 'Record',
                 'Bootstrap',
                 'Post',
             ],
-            'validator' => [
+            'validator'  => [
                 'Common',
             ],
             'datasource' => [
@@ -48,14 +46,13 @@ class FormFactory extends ElementFactory
                 'Entity',
             ],
         ],
-
-        'Login' => [
-            'decorator' => [
+        'Login'                         => [
+            'decorator'  => [
                 'Record',
                 'Bootstrap',
                 'Post',
             ],
-            'validator' => [
+            'validator'  => [
                 'Common',
             ],
             'datasource' => [

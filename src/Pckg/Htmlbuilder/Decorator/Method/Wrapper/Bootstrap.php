@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Input\Hidden;
-use Pckg\Concept\AbstractObject;
 
 /*
  * Bootstrap decorator encapsulates elements in Bootstrap wrappers and classes
@@ -156,7 +156,9 @@ class Bootstrap extends AbstractDecorator
     {
         $element = $context->getElement();
 
-        if (in_array($element->getTag(), ['input', 'select', 'button', 'textarea']) && $element->getAttribute('type') != 'hidden') {
+        if (in_array($element->getTag(),
+                ['input', 'select', 'button', 'textarea']) && $element->getAttribute('type') != 'hidden'
+        ) {
             $this->decorateParent($element);
 
         } else if (in_array($element->getTag(), ['div'])) {

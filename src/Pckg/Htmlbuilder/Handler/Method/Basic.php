@@ -2,9 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Handler\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Handler\AbstractHandler;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Basic

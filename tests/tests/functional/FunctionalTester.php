@@ -189,7 +189,8 @@ class FunctionalTester extends \Codeception\Actor
      */
     public function canSeeFileContentsEqual($text)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeFileContentsEqual', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('seeFileContentsEqual',
+            func_get_args()));
     }
 
     /**
@@ -234,7 +235,8 @@ class FunctionalTester extends \Codeception\Actor
      */
     public function cantSeeInThisFile($text)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInThisFile', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeInThisFile',
+            func_get_args()));
     }
 
     /**
@@ -282,7 +284,7 @@ class FunctionalTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $filename
+     * @param        $filename
      * @param string $path
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\Filesystem::seeFileFound()
@@ -304,7 +306,7 @@ class FunctionalTester extends \Codeception\Actor
      * ?>
      * ```
      *
-     * @param $filename
+     * @param        $filename
      * @param string $path
      * @see \Codeception\Module\Filesystem::seeFileFound()
      */
@@ -319,14 +321,15 @@ class FunctionalTester extends \Codeception\Actor
      *
      * Checks if file does not exists in path
      *
-     * @param $filename
+     * @param        $filename
      * @param string $path
      * Conditional Assertion: Test won't be stopped on fail
      * @see \Codeception\Module\Filesystem::dontSeeFileFound()
      */
     public function cantSeeFileFound($filename, $path = null)
     {
-        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeFileFound', func_get_args()));
+        return $this->scenario->runStep(new \Codeception\Step\ConditionalAssertion('dontSeeFileFound',
+            func_get_args()));
     }
 
     /**
@@ -334,7 +337,7 @@ class FunctionalTester extends \Codeception\Actor
      *
      * Checks if file does not exists in path
      *
-     * @param $filename
+     * @param        $filename
      * @param string $path
      * @see \Codeception\Module\Filesystem::dontSeeFileFound()
      */

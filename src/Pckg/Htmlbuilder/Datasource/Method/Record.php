@@ -92,7 +92,12 @@ class Record extends AbstractDatasource
     {
         $name = $element->getAttribute('name');
 
-        if (in_array($element->getTag(), ['input', 'select', 'textarea']) && $this->record && $this->record->__isset($name) && is_object($element) && $element->getAttribute('type') != 'password') {
+        if (in_array($element->getTag(), [
+                'input',
+                'select',
+                'textarea'
+            ]) && $this->record && $this->record->__isset($name) && is_object($element) && $element->getAttribute('type') != 'password'
+        ) {
             $value = $this->record->get($name);
             $element->setValue($value);
         }

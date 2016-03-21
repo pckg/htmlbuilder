@@ -26,56 +26,53 @@ class Number extends Text
      */
     protected $arrBitwise = [
         // types
-        1 => [
-            'msg' => 'Must be integer',
+        1   => [
+            'msg'      => 'Must be integer',
             'function' => 'Int',
-            'exclude' => ['Float'],
+            'exclude'  => ['Float'],
         ],
-        2 => [
-            'msg' => 'Must be float',
+        2   => [
+            'msg'      => 'Must be float',
             'function' => 'Float',
-            'include' => ['Int'],
+            'include'  => ['Int'],
         ],
-        4 => [
-            'msg' => 'Must be numeric',
+        4   => [
+            'msg'      => 'Must be numeric',
             'function' => 'Numeric',
-            'exclude' => ['Float', 'Int'],
+            'exclude'  => ['Float', 'Int'],
         ],
-
         // ranges
-        8 => [
-            'msg' => 'Must be negative',
+        8   => [
+            'msg'      => 'Must be negative',
             'function' => 'Negative',
-            'exclude' => ['Below', 'Min'],
+            'exclude'  => ['Below', 'Min'],
         ],
-        16 => [
-            'msg' => 'Must be positive',
+        16  => [
+            'msg'      => 'Must be positive',
             'function' => 'Positive',
-            'exclude' => ['Above', 'Min'],
+            'exclude'  => ['Above', 'Min'],
         ],
-
         // ranges
-        32 => [
-            'msg' => 'Must be lower than ',
+        32  => [
+            'msg'      => 'Must be lower than ',
             'function' => 'Below',
-            'exclude' => ['Min'],
+            'exclude'  => ['Min'],
         ],
-        64 => [
-            'msg' => 'Must be higher than ',
+        64  => [
+            'msg'      => 'Must be higher than ',
             'function' => 'Above',
-            'exclude' => ['Max'],
+            'exclude'  => ['Max'],
         ],
-
         // ranges
         128 => [
-            'msg' => 'Must be lower or equals',
+            'msg'      => 'Must be lower or equals',
             'function' => 'Min',
-            'exclude' => ['Below'],
+            'exclude'  => ['Below'],
         ],
         256 => [
-            'msg' => 'Must be higher or equal ',
+            'msg'      => 'Must be higher or equal ',
             'function' => 'Max',
-            'exclude' => ['Above'],
+            'exclude'  => ['Above'],
         ],
     ];
 
@@ -141,7 +138,7 @@ class Number extends Text
 
     /**
      * @param Element $element
-     * @param $args
+     * @param         $args
      * @return bool
      */
     public function validate(Element $element, $args)

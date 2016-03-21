@@ -20,7 +20,7 @@ class HandlerFactory extends AbstractFactory
     protected $mapper = [
         'Basic' => Basic::class,
         'Query' => Query::class,
-        'Step' => Step::class,
+        'Step'  => Step::class,
     ];
 
 }

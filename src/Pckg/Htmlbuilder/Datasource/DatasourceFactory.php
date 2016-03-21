@@ -15,10 +15,10 @@ class DatasourceFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'Record' => '\Pckg\Htmlbuilder\Datasource\Method\Record',
-        'Request' => '\Pckg\Htmlbuilder\Datasource\Method\Request',
-        'Session' => '\Pckg\Htmlbuilder\Datasource\Method\Session',
-        'Entity' => '\Pckg\Htmlbuilder\Datasource\Method\Entity',
+        'Record'     => '\Pckg\Htmlbuilder\Datasource\Method\Record',
+        'Request'    => '\Pckg\Htmlbuilder\Datasource\Method\Request',
+        'Session'    => '\Pckg\Htmlbuilder\Datasource\Method\Session',
+        'Entity'     => '\Pckg\Htmlbuilder\Datasource\Method\Entity',
         'Collection' => '\Pckg\Htmlbuilder\Datasource\Method\Collection',
     ];
 

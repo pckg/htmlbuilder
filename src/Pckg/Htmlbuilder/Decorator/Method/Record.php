@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Record
@@ -68,8 +68,12 @@ class Record extends AbstractDecorator
      */
     public function decorateName($element)
     {
-        if (in_array($element->getTag(), ['input', 'button', 'select', 'textarea']) && !in_array($element->getAttribute('type'), ['submit', 'cancel']) && $this->record) {
-            $name = lcfirst(str_replace(['\\', 'Record'], '', get_class($this->record))) . '[' . $element->getName() . ']';
+        if (in_array($element->getTag(),
+                ['input', 'button', 'select', 'textarea']) && !in_array($element->getAttribute('type'),
+                ['submit', 'cancel']) && $this->record
+        ) {
+            $name = lcfirst(str_replace(['\\', 'Record'], '',
+                    get_class($this->record))) . '[' . $element->getName() . ']';
             $element->setName($name);
         }
     }

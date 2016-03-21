@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Step

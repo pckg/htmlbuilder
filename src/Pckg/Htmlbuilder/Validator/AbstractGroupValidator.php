@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Validator;
 
-use Pckg\Htmlbuilder\Element;
 use Pckg\Concept\AbstractObject;
+use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AbstractGroupValidator

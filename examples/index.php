@@ -3,15 +3,15 @@
 use Pckg\Htmlbuilder\Examples\Allaround;
 use Pckg\Htmlbuilder\Examples\ForgotPassword;
 use Pckg\Htmlbuilder\Examples\Login;
-use Pckg\Htmlbuilder\Examples\Register;
 use Pckg\Htmlbuilder\Examples\Multiple;
+use Pckg\Htmlbuilder\Examples\Register;
 
 $forms = [
-    'Login' => Login::class,
+    'Login'          => Login::class,
     'ForgotPassword' => ForgotPassword::class,
-    'Register' => Register::class,
-    'Multiple' => Multiple::class,
-    'Allaround' => Allaround::class,
+    'Register'       => Register::class,
+    'Multiple'       => Multiple::class,
+    'Allaround'      => Allaround::class,
 ];
 
 $content = '';

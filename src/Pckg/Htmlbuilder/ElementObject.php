@@ -13,6 +13,14 @@ class ElementObject extends AbstractObject
     protected $element = null;
 
     /**
+     * @return null
+     */
+    public function getElement()
+    {
+        return $this->element;
+    }
+
+    /**
      * @param Element $element
      * @return $this
      */
@@ -21,14 +29,6 @@ class ElementObject extends AbstractObject
         $this->element = $element;
 
         return $this;
-    }
-
-    /**
-     * @return null
-     */
-    public function getElement()
-    {
-        return $this->element;
     }
 
     /**

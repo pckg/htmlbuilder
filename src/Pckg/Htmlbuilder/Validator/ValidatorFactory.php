@@ -27,21 +27,18 @@ class ValidatorFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'Csrf' => Csrf::class,
-
-        'Common' => Common::class,
+        'Csrf'            => Csrf::class,
+        'Common'          => Common::class,
         'Common\Required' => Required::class,
-        'Common\Unique' => CommonUnique::class,
-        'Common\Matches' => Matches::class,
-
-        'Text' => Text::class,
-        'Text\Min' => Min::class,
-        'Text\Max' => Max::class,
-
-        'Number' => Number::class,
-        'Unique' => Unique::class,
-        'Datetime' => Datetime::class,
-        'Related' => Related::class,
+        'Common\Unique'   => CommonUnique::class,
+        'Common\Matches'  => Matches::class,
+        'Text'            => Text::class,
+        'Text\Min'        => Min::class,
+        'Text\Max'        => Max::class,
+        'Number'          => Number::class,
+        'Unique'          => Unique::class,
+        'Datetime'        => Datetime::class,
+        'Related'         => Related::class,
     ];
 
 }

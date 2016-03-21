@@ -26,16 +26,6 @@ class Select extends Element
     protected $value = null;
 
     /**
-     * @param $value
-     */
-    public function setSelected($value)
-    {
-        foreach ($this->children AS $child) {
-            $child->setSelected($child->getValue() == $value);
-        }
-    }
-
-    /**
      * @param null $value
      * @return $this
      */
@@ -49,7 +39,46 @@ class Select extends Element
     }
 
     /**
-     * @param $key
+     * @param $value
+     */
+    public function setSelected($value)
+    {
+        foreach ($this->children AS $child) {
+            $child->setSelected($child->getValue() == $value);
+        }
+    }
+
+    /**
+     * @param     $arrOptions
+     * @param int $depth
+     */
+    public function addTreeOptions($arrOptions, $depth = 0)
+    {
+
+        foreach ($arrOptions AS $option) {
+            $this->addOptions([
+                $option->getId() => (!$depth ? '' : (str_repeat('=&nbsp;&nbsp;',
+                            $depth) . ' ')) . ($option->getTitle() ?: $option->getSlug() . ' #' . $option->getId())
+            ]);
+            $this->addTreeOptions($option->getChildren, $depth + 1);
+        }
+    }
+
+    /**
+     * @param $options
+     * @return $this
+     */
+    public function addOptions($options)
+    {
+        foreach ($options AS $key => $option) {
+            $this->addOption($key, $option, $key == $this->value);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param      $key
      * @param null $value
      * @param bool $selected
      * @return $this
@@ -66,32 +95,6 @@ class Select extends Element
                 $option->setAttribute('selected', 'selected');
             }
             $this->addChild($option);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param $arrOptions
-     * @param int $depth
-     */
-    public function addTreeOptions($arrOptions, $depth = 0)
-    {
-
-        foreach ($arrOptions AS $option) {
-            $this->addOptions([$option->getId() => (!$depth ? '' : (str_repeat('=&nbsp;&nbsp;', $depth) . ' ')) . ($option->getTitle() ?: $option->getSlug() . ' #' . $option->getId())]);
-            $this->addTreeOptions($option->getChildren, $depth + 1);
-        }
-    }
-
-    /**
-     * @param $options
-     * @return $this
-     */
-    public function addOptions($options)
-    {
-        foreach ($options AS $key => $option) {
-            $this->addOption($key, $option, $key == $this->value);
         }
 
         return $this;

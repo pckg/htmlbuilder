@@ -17,21 +17,6 @@ trait Children
     protected $children = [];
 
     /**
-     * @param $child
-     * @return $this
-     */
-    public function addChild($child)
-    {
-        $this->children[] = $child;
-
-        if ($child instanceof Element) {
-            $child->transferFromElement($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @param $children
      * @return $this
      */
@@ -45,16 +30,16 @@ trait Children
     }
 
     /**
-     * @param $children
+     * @param $child
      * @return $this
      */
-    public function setChildren($children)
+    public function addChild($child)
     {
-        if (!is_array($children)) {
-            $children = [$children];
-        }
+        $this->children[] = $child;
 
-        $this->children = $children;
+        if ($child instanceof Element) {
+            $child->transferFromElement($this);
+        }
 
         return $this;
     }
@@ -76,6 +61,21 @@ trait Children
     public function getChildren()
     {
         return $this->children;
+    }
+
+    /**
+     * @param $children
+     * @return $this
+     */
+    public function setChildren($children)
+    {
+        if (!is_array($children)) {
+            $children = [$children];
+        }
+
+        $this->children = $children;
+
+        return $this;
     }
 
     /**

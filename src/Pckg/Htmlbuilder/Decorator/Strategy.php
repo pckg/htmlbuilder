@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Decorator;
 
-use Pckg\Htmlbuilder\Element;
 use Pckg\Concept\AbstractObject;
+use Pckg\Htmlbuilder\Element;
 
 trait Strategy
 {

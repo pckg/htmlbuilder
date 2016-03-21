@@ -23,20 +23,14 @@ trait Attributes
     Set attribute
     */
     /**
-     * @param $key
-     * @param string $val
-     * @return $this
+     * @var null
      */
-    public function setAttribute($key, $val = '')
-    {
-        $this->attributes[$key] = $val;
-
-        return $this;
-    }
+    protected $value = null;
 
     /*
     Set attribute
     */
+
     /**
      * @param $key
      * @return $this
@@ -51,21 +45,7 @@ trait Attributes
     /*
     Returns attribute or default
     */
-    /**
-     * @param $key
-     * @param null $default
-     * @return null
-     */
-    public function getAttribute($key, $default = null)
-    {
-        return isset($this->attributes[$key])
-            ? $this->attributes[$key]
-            : $default;
-    }
 
-    /*
-    Returns attribute or default
-    */
     /**
      * @return array
      */
@@ -75,27 +55,12 @@ trait Attributes
     }
 
     /*
-    Unsets previously set attribute
+    Returns attribute or default
     */
-    /**
-     * @param $key
-     * @return $this
-     */
-    public function unsetAttribute($key)
-    {
-        if (isset($this->attributes[$key])) {
-            unset($this->attributes[$key]);
-        }
 
-        return $this;
-    }
-
-    /*
-    Appends $val to attribute $key and uses $split as separator
-    */
     /**
-     * @param $key
-     * @param $val
+     * @param        $key
+     * @param        $val
      * @param string $split
      * @return $this
      */
@@ -111,11 +76,12 @@ trait Attributes
     }
 
     /*
-    Prepends $val to attribute $key and uses $split as separator
+    Unsets previously set attribute
     */
+
     /**
-     * @param $key
-     * @param $val
+     * @param        $key
+     * @param        $val
      * @param string $split
      * @return $this
      */
@@ -131,8 +97,9 @@ trait Attributes
     }
 
     /*
-    Builds attributes HTML
+    Appends $val to attribute $key and uses $split as separator
     */
+
     /**
      * @param bool $escape
      * @return string
@@ -148,6 +115,10 @@ trait Attributes
         return $html;
     }
 
+    /*
+    Prepends $val to attribute $key and uses $split as separator
+    */
+
     /**
      * @param $placeholder
      * @return $this
@@ -160,8 +131,21 @@ trait Attributes
     }
 
     /*
-      Sets element's attribute class
+    Builds attributes HTML
     */
+
+    /**
+     * @param        $key
+     * @param string $val
+     * @return $this
+     */
+    public function setAttribute($key, $val = '')
+    {
+        $this->attributes[$key] = $val;
+
+        return $this;
+    }
+
     /**
      * @param null $class
      * @return $this
@@ -174,13 +158,22 @@ trait Attributes
         return $this;
     }
 
-    public function removeClass($class)
+    /*
+      Sets element's attribute class
+    */
+
+    /**
+     * @param $class
+     * @return $this
+     */
+    public function addClass($class)
     {
-        foreach (explode(' ', $class) as $c) {
-            if (($key = array_search($c, $this->classes)) !== false) {
-                unset($this->classes[$key]);
+        foreach (explode(' ', $class) AS $c) {
+            if (!(in_array($c, $this->classes))) {
+                $this->classes[] = $c;
             }
         }
+        $this->rebuildClass();
 
         return $this;
     }
@@ -200,6 +193,50 @@ trait Attributes
     }
 
     /**
+     * @param      $key
+     * @param null $default
+     * @return null
+     */
+    public function getAttribute($key, $default = null)
+    {
+        return isset($this->attributes[$key])
+            ? $this->attributes[$key]
+            : $default;
+    }
+
+    /**
+     * @param $key
+     * @return $this
+     */
+    public function unsetAttribute($key)
+    {
+        if (isset($this->attributes[$key])) {
+            unset($this->attributes[$key]);
+        }
+
+        return $this;
+    }
+
+    /*
+      Gets element's attribute class
+    */
+
+    public function removeClass($class)
+    {
+        foreach (explode(' ', $class) as $c) {
+            if (($key = array_search($c, $this->classes)) !== false) {
+                unset($this->classes[$key]);
+            }
+        }
+
+        return $this;
+    }
+
+    /*
+      Adds class
+    */
+
+    /**
      * @param $class
      * @return bool
      */
@@ -213,10 +250,10 @@ trait Attributes
 
         return true;
     }
-
     /*
-      Gets element's attribute class
+      Sets value for attribute name
     */
+
     /**
      * @return null
      */
@@ -226,26 +263,9 @@ trait Attributes
     }
 
     /*
-      Adds class
+      Gets value for attribute name
     */
-    /**
-     * @param $class
-     * @return $this
-     */
-    public function addClass($class)
-    {
-        foreach (explode(' ', $class) AS $c) {
-            if (!(in_array($c, $this->classes))) {
-                $this->classes[] = $c;
-            }
-        }
-        $this->rebuildClass();
 
-        return $this;
-    }
-    /*
-      Sets value for attribute name
-    */
     /**
      * @param null $name
      * @return $this
@@ -258,8 +278,9 @@ trait Attributes
     }
 
     /*
-      Gets value for attribute name
+      Sets value for attribute name
     */
+
     /**
      * @return null
      */
@@ -269,8 +290,9 @@ trait Attributes
     }
 
     /*
-      Sets value for attribute name
+      Gets value for attribute id
     */
+
     /**
      * @param null $id
      * @return $this
@@ -282,9 +304,6 @@ trait Attributes
         return $this;
     }
 
-    /*
-      Gets value for attribute id
-    */
     /**
      * @return null
      */
@@ -293,13 +312,20 @@ trait Attributes
         return $this->getAttribute("id");
     }
 
-    /**
-     * @var null
-     */
-    protected $value = null;
-
     /*
     Sets value for attribute value
+    */
+
+    /**
+     * @return null
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /*
+      Gets value for attribute value
     */
 
     /**
@@ -312,17 +338,6 @@ trait Attributes
         $this->setAttribute('value', $value);
 
         return $this;
-    }
-
-    /*
-      Gets value for attribute value
-    */
-    /**
-     * @return null
-     */
-    public function getValue()
-    {
-        return $this->value;
     }
 
 }

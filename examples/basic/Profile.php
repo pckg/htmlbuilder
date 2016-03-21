@@ -2,9 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Examples;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element\Form\Bootstrap;
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
-use Pckg\Concept\AbstractObject;
 
 class Profile extends Bootstrap
 {

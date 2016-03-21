@@ -15,6 +15,14 @@ trait Parenthesis
     protected $decoratedParent = null;
 
     /**
+     * @return null
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
      * @param $parent
      * @return $this
      */
@@ -23,14 +31,6 @@ trait Parenthesis
         $this->parent = $parent;
 
         return $this;
-    }
-
-    /**
-     * @return null
-     */
-    public function getParent()
-    {
-        return $this->parent;
     }
 
     /**
@@ -49,6 +49,14 @@ trait Parenthesis
     }
 
     /**
+     * @return null
+     */
+    public function getDecoratedParent()
+    {
+        return $this->decoratedParent;
+    }
+
+    /**
      * @param $parent
      * @return $this
      */
@@ -57,14 +65,6 @@ trait Parenthesis
         $this->decoratedParent = $parent;
 
         return $this;
-    }
-
-    /**
-     * @return null
-     */
-    public function getDecoratedParent()
-    {
-        return $this->decoratedParent;
     }
 
     /**

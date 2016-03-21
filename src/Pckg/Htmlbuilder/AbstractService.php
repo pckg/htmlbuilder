@@ -3,7 +3,6 @@
 namespace Pckg\Htmlbuilder;
 
 use Pckg\Concept\AbstractChainOfReponsibility;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class AbstractService

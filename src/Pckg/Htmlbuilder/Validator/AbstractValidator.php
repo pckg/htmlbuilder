@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Validator;
 
-use Pckg\Htmlbuilder\AbstractService;
 use Pckg\Concept\AbstractObject;
+use Pckg\Htmlbuilder\AbstractService;
 
 /**
  * Class AbstractValidator

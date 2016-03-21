@@ -25,6 +25,45 @@ class AbstractBitwiseValidator extends AbstractValidator
     protected $arrBitwise = [];
 
     /**
+     * @param Element $element
+     * @param         $args
+     * @return bool
+     */
+    public function validate(Element $element, $args)
+    {
+        $this->errors = [];
+        $this->value = $element->getValue();
+
+        foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
+            if ($this->bitwise & $bitwise) {
+                if (!$this->{'validate' . $arrBitwise['function']}()) {
+                    $this->addMsg($arrBitwise['msg']);
+                }
+            }
+        }
+
+        return !$this->errors;
+    }
+
+    /**
+     * @param $function
+     * @param $args
+     * @return $this|bool
+     */
+    protected function addBitwiseByFunction($function, $args)
+    {
+        foreach ($this->arrBitwise AS $bit => $arrBitwise) {
+            if ($arrBitwise['function'] == $function) {
+                $this->addBitwise($bit, $args);
+
+                return $this;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * @param $bit
      * @param $values
      */
@@ -51,24 +90,6 @@ class AbstractBitwiseValidator extends AbstractValidator
 
     /**
      * @param $function
-     * @param $args
-     * @return $this|bool
-     */
-    protected function addBitwiseByFunction($function, $args)
-    {
-        foreach ($this->arrBitwise AS $bit => $arrBitwise) {
-            if ($arrBitwise['function'] == $function) {
-                $this->addBitwise($bit, $args);
-
-                return $this;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @param $function
      * @return bool|null
      */
     protected function getBitByFunction($function)
@@ -82,27 +103,6 @@ class AbstractBitwiseValidator extends AbstractValidator
         }
 
         return false;
-    }
-
-    /**
-     * @param Element $element
-     * @param $args
-     * @return bool
-     */
-    public function validate(Element $element, $args)
-    {
-        $this->errors = [];
-        $this->value = $element->getValue();
-
-        foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
-            if ($this->bitwise & $bitwise) {
-                if (!$this->{'validate' . $arrBitwise['function']}()) {
-                    $this->addMsg($arrBitwise['msg']);
-                }
-            }
-        }
-
-        return !$this->errors;
     }
 
 }

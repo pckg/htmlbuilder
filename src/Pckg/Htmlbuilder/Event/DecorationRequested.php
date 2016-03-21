@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Event;
 
-use Pckg\Htmlbuilder\Event\Handler\DecorateElement;
 use Pckg\Concept\Event\AbstractEvent;
+use Pckg\Htmlbuilder\Event\Handler\DecorateElement;
 
 /**
  * Class DecorationRequested

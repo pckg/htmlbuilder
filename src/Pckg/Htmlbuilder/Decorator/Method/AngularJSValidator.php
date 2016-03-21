@@ -2,9 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Concept\AbstractObject;
 
 /*
  * AngularJS is element decorator which adds few AngularJS directives to elements.

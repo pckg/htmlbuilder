@@ -2,10 +2,10 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Input\Hidden;
-use Pckg\Concept\AbstractObject;
 
 /*
  * Bootstrap decorator encapsulates elements in Bootstrap wrappers and classes
@@ -79,7 +79,15 @@ class Wrapper extends AbstractDecorator
      */
     protected function initOverloadMethods()
     {
-        $this->methods = ['useWrapperStrategy', 'getWrapperStrategy', 'decorate', 'setLabel', 'setDecoratorClasses', 'setWrapped', 'setGrouped'];
+        $this->methods = [
+            'useWrapperStrategy',
+            'getWrapperStrategy',
+            'decorate',
+            'setLabel',
+            'setDecoratorClasses',
+            'setWrapped',
+            'setGrouped'
+        ];
     }
 
     /**
@@ -176,7 +184,9 @@ class Wrapper extends AbstractDecorator
     {
         $element = $context->getElement();
 
-        if (in_array($element->getTag(), ['input', 'select', 'button', 'textarea']) && $element->getAttribute('type') != 'hidden') {
+        if (in_array($element->getTag(),
+                ['input', 'select', 'button', 'textarea']) && $element->getAttribute('type') != 'hidden'
+        ) {
             $this->decorateParent($element);
 
         } else if (in_array($element->getTag(), ['div'])) {

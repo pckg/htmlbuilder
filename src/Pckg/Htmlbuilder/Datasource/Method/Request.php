@@ -62,7 +62,7 @@ class Request extends AbstractDatasource
 
     /**
      * @param ElementObject $context
-     * @param Element $element
+     * @param Element       $element
      */
     private function autofill(ElementObject $context, Element $element)
     {
@@ -85,7 +85,9 @@ class Request extends AbstractDatasource
         $formName = lcfirst(substr($context->getElement()->getName(), 4));
         $name = $element->getAttribute('name');
 
-        if ($formName && $name && in_array($element->getTag(), ['input', 'select', 'textarea']) && isset($_POST[$formName][$name])) {
+        if ($formName && $name && in_array($element->getTag(),
+                ['input', 'select', 'textarea']) && isset($_POST[$formName][$name])
+        ) {
             $value = $_POST[$formName][$name];
             $element->setValue($value);
         }

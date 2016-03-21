@@ -99,26 +99,26 @@ trait Services
      * @var array
      */
     protected $factories = [
-        'Decorator' => [
+        'Decorator'  => [
             'factory' => DecoratorFactory::class,
         ],
-        'Handler' => [
+        'Handler'    => [
             'factory' => HandlerFactory::class,
         ],
-        'Validator' => [
+        'Validator'  => [
             'factory' => ValidatorFactory::class,
         ],
         'Datasource' => [
             'factory' => DatasourceFactory::class,
         ],
-        'Element' => [
+        'Element'    => [
             'factory' => ElementFactory::class,
         ],
     ];
 
     /**
      * @param AbstractService $service
-     * @param $stack
+     * @param                 $stack
      */
     private function addUnique(AbstractService $service, &$stack)
     {
@@ -157,7 +157,7 @@ trait Services
     }
 
     /**
-     * @param $event
+     * @param       $event
      * @param array $args
      */
     public function trigger($event, $args = [])
@@ -171,7 +171,8 @@ trait Services
     protected function initFactories()
     {
         foreach ($this->factories as $type => $factory) {
-            $this->{lcfirst($type) . 'Factory'} = context()->getOrCreate(lcfirst($type) . 'Factory', $factory['factory']);
+            $this->{lcfirst($type) . 'Factory'} = context()->getOrCreate(lcfirst($type) . 'Factory',
+                $factory['factory']);
         }
     }
 

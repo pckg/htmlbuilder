@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Decorator\Method;
 
-use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Concept\AbstractObject;
+use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 
 /*
  * AngularJS is element decorator which adds few AngularJS directives to elements.
@@ -70,7 +70,9 @@ class AngularJS extends AbstractDecorator
      */
     protected function decorateModel($element)
     {
-        if ($element->getName() && in_array($element->getTag(), ['input', 'select', 'textarea']) && !in_array($element->getAttribute('type'), ['submit', 'button'])) {
+        if ($element->getName() && in_array($element->getTag(),
+                ['input', 'select', 'textarea']) && !in_array($element->getAttribute('type'), ['submit', 'button'])
+        ) {
             $this->setName($element);
 
         } else if ($element->getName() && in_array($element->getTag(), ['form'])) {
@@ -121,7 +123,12 @@ class AngularJS extends AbstractDecorator
     protected function setForm($element)
     {
         //$element->setAttribute('ng-controller', 'FormController');
-        $element->setAttribute('ng-submit', $element->getAttribute('id') . '.$valid && handleSubmit(' . $element->getName() . ', ' . 'obj' . ucfirst(str_replace(['[', ']', '..'], ['.'], substr($element->getName(), 4))) . ')');
+        $element->setAttribute('ng-submit',
+            $element->getAttribute('id') . '.$valid && handleSubmit(' . $element->getName() . ', ' . 'obj' . ucfirst(str_replace([
+                '[',
+                ']',
+                '..'
+            ], ['.'], substr($element->getName(), 4))) . ')');
         $element->unsetAttribute('action');
         $element->setAttribute('novalidate');
     }

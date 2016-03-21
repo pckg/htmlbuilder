@@ -2,9 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Validator\Method\Text;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
-use Pckg\Concept\AbstractObject;
 
 /**
  * Class Max
