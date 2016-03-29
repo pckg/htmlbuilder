@@ -13,7 +13,7 @@ class Tabbed extends AbstractDecorator
     public $heading;
     public $title;
 
-    public function overloadPreDecorate(ElementObject $context)
+    public function overloadPreDecorate(callable $next, ElementObject $context)
     {
         $element = $context->getElement();
 
@@ -24,11 +24,15 @@ class Tabbed extends AbstractDecorator
             $this->mergeFormSteps($element);
 
         }
+
+        return $next();
     }
 
-    public function overloadDecorate(ElementObject $context)
+    public function overloadDecorate(callable $next, ElementObject $context)
     {
         $this->decorateTitle($context->getElement());
+
+        return $next();
     }
 
     /**

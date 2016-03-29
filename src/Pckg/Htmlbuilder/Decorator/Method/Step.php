@@ -95,7 +95,7 @@ class Step extends AbstractDecorator
             $this->stepStrategy->heading = $this->heading;
             $this->stepStrategy->title = $this->title;
 
-            $this->stepStrategy->overloadPreDecorate($context);
+            $this->stepStrategy->overloadPreDecorate($next, $context);
         }
 
         return $next();
@@ -110,7 +110,7 @@ class Step extends AbstractDecorator
         $element = $context->getElement();
 
         if ($element->isStepped() || $element->isStep()) {
-            $this->stepStrategy->overloadDecorate($context);
+            $this->stepStrategy->overloadDecorate($next, $context);
         }
 
         return $next();
