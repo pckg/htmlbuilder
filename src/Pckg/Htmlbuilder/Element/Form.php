@@ -118,11 +118,15 @@ class Form extends Element
      */
     public function getData()
     {
+        $data = [];
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
                 $name = $field->getName();
+                $data[$field->getName()] = $field->getValue();
             }
         }
+
+        return $data;
     }
 
     public function getRawData()

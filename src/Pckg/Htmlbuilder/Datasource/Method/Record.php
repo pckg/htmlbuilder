@@ -66,8 +66,6 @@ class Record extends AbstractDatasource
     {
         $this->enabled = true;
 
-        // $this->overloadUseRecordDatasource($context);
-
         return $next();
     }
 
