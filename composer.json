@@ -10,7 +10,10 @@
     }
   ],
   "require": {
-    "pckg/framework": "dev-master"
+    "pckg/framework": "dev-master",
+    "pckg/concept": "dev-master",
+    "pckg/database": "dev-master",
+    "mailchimp/mailchimp": "2.*"
   },
   "minimum-stability": "dev",
   "autoload": {
