@@ -3,6 +3,7 @@
 use Pckg\Concept\Reflect;
 use Pckg\Concept\Reflect\Resolver;
 use Pckg\Framework\Request;
+use Pckg\Framework\Request\Data\Flash;
 use Pckg\Framework\Response;
 use Pckg\Htmlbuilder\Element\Form;
 
@@ -20,6 +21,11 @@ class FormResolver implements Resolver
     protected $response;
 
     /**
+     * @var Flash
+     */
+    protected $flash;
+
+    /**
      * @var Form
      */
     protected $form;
@@ -31,6 +37,7 @@ class FormResolver implements Resolver
 
             if ($this->request->isPost()) {
                 $this->response = Reflect::create(Response::class);
+                $this->flash = Reflect::create(Flash::class);
 
                 return $this->resolvePost($form);
             }
@@ -40,17 +47,18 @@ class FormResolver implements Resolver
     protected function resolvePost($form)
     {
         $this->form = Reflect::create($form);
+        $this->form->initFields();
 
-        if ($this->form->isValid() && false) {
+        if ($this->form->isValid()) {
             if ($this->request->isAjax()) {
-                return $this->ajaxErrorResponse();
+                return $this->ajaxSuccessResponse();
 
             } else {
-                return $this->postErrorResponse();
+                return $this->postSuccessResponse();
 
             }
         } else {
-            if ($this->request->isAjax()) {
+            if ($this->request->isAjax() || true) {
                 return $this->ajaxErrorResponse();
 
             } else {
@@ -90,6 +98,8 @@ class FormResolver implements Resolver
      */
     protected function postErrorResponse()
     {
+        $this->flash->set('form', 'Invalid data posted, check data and resubmit form');
+
         return $this->response->code(400)
             ->redirect();
     }
@@ -99,6 +109,8 @@ class FormResolver implements Resolver
      */
     protected function postSuccessResponse()
     {
+        $this->flash->set('form', 'Form submitted successfully');
+        
         return $this->form;
     }
 
