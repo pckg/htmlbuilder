@@ -40,14 +40,15 @@ class FormResolver implements Resolver
                 $this->flash = Reflect::create(Flash::class);
 
                 return $this->resolvePost($form);
+            } elseif ($this->request->isGet()) {
+                return $this->resolveGet($form);
             }
         }
     }
 
     protected function resolvePost($form)
     {
-        $this->form = Reflect::create($form);
-        $this->form->initFields();
+        $this->resolveGet($form);
 
         if ($this->form->isValid()) {
             if ($this->request->isAjax()) {
@@ -66,6 +67,14 @@ class FormResolver implements Resolver
 
             }
         }
+    }
+
+    public function resolveGet($form)
+    {
+        $this->form = Reflect::create($form);
+        $this->form->initFields();
+
+        return $this->form;
     }
 
     /**
@@ -110,7 +119,7 @@ class FormResolver implements Resolver
     protected function postSuccessResponse()
     {
         $this->flash->set('form', 'Form submitted successfully');
-        
+
         return $this->form;
     }
 
