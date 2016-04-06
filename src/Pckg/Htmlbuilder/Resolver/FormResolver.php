@@ -59,7 +59,7 @@ class FormResolver implements Resolver
 
             }
         } else {
-            if ($this->request->isAjax() || true) {
+            if ($this->request->isAjax()) {
                 return $this->ajaxErrorResponse();
 
             } else {
@@ -73,6 +73,16 @@ class FormResolver implements Resolver
     {
         $this->form = Reflect::create($form);
         $this->form->initFields();
+
+        return $this->form;
+    }
+
+    /**
+     * Return resolved form (valid ;-)).
+     */
+    protected function postSuccessResponse()
+    {
+        $this->flash->set('form', 'Form submitted successfully');
 
         return $this->form;
     }
@@ -111,16 +121,6 @@ class FormResolver implements Resolver
 
         return $this->response->code(400)
             ->redirect();
-    }
-
-    /**
-     * Return resolved form (valid ;-)).
-     */
-    protected function postSuccessResponse()
-    {
-        $this->flash->set('form', 'Form submitted successfully');
-
-        return $this->form;
     }
 
 }
