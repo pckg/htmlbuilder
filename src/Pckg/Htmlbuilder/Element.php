@@ -64,16 +64,12 @@ class Element
         $overloadMethod = 'overload' . ucfirst($method);
 
         $handlers = [];
-        //d('getting services for ' . $overloadMethod);
+
         foreach ($this->getServices() AS $service) {
-            //d('checking ' . get_class($service));
             if (in_array($method, $service->getMethods())) {
                 $handlers[] = $service;
             }
         }
-        /*d('got ' . print_r(array_map(function ($service) {
-                return is_object($service) ? get_class($service) : $service;
-            }, $handlers), true));*/
 
         $context = $this->createContext();
         $context->setArgs($args);
