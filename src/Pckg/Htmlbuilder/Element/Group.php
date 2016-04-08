@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Snippet\Labeled;
 
 /**
  * Class Group
@@ -10,6 +11,8 @@ use Pckg\Htmlbuilder\Element;
  */
 class Group extends Element
 {
+
+    use Labeled;
 
     /**
      * @var string

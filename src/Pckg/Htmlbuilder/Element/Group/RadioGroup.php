@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element\Group;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Snippet\Buildable\Radioable;
 
 /**
  * Class RadioGroup
@@ -11,40 +12,11 @@ use Pckg\Htmlbuilder\Element;
 class RadioGroup extends Element\Group
 {
 
+    use Radioable;
+
     /**
      * @var array
      */
     protected $classes = ['row', 'group', 'radio-group'];
-
-    /**
-     * @param $arrOptions
-     * @return $this
-     */
-    public function addOptions($arrOptions)
-    {
-        foreach ($arrOptions as $key => $val) {
-            $this->addOption($key, $val);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param $value
-     * @param $label
-     * @return mixed
-     */
-    public function addOption($value, $label)
-    {
-        $option = $this->elementFactory->create('Radio');
-
-        $this->addChild($option);
-
-        $option->setValue($value);
-        $option->setLabel($label);
-        $option->setName($this->getName());
-
-        return $option;
-    }
 
 }

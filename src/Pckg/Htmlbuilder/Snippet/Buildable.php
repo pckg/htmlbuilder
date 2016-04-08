@@ -7,7 +7,6 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
 use Pckg\Htmlbuilder\Element\Group\RadioGroup;
-use Pckg\Htmlbuilder\Element\Input\Checkbox;
 use Pckg\Htmlbuilder\Element\Input\Date;
 use Pckg\Htmlbuilder\Element\Input\Datetime;
 use Pckg\Htmlbuilder\Element\Input\Email;
@@ -16,28 +15,30 @@ use Pckg\Htmlbuilder\Element\Input\File\Picture;
 use Pckg\Htmlbuilder\Element\Input\Hidden;
 use Pckg\Htmlbuilder\Element\Input\Number;
 use Pckg\Htmlbuilder\Element\Input\Number\Decimal;
-use Pckg\Htmlbuilder\Element\Input\Number\Int;
+use Pckg\Htmlbuilder\Element\Input\Number\Integer;
 use Pckg\Htmlbuilder\Element\Input\Password;
-use Pckg\Htmlbuilder\Element\Input\Radio;
 use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
 use Pckg\Htmlbuilder\Element\Select;
 use Pckg\Htmlbuilder\Element\Textarea;
+use Pckg\Htmlbuilder\Snippet\Buildable\Checkboxable;
+use Pckg\Htmlbuilder\Snippet\Buildable\Radioable;
 
 trait Buildable
 {
 
+    // use Checkboxable, Radioable;
+
     /**
      * @var ElementFactory
      */
-    //public $elementFactory;
 
     /**
-     * @$element = Fieldset
+     * @return Fieldset
      */
     public function addFieldset()
     {
-        $element = $this->elementFactory->create(Fieldset::class);
+        $element = $this->elementFactory->create(Fieldset::class, func_get_args());
 
         $this->addChild($element);
 
@@ -45,11 +46,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Hidden
+     * @return Hidden
      */
     public function addHidden()
     {
-        $element = $this->elementFactory->create(Hidden::class);
+        $element = $this->elementFactory->create(Hidden::class, func_get_args());
 
         $this->addChild($element);
 
@@ -57,11 +58,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Text
+     * @return Text
      */
     public function addText()
     {
-        $element = $this->elementFactory->create(Text::class);
+        $element = $this->elementFactory->create(Text::class, func_get_args());
 
         $this->addChild($element);
 
@@ -69,11 +70,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Textarea
+     * @return Textarea
      */
     public function addTextarea()
     {
-        $element = $this->elementFactory->create(Textarea::class);
+        $element = $this->elementFactory->create(Textarea::class, func_get_args());
 
         $this->addChild($element);
 
@@ -81,11 +82,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Textarea
+     * @return Textarea
      */
     public function addEditor()
     {
-        $element = $this->elementFactory->create(Textarea::class);
+        $element = $this->elementFactory->create(Textarea::class, func_get_args());
 
         $this->addChild($element);
 
@@ -93,11 +94,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Email
+     * @return Email
      */
     public function addEmail()
     {
-        $element = $this->elementFactory->create(Email::class);
+        $element = $this->elementFactory->create(Email::class, func_get_args());
 
         $this->addChild($element);
 
@@ -105,11 +106,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Number
+     * @return Number
      */
     public function addNumber()
     {
-        $element = $this->elementFactory->create(Number::class);
+        $element = $this->elementFactory->create(Number::class, func_get_args());
 
         $this->addChild($element);
 
@@ -117,11 +118,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Int
+     * @return Int
      */
-    public function addInt()
+    public function addInteger()
     {
-        $element = $this->elementFactory->create(Int::class);
+        $element = $this->elementFactory->create(Integer::class, func_get_args());
 
         $this->addChild($element);
 
@@ -129,11 +130,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Decimal
+     * @return Decimal
      */
     public function addDecimal()
     {
-        $element = $this->elementFactory->create(Decimal::class);
+        $element = $this->elementFactory->create(Decimal::class, func_get_args());
 
         $this->addChild($element);
 
@@ -141,11 +142,11 @@ trait Buildable
     }
 
     /**
-     * @$element = File
+     * @return File
      */
     public function addFile()
     {
-        $element = $this->elementFactory->create(File::class);
+        $element = $this->elementFactory->create(File::class, func_get_args());
 
         $this->addChild($element);
 
@@ -153,11 +154,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Picture
+     * @return Picture
      */
     public function addPicture()
     {
-        $element = $this->elementFactory->create(Picture::class);
+        $element = $this->elementFactory->create(Picture::class, func_get_args());
 
         $this->addChild($element);
 
@@ -165,23 +166,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Checkbox
-     */
-    public function addCheckbox()
-    {
-        $element = $this->elementFactory->create(Checkbox::class);
-
-        $this->addChild($element);
-
-        return $element;
-    }
-
-    /**
-     * @$element = CheckboxGroup
+     * @return CheckboxGroup
      */
     public function addCheckboxGroup()
     {
-        $element = $this->elementFactory->create(CheckboxGroup::class);
+        $element = $this->elementFactory->create(CheckboxGroup::class, func_get_args());
 
         $this->addChild($element);
 
@@ -189,23 +178,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Radio
-     */
-    public function addRadio()
-    {
-        $element = $this->elementFactory->create(Radio::class);
-
-        $this->addChild($element);
-
-        return $element;
-    }
-
-    /**
-     * @$element = RadioGroup
+     * @return RadioGroup
      */
     public function addRadioGroup()
     {
-        $element = $this->elementFactory->create(RadioGroup::class);
+        $element = $this->elementFactory->create(RadioGroup::class, func_get_args());
 
         $this->addChild($element);
 
@@ -213,11 +190,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Date
+     * @return Date
      */
     public function addDate()
     {
-        $element = $this->elementFactory->create(Date::class);
+        $element = $this->elementFactory->create(Date::class, func_get_args());
 
         $this->addChild($element);
 
@@ -225,11 +202,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Time
+     * @return Time
      */
     public function addTime()
     {
-        $element = $this->elementFactory->create(Time::class);
+        $element = $this->elementFactory->create(Time::class, func_get_args());
 
         $this->addChild($element);
 
@@ -237,11 +214,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Datetime
+     * @return Datetime
      */
     public function addDatetime()
     {
-        $element = $this->elementFactory->create(Datetime::class);
+        $element = $this->elementFactory->create(Datetime::class, func_get_args());
 
         $this->addChild($element);
 
@@ -249,11 +226,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Password
+     * @return Password
      */
     public function addPassword()
     {
-        $element = $this->elementFactory->create(Password::class);
+        $element = $this->elementFactory->create(Password::class, func_get_args());
 
         $this->addChild($element);
 
@@ -261,11 +238,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Select
+     * @return Select
      */
     public function addSelect()
     {
-        $element = $this->elementFactory->create(Select::class);
+        $element = $this->elementFactory->create(Select::class, func_get_args());
 
         $this->addChild($element);
 
@@ -273,11 +250,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Button
+     * @return Button
      */
     public function addButton()
     {
-        $element = $this->elementFactory->create(Button::class);
+        $element = $this->elementFactory->create(Button::class, func_get_args());
 
         $this->addChild($element);
 
@@ -285,11 +262,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Submit
+     * @return Submit
      */
     public function addSubmit()
     {
-        $element = $this->elementFactory->create(Submit::class);
+        $element = $this->elementFactory->create(Submit::class, func_get_args());
 
         $this->addChild($element);
 
@@ -297,11 +274,11 @@ trait Buildable
     }
 
     /**
-     * @$element = Cancel
+     * @return Cancel
      */
     public function addCancel()
     {
-        $element = $this->elementFactory->create(Cancel::class);
+        $element = $this->elementFactory->create(Cancel::class, func_get_args());
 
         $this->addChild($element);
 

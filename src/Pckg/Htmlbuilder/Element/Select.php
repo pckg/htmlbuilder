@@ -3,6 +3,8 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Element\Select\Option;
+use Pckg\Htmlbuilder\Snippet\Labeled;
 
 /**
  * Class Select
@@ -10,6 +12,8 @@ use Pckg\Htmlbuilder\Element;
  */
 class Select extends Element
 {
+
+    use Labeled;
 
     /**
      * @var string
@@ -87,16 +91,20 @@ class Select extends Element
     {
         if (is_object($key)) {
             $this->addChild($key);
+
+            return $key;
         } else {
-            $option = $this->elementFactory->create('Option');
+            $option = $this->elementFactory->create(Option::class);
             $option->setValue($key);
             $option->addChild($value);
+            
             if ($selected || $key == $this->value) {
                 $option->setAttribute('selected', 'selected');
             }
-            $this->addChild($option);
-        }
 
-        return $this;
+            $this->addChild($option);
+
+            return $option;
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Snippet\Labeled;
 
 /**
  * Class Field
@@ -10,5 +11,7 @@ use Pckg\Htmlbuilder\Element;
  */
 class Field extends Element
 {
+
+    use Labeled;
 
 }

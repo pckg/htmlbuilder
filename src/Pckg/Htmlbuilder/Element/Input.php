@@ -22,7 +22,6 @@ class Input extends Field
      */
     protected $tag = 'input';
 
-    /* <input ..> shortcuts */
     /**
      * @param $type
      * @return $this

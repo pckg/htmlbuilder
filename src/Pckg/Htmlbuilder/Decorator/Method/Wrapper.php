@@ -347,7 +347,7 @@ class Wrapper extends AbstractDecorator
     protected function addHiddenForCheckbox(Element $element, Element $wrapper)
     {
         $hidden = $this->elementFactory->create("Hidden");
-        $hidden->setName($element->getName())->setValue(0);
+        $hidden->setName($element->getName())->setValue(null);
         $wrapper->addChild($hidden);
 
         return $hidden;
@@ -371,7 +371,7 @@ class Wrapper extends AbstractDecorator
         $checkboxDiv->addClass('radio');
 
         $hidden = $this->elementFactory->create("Hidden");
-        $hidden->setName($element->getName())->setValue(0);
+        $hidden->setName($element->getName())->setValue(null);
         $label->addChild($hidden);
 
         $label->setDecoratedParent($checkboxDiv);

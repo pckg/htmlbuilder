@@ -8,7 +8,7 @@ use Pckg\Htmlbuilder\Element\Input\Number;
  * Class Int
  * @package Pckg\Htmlbuilder\Element\Input\Number
  */
-class Int extends Number
+class Integer extends Number
 {
     /**
      *
