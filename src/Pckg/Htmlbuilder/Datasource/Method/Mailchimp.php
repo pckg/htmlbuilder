@@ -48,7 +48,7 @@ class Mailchimp extends AbstractDatasource implements DatasourceInterface
         return $next();
     }
 
-    protected function storeToMailchimp(Form $form)
+    public function storeToMailchimp(Form $form)
     {
         $data = $form->getRawData();
         list($data['first_name'], $data['last_name']) = explode(' ', $data['name_surname'], 2);

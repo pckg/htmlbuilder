@@ -7,7 +7,10 @@ use Pckg\Htmlbuilder\Datasource\Method\Record;
 use Pckg\Htmlbuilder\Datasource\Method\Request;
 use Pckg\Htmlbuilder\Datasource\Method\Session;
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Element\Button;
+use Pckg\Htmlbuilder\Element\Button\Submit;
 use Pckg\Htmlbuilder\Handler\Method\Step;
+use Pckg\Htmlbuilder\Snippet\Buildable;
 
 /**
  * Class Form
@@ -16,12 +19,13 @@ use Pckg\Htmlbuilder\Handler\Method\Step;
 class Form extends Element
 {
 
+    use Buildable;
+    
     /**
      * @var string
      */
     protected $tag = 'form';
 
-    // each form should have fieldset
     /**
      * @var array
      */
@@ -72,7 +76,7 @@ class Form extends Element
         }
 
         // add another fieldset for buttons
-        if (($child instanceof Element\Button\Submit || $child instanceof Element\Button) && (!$this->fieldsets || !end($this->fieldsets)->hasClass('submit'))) {
+        if (($child instanceof Submit || $child instanceof Button) && (!$this->fieldsets || !end($this->fieldsets)->hasClass('submit'))) {
             $this->addChild($this->elementFactory->create('Fieldset')->addClass('submit'));
         }
 

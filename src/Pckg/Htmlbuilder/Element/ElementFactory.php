@@ -3,10 +3,29 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Concept\AbstractFactory;
-
-/*
- * Factory for creating basic elements without validation, datasources or decorators
- * */
+use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Element\Button;
+use Pckg\Htmlbuilder\Element\Button\Cancel;
+use Pckg\Htmlbuilder\Element\Button\Submit;
+use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
+use Pckg\Htmlbuilder\Element\Group\InlineGroup;
+use Pckg\Htmlbuilder\Element\Group\InputGroup;
+use Pckg\Htmlbuilder\Element\Group\RadioGroup;
+use Pckg\Htmlbuilder\Element\Input;
+use Pckg\Htmlbuilder\Element\Input\Checkbox;
+use Pckg\Htmlbuilder\Element\Input\Date;
+use Pckg\Htmlbuilder\Element\Input\Datetime;
+use Pckg\Htmlbuilder\Element\Input\Email;
+use Pckg\Htmlbuilder\Element\Input\File;
+use Pckg\Htmlbuilder\Element\Input\File\Picture;
+use Pckg\Htmlbuilder\Element\Input\Hidden;
+use Pckg\Htmlbuilder\Element\Input\Number;
+use Pckg\Htmlbuilder\Element\Input\Password;
+use Pckg\Htmlbuilder\Element\Input\Radio;
+use Pckg\Htmlbuilder\Element\Input\Text;
+use Pckg\Htmlbuilder\Element\Input\Time;
+use Pckg\Htmlbuilder\Element\Select;
+use Pckg\Htmlbuilder\Element\Select\Option;
 
 /**
  * Class ElementFactory
@@ -19,42 +38,42 @@ class ElementFactory extends AbstractFactory
      * @var array
      */
     protected $mapper = [
-        'Element'       => '\Pckg\Htmlbuilder\Element',
-        'Fieldset'      => '\Pckg\Htmlbuilder\Element\Fieldset',
-        'Div'           => '\Pckg\Htmlbuilder\Element\Div',
-        'Label'         => '\Pckg\Htmlbuilder\Element\Label',
-        'Ul'            => '\Pckg\Htmlbuilder\Element\Ul',
-        'Id'            => '\Pckg\Htmlbuilder\Element\Input\Hidden',
-        'Hidden'        => '\Pckg\Htmlbuilder\Element\Input\Hidden',
-        'Select'        => '\Pckg\Htmlbuilder\Element\Select',
-        'Option'        => '\Pckg\Htmlbuilder\Element\Select\Option',
-        'Foreign'       => '\Pckg\Htmlbuilder\Element\Select',
-        'Password'      => '\Pckg\Htmlbuilder\Element\Input\Password',
-        'Email'         => '\Pckg\Htmlbuilder\Element\Input\Email',
-        'Text'          => '\Pckg\Htmlbuilder\Element\Input\Text',
-        'Slug'          => '\Pckg\Htmlbuilder\Element\Input\Text',
-        'Textarea'      => '\Pckg\Htmlbuilder\Element\Textarea',
-        'Editor'        => '\Pckg\Htmlbuilder\Element\Textarea',
-        'Html'          => '\Pckg\Htmlbuilder\Element\Textarea',
-        'Varchar'       => '\Pckg\Htmlbuilder\Element\Input',
-        'File'          => '\Pckg\Htmlbuilder\Element\Input\File',
-        'Picture'       => '\Pckg\Htmlbuilder\Element\Input\File\Picture',
-        'Int'           => '\Pckg\Htmlbuilder\Element\Input\Number',
-        'Number'        => '\Pckg\Htmlbuilder\Element\Input\Number',
-        'Date'          => '\Pckg\Htmlbuilder\Element\Input\Date',
-        'Time'          => '\Pckg\Htmlbuilder\Element\Input\Time',
-        'Datetime'      => '\Pckg\Htmlbuilder\Element\Input\Datetime',
-        'Checkbox'      => '\Pckg\Htmlbuilder\Element\Input\Checkbox',
-        'Bool'          => '\Pckg\Htmlbuilder\Element\Input\Checkbox',
-        'Submit'        => '\Pckg\Htmlbuilder\Element\Button\Submit',
-        'Save'          => '\Pckg\Htmlbuilder\Element\Button\Submit',
-        'Cancel'        => '\Pckg\Htmlbuilder\Element\Button\Cancel',
-        'Button'        => '\Pckg\Htmlbuilder\Element\Button',
-        'CheckboxGroup' => '\Pckg\Htmlbuilder\Element\Group\CheckboxGroup',
-        'InputGroup'    => '\Pckg\Htmlbuilder\Element\Group\InputGroup',
-        'RadioGroup'    => '\Pckg\Htmlbuilder\Element\Group\RadioGroup',
-        'InlineGroup'   => '\Pckg\Htmlbuilder\Element\Group\InlineGroup',
-        'Radio'         => '\Pckg\Htmlbuilder\Element\Input\Radio',
+        'Element'       => Element::class,
+        'Fieldset'      => Fieldset::class,
+        'Div'           => Div::class,
+        'Label'         => Label::class,
+        'Ul'            => Ul::class,
+        'Id'            => Hidden::class,
+        'Hidden'        => Hidden::class,
+        'Select'        => Select::class,
+        'Option'        => Option::class,
+        'Foreign'       => Select::class,
+        'Password'      => Password::class,
+        'Email'         => Email::class,
+        'Text'          => Text::class,
+        'Slug'          => Text::class,
+        'Textarea'      => Textarea::class,
+        'Editor'        => Textarea::class,
+        'Html'          => Textarea::class,
+        'Varchar'       => Input::class,
+        'File'          => File::class,
+        'Picture'       => Picture::class,
+        'Int'           => Number::class,
+        'Number'        => Number::class,
+        'Date'          => Date::class,
+        'Time'          => Time::class,
+        'Datetime'      => Datetime::class,
+        'Checkbox'      => Checkbox::class,
+        'Bool'          => Checkbox::class,
+        'Submit'        => Submit::class,
+        'Save'          => Submit::class,
+        'Cancel'        => Cancel::class,
+        'Button'        => Button::class,
+        'CheckboxGroup' => CheckboxGroup::class,
+        'InputGroup'    => InputGroup::class,
+        'RadioGroup'    => RadioGroup::class,
+        'InlineGroup'   => InlineGroup::class,
+        'Radio'         => Radio::class,
     ];
 
     /**
@@ -84,17 +103,17 @@ class ElementFactory extends AbstractFactory
             ],
             'validator' => [
                 'Common',
-            ]
+            ],
         ],
         'Pckg\Htmlbuilder\Element'                => [
             'validator' => [
                 'Common',
-            ]
+            ],
         ],
         'Pckg\Htmlbuilder\Element\Input\Password' => [
             'validator' => [
                 'Common',
-            ]
+            ],
         ],
         'RadioGroup'                              => [
             'decorator' => [
@@ -113,7 +132,7 @@ class ElementFactory extends AbstractFactory
         ],
         'InlineGroup'                             => [
             'decorator' => [
-                'Bootstrap'
+                'Bootstrap',
             ],
         ],
         'Select'                                  => [

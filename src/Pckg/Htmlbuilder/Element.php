@@ -38,7 +38,6 @@ class Element
      */
     public function __construct()
     {
-        // assign factories =)
         $this->initFactories();
 
         $this->rebuildClass();
