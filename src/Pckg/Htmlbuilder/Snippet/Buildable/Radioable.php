@@ -26,15 +26,17 @@ trait Radioable
         return $this;
     }
 
-    public function addOption($key, $value, $selected = null)
+    public function addOption($value, $label = null, $selected = null)
     {
         $radio = null;
-        if (is_object($key)) {
-            $this->addChild($key);
-            $radio = $key;
+        if (is_object($value)) {
+            $this->addChild($value);
+            $radio = $value;
         } else {
             $radio = $this->addRadio();
             $radio->setName($this->getName());
+            $radio->setValue($value);
+            $radio->setLabel($label);
         }
 
         if ($selected || $value == $this->value) {

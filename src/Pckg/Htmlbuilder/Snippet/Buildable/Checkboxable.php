@@ -34,15 +34,17 @@ trait Checkboxable
      * @param bool $checked
      * @return Checkbox
      */
-    public function addOption($key, $value, $checked = null)
+    public function addOption($value, $label = null, $checked = null)
     {
         $checkbox = null;
-        if (is_object($key)) {
-            $this->addChild($key);
-            $checkbox = $key;
+        if (is_object($value)) {
+            $this->addChild($value);
+            $checkbox = $value;
         } else {
             $checkbox = $this->addCheckbox();
-            $checkbox->setName($this->getName());
+            $checkbox->setName($this->getName() . '[]');
+            $checkbox->setValue($value);
+            $checkbox->setLabel($label);
         }
 
         if ($checked || in_array($value, $this->values)) {

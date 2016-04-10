@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
 use Pckg\Htmlbuilder\Element\Group\RadioGroup;
+use Pckg\Htmlbuilder\Element\Input\Checkbox;
 use Pckg\Htmlbuilder\Element\Input\Date;
 use Pckg\Htmlbuilder\Element\Input\Datetime;
 use Pckg\Htmlbuilder\Element\Input\Email;
@@ -21,13 +22,38 @@ use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
 use Pckg\Htmlbuilder\Element\Select;
 use Pckg\Htmlbuilder\Element\Textarea;
-use Pckg\Htmlbuilder\Snippet\Buildable\Checkboxable;
-use Pckg\Htmlbuilder\Snippet\Buildable\Radioable;
 
+/**
+ * Class Buildable
+ * @package Pckg\Htmlbuilder\Snippet
+ */
 trait Buildable
 {
 
-    // use Checkboxable, Radioable;
+    /*use Checkboxable, Radioable {
+        Checkboxable::addOptions as addCheckboxOptions;
+        Checkboxable::addOption as addCheckboxOption;
+        Radioable::addOptions as addRadioOptions;
+        Radioable::addOption as addRadioOption;
+    }*/
+
+    /**
+     * @param $class
+     * @param $name
+     * @return mixed
+     */
+    private function addByClassAndName($class, $name)
+    {
+        $element = $this->elementFactory->create($class, func_get_args());
+
+        $this->addChild($element);
+
+        if ($name) {
+            $element->setName($name);
+        }
+
+        return $element;
+    }
 
     /**
      * @var ElementFactory
@@ -36,11 +62,15 @@ trait Buildable
     /**
      * @return Fieldset
      */
-    public function addFieldset()
+    public function addFieldset($class = null)
     {
         $element = $this->elementFactory->create(Fieldset::class, func_get_args());
 
         $this->addChild($element);
+
+        if ($class) {
+            $element->addClass($class);
+        }
 
         return $element;
     }
@@ -48,241 +78,170 @@ trait Buildable
     /**
      * @return Hidden
      */
-    public function addHidden()
+    public function addHidden($name = null)
     {
-        $element = $this->elementFactory->create(Hidden::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Hidden::class, $name);
     }
 
     /**
      * @return Text
      */
-    public function addText()
+    public function addText($name = null)
     {
-        $element = $this->elementFactory->create(Text::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Text::class, $name);
     }
 
     /**
      * @return Textarea
      */
-    public function addTextarea()
+    public function addTextarea($name = null)
     {
-        $element = $this->elementFactory->create(Textarea::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Textarea::class, $name);
     }
 
     /**
      * @return Textarea
      */
-    public function addEditor()
+    public function addEditor($name = null)
     {
-        $element = $this->elementFactory->create(Textarea::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Textarea::class, $name);
     }
 
     /**
      * @return Email
      */
-    public function addEmail()
+    public function addEmail($name = null)
     {
-        $element = $this->elementFactory->create(Email::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Email::class, $name);
     }
 
     /**
      * @return Number
      */
-    public function addNumber()
+    public function addNumber($name = null)
     {
-        $element = $this->elementFactory->create(Number::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Number::class, $name);
     }
 
     /**
      * @return Int
      */
-    public function addInteger()
+    public function addInteger($name = null)
     {
-        $element = $this->elementFactory->create(Integer::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Integer::class, $name);
     }
 
     /**
      * @return Decimal
      */
-    public function addDecimal()
+    public function addDecimal($name = null)
     {
-        $element = $this->elementFactory->create(Decimal::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Decimal::class, $name);
     }
 
     /**
      * @return File
      */
-    public function addFile()
+    public function addFile($name = null)
     {
-        $element = $this->elementFactory->create(File::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(File::class, $name);
     }
 
     /**
      * @return Picture
      */
-    public function addPicture()
+    public function addPicture($name = null)
     {
-        $element = $this->elementFactory->create(Picture::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Picture::class, $name);
     }
 
     /**
      * @return CheckboxGroup
      */
-    public function addCheckboxGroup()
+    public function addCheckboxGroup($name = null)
     {
-        $element = $this->elementFactory->create(CheckboxGroup::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(CheckboxGroup::class, $name);
     }
 
     /**
      * @return RadioGroup
      */
-    public function addRadioGroup()
+    public function addRadioGroup($name = null)
     {
-        $element = $this->elementFactory->create(RadioGroup::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(RadioGroup::class, $name);
     }
 
     /**
      * @return Date
      */
-    public function addDate()
+    public function addDate($name = null)
     {
-        $element = $this->elementFactory->create(Date::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Date::class, $name);
     }
 
     /**
      * @return Time
      */
-    public function addTime()
+    public function addTime($name = null)
     {
-        $element = $this->elementFactory->create(Time::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Time::class, $name);
     }
 
     /**
      * @return Datetime
      */
-    public function addDatetime()
+    public function addDatetime($name = null)
     {
-        $element = $this->elementFactory->create(Datetime::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Datetime::class, $name);
     }
 
     /**
      * @return Password
      */
-    public function addPassword()
+    public function addPassword($name = null)
     {
-        $element = $this->elementFactory->create(Password::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Password::class, $name);
     }
 
     /**
      * @return Select
      */
-    public function addSelect()
+    public function addSelect($name = null)
     {
-        $element = $this->elementFactory->create(Select::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Select::class, $name);
     }
 
     /**
      * @return Button
      */
-    public function addButton()
+    public function addButton($name = null)
     {
-        $element = $this->elementFactory->create(Button::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Button::class, $name);
     }
 
     /**
      * @return Submit
      */
-    public function addSubmit()
+    public function addSubmit($name = 'submit')
     {
-        $element = $this->elementFactory->create(Submit::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
+        return $this->addByClassAndName(Submit::class, $name);
     }
 
     /**
      * @return Cancel
      */
-    public function addCancel()
+    public function addCancel($name = 'cancel')
     {
-        $element = $this->elementFactory->create(Cancel::class, func_get_args());
+        return $this->addByClassAndName(Cancel::class, $name);
+    }
 
-        $this->addChild($element);
-
-        return $element;
+    /**
+     * @param null $name
+     * @return Checkbox
+     */
+    public function addCheckbox($name = null)
+    {
+        return $this->addByClassAndName(Checkbox::class, $name);
     }
 
 }

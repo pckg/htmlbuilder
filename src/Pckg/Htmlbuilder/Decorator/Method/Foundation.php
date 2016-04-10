@@ -342,9 +342,9 @@ class Foundation extends AbstractDecorator
         $checkboxDiv = $this->elementFactory->create("Div");
         $checkboxDiv->addClass('radio');
 
-        $hidden = $this->elementFactory->create("Hidden");
-        $hidden->setName($element->getName())->setValue(0);
-        $label->addChild($hidden);
+        //$hidden = $this->elementFactory->create("Hidden");
+        //$hidden->setName($element->getName())->setValue(0);
+        //$label->addChild($hidden);
 
         $label->setDecoratedParent($checkboxDiv);
 

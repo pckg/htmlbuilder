@@ -342,9 +342,9 @@ class Bootstrap extends AbstractDecorator
         $checkboxDiv = $this->elementFactory->create("Div");
         $checkboxDiv->addClass('radio');
 
-        $hidden = $this->elementFactory->create("Hidden");
-        $hidden->setName($element->getName())->setValue(null);
-        $label->addChild($hidden);
+        //$hidden = $this->elementFactory->create("Hidden");
+        //$hidden->setName($element->getName())->setValue(null);
+        //$label->addChild($hidden);
 
         $label->setDecoratedParent($checkboxDiv);
 
