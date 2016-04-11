@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
+use Pckg\Htmlbuilder\Datasource\Datasourcable;
 use Pckg\Htmlbuilder\Datasource\Method\Entity;
 use Pckg\Htmlbuilder\Datasource\Method\Record;
 use Pckg\Htmlbuilder\Datasource\Method\Request;
@@ -19,7 +20,7 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
 class Form extends Element
 {
 
-    use Buildable;
+    use Buildable, Datasourcable;
     
     /**
      * @var string

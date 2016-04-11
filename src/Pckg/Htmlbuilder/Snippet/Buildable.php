@@ -30,19 +30,12 @@ use Pckg\Htmlbuilder\Element\Textarea;
 trait Buildable
 {
 
-    /*use Checkboxable, Radioable {
-        Checkboxable::addOptions as addCheckboxOptions;
-        Checkboxable::addOption as addCheckboxOption;
-        Radioable::addOptions as addRadioOptions;
-        Radioable::addOption as addRadioOption;
-    }*/
-
     /**
      * @param $class
      * @param $name
      * @return mixed
      */
-    private function addByClassAndName($class, $name)
+    private function addElementByClassAndName($class, $name)
     {
         $element = $this->elementFactory->create($class, func_get_args());
 
@@ -80,7 +73,7 @@ trait Buildable
      */
     public function addHidden($name = null)
     {
-        return $this->addByClassAndName(Hidden::class, $name);
+        return $this->addElementByClassAndName(Hidden::class, $name);
     }
 
     /**
@@ -88,7 +81,7 @@ trait Buildable
      */
     public function addText($name = null)
     {
-        return $this->addByClassAndName(Text::class, $name);
+        return $this->addElementByClassAndName(Text::class, $name);
     }
 
     /**
@@ -96,7 +89,7 @@ trait Buildable
      */
     public function addTextarea($name = null)
     {
-        return $this->addByClassAndName(Textarea::class, $name);
+        return $this->addElementByClassAndName(Textarea::class, $name);
     }
 
     /**
@@ -104,7 +97,7 @@ trait Buildable
      */
     public function addEditor($name = null)
     {
-        return $this->addByClassAndName(Textarea::class, $name);
+        return $this->addElementByClassAndName(Textarea::class, $name);
     }
 
     /**
@@ -112,7 +105,7 @@ trait Buildable
      */
     public function addEmail($name = null)
     {
-        return $this->addByClassAndName(Email::class, $name);
+        return $this->addElementByClassAndName(Email::class, $name);
     }
 
     /**
@@ -120,7 +113,7 @@ trait Buildable
      */
     public function addNumber($name = null)
     {
-        return $this->addByClassAndName(Number::class, $name);
+        return $this->addElementByClassAndName(Number::class, $name);
     }
 
     /**
@@ -128,7 +121,7 @@ trait Buildable
      */
     public function addInteger($name = null)
     {
-        return $this->addByClassAndName(Integer::class, $name);
+        return $this->addElementByClassAndName(Integer::class, $name);
     }
 
     /**
@@ -136,7 +129,7 @@ trait Buildable
      */
     public function addDecimal($name = null)
     {
-        return $this->addByClassAndName(Decimal::class, $name);
+        return $this->addElementByClassAndName(Decimal::class, $name);
     }
 
     /**
@@ -144,7 +137,7 @@ trait Buildable
      */
     public function addFile($name = null)
     {
-        return $this->addByClassAndName(File::class, $name);
+        return $this->addElementByClassAndName(File::class, $name);
     }
 
     /**
@@ -152,7 +145,7 @@ trait Buildable
      */
     public function addPicture($name = null)
     {
-        return $this->addByClassAndName(Picture::class, $name);
+        return $this->addElementByClassAndName(Picture::class, $name);
     }
 
     /**
@@ -160,7 +153,7 @@ trait Buildable
      */
     public function addCheckboxGroup($name = null)
     {
-        return $this->addByClassAndName(CheckboxGroup::class, $name);
+        return $this->addElementByClassAndName(CheckboxGroup::class, $name);
     }
 
     /**
@@ -168,7 +161,7 @@ trait Buildable
      */
     public function addRadioGroup($name = null)
     {
-        return $this->addByClassAndName(RadioGroup::class, $name);
+        return $this->addElementByClassAndName(RadioGroup::class, $name);
     }
 
     /**
@@ -176,7 +169,7 @@ trait Buildable
      */
     public function addDate($name = null)
     {
-        return $this->addByClassAndName(Date::class, $name);
+        return $this->addElementByClassAndName(Date::class, $name);
     }
 
     /**
@@ -184,7 +177,7 @@ trait Buildable
      */
     public function addTime($name = null)
     {
-        return $this->addByClassAndName(Time::class, $name);
+        return $this->addElementByClassAndName(Time::class, $name);
     }
 
     /**
@@ -192,7 +185,7 @@ trait Buildable
      */
     public function addDatetime($name = null)
     {
-        return $this->addByClassAndName(Datetime::class, $name);
+        return $this->addElementByClassAndName(Datetime::class, $name);
     }
 
     /**
@@ -200,7 +193,7 @@ trait Buildable
      */
     public function addPassword($name = null)
     {
-        return $this->addByClassAndName(Password::class, $name);
+        return $this->addElementByClassAndName(Password::class, $name);
     }
 
     /**
@@ -208,7 +201,7 @@ trait Buildable
      */
     public function addSelect($name = null)
     {
-        return $this->addByClassAndName(Select::class, $name);
+        return $this->addElementByClassAndName(Select::class, $name);
     }
 
     /**
@@ -216,7 +209,7 @@ trait Buildable
      */
     public function addButton($name = null)
     {
-        return $this->addByClassAndName(Button::class, $name);
+        return $this->addElementByClassAndName(Button::class, $name);
     }
 
     /**
@@ -224,7 +217,7 @@ trait Buildable
      */
     public function addSubmit($name = 'submit')
     {
-        return $this->addByClassAndName(Submit::class, $name);
+        return $this->addElementByClassAndName(Submit::class, $name);
     }
 
     /**
@@ -232,7 +225,7 @@ trait Buildable
      */
     public function addCancel($name = 'cancel')
     {
-        return $this->addByClassAndName(Cancel::class, $name);
+        return $this->addElementByClassAndName(Cancel::class, $name);
     }
 
     /**
@@ -241,7 +234,7 @@ trait Buildable
      */
     public function addCheckbox($name = null)
     {
-        return $this->addByClassAndName(Checkbox::class, $name);
+        return $this->addElementByClassAndName(Checkbox::class, $name);
     }
 
 }

@@ -2,12 +2,9 @@
 
 namespace Pckg\Htmlbuilder\Datasource\Method;
 
+use Pckg\Database\Record as DatabaseRecord;
 use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
 use Pckg\Htmlbuilder\ElementObject;
-
-/*
- * Provides functionality for two way binding between form and record
- * */
 
 /**
  * Class Record
@@ -34,15 +31,30 @@ class Record extends AbstractDatasource
         $this->methods = ['decorate', 'setRecord', 'getRecord', 'useRecordDatasource'];
     }
 
+    public function setRecord(DatabaseRecord $record)
+    {
+        $this->record = $record;
+
+        return $this;
+    }
+
     /**
      * @param ElementObject $context
      * @return mixed
      */
     public function overloadSetRecord(callable $next, ElementObject $context)
     {
-        $this->record = $context->getArg(0);
+        $this->setRecord($context->getArg(0));
 
         return $next();
+    }
+
+    /**
+     * return null|DatabaseRecord
+     */
+    public function getRecord()
+    {
+        return $this->record;
     }
 
     /**
@@ -52,7 +64,7 @@ class Record extends AbstractDatasource
     public function overloadGetRecord(callable $next, ElementObject $context)
     {
         if ($this->record) {
-            return $this->record;
+            return $this->getRecord();
         }
 
         return $next();
@@ -93,7 +105,7 @@ class Record extends AbstractDatasource
         if (in_array($element->getTag(), [
                 'input',
                 'select',
-                'textarea'
+                'textarea',
             ]) && $this->record && $this->record->__isset($name) && is_object($element) && $element->getAttribute('type') != 'password'
         ) {
             $value = $this->record->get($name);
