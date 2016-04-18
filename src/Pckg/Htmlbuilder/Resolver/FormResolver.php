@@ -33,11 +33,11 @@ class FormResolver implements Resolver
     public function resolve($form)
     {
         if (is_subclass_of($form, Form::class)) {
-            $this->request = context()->getOrCreate('Request', Request::class);
+            $this->request = context()->getOrCreate(Request::class);
 
             if ($this->request->isPost()) {
-                $this->response = context()->getOrCreate('Response', Response::class);
-                $this->flash = context()->getOrCreate('Flash', Flash::class);
+                $this->response = context()->getOrCreate(Response::class);
+                $this->flash = context()->getOrCreate(Flash::class);
 
                 return $this->resolvePost($form);
             } elseif ($this->request->isGet()) {
