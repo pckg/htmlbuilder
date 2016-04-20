@@ -82,6 +82,9 @@ class Form extends Element
         }
 
         if ($child instanceof Field && $this->fieldsets) {
+            /**
+             * Add element to last fieldset.
+             */
             end($this->fieldsets)->addChild($child);
 
             if ($child instanceof Element) {

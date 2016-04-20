@@ -72,7 +72,12 @@ class FormResolver implements Resolver
     public function resolveGet($form)
     {
         $this->form = Reflect::create($form);
-        $this->form->initFields();
+
+        /**
+         * @T00D00
+         * This is commented because we need to find a way how to transfer datasource to children after we instantiate fields.
+         */
+        //$this->form->initFields();
 
         return $this->form;
     }
