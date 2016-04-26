@@ -14,7 +14,7 @@ class Record extends AbstractDatasource
 {
 
     /**
-     * @var
+     * @var DatabaseRecord
      */
     protected $record;
 
@@ -23,12 +23,17 @@ class Record extends AbstractDatasource
      */
     protected $recursive = true;
 
+    public function populateFromRecord()
+    {
+        return $this;
+    }
+
     /**
      *
      */
     protected function initOverloadMethods()
     {
-        $this->methods = ['decorate', 'setRecord', 'getRecord', 'useRecordDatasource'];
+        $this->methods = ['decorate', 'setRecord', 'getRecord', 'useRecordDatasource', 'populate'];
     }
 
     public function setRecord(DatabaseRecord $record)
@@ -113,6 +118,25 @@ class Record extends AbstractDatasource
         }
 
         return $element;
+    }
+
+    /**
+     * @param ElementObject $context
+     * @return mixed
+     */
+    public function overloadPopulate(callable $next, ElementObject $context)
+    {
+        $this->populateRecord($context->getElement());
+
+        return $next();
+    }
+
+    public function populateRecord($element)
+    {
+        if ($this->record && in_array($element->getTag(), ['input', 'select', 'textarea',]) && !in_array($element->getAttribute('type'), ['submit'])) {
+            $value = $element->getValue($element->getName());
+            $this->record->{$element->getName()} = $value;
+        }
     }
 
 }

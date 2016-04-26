@@ -33,32 +33,47 @@ class FormResolver implements Resolver
     public function resolve($form)
     {
         if (is_subclass_of($form, Form::class)) {
+            $this->form = Reflect::create($form);
             $this->request = context()->getOrCreate(Request::class);
 
-            if ($this->request->isPost()) {
-                $this->response = context()->getOrCreate(Response::class);
-                $this->flash = context()->getOrCreate(Flash::class);
+            if (in_array('Pckg\Htmlbuilder\Element\Form\ResolvesOnRequest', class_implements($form))) {
+                if ($this->request->isPost()) {
+                    $this->response = context()->getOrCreate(Response::class);
+                    $this->flash = context()->getOrCreate(Flash::class);
 
-                return $this->resolvePost($form);
-            } elseif ($this->request->isGet()) {
-                return $this->resolveGet($form);
+                    return $this->resolvePost();
+
+                } elseif ($this->request->isGet()) {
+                    return $this->resolveGet();
+
+                }
             }
+
+            return $this->form;
         }
     }
 
-    protected function resolvePost($form)
+    protected function resolvePost()
     {
-        $this->resolveGet($form);
+        /**
+         * Initialize fields.
+         */
+        $this->form->initFields();
+
+        /**
+         * Fill form with request data.
+         */
+        $this->form->populateFromRequest();
 
         if ($this->form->isValid()) {
-            if ($this->request->isAjax()) {
-                return $this->ajaxSuccessResponse();
+            return $this->form;
 
-            } else {
-                return $this->postSuccessResponse();
-
-            }
         } else {
+            /**
+             * Fill session with form data.
+             */
+            $this->form->populateToSession();
+
             if ($this->request->isAjax()) {
                 return $this->ajaxErrorResponse();
 
@@ -69,15 +84,17 @@ class FormResolver implements Resolver
         }
     }
 
-    public function resolveGet($form)
+    public function resolveGet()
     {
-        $this->form = Reflect::create($form);
+        /**
+         * Initialize fields.
+         */
+        $this->form->initFields();
 
         /**
-         * @T00D00
-         * This is commented because we need to find a way how to transfer datasource to children after we instantiate fields.
+         * Fill form with session data.
          */
-        //$this->form->initFields();
+        $this->form->populateFromSession();
 
         return $this->form;
     }

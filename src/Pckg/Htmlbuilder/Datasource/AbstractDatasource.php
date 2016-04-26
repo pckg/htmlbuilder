@@ -2,36 +2,45 @@
 
 namespace Pckg\Htmlbuilder\Datasource;
 
-use Pckg\Htmlbuilder\AbstractService;
-use Pckg\Htmlbuilder\ElementObject;
+use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AbstractDatasource
  * @package Pckg\Htmlbuilder\Datasource
  */
-abstract class AbstractDatasource extends AbstractService implements DatasourceInterface
+abstract class AbstractDatasource implements DatasourceInterface
 {
 
     /**
-     * @var bool
+     * @var Element
      */
-    protected $enabled = false;
+    protected $element;
 
-    /**
-     *
-     */
-    public function disableDatasources()
+    public function setElement(Element $element)
     {
-        $this->enabled = false;
+        $this->element = $element;
+
+        return $this;
     }
 
     /**
-     * @param ElementObject $context
-     * @return mixed
+     * Populates data from datasource to element.
+     *
+     * @return $this
      */
-    public function populate(callable $next, ElementObject $context)
+    public function populateToElement()
     {
-        return $next();
+        return $this;
+    }
+
+    /**
+     * Populates data from element to datasource.
+     *
+     * @return $this
+     */
+    public function populateToDatasource()
+    {
+        return $this;
     }
 
 }

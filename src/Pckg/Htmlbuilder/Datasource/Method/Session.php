@@ -20,6 +20,11 @@ class Session extends AbstractDatasource
      */
     protected $session;
 
+    public function populateFromSession()
+    {
+        return $this;
+    }
+
     /**
      * @param $method
      * @return bool
