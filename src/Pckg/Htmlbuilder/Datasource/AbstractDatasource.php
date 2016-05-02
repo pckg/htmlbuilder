@@ -16,6 +16,10 @@ abstract class AbstractDatasource implements DatasourceInterface
      */
     protected $element;
 
+    /**
+     * @param Element $element
+     * @return $this
+     */
     public function setElement(Element $element)
     {
         $this->element = $element;
@@ -41,6 +45,24 @@ abstract class AbstractDatasource implements DatasourceInterface
     public function populateToDatasource()
     {
         return $this;
+    }
+
+    protected function getElements(Element $element = null)
+    {
+        $elements = [];
+        if (!$element) {
+            $element = $this->element;
+            $elements[] = $element;
+        }
+
+        foreach ($element->getChildren() as $child) {
+            if (is_subclass_of($child, Element::class)) {
+                $elements[] = $child;
+                $elements = array_merge($elements, $this->getElements($child));
+            }
+        }
+
+        return $elements;
     }
 
 }

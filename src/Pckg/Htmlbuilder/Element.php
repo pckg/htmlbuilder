@@ -148,7 +148,6 @@ class Element
             'Decorator'  => 'Decorators',
             'Validator'  => 'Validators',
             'Handler'    => 'Handlers',
-            'Datasource' => 'Datasources',
         ];
 
         foreach ($arr AS $adder => $getter) {

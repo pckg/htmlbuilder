@@ -12,67 +12,6 @@ trait Datasourcable
 {
 
     /**
-     * @param $class
-     * @return DatasourceInterface
-     */
-    private function addDatasourceByClass($class)
-    {
-        $datasource = $this->datasourceFactory->create($class);
-
-        $this->addDatasource($datasource);
-
-        return $datasource;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function useCollectionDatasource()
-    {
-        return $this->addDatasourceByClass(Collection::class);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function useCookieDatasource()
-    {
-        return $this->addDatasourceByClass(Cookie::class);
-    }
-
-    /**
-     * @return Entity
-     */
-    public function useEntityDatasource()
-    {
-        return $this->addDatasourceByClass(Entity::class);
-    }
-
-    /**
-     * @return Record
-     */
-    public function useRecordDatasource()
-    {
-        return $this->addDatasourceByClass(Record::class);
-    }
-
-    /**
-     * @return Request
-     */
-    public function useRequestDatasource()
-    {
-        return $this->addDatasourceByClass(Request::class);
-    }
-
-    /**
-     * @return Session
-     */
-    public function useSessionDatasource()
-    {
-        return $this->addDatasourceByClass(Session::class);
-    }
-
-    /**
      * Populate element from request.
      *
      * @return $this
@@ -131,7 +70,7 @@ trait Datasourcable
     public function populateFromRequestToRecord(DatabaseRecord $record)
     {
         $this->populateFromRequest();
-        $this->populateFromElementToRecord($record);
+        $this->populateToRecord($record);
 
         return $this;
     }

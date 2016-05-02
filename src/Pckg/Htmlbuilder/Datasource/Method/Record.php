@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Datasource\Method;
 
 use Pckg\Database\Record as DatabaseRecord;
 use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
+use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\ElementObject;
 
 /**
@@ -18,24 +19,47 @@ class Record extends AbstractDatasource
      */
     protected $record;
 
-    /**
-     * @var bool
-     */
-    protected $recursive = true;
-
-    public function populateFromRecord()
+    public function populateToDatasource()
     {
+        $elements = $this->getElements();
+        foreach ($elements as $element) {
+            $this->populateRecord($element);
+        }
+
         return $this;
     }
 
-    /**
-     *
-     */
-    protected function initOverloadMethods()
+    protected function populateRecord(Element $element)
     {
-        $this->methods = ['decorate', 'setRecord', 'getRecord', 'useRecordDatasource', 'populate'];
+        $name = $element->getName();
+        if ($name && $this->record->hasKey($name)) {
+            $this->record->{$name} = $element->getValue();
+        }
     }
 
+    public function populateToElement()
+    {
+        $elements = $this->getElements();
+        foreach ($elements as $element) {
+            $this->populateElement($element);
+        }
+
+        return $this;
+    }
+
+    protected function populateElement(Element $element)
+    {
+        $name = $element->getName();
+
+        if ($name && $this->record->keyExists($name)) {
+            $element->setValue($this->record->{$name});
+        }
+    }
+
+    /**
+     * @param DatabaseRecord $record
+     * @return $this
+     */
     public function setRecord(DatabaseRecord $record)
     {
         $this->record = $record;
@@ -44,46 +68,11 @@ class Record extends AbstractDatasource
     }
 
     /**
-     * @param ElementObject $context
-     * @return mixed
-     */
-    public function overloadSetRecord(callable $next, ElementObject $context)
-    {
-        $this->setRecord($context->getArg(0));
-
-        return $next();
-    }
-
-    /**
      * return null|DatabaseRecord
      */
     public function getRecord()
     {
         return $this->record;
-    }
-
-    /**
-     * @param ElementObject $context
-     * @return mixed
-     */
-    public function overloadGetRecord(callable $next, ElementObject $context)
-    {
-        if ($this->record) {
-            return $this->getRecord();
-        }
-
-        return $next();
-    }
-
-    /**
-     * @param ElementObject $context
-     * @return mixed
-     */
-    public function overloadUseRecordDatasource(callable $next, ElementObject $context)
-    {
-        $this->enabled = true;
-
-        return $next();
     }
 
     /**
@@ -118,25 +107,6 @@ class Record extends AbstractDatasource
         }
 
         return $element;
-    }
-
-    /**
-     * @param ElementObject $context
-     * @return mixed
-     */
-    public function overloadPopulate(callable $next, ElementObject $context)
-    {
-        $this->populateRecord($context->getElement());
-
-        return $next();
-    }
-
-    public function populateRecord($element)
-    {
-        if ($this->record && in_array($element->getTag(), ['input', 'select', 'textarea',]) && !in_array($element->getAttribute('type'), ['submit'])) {
-            $value = $element->getValue($element->getName());
-            $this->record->{$element->getName()} = $value;
-        }
     }
 
 }

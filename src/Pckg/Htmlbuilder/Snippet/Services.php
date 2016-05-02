@@ -3,8 +3,6 @@
 namespace Pckg\Htmlbuilder\Snippet;
 
 use Pckg\Htmlbuilder\AbstractService;
-use Pckg\Htmlbuilder\Datasource\DatasourceFactory;
-use Pckg\Htmlbuilder\Datasource\DatasourceInterface;
 use Pckg\Htmlbuilder\Decorator\DecoratorFactory;
 use Pckg\Htmlbuilder\Decorator\DecoratorInterface;
 use Pckg\Htmlbuilder\Element\ElementFactory;
@@ -79,22 +77,6 @@ trait Services
      */
     public $validatorFactory;
 
-    /*
-     * Checked in __call(...)
-     * */
-    /**
-     * @var array
-     */
-    protected $datasources = [];
-    /**
-     * @var bool
-     */
-    protected $datasourcable = false;
-    /**
-     * @var
-     */
-    public $datasourceFactory;
-
     /**
      * @var array
      */
@@ -107,9 +89,6 @@ trait Services
         ],
         'Validator'  => [
             'factory' => ValidatorFactory::class,
-        ],
-        'Datasource' => [
-            'factory' => DatasourceFactory::class,
         ],
         'Element'    => [
             'factory' => ElementFactory::class,
@@ -209,17 +188,6 @@ trait Services
     }
 
     /**
-     * @param DatasourceInterface $datasource
-     * @return $this
-     */
-    public function addDatasource(DatasourceInterface $datasource)
-    {
-        $this->addUnique($datasource, $this->datasources);
-
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getDecorators()
@@ -244,14 +212,6 @@ trait Services
     }
 
     /**
-     * @return array
-     */
-    public function getDatasources()
-    {
-        return $this->datasources;
-    }
-
-    /**
      * @return bool
      */
     public function hasDecorators()
@@ -273,14 +233,6 @@ trait Services
     public function hasHandlers()
     {
         return !empty($this->handlers);
-    }
-
-    /**
-     * @return bool
-     */
-    public function hasDatasources()
-    {
-        return !empty($this->datasources);
     }
 
     /**
@@ -317,17 +269,6 @@ trait Services
     }
 
     /**
-     * @param bool $datasourceable
-     * @return $this
-     */
-    public function setDatasourceable($datasourceable = true)
-    {
-        $this->datasourcable = $datasourceable;
-
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function isDecoratable()
@@ -349,14 +290,6 @@ trait Services
     public function isHandlable()
     {
         return $this->handlable;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isDatasourceable()
-    {
-        return $this->datasourcable;
     }
 
     /**
@@ -388,17 +321,6 @@ trait Services
     public function setHandlerFactory(HandlerFactory $handlerFactory)
     {
         $this->handlerFactory = $handlerFactory;
-
-        return $this;
-    }
-
-    /**
-     * @param DatasourceFactory $datasourceFactory
-     * @return $this
-     */
-    public function setDatasourceFactory(DatasourceFactory $datasourceFactory)
-    {
-        $this->datasourceFactory = $datasourceFactory;
 
         return $this;
     }

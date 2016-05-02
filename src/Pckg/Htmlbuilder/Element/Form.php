@@ -3,10 +3,6 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Datasource\Datasourcable;
-use Pckg\Htmlbuilder\Datasource\Method\Entity;
-use Pckg\Htmlbuilder\Datasource\Method\Record;
-use Pckg\Htmlbuilder\Datasource\Method\Request;
-use Pckg\Htmlbuilder\Datasource\Method\Session;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Submit;
@@ -46,15 +42,6 @@ class Form extends Element
 
         foreach ($this->handlerFactory->create([Step::class]) AS $handler) {
             $this->addHandler($handler);
-        }
-
-        foreach ($this->datasourceFactory->create([
-            Record::class,
-            Request::class,
-            Session::class,
-            Entity::class
-        ]) AS $datasource) {
-            $this->addDatasource($datasource);
         }
 
         $this->formFactory = new FormFactory();

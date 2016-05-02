@@ -162,34 +162,6 @@ trait Builder
     }
 
     /**
-     *
-     */
-    protected function triggerPrePopulateOnChildren()
-    {
-        foreach ($this->children AS $child) {
-            if ($child instanceof Element) {
-                triggerEvent('htmlbuilder.prepopulate', ['context' => $child->createContext()]);
-
-                $child->triggerPrePopulateOnChildren();
-            }
-        }
-    }
-
-    /**
-     *
-     */
-    protected function triggerPopulateOnChildren()
-    {
-        foreach ($this->children AS $child) {
-            if ($child instanceof Element) {
-                triggerEvent('htmlbuilder.populate', ['context' => $child->createContext()]);
-
-                $child->triggerPopulateOnChildren();
-            }
-        }
-    }
-
-    /**
      * @return null|string
      */
     public function toHTML()
@@ -228,35 +200,6 @@ trait Builder
         }
 
         return $this->html . "\n";
-    }
-
-    public function populateToDatasource()
-    {
-        $listened = false;
-        if (!dispatcher()->hasListeners('htmlbuilder.populate')) {
-            registerEvent(new PopulationRequested());
-            registerEvent(new PrePopulationRequested());
-
-            triggerEvent('htmlbuilder.prepopulate', ['context' => $this->createContext()]);
-
-            $this->triggerPrePopulateOnChildren();
-
-            triggerEvent('htmlbuilder.populate', ['context' => $this->createContext()]);
-
-            $this->triggerPopulateOnChildren();
-            $listened = true;
-        }
-
-        if ($this->decoratedParent) {
-            $this->decoratedParent->populate();
-        }
-
-        if ($listened) {
-            dispatcher()->destroy('htmlbuilder.populate');
-            dispatcher()->destroy('htmlbuilder.prepopulate');
-        }
-
-        return $this;
     }
 
 }
