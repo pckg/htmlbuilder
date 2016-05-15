@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Validator;
 
+use Exception;
 use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element;
 
@@ -71,7 +72,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
         }
 
         if (!$arrChains) {
-            throw new \Exception('Method ' . $method . " doesn't exist in " . get_class($this) . " (AbstractGroupValidator::__call)");
+            throw new Exception('Method ' . $method . " doesn't exist in " . get_class($this) . " (AbstractGroupValidator::__call)");
         }
 
         $result = chain($arrChains, $method, ['context' => $arg]);
