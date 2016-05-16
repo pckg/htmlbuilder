@@ -10,4 +10,11 @@ trait Labeled
         return $this;
     }
 
+    public function setHelp($help)
+    {
+        $this->__call('setHelp', [$help]);
+
+        return $this;
+    }
+
 }

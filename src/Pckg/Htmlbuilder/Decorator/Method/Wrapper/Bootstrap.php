@@ -33,6 +33,10 @@ class Bootstrap extends AbstractDecorator
      */
     protected $label;
     /**
+     * @var
+     */
+    protected $help;
+    /**
      * @var bool
      */
     protected $wrapped = true;
@@ -57,6 +61,10 @@ class Bootstrap extends AbstractDecorator
     /**
      * @var string
      */
+    protected $helpClass = 'col-sm-1';
+    /**
+     * @var string
+     */
     protected $fullFieldClass = 'col-sm-12';
 
     /**
@@ -77,7 +85,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function initOverloadMethods()
     {
-        $this->methods = ['decorate', 'setLabel', 'setDecoratorClasses', 'setWrapped', 'setGrouped'];
+        $this->methods = ['decorate', 'setLabel', 'setHelp', 'setDecoratorClasses', 'setWrapped', 'setGrouped'];
     }
 
     /**
@@ -119,6 +127,16 @@ class Bootstrap extends AbstractDecorator
     public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
+
+        return $next();
+    }
+    /**
+     * @param AbstractObject $context
+     * @return mixed
+     */
+    public function overloadSetHelp(callable $next, AbstractObject $context)
+    {
+        $this->help = $context->getArg(0);
 
         return $next();
     }
@@ -229,6 +247,10 @@ class Bootstrap extends AbstractDecorator
                 $bootstrapDiv->setDecoratedParent($formGroup);
             } else {
                 $element->setDecoratedParent($formGroup);
+            }
+
+            if ($this->help) {
+                $this->decorateHelp($element, $formGroup);
             }
         } else {
             $element->setDecoratedParent($bootstrapDiv);
@@ -373,6 +395,14 @@ class Bootstrap extends AbstractDecorator
         }
 
         $div->addChild($label);
+    }
+
+    protected function decorateHelp($element, $div)
+    {
+        $help = $this->elementFactory->create("Div");
+        $help->addClass($this->helpClass)->addChild($this->help);
+
+        $div->addChild($help);
     }
 
     /**

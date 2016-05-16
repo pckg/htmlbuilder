@@ -35,6 +35,10 @@ class Wrapper extends AbstractDecorator
      */
     protected $label;
     /**
+     * @var
+     */
+    protected $help;
+    /**
      * @var bool
      */
     protected $wrapped = true;
@@ -51,11 +55,20 @@ class Wrapper extends AbstractDecorator
      * @var string
      */
     protected $labelClass = 'col-sm-3';
+    /**
+     * @var string
+     */
+    protected $helpClass = 'col-sm-1';
 
     /**
      * @var string
      */
     protected $fieldClass = 'col-sm-9';
+
+    /**
+     * @var string
+     */
+    protected $fieldWithHelpClass = 'col-sm-8';
     /**
      * @var string
      */
@@ -84,9 +97,10 @@ class Wrapper extends AbstractDecorator
             'getWrapperStrategy',
             'decorate',
             'setLabel',
+            'setHelp',
             'setDecoratorClasses',
             'setWrapped',
-            'setGrouped'
+            'setGrouped',
         ];
     }
 
@@ -147,6 +161,17 @@ class Wrapper extends AbstractDecorator
     public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
+
+        return $next();
+    }
+
+    /**
+     * @param AbstractObject $context
+     * @return mixed
+     */
+    public function overloadSetHelp(callable $next, AbstractObject $context)
+    {
+        $this->help = $context->getArg(0);
 
         return $next();
     }
@@ -228,7 +253,10 @@ class Wrapper extends AbstractDecorator
     protected function getFieldClassByLabel()
     {
         return $this->label
-            ? $this->fieldClass
+            ? ($this->help
+                ? $this->fieldWithHelpClass
+                : $this->fieldClass
+            )
             : $this->fullFieldClass;
     }
 
@@ -257,6 +285,10 @@ class Wrapper extends AbstractDecorator
                 $bootstrapDiv->setDecoratedParent($formGroup);
             } else {
                 $element->setDecoratedParent($formGroup);
+            }
+
+            if ($this->help) {
+                $this->decorateHelp($element, $formGroup);
             }
         } else {
             $element->setDecoratedParent($bootstrapDiv);
@@ -401,6 +433,14 @@ class Wrapper extends AbstractDecorator
         }
 
         $div->addChild($label);
+    }
+
+    protected function decorateHelp($element, $div)
+    {
+        $help = $this->elementFactory->create("Div");
+        $help->addClass($this->helpClass)->addChild($this->help);
+
+        $div->addChild($help);
     }
 
     /**
