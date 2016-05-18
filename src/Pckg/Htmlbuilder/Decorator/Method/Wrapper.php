@@ -438,7 +438,8 @@ class Wrapper extends AbstractDecorator
     protected function decorateHelp($element, $div)
     {
         $help = $this->elementFactory->create("Div");
-        $help->addClass($this->helpClass)->addChild($this->help);
+        $help->addClass($this->helpClass)
+            ->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
 
         $div->addChild($help);
     }
