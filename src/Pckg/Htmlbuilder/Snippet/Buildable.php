@@ -3,6 +3,7 @@
 use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Cancel;
 use Pckg\Htmlbuilder\Element\Button\Submit;
+use Pckg\Htmlbuilder\Element\Div;
 use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
@@ -235,6 +236,18 @@ trait Buildable
     public function addCheckbox($name = null)
     {
         return $this->addElementByClassAndName(Checkbox::class, $name);
+    }
+
+    /**
+     * @return Div
+     */
+    public function addDiv()
+    {
+        $element = $this->elementFactory->create(Div::class);
+
+        $this->addChild($element);
+
+        return $element;
     }
 
 }

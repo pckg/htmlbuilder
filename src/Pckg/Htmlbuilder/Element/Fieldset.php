@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Snippet\Buildable;
 
 /**
  * Class Fieldset
@@ -10,6 +11,8 @@ use Pckg\Htmlbuilder\Element;
  */
 class Fieldset extends Element
 {
+
+    use Buildable;
 
     /**
      * @var string
