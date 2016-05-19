@@ -23,23 +23,21 @@ class Bootstrap extends AbstractDecorator
      */
     protected $recursive = true;
 
-    /*
-     * We add label if it is set
-     * @setter, @chain - setLabel($label)
-     *
-    */
     /**
-     * @var
+     * @var string
      */
     protected $label;
+
     /**
-     * @var
+     * @var string
      */
     protected $help;
+
     /**
      * @var bool
      */
     protected $wrapped = true;
+
     /**
      * @var bool
      */
@@ -48,6 +46,7 @@ class Bootstrap extends AbstractDecorator
     /**
      * @var string
      */
+
     protected $formGroupClass = 'form-group';
     /**
      * @var string
@@ -68,10 +67,12 @@ class Bootstrap extends AbstractDecorator
      * @var string
      */
     protected $offsetClass = 'col-sm-offset-3';
+
     /**
      * @var string
      */
     protected $offsetFieldClass = 'col-sm-offset-3';
+
     /**
      * @var string
      */
@@ -101,10 +102,6 @@ class Bootstrap extends AbstractDecorator
         $this->help = null;
     }
 
-    /*
-     *
-     * @return \Htmlbuider\AbstractDecorator
-     */
     /**
      * @param AbstractObject $context
      * @return mixed
@@ -122,9 +119,6 @@ class Bootstrap extends AbstractDecorator
         return $next();
     }
 
-    /*
-     * Catches 'setLabel' on element and executes next link/chain.
-     * */
     /**
      * @param AbstractObject $context
      * @return mixed
@@ -169,9 +163,6 @@ class Bootstrap extends AbstractDecorator
         return $next();
     }
 
-    /*
-     * Decorator logic
-     * */
     /**
      * @param AbstractObject $context
      * @return mixed
@@ -434,4 +425,5 @@ class Bootstrap extends AbstractDecorator
 
         $element->setDecoratedParent($bootstrapDiv);
     }
+    
 }
