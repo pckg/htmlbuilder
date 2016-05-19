@@ -82,7 +82,14 @@ class Bootstrap extends AbstractDecorator
      */
     protected function initOverloadMethods()
     {
-        $this->methods = ['decorate', 'setLabel', 'setHelp', 'setDecoratorClasses', 'setWrapped', 'setGrouped'];
+        $this->methods = [
+            'decorate',
+            'setLabel',
+            'setHelp',
+            'setDecoratorClasses',
+            'setWrapped',
+            'setGrouped',
+        ];
     }
 
     /**
@@ -91,6 +98,7 @@ class Bootstrap extends AbstractDecorator
     public function __clone()
     {
         $this->label = null;
+        $this->help = null;
     }
 
     /*
@@ -127,6 +135,7 @@ class Bootstrap extends AbstractDecorator
 
         return $next();
     }
+
     /**
      * @param AbstractObject $context
      * @return mixed
@@ -192,13 +201,16 @@ class Bootstrap extends AbstractDecorator
      */
     public function decorateParent($element)
     {
-        if ($element->getTag() == 'input' && $element->getType() == 'checkbox') {
+        $tag = $element->getTag();
+        $type = $element->getType();
+
+        if ($tag == 'input' && $type == 'checkbox') {
             $this->decorateCheckbox($element);
 
-        } else if ($element->getTag() == 'input' && $element->getType() == 'radio') {
+        } else if ($tag == 'input' && $type == 'radio') {
             $this->decorateRadio($element);
 
-        } else if ($element->getTag() == 'input' && in_array($element->getType(), ['button', 'submit', 'reset'])) {
+        } else if ($tag == 'input' && in_array($type, ['button', 'submit', 'reset'])) {
             $this->decorateButton($element);
 
         } else {
@@ -357,10 +369,6 @@ class Bootstrap extends AbstractDecorator
         $checkboxDiv = $this->elementFactory->create("Div");
         $checkboxDiv->addClass('radio');
 
-        //$hidden = $this->elementFactory->create("Hidden");
-        //$hidden->setName($element->getName())->setValue(null);
-        //$label->addChild($hidden);
-
         $label->setDecoratedParent($checkboxDiv);
 
         if ($this->label) {
@@ -385,7 +393,7 @@ class Bootstrap extends AbstractDecorator
 
         if ($this->help) {
             $help = $this->elementFactory->create("Div");
-            $help->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
+            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
 
             $label->addChild($help);
         }

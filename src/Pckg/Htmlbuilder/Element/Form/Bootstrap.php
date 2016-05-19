@@ -2,7 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Element\Form;
 
-use Pckg\Htmlbuilder\Decorator\Method\Bootstrap as BootstrapDecorator;
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap as BootstrapDecoratorWrapper;
 use Pckg\Htmlbuilder\Element\Form;
 
 /**
@@ -20,7 +20,7 @@ class Bootstrap extends Form
 
         $this->setHorizontal();
 
-        foreach ($this->decoratorFactory->create([BootstrapDecorator::class]) as $decorator) {
+        foreach ($this->decoratorFactory->create([BootstrapDecoratorWrapper::class]) as $decorator) {
             $this->addDecorator($decorator);
         }
     }

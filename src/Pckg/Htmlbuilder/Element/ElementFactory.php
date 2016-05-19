@@ -99,7 +99,7 @@ class ElementFactory extends AbstractFactory
         'Pckg\Htmlbuilder\Element\Fieldset'       => [
             'decorator' => [
                 'Bootstrap',
-                'Wrapper',
+                'Wrapper\Bootstrap',
             ],
             'validator' => [
                 'Common',

@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Decorator\Method\Step\Horizontal;
 use Pckg\Htmlbuilder\Decorator\Method\Step\Tabbed;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
-use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Foundation as FoundationWrapper;
 use Pckg\Htmlbuilder\Validator\Method\Csrf;
 
 /**
@@ -36,9 +35,7 @@ class DecoratorFactory extends AbstractFactory
         'Step'               => Step::class,
         'Step\Tabbed'        => Tabbed::class,
         'Step\Horizontal'    => Horizontal::class,
-        'Wrapper'            => Wrapper::class,
         'Wrapper\Bootstrap'  => Bootstrap::class,
-        'Wrapper\Foundation' => FoundationWrapper::class,
     ];
 
 }
