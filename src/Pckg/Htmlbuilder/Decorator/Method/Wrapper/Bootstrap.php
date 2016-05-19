@@ -384,7 +384,7 @@ class Bootstrap extends AbstractDecorator
 
         if ($this->help) {
             $help = $this->elementFactory->create("Div");
-            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
+            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>');
 
             $label->addChild($help);
         }
@@ -425,5 +425,5 @@ class Bootstrap extends AbstractDecorator
 
         $element->setDecoratedParent($bootstrapDiv);
     }
-    
+
 }
