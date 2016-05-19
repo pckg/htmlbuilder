@@ -14,6 +14,7 @@ use Pckg\Htmlbuilder\Decorator\Method\Step\Tabbed;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Foundation as FoundationWrapper;
+use Pckg\Htmlbuilder\Validator\Method\Csrf;
 
 /**
  * Class DecoratorFactory
@@ -29,7 +30,7 @@ class DecoratorFactory extends AbstractFactory
         'AngularJS'          => AngularJS::class,
         'AngularJSValidator' => AngularJSValidator::class,
         'Bootstrap'          => Foundation::class,
-        'Csrf'               => '\Pckg\Htmlbuilder\Decorator\Method\Csrf',
+        'Csrf'               => Csrf::class,
         'Post'               => Post::class,
         'Record'             => Record::class,
         'Step'               => Step::class,

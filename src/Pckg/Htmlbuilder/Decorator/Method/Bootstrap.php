@@ -53,10 +53,6 @@ class Bootstrap extends AbstractDecorator
      * @var string
      */
     protected $labelClass = 'col-sm-3';
-    /**
-     * @var string
-     */
-    protected $helpClass = 'col-sm-1';
 
     /**
      * @var string
@@ -94,7 +90,7 @@ class Bootstrap extends AbstractDecorator
     public function __clone()
     {
         $this->label = null;
-        //$this->help = null;
+        $this->help = null;
     }
 
     /*
@@ -252,10 +248,6 @@ class Bootstrap extends AbstractDecorator
             } else {
                 $element->setDecoratedParent($formGroup);
             }
-
-            if ($this->help) {
-                $this->decorateHelp($element, $formGroup);
-            }
         } else {
             $element->setDecoratedParent($bootstrapDiv);
         }
@@ -394,24 +386,18 @@ class Bootstrap extends AbstractDecorator
         $label = $this->elementFactory->create("Label");
         $label->addClass($this->labelClass)->addChild($this->label);
 
+        if ($this->help) {
+            $help = $this->elementFactory->create("Div");
+            $help->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
+
+            $label->addChild($help);
+        }
+
         if ($id = $element->getAttribute('id')) {
             $label->setAttribute('for', $id);
         }
 
         $div->addChild($label);
-    }
-
-    /**
-     * @param $element
-     * @param $div
-     */
-    protected function decorateHelp($element, $div)
-    {
-        $help = $this->elementFactory->create("Div");
-        $help->addClass($this->helpClass)
-            ->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
-
-        $div->addChild($help);
     }
 
     /**

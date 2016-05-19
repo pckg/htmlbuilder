@@ -55,20 +55,12 @@ class Wrapper extends AbstractDecorator
      * @var string
      */
     protected $labelClass = 'col-sm-3';
-    /**
-     * @var string
-     */
-    protected $helpClass = 'col-sm-1';
 
     /**
      * @var string
      */
     protected $fieldClass = 'col-sm-9';
 
-    /**
-     * @var string
-     */
-    protected $fieldWithHelpClass = 'col-sm-8';
     /**
      * @var string
      */
@@ -253,10 +245,7 @@ class Wrapper extends AbstractDecorator
     protected function getFieldClassByLabel()
     {
         return $this->label
-            ? ($this->help
-                ? $this->fieldWithHelpClass
-                : $this->fieldClass
-            )
+            ? $this->fieldClass
             : $this->fullFieldClass;
     }
 
@@ -285,10 +274,6 @@ class Wrapper extends AbstractDecorator
                 $bootstrapDiv->setDecoratedParent($formGroup);
             } else {
                 $element->setDecoratedParent($formGroup);
-            }
-
-            if ($this->help) {
-                $this->decorateHelp($element, $formGroup);
             }
         } else {
             $element->setDecoratedParent($bootstrapDiv);
@@ -428,20 +413,18 @@ class Wrapper extends AbstractDecorator
         $label = $this->elementFactory->create("Label");
         $label->addClass($this->labelClass)->addChild($this->label);
 
+        if ($this->help) {
+            $help = $this->elementFactory->create("Div");
+            $help->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
+
+            $label->addChild($help);
+        }
+
         if ($id = $element->getAttribute('id')) {
             $label->setAttribute('for', $id);
         }
 
         $div->addChild($label);
-    }
-
-    protected function decorateHelp($element, $div)
-    {
-        $help = $this->elementFactory->create("Div");
-        $help->addClass($this->helpClass)
-            ->addChild('<button type="button" class="btn btn-info btn-xs" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body">?</button>');
-
-        $div->addChild($help);
     }
 
     /**
