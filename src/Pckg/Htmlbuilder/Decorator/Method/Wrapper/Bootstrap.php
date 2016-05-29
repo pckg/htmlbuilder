@@ -34,6 +34,16 @@ class Bootstrap extends AbstractDecorator
     protected $help;
 
     /**
+     * @var string
+     */
+    protected $prefix;
+
+    /**
+     * @var string
+     */
+    protected $suffix;
+
+    /**
      * @var bool
      */
     protected $wrapped = true;
@@ -90,6 +100,8 @@ class Bootstrap extends AbstractDecorator
             'setDecoratorClasses',
             'setWrapped',
             'setGrouped',
+            'setPrefix',
+            'setSuffix',
         ];
     }
 
@@ -104,6 +116,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetDecoratorClasses(callable $next, AbstractObject $context)
@@ -121,6 +134,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetLabel(callable $next, AbstractObject $context)
@@ -132,6 +146,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetHelp(callable $next, AbstractObject $context)
@@ -143,6 +158,31 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
+     * @return mixed
+     */
+    public function overloadSetPrefix(callable $next, AbstractObject $context)
+    {
+        $this->prefix = $context->getArg(0);
+
+        return $next();
+    }
+
+    /**
+     * @param AbstractObject $context
+     *
+     * @return mixed
+     */
+    public function overloadSetSuffix(callable $next, AbstractObject $context)
+    {
+        $this->suffix = $context->getArg(0);
+
+        return $next();
+    }
+
+    /**
+     * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetWrapped(callable $next, AbstractObject $context)
@@ -154,6 +194,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetGrouped(callable $next, AbstractObject $context)
@@ -165,6 +206,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)
@@ -188,6 +230,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param $element
+     *
      * @return mixed
      */
     public function decorateParent($element)
@@ -233,6 +276,16 @@ class Bootstrap extends AbstractDecorator
             $bootstrapDiv = $this->elementFactory
                 ->createFromExpression('div.' . $this->getFieldClassByLabel());
             $element->setDecoratedParent($bootstrapDiv);
+
+            if ($this->prefix) {
+                $bootstrapDiv->addChild('<span class="input-group-addon">' . $this->prefix . '</span>');
+                $bootstrapDiv->addClass('input-group');
+            }
+
+            if ($this->suffix) {
+                $element->addSibling('<span class="input-group-addon">' . $this->suffix . '</span>');
+                $bootstrapDiv->addClass('input-group');
+            }
         }
 
         if ($this->grouped) {
@@ -304,6 +357,13 @@ class Bootstrap extends AbstractDecorator
 
         $this->addHiddenForCheckbox($element, $labelWrapper);
 
+        if ($this->help) {
+            $help = $this->elementFactory->create("Div");
+            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>');
+
+            $labelWrapper->addChild($help);
+        }
+
         if (!$element->getValue()) {
             $element->setValue(1);
         }
@@ -311,6 +371,7 @@ class Bootstrap extends AbstractDecorator
 
     /**
      * @param Element $element
+     *
      * @return mixed|object
      */
     protected function wrapIntoLabel(Element $element)
@@ -332,6 +393,7 @@ class Bootstrap extends AbstractDecorator
     /**
      * @param Element $element
      * @param Element $wrapper
+     *
      * @return mixed|object
      */
     protected function addHiddenForCheckbox(Element $element, Element $wrapper)
