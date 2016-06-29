@@ -5,7 +5,6 @@ namespace Pckg\Htmlbuilder\Decorator;
 use Pckg\Concept\AbstractFactory;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJS;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJSValidator;
-use Pckg\Htmlbuilder\Decorator\Method\Foundation;
 use Pckg\Htmlbuilder\Decorator\Method\Post;
 use Pckg\Htmlbuilder\Decorator\Method\Record;
 use Pckg\Htmlbuilder\Decorator\Method\Step;
@@ -28,7 +27,7 @@ class DecoratorFactory extends AbstractFactory
     protected $mapper = [
         'AngularJS'          => AngularJS::class,
         'AngularJSValidator' => AngularJSValidator::class,
-        'Bootstrap'          => Foundation::class,
+        'Bootstrap'          => Bootstrap::class,
         'Csrf'               => Csrf::class,
         'Post'               => Post::class,
         'Record'             => Record::class,

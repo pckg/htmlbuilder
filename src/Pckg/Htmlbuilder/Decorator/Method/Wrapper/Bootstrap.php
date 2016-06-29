@@ -140,7 +140,7 @@ class Bootstrap extends AbstractDecorator
     public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
-
+        
         return $next();
     }
 
