@@ -35,6 +35,7 @@ class Form extends Element
     {
         parent::__construct();
 
+        $this->setAttribute('action', router()->getUri());
         $this->setID('form' . array_reverse(explode('\\', get_class($this)))[0]);
         $this->setName('form' . array_reverse(explode('\\', get_class($this)))[0]);
         $this->setMethod('post');
