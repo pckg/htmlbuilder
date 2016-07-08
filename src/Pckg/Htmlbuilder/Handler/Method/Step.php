@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
 
 /**
  * Class Step
+ *
  * @package Pckg\Htmlbuilder\Handler\Method
  */
 class Step extends AbstractHandler
@@ -25,6 +26,7 @@ class Step extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadAddStep(callable $next, AbstractObject $context)
@@ -44,6 +46,7 @@ class Step extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetStepped(callable $next, AbstractObject $context)
@@ -59,6 +62,7 @@ class Step extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetStep(callable $next, AbstractObject $context)
@@ -72,6 +76,7 @@ class Step extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadIsStepped(callable $next, AbstractObject $context)
@@ -83,6 +88,7 @@ class Step extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadIsStep(callable $next, AbstractObject $context)

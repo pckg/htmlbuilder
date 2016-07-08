@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Snippet;
 
 /**
  * Class Attributes
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Attributes
@@ -33,6 +34,7 @@ trait Attributes
 
     /**
      * @param $key
+     *
      * @return $this
      */
     public function emptyAttribute($key)
@@ -62,6 +64,7 @@ trait Attributes
      * @param        $key
      * @param        $val
      * @param string $split
+     *
      * @return $this
      */
     public function appendAttribute($key, $val, $split = " ")
@@ -83,6 +86,7 @@ trait Attributes
      * @param        $key
      * @param        $val
      * @param string $split
+     *
      * @return $this
      */
     public function prependAttribute($key, $val, $split = " ")
@@ -102,6 +106,7 @@ trait Attributes
 
     /**
      * @param bool $escape
+     *
      * @return string
      */
     public function buildAttributes($escape = true)
@@ -121,6 +126,7 @@ trait Attributes
 
     /**
      * @param $placeholder
+     *
      * @return $this
      */
     public function setPlaceholder($placeholder)
@@ -137,6 +143,7 @@ trait Attributes
     /**
      * @param        $key
      * @param string $val
+     *
      * @return $this
      */
     public function setAttribute($key, $val = '')
@@ -148,6 +155,7 @@ trait Attributes
 
     /**
      * @param null $class
+     *
      * @return $this
      */
     public function setClass($class)
@@ -164,6 +172,7 @@ trait Attributes
 
     /**
      * @param $class
+     *
      * @return $this
      */
     public function addClass($class)
@@ -195,6 +204,7 @@ trait Attributes
     /**
      * @param      $key
      * @param null $default
+     *
      * @return null
      */
     public function getAttribute($key, $default = null)
@@ -206,6 +216,7 @@ trait Attributes
 
     /**
      * @param $key
+     *
      * @return $this
      */
     public function unsetAttribute($key)
@@ -238,6 +249,7 @@ trait Attributes
 
     /**
      * @param $class
+     *
      * @return bool
      */
     public function hasClass($class)
@@ -268,6 +280,7 @@ trait Attributes
 
     /**
      * @param null $name
+     *
      * @return $this
      */
     public function setName($name = null)
@@ -295,6 +308,7 @@ trait Attributes
 
     /**
      * @param null $id
+     *
      * @return $this
      */
     public function setID($id = null)
@@ -330,6 +344,7 @@ trait Attributes
 
     /**
      * @param null $value
+     *
      * @return $this
      */
     public function setValue($value = null)

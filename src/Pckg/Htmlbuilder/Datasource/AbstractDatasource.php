@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AbstractDatasource
+ *
  * @package Pckg\Htmlbuilder\Datasource
  */
 abstract class AbstractDatasource implements DatasourceInterface
@@ -18,6 +19,7 @@ abstract class AbstractDatasource implements DatasourceInterface
 
     /**
      * @param Element $element
+     *
      * @return $this
      */
     public function setElement(Element $element)

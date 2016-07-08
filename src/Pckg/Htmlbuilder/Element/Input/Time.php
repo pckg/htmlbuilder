@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Time
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Time extends Input
 {
+
     /**
      *
      */

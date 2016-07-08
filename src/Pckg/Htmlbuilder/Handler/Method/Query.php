@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
 
 /**
  * Class Query
+ *
  * @package Pckg\Htmlbuilder\Handler\Method
  */
 class Query extends AbstractHandler
@@ -21,19 +22,22 @@ class Query extends AbstractHandler
     {
         parent::initOverloadMethods();
 
-        $this->mergeOverloadMethods([
-            'closest',
-            'farest',
-            'findFirstByName',
-            'findChild',
-            'findChildren',
-            'removeChildren',
-            'getIndex'
-        ]);
+        $this->mergeOverloadMethods(
+            [
+                'closest',
+                'farest',
+                'findFirstByName',
+                'findChild',
+                'findChildren',
+                'removeChildren',
+                'getIndex',
+            ]
+        );
     }
 
     /**
      * @param AbstractObject $context
+     *
      * @return bool
      */
     public function overloadClosest(callable $next, AbstractObject $context)
@@ -56,6 +60,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return $this
      */
     public function overloadFarest(callable $next, AbstractObject $context)
@@ -80,6 +85,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return null
      */
     public function overloadFindFirstByName(callable $next, AbstractObject $context)
@@ -106,6 +112,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadFindChild(callable $next, AbstractObject $context)
@@ -125,6 +132,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return array
      */
     public function overloadFindChildren(callable $next, AbstractObject $context)
@@ -143,6 +151,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return array
      */
     public function overloadRemoveChildren(callable $next, AbstractObject $context)
@@ -163,6 +172,7 @@ class Query extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return int|string
      */
     public function overloadGetIndex(callable $next, AbstractObject $context)

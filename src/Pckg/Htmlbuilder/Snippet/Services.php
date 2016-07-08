@@ -13,6 +13,7 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 /**
  * Class Services
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Services
@@ -36,10 +37,12 @@ trait Services
      * @var array
      */
     protected $decorators = [];
+
     /**
      * @var bool
      */
     protected $decoratable = true;
+
     /**
      * @var
      */
@@ -52,10 +55,12 @@ trait Services
      * @var array
      */
     protected $handlers = [];
+
     /**
      * @var bool
      */
     protected $handlable = true;
+
     /**
      * @var
      */
@@ -68,10 +73,12 @@ trait Services
      * @var array
      */
     protected $validators = [];
+
     /**
      * @var bool
      */
     protected $validatable = true;
+
     /**
      * @var
      */
@@ -81,16 +88,16 @@ trait Services
      * @var array
      */
     protected $factories = [
-        'Decorator'  => [
+        'Decorator' => [
             'factory' => DecoratorFactory::class,
         ],
-        'Handler'    => [
+        'Handler'   => [
             'factory' => HandlerFactory::class,
         ],
-        'Validator'  => [
+        'Validator' => [
             'factory' => ValidatorFactory::class,
         ],
-        'Element'    => [
+        'Element'   => [
             'factory' => ElementFactory::class,
         ],
     ];
@@ -156,6 +163,7 @@ trait Services
 
     /**
      * @param ValidatorInterface $validator
+     *
      * @return $this
      */
     public function addValidator(ValidatorInterface $validator)
@@ -167,6 +175,7 @@ trait Services
 
     /**
      * @param DecoratorInterface $decorator
+     *
      * @return $this
      */
     public function addDecorator(DecoratorInterface $decorator)
@@ -178,6 +187,7 @@ trait Services
 
     /**
      * @param HandlerInterface $handler
+     *
      * @return $this
      */
     public function addHandler(HandlerInterface $handler)
@@ -237,6 +247,7 @@ trait Services
 
     /**
      * @param bool $decoratable
+     *
      * @return $this
      */
     public function setDecoratable($decoratable = true)
@@ -248,6 +259,7 @@ trait Services
 
     /**
      * @param bool $validatable
+     *
      * @return $this
      */
     public function setValidatable($validatable = true)
@@ -259,6 +271,7 @@ trait Services
 
     /**
      * @param bool $handlable
+     *
      * @return $this
      */
     public function setHandlable($handlable = true)
@@ -294,6 +307,7 @@ trait Services
 
     /**
      * @param DecoratorFactory $decoratorFactory
+     *
      * @return $this
      */
     public function setDecoratorFactory(DecoratorFactory $decoratorFactory)
@@ -305,6 +319,7 @@ trait Services
 
     /**
      * @param ValidatorFactory $validatorFactory
+     *
      * @return $this
      */
     public function setValidatorFactory(ValidatorFactory $validatorFactory)
@@ -316,6 +331,7 @@ trait Services
 
     /**
      * @param HandlerFactory $handlerFactory
+     *
      * @return $this
      */
     public function setHandlerFactory(HandlerFactory $handlerFactory)
@@ -327,6 +343,7 @@ trait Services
 
     /**
      * @param ElementFactory $elementFactory
+     *
      * @return $this
      */
     public function setElementFactory(ElementFactory $elementFactory)

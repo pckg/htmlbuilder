@@ -14,6 +14,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AngularJSValidator
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class AngularJSValidator extends AbstractDecorator
@@ -38,6 +39,7 @@ class AngularJSValidator extends AbstractDecorator
      * */
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function setRecord(callable $next, AbstractObject $context)
@@ -52,6 +54,7 @@ class AngularJSValidator extends AbstractDecorator
      * */
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)

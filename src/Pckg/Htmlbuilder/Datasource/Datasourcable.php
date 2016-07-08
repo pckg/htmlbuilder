@@ -1,9 +1,6 @@
 <?php namespace Pckg\Htmlbuilder\Datasource;
 
 use Pckg\Database\Record as DatabaseRecord;
-use Pckg\Htmlbuilder\Datasource\Method\Collection;
-use Pckg\Htmlbuilder\Datasource\Method\Cookie;
-use Pckg\Htmlbuilder\Datasource\Method\Entity;
 use Pckg\Htmlbuilder\Datasource\Method\Record;
 use Pckg\Htmlbuilder\Datasource\Method\Request;
 use Pckg\Htmlbuilder\Datasource\Method\Session;
@@ -19,7 +16,7 @@ trait Datasourcable
     public function populateFromRequest()
     {
         (new Request())->setElement($this)
-            ->populateToElement();
+                       ->populateToElement();
 
         return $this;
     }
@@ -27,8 +24,8 @@ trait Datasourcable
     public function populateToRecord(DatabaseRecord $record)
     {
         (new Record())->setElement($this)
-            ->setRecord($record)
-            ->populateToDatasource();
+                      ->setRecord($record)
+                      ->populateToDatasource();
 
         return $this;
     }
@@ -45,7 +42,7 @@ trait Datasourcable
     public function populateFromSession()
     {
         (new Session())->setElement($this)
-            ->populateToElement();
+                       ->populateToElement();
 
         return $this;
     }
@@ -53,7 +50,7 @@ trait Datasourcable
     public function populateToSession()
     {
         (new Session())->setElement($this)
-            ->populateToDatasource();
+                       ->populateToDatasource();
 
         return $this;
     }
@@ -61,8 +58,8 @@ trait Datasourcable
     public function populateFromRecord(DatabaseRecord $record)
     {
         (new Record())->setElement($this)
-            ->setRecord($record)
-            ->populateToElement();
+                      ->setRecord($record)
+                      ->populateToElement();
 
         return $this;
     }

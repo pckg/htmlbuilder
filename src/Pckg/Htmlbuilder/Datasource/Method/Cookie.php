@@ -10,6 +10,7 @@ use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
 
 /**
  * Class Cookie
+ *
  * @package Pckg\Htmlbuilder\Datasource\Method
  */
 class Cookie extends AbstractDatasource
@@ -22,12 +23,12 @@ class Cookie extends AbstractDatasource
 
     /**
      * @param $method
+     *
      * @return bool
      */
     public function canHandle($method)
     {
         return isset($_COOKIE) && parent::canHandle($method);
     }
-
 
 }

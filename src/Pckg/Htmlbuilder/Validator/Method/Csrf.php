@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Csrf
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Csrf extends AbstractValidator
@@ -21,6 +22,7 @@ class Csrf extends AbstractValidator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)

@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\Handler\Method\Step;
 
 /**
  * Class HandlerFactory
+ *
  * @package Pckg\Htmlbuilder\Handler
  */
 class HandlerFactory extends AbstractFactory

@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\AbstractService;
 
 /**
  * Class AbstractValidator
+ *
  * @package Pckg\Htmlbuilder\Validator
  */
 abstract class AbstractValidator extends AbstractService implements ValidatorInterface
@@ -34,6 +35,7 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
 
     /**
      * @param bool $enabled
+     *
      * @return $this
      */
     public function setEnabled($enabled = true)
@@ -73,6 +75,7 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
 
     /**
      * @param AbstractObject $context
+     *
      * @return bool
      */
     public function overloadIsValid(callable $next, AbstractObject $context)
@@ -112,6 +115,7 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)

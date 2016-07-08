@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
 
 /**
  * Class Group
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Group extends Element

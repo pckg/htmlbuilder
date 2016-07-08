@@ -16,6 +16,7 @@ use Pckg\Htmlbuilder\Validator\Method\Csrf;
 
 /**
  * Class DecoratorFactory
+ *
  * @package Pckg\Htmlbuilder\Decorator
  */
 class DecoratorFactory extends AbstractFactory

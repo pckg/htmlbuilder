@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
 
 /**
  * Class Basic
+ *
  * @package Pckg\Htmlbuilder\Handler\Method
  */
 class Basic extends AbstractHandler
@@ -16,6 +17,7 @@ class Basic extends AbstractHandler
     /**
      * @param $method
      * @param $args
+     *
      * @return bool|mixed|object
      */
     public function __call($method, $args)
@@ -78,6 +80,7 @@ class Basic extends AbstractHandler
 
     /**
      * @param $method
+     *
      * @return bool
      */
     public function canHandle($method)
@@ -99,6 +102,7 @@ class Basic extends AbstractHandler
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed|object
      */
     public function overloadAddMapped(callable $next, AbstractObject $context)

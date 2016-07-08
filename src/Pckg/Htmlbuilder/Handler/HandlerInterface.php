@@ -4,10 +4,12 @@ namespace Pckg\Htmlbuilder\Handler;
 
 /**
  * Interface HandlerInterface
+ *
  * @package Pckg\Htmlbuilder\Handler
  */
 interface HandlerInterface
 {
+
     /**
      * @return mixed
      */
@@ -15,6 +17,7 @@ interface HandlerInterface
 
     /**
      * @param $method
+     *
      * @return mixed
      */
     public function canHandle($method);

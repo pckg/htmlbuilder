@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Element;
 
 /**
  * Class Button
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Button extends Input

@@ -12,6 +12,7 @@ use Pckg\Htmlbuilder\Snippet\Services;
 
 /**
  * Class Element
+ *
  * @package Pckg\Htmlbuilder
  */
 class Element
@@ -23,6 +24,7 @@ class Element
      * @var null
      */
     protected $element = null;
+
     /**
      * @var bool
      */
@@ -73,9 +75,14 @@ class Element
         $context = $this->createContext();
         $context->setArgs($args);
 
-        $result = chain($handlers, $overloadMethod, ['context' => $context], function () {
-            return $this;
-        });
+        $result = chain(
+            $handlers,
+            $overloadMethod,
+            ['context' => $context],
+            function() {
+                return $this;
+            }
+        );
 
         return $result;
     }
@@ -145,9 +152,9 @@ class Element
         }
 
         $arr = [
-            'Decorator'  => 'Decorators',
-            'Validator'  => 'Validators',
-            'Handler'    => 'Handlers',
+            'Decorator' => 'Decorators',
+            'Validator' => 'Validators',
+            'Handler'   => 'Handlers',
         ];
 
         foreach ($arr AS $adder => $getter) {

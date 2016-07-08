@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Label
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Label extends Element

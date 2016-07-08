@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Record
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class Record extends AbstractDecorator
@@ -34,6 +35,7 @@ class Record extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetRecord(callable $next, AbstractObject $context)
@@ -51,6 +53,7 @@ class Record extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)
@@ -68,18 +71,28 @@ class Record extends AbstractDecorator
      */
     public function decorateName($element)
     {
-        if (in_array($element->getTag(),
-                ['input', 'button', 'select', 'textarea']) && !in_array($element->getAttribute('type'),
-                ['submit', 'cancel']) && $this->record
+        if (in_array(
+                $element->getTag(),
+                ['input', 'button', 'select', 'textarea']
+            ) && !in_array(
+                $element->getAttribute('type'),
+                ['submit', 'cancel']
+            ) && $this->record
         ) {
-            $name = lcfirst(str_replace(['\\', 'Record'], '',
-                    get_class($this->record))) . '[' . $element->getName() . ']';
+            $name = lcfirst(
+                        str_replace(
+                            ['\\', 'Record'],
+                            '',
+                            get_class($this->record)
+                        )
+                    ) . '[' . $element->getName() . ']';
             $element->setName($name);
         }
     }
 
     /**
      * @param $element
+     *
      * @return mixed
      */
     public function decorateID($element)

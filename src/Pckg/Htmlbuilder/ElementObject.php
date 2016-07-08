@@ -22,6 +22,7 @@ class ElementObject extends AbstractObject
 
     /**
      * @param Element $element
+     *
      * @return $this
      */
     public function setElement(Element $element)
@@ -33,6 +34,7 @@ class ElementObject extends AbstractObject
 
     /**
      * @param ValidatorInterface $validator
+     *
      * @return $this
      */
     public function setValidator(ValidatorInterface $validator)
@@ -52,6 +54,7 @@ class ElementObject extends AbstractObject
 
     /**
      * @param $value
+     *
      * @return $this
      */
     public function setValue($value)

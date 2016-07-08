@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Decorator;
 
 /**
  * Interface DecoratorInterface
+ *
  * @package Pckg\Htmlbuilder\Decorator
  */
 interface DecoratorInterface
@@ -21,6 +22,7 @@ interface DecoratorInterface
 
     /**
      * @param $method
+     *
      * @return mixed
      */
     public function canHandle($method);

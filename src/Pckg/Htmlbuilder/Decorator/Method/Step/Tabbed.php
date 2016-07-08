@@ -11,6 +11,7 @@ class Tabbed extends AbstractDecorator
 {
 
     public $heading;
+
     public $title;
 
     public function overloadPreDecorate(callable $next, ElementObject $context)
@@ -70,7 +71,10 @@ class Tabbed extends AbstractDecorator
             $navigatorHolder->addChild($heading);
 
             $index = $heading->getIndex();
-            $heading->addChild('<a href="#' . $fieldset->getForm()->getId() . 'Step' . $heading->getIndex() . '" data-toggle="tab">' . $this->heading . '</a>');
+            $heading->addChild(
+                '<a href="#' . $fieldset->getForm()->getId() . 'Step' . $heading->getIndex(
+                ) . '" data-toggle="tab">' . $this->heading . '</a>'
+            );
 
             if ($index == 0) {
                 $heading->addClass('active');

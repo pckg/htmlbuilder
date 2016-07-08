@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Related
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Related extends AbstractValidator
@@ -15,6 +16,7 @@ class Related extends AbstractValidator
     /**
      * @param Element $element
      * @param         $args
+     *
      * @return mixed
      */
     public function matchesField(callable $next, Element $element, $args)

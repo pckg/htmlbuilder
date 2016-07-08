@@ -116,10 +116,14 @@ class FormResolver implements Resolver
     protected function ajaxSuccessResponse()
     {
         return $this->response->code(200)
-            ->respond(json_encode([
-                'success' => true,
-                'error'   => false,
-            ]));
+                              ->respond(
+                                  json_encode(
+                                      [
+                                          'success' => true,
+                                          'error'   => false,
+                                      ]
+                                  )
+                              );
     }
 
     /**
@@ -128,11 +132,15 @@ class FormResolver implements Resolver
     protected function ajaxErrorResponse()
     {
         return $this->response->code(422)
-            ->respond(json_encode([
-                'error'   => true,
-                'success' => false,
-                'errors'  => ['@T00D00'],
-            ]));
+                              ->respond(
+                                  json_encode(
+                                      [
+                                          'error'   => true,
+                                          'success' => false,
+                                          'errors'  => ['@T00D00'],
+                                      ]
+                                  )
+                              );
     }
 
     /**
@@ -143,7 +151,7 @@ class FormResolver implements Resolver
         $this->flash->set('form', 'Invalid data posted, check data and resubmit form');
 
         return $this->response->code(400)
-            ->redirect();
+                              ->redirect();
     }
 
 }

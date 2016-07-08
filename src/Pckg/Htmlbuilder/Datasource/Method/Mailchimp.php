@@ -55,10 +55,19 @@ class Mailchimp extends AbstractDatasource implements DatasourceInterface
 
         $mailchimp = new MailchimpAPI($this->apiKey, ['ssl_verifypeer' => false]);
 
-        return $mailchimp->lists->subscribe($this->listId, ['email' => $data['email']], [
-            'first_name' => $data['first_name'],
-            'last_name'  => $data['last_name'],
-        ], 'html', true, true, false, true);
+        return $mailchimp->lists->subscribe(
+            $this->listId,
+            ['email' => $data['email']],
+            [
+                'first_name' => $data['first_name'],
+                'last_name'  => $data['last_name'],
+            ],
+            'html',
+            true,
+            true,
+            false,
+            true
+        );
     }
 
 }

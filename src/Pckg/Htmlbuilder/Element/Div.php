@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Div
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Div extends Element

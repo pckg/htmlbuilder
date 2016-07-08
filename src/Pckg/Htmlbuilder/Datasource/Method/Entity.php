@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\ElementObject;
 
 /**
  * Class Entity
+ *
  * @package Pckg\Htmlbuilder\Datasource\Method
  */
 class Entity extends AbstractDatasource
@@ -33,6 +34,7 @@ class Entity extends AbstractDatasource
 
     /**
      * @param ElementObject $context
+     *
      * @return mixed
      */
     public function overloadUseEntityDatasource(callable $next, ElementObject $context)
@@ -46,6 +48,7 @@ class Entity extends AbstractDatasource
 
     /**
      * @param ElementObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, ElementObject $context)

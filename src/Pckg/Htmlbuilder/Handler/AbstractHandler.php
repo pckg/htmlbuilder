@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
 
 /**
  * Class AbstractHandler
+ *
  * @package Pckg\Htmlbuilder\Handler
  */
 abstract class AbstractHandler extends AbstractService implements HandlerInterface
@@ -29,6 +30,7 @@ abstract class AbstractHandler extends AbstractService implements HandlerInterfa
 
     /**
      * @param ElementFactory $elementFactory
+     *
      * @return $this
      */
     public function setElementFactory(ElementFactory $elementFactory)

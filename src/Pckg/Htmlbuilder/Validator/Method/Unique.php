@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Validator\Element;
 
 /**
  * Class Unique
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Unique extends AbstractValidator
@@ -20,6 +21,7 @@ class Unique extends AbstractValidator
     /**
      * @param Element $element
      * @param         $args
+     *
      * @return mixed
      */
     public function unique(callable $next, Element $element, $args)
@@ -31,6 +33,7 @@ class Unique extends AbstractValidator
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)

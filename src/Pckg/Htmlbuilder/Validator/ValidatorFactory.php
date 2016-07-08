@@ -18,6 +18,7 @@ use Pckg\Htmlbuilder\Validator\Method\Unique;
 
 /**
  * Class ValidatorFactory
+ *
  * @package Pckg\Htmlbuilder\Validator
  */
 class ValidatorFactory extends AbstractFactory

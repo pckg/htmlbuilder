@@ -26,6 +26,7 @@ use Pckg\Htmlbuilder\Element\Textarea;
 
 /**
  * Class Buildable
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Buildable
@@ -34,6 +35,7 @@ trait Buildable
     /**
      * @param $class
      * @param $name
+     *
      * @return mixed
      */
     private function addElementByClassAndName($class, $name)
@@ -231,6 +233,7 @@ trait Buildable
 
     /**
      * @param null $name
+     *
      * @return Checkbox
      */
     public function addCheckbox($name = null)

@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Matches
+ *
  * @package Pckg\Htmlbuilder\Validator\Method\Common
  */
 class Matches extends AbstractValidator
@@ -20,6 +21,7 @@ class Matches extends AbstractValidator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadMatches(callable $next, AbstractObject $context)
@@ -29,6 +31,7 @@ class Matches extends AbstractValidator
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)

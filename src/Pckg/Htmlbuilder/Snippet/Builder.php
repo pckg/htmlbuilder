@@ -4,12 +4,11 @@ namespace Pckg\Htmlbuilder\Snippet;
 
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Event\DecorationRequested;
-use Pckg\Htmlbuilder\Event\PopulationRequested;
 use Pckg\Htmlbuilder\Event\PreDecorationRequested;
-use Pckg\Htmlbuilder\Event\PrePopulationRequested;
 
 /**
  * Class Builder
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Builder
@@ -19,10 +18,12 @@ trait Builder
      * @var null
      */
     protected $build = null;
+
     /**
      * @var null
      */
     public $html = null;
+
     /**
      * @var
      */
@@ -53,7 +54,8 @@ trait Builder
      */
     public function buildElement()
     {
-        return ($this->opened ? '' : $this->buildBeforeElement()) . $this->buildChildrenElements() . $this->buildAfterElement();
+        return ($this->opened ? '' : $this->buildBeforeElement()) . $this->buildChildrenElements(
+        ) . $this->buildAfterElement();
     }
 
     /**
@@ -62,9 +64,9 @@ trait Builder
     private function buildBeforeElement()
     {
         return "<" . $this->tag . $this->buildAttributes() .
-        ($this->selfClosing
-            ? " />"
-            : ">");
+               ($this->selfClosing
+                   ? " />"
+                   : ">");
     }
 
     /**
@@ -104,6 +106,7 @@ trait Builder
     */
     /**
      * @param $siblings
+     *
      * @return string
      * @throws \Exception
      */
@@ -121,6 +124,7 @@ trait Builder
 
     /**
      * @param $child
+     *
      * @return null|string
      * @throws \Exception
      */

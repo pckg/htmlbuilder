@@ -9,10 +9,12 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Step
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class Step extends AbstractDecorator
 {
+
     use Decorator\Strategy;
 
     protected $recursive = true;
@@ -63,6 +65,7 @@ class Step extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetTitle(callable $next, AbstractObject $context)
@@ -74,6 +77,7 @@ class Step extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadSetHeading(callable $next, AbstractObject $context)
@@ -85,6 +89,7 @@ class Step extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadPreDecorate(callable $next, AbstractObject $context)
@@ -103,6 +108,7 @@ class Step extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)

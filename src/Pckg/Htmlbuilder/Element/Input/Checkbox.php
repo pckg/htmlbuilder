@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Checkbox
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Checkbox extends Input
 {
+
     /**
      *
      */
@@ -23,6 +25,7 @@ class Checkbox extends Input
 
     /**
      * @param bool $checked
+     *
      * @return $this
      */
     function setChecked($checked = true)

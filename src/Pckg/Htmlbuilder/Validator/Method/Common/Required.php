@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Required
+ *
  * @package Pckg\Htmlbuilder\Validator\Method\Common
  */
 class Required extends AbstractValidator
@@ -28,6 +29,7 @@ class Required extends AbstractValidator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadRequired(callable $next, AbstractObject $context)
@@ -41,6 +43,7 @@ class Required extends AbstractValidator
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)
@@ -50,6 +53,7 @@ class Required extends AbstractValidator
 
     /**
      * @param Element $element
+     *
      * @return string
      */
     public function getAngularJSValidator(Element $element)

@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Event\Handler\DecorateElement;
 
 /**
  * Class DecorationRequested
+ *
  * @package Pckg\Htmlbuilder\Event
  */
 class DecorationRequested extends AbstractEvent

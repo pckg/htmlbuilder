@@ -7,10 +7,12 @@ use Pckg\Htmlbuilder\Validator\Method\Text;
 
 /**
  * Class Number
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Number extends Text
 {
+
     /**
      * @var array
      */
@@ -21,6 +23,7 @@ class Number extends Text
      * @var
      */
     protected $bitwise;
+
     /**
      * @var array
      */
@@ -139,6 +142,7 @@ class Number extends Text
     /**
      * @param Element $element
      * @param         $args
+     *
      * @return bool
      */
     public function validate(Element $element, $args)

@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input\Number;
 
 /**
  * Class Float
+ *
  * @package Pckg\Htmlbuilder\Element\Input\Number
  */
 class Decimal extends Number
 {
+
     /**
      *
      */

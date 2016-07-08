@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AbstractGroupValidator
+ *
  * @package Pckg\Htmlbuilder\Validator
  */
 abstract class AbstractGroupValidator extends AbstractValidator implements ValidatorInterface
@@ -51,6 +52,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     /**
      * @param $method
      * @param $args
+     *
      * @return $this|mixed|null|object
      * @throws NotFound
      */
@@ -72,7 +74,9 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
         }
 
         if (!$arrChains) {
-            throw new Exception('Method ' . $method . " doesn't exist in " . get_class($this) . " (AbstractGroupValidator::__call)");
+            throw new Exception(
+                'Method ' . $method . " doesn't exist in " . get_class($this) . " (AbstractGroupValidator::__call)"
+            );
         }
 
         $result = chain($arrChains, $method, ['context' => $arg]);
@@ -86,6 +90,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
 
     /**
      * @param AbstractObject $context
+     *
      * @return bool
      */
     public function overloadIsValid(callable $next, AbstractObject $context)
@@ -110,6 +115,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)
@@ -130,6 +136,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
 
     /**
      * @param $method
+     *
      * @return bool
      */
     public function canHandle($method)
@@ -160,6 +167,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
 
     /**
      * @param Element $element
+     *
      * @return string
      */
     public function getAngularJSValidator(Element $element)

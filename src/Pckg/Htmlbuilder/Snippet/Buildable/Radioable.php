@@ -5,18 +5,6 @@ use Pckg\Htmlbuilder\Element\Input\Radio;
 trait Radioable
 {
 
-    /**
-     * @return Radio
-     */
-    public function addRadio()
-    {
-        $element = $this->elementFactory->create(Radio::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
-    }
-
     public function addOptions($options)
     {
         foreach ($options as $key => $option) {
@@ -44,6 +32,18 @@ trait Radioable
         }
 
         return $radio;
+    }
+
+    /**
+     * @return Radio
+     */
+    public function addRadio()
+    {
+        $element = $this->elementFactory->create(Radio::class, func_get_args());
+
+        $this->addChild($element);
+
+        return $element;
     }
 
 }

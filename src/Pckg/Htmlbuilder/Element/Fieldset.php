@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
 
 /**
  * Class Fieldset
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Fieldset extends Element
@@ -51,6 +52,7 @@ class Fieldset extends Element
 
     /**
      * @param $form
+     *
      * @return $this
      */
     public function setForm($form)
@@ -62,6 +64,7 @@ class Fieldset extends Element
 
     /**
      * @param $child
+     *
      * @return $this
      */
     public function addChild($child)

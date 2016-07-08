@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Max
+ *
  * @package Pckg\Htmlbuilder\Validator\Method\Text
  */
 class Max extends AbstractValidator
@@ -25,6 +26,7 @@ class Max extends AbstractValidator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadMax(callable $next, AbstractObject $context)
@@ -37,6 +39,7 @@ class Max extends AbstractValidator
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)

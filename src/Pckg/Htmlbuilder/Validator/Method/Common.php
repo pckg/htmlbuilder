@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Validator\AbstractGroupValidator;
 
 /**
  * Class Common
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Common extends AbstractGroupValidator
@@ -18,11 +19,13 @@ class Common extends AbstractGroupValidator
     {
         parent::__construct();
 
-        $this->validators = $this->validatorFactory->create([
-            'Common\Required',
-            'Common\Unique',
-            'Common\Matches',
-        ]);
+        $this->validators = $this->validatorFactory->create(
+            [
+                'Common\Required',
+                'Common\Unique',
+                'Common\Matches',
+            ]
+        );
 
         $this->initOverloadMethods();
     }

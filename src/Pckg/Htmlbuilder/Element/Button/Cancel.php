@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Cancel
+ *
  * @package Pckg\Htmlbuilder\Element\Button
  */
 class Cancel extends Input
 {
+
     /**
      *
      */

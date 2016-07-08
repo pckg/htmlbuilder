@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
 
 /**
  * Class Select
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Select extends Element
@@ -24,6 +25,7 @@ class Select extends Element
      * @var array
      */
     protected $options = [];
+
     /**
      * @var null
      */
@@ -31,6 +33,7 @@ class Select extends Element
 
     /**
      * @param null $value
+     *
      * @return $this
      */
     public function setValue($value = null)
@@ -60,16 +63,22 @@ class Select extends Element
     {
 
         foreach ($arrOptions AS $option) {
-            $this->addOptions([
-                $option->getId() => (!$depth ? '' : (str_repeat('=&nbsp;&nbsp;',
-                            $depth) . ' ')) . ($option->getTitle() ?: $option->getSlug() . ' #' . $option->getId())
-            ]);
+            $this->addOptions(
+                [
+                    $option->getId() => (!$depth ? '' : (str_repeat(
+                                                             '=&nbsp;&nbsp;',
+                                                             $depth
+                                                         ) . ' ')) . ($option->getTitle() ?: $option->getSlug(
+                            ) . ' #' . $option->getId()),
+                ]
+            );
             $this->addTreeOptions($option->getChildren, $depth + 1);
         }
     }
 
     /**
      * @param $options
+     *
      * @return $this
      */
     public function addOptions($options)
@@ -85,6 +94,7 @@ class Select extends Element
      * @param      $key
      * @param null $value
      * @param bool $selected
+     *
      * @return $this
      */
     public function addOption($key, $value = null, $selected = false)
@@ -97,7 +107,7 @@ class Select extends Element
             $option = $this->elementFactory->create(Option::class);
             $option->setValue($key);
             $option->addChild($value);
-            
+
             if ($selected || $key == $this->value) {
                 $option->setAttribute('selected', 'selected');
             }

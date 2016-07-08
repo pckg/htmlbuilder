@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class AbstractBitwiseValidator
+ *
  * @package Pckg\Htmlbuilder\Validator
  */
 class AbstractBitwiseValidator extends AbstractValidator
@@ -15,10 +16,12 @@ class AbstractBitwiseValidator extends AbstractValidator
      * @var int
      */
     protected $bitwise = 0;
+
     /**
      * @var array
      */
     protected $bitwiseValues = [];
+
     /**
      * @var array
      */
@@ -27,6 +30,7 @@ class AbstractBitwiseValidator extends AbstractValidator
     /**
      * @param Element $element
      * @param         $args
+     *
      * @return bool
      */
     public function validate(Element $element, $args)
@@ -48,6 +52,7 @@ class AbstractBitwiseValidator extends AbstractValidator
     /**
      * @param $function
      * @param $args
+     *
      * @return $this|bool
      */
     protected function addBitwiseByFunction($function, $args)
@@ -90,6 +95,7 @@ class AbstractBitwiseValidator extends AbstractValidator
 
     /**
      * @param $function
+     *
      * @return bool|null
      */
     protected function getBitByFunction($function)

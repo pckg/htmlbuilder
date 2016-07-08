@@ -13,6 +13,7 @@ use Pckg\Htmlbuilder\Element\Input\Hidden;
 
 /**
  * Class Bootstrap
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class Bootstrap extends AbstractDecorator
@@ -58,6 +59,7 @@ class Bootstrap extends AbstractDecorator
      */
 
     protected $formGroupClass = 'form-group';
+
     /**
      * @var string
      */
@@ -140,7 +142,7 @@ class Bootstrap extends AbstractDecorator
     public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
-        
+
         return $next();
     }
 
@@ -213,8 +215,10 @@ class Bootstrap extends AbstractDecorator
     {
         $element = $context->getElement();
 
-        if (in_array($element->getTag(),
-                ['input', 'select', 'button', 'textarea']) && $element->getAttribute('type') != 'hidden'
+        if (in_array(
+                $element->getTag(),
+                ['input', 'select', 'button', 'textarea']
+            ) && $element->getAttribute('type') != 'hidden'
         ) {
             $this->decorateParent($element);
 
@@ -359,7 +363,9 @@ class Bootstrap extends AbstractDecorator
 
         if ($this->help) {
             $help = $this->elementFactory->create("Div");
-            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>');
+            $help->addClass('help')->addChild(
+                '<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>'
+            );
 
             $labelWrapper->addChild($help);
         }
@@ -446,7 +452,9 @@ class Bootstrap extends AbstractDecorator
 
         if ($this->help) {
             $help = $this->elementFactory->create("Div");
-            $help->addClass('help')->addChild('<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>');
+            $help->addClass('help')->addChild(
+                '<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>'
+            );
 
             $label->addChild($help);
         }
@@ -483,7 +491,9 @@ class Bootstrap extends AbstractDecorator
         }
 
         $bootstrapDiv = $this->elementFactory->create('Div');
-        $bootstrapDiv->addClass($this->label ? $this->fieldClass : $this->fullFieldClass)->setDecoratedParent($outerDiv);
+        $bootstrapDiv->addClass($this->label ? $this->fieldClass : $this->fullFieldClass)->setDecoratedParent(
+            $outerDiv
+        );
 
         $element->setDecoratedParent($bootstrapDiv);
     }

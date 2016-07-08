@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Submit
+ *
  * @package Pckg\Htmlbuilder\Element\Button
  */
 class Submit extends Input

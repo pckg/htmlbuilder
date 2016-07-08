@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Post
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class Post extends AbstractDecorator
@@ -26,6 +27,7 @@ class Post extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadIsValid(callable $next, AbstractObject $context)
@@ -35,6 +37,7 @@ class Post extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)
@@ -44,8 +47,8 @@ class Post extends AbstractDecorator
         if ($element->getTag() == 'form') {
             $fieldset = $element->addFieldset();
             $fieldset->addHidden('_form')
-                ->setValue($element->getName())
-                ->setDecoratable(false);
+                     ->setValue($element->getName())
+                     ->setDecoratable(false);
         }
 
         return $next();
@@ -53,6 +56,7 @@ class Post extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return bool
      */
     public function overloadIsValidPost(callable $next, AbstractObject $context)
@@ -64,6 +68,7 @@ class Post extends AbstractDecorator
 
     /**
      * @param AbstractObject $context
+     *
      * @return bool
      */
     public function overloadIsSubmitted(callable $next, AbstractObject $context)
@@ -73,6 +78,7 @@ class Post extends AbstractDecorator
 
     /**
      * @param $args
+     *
      * @return array
      */
     public function fetchPost($args)

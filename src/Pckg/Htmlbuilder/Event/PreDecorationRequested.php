@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Event\Handler\PreDecorateElement;
 
 /**
  * Class PreDecorationRequested
+ *
  * @package Pckg\Htmlbuilder\Event
  */
 class PreDecorationRequested extends AbstractEvent

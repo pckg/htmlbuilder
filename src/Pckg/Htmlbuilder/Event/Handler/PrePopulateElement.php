@@ -7,6 +7,7 @@ use Pckg\Concept\AbstractObject;
 
 /**
  * Class PreDecorateElement
+ *
  * @package Pckg\Htmlbuilder\Event\Handler
  */
 class PrePopulateElement extends AbstractChainOfReponsibility
@@ -14,6 +15,7 @@ class PrePopulateElement extends AbstractChainOfReponsibility
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function handle(callable $next, AbstractObject $context)

@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
 
 /**
  * Class AbstractDecorator
+ *
  * @package Pckg\Htmlbuilder\Decorator
  */
 abstract class AbstractDecorator extends AbstractService implements DecoratorInterface
@@ -37,6 +38,7 @@ abstract class AbstractDecorator extends AbstractService implements DecoratorInt
 
     /**
      * @param ElementFactory $elementFactory
+     *
      * @return $this
      */
     public function setElementFactory(ElementFactory $elementFactory)

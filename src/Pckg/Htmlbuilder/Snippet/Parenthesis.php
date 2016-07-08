@@ -9,6 +9,7 @@ trait Parenthesis
      * @var null
      */
     protected $parent = null;
+
     /**
      * @var null
      */
@@ -24,6 +25,7 @@ trait Parenthesis
 
     /**
      * @param $parent
+     *
      * @return $this
      */
     public function setParent($parent)
@@ -35,6 +37,7 @@ trait Parenthesis
 
     /**
      * @param $parent
+     *
      * @return $this
      */
     public function pushParent($parent)
@@ -58,6 +61,7 @@ trait Parenthesis
 
     /**
      * @param $parent
+     *
      * @return $this
      */
     public function setDecoratedParent($parent)
@@ -69,6 +73,7 @@ trait Parenthesis
 
     /**
      * @param $parent
+     *
      * @return $this
      */
     public function pushDecoratedParent($parent)

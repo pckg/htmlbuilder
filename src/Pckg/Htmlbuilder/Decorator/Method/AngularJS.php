@@ -13,6 +13,7 @@ use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 
 /**
  * Class AngularJS
+ *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
 class AngularJS extends AbstractDecorator
@@ -37,6 +38,7 @@ class AngularJS extends AbstractDecorator
      * */
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function setRecord(callable $next, AbstractObject $context)
@@ -51,6 +53,7 @@ class AngularJS extends AbstractDecorator
      * */
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, AbstractObject $context)
@@ -70,8 +73,10 @@ class AngularJS extends AbstractDecorator
      */
     protected function decorateModel($element)
     {
-        if ($element->getName() && in_array($element->getTag(),
-                ['input', 'select', 'textarea']) && !in_array($element->getAttribute('type'), ['submit', 'button'])
+        if ($element->getName() && in_array(
+                $element->getTag(),
+                ['input', 'select', 'textarea']
+            ) && !in_array($element->getAttribute('type'), ['submit', 'button'])
         ) {
             $this->setName($element);
 
@@ -123,12 +128,20 @@ class AngularJS extends AbstractDecorator
     protected function setForm($element)
     {
         //$element->setAttribute('ng-controller', 'FormController');
-        $element->setAttribute('ng-submit',
-            $element->getAttribute('id') . '.$valid && handleSubmit(' . $element->getName() . ', ' . 'obj' . ucfirst(str_replace([
-                '[',
-                ']',
-                '..'
-            ], ['.'], substr($element->getName(), 4))) . ')');
+        $element->setAttribute(
+            'ng-submit',
+            $element->getAttribute('id') . '.$valid && handleSubmit(' . $element->getName() . ', ' . 'obj' . ucfirst(
+                str_replace(
+                    [
+                        '[',
+                        ']',
+                        '..',
+                    ],
+                    ['.'],
+                    substr($element->getName(), 4)
+                )
+            ) . ')'
+        );
         $element->unsetAttribute('action');
         $element->setAttribute('novalidate');
     }

@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Validator;
 
 /**
  * Class Input
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Input extends Field
@@ -24,6 +25,7 @@ class Input extends Field
 
     /**
      * @param $type
+     *
      * @return $this
      */
     function setType($type)
@@ -43,6 +45,7 @@ class Input extends Field
 
     /**
      * @param bool $disabled
+     *
      * @return $this
      */
     function setDisabled($disabled = true)
@@ -66,6 +69,7 @@ class Input extends Field
 
     /**
      * @param bool $readOnly
+     *
      * @return $this
      */
     function setReadOnly($readOnly = true)

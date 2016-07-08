@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Email
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Email extends Input
 {
+
     /**
      *
      */

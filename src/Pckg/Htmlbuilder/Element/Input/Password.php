@@ -7,10 +7,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Password
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Password extends Input
 {
+
     /**
      *
      */

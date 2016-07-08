@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Hidden
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Hidden extends Input
 {
+
     /**
      *
      */

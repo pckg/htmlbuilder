@@ -10,6 +10,7 @@ use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
 
 /**
  * Class Session
+ *
  * @package Pckg\Htmlbuilder\Datasource\Method
  */
 class Session extends AbstractDatasource
@@ -27,12 +28,12 @@ class Session extends AbstractDatasource
 
     /**
      * @param $method
+     *
      * @return bool
      */
     public function canHandle($method)
     {
         return isset($_SESSION) && parent::canHandle($method);
     }
-
 
 }

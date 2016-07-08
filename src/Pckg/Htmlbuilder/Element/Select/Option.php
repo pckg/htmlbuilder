@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Snippet\AttributeValue;
 
 /**
  * Class Option
+ *
  * @package Pckg\Htmlbuilder\Element\Select
  */
 class Option extends Element
@@ -39,6 +40,7 @@ class Option extends Element
 
     /**
      * @param null $value
+     *
      * @return $this
      */
     public function setValue($value = null)

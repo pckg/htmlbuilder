@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 /**
  * Class Min
+ *
  * @package Pckg\Htmlbuilder\Validator\Method\Text
  */
 class Min extends AbstractValidator
@@ -25,6 +26,7 @@ class Min extends AbstractValidator
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function overloadMin(callable $next, AbstractObject $context)
@@ -36,6 +38,7 @@ class Min extends AbstractValidator
 
     /**
      * @param $value
+     *
      * @return bool
      */
     public function validate($value)

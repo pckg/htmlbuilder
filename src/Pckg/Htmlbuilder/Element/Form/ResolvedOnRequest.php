@@ -3,6 +3,4 @@
 trait ResolvedOnRequest
 {
 
-
-
 }

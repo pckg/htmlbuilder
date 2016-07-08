@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Number
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Number extends Input
 {
+
     /**
      *
      */

@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Validator\AbstractGroupValidator;
 
 /**
  * Class Text
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Text extends AbstractGroupValidator
@@ -16,10 +17,12 @@ class Text extends AbstractGroupValidator
      */
     public function __construct()
     {
-        $this->validators = $this->validatorFactory->create([
-            'Text\Min',
-            'Text\Max',
-        ]);
+        $this->validators = $this->validatorFactory->create(
+            [
+                'Text\Min',
+                'Text\Max',
+            ]
+        );
     }
 
 }

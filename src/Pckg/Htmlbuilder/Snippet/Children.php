@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element;
 
 /**
  * Class Children
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Children
@@ -18,6 +19,7 @@ trait Children
 
     /**
      * @param $children
+     *
      * @return $this
      */
     public function addChildren($children)
@@ -31,6 +33,7 @@ trait Children
 
     /**
      * @param $child
+     *
      * @return $this
      */
     public function addChild($child)
@@ -46,6 +49,7 @@ trait Children
 
     /**
      * @param $child
+     *
      * @return $this
      */
     public function prependChild($child)
@@ -65,6 +69,7 @@ trait Children
 
     /**
      * @param $children
+     *
      * @return $this
      */
     public function setChildren($children)
@@ -80,6 +85,7 @@ trait Children
 
     /**
      * @param $index
+     *
      * @return $this
      */
     public function unsetChild($index)

@@ -9,6 +9,7 @@ use Pckg\Htmlbuilder\ElementObject;
 
 /**
  * Class Record
+ *
  * @package Pckg\Htmlbuilder\Datasource\Method
  */
 class Record extends AbstractDatasource
@@ -58,6 +59,7 @@ class Record extends AbstractDatasource
 
     /**
      * @param DatabaseRecord $record
+     *
      * @return $this
      */
     public function setRecord(DatabaseRecord $record)
@@ -77,6 +79,7 @@ class Record extends AbstractDatasource
 
     /**
      * @param ElementObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, ElementObject $context)
@@ -90,17 +93,23 @@ class Record extends AbstractDatasource
 
     /**
      * @param $element
+     *
      * @return mixed
      */
     public function decorateValue($element)
     {
         $name = $element->getAttribute('name');
 
-        if (in_array($element->getTag(), [
-                'input',
-                'select',
-                'textarea',
-            ]) && $this->record && $this->record->__isset($name) && is_object($element) && $element->getAttribute('type') != 'password'
+        if (in_array(
+                $element->getTag(),
+                [
+                    'input',
+                    'select',
+                    'textarea',
+                ]
+            ) && $this->record && $this->record->__isset($name) && is_object($element) && $element->getAttribute(
+                'type'
+            ) != 'password'
         ) {
             $value = $this->record->get($name);
             $element->setValue($value);

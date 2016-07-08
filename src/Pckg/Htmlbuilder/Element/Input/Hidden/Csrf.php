@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input\Hidden;
 
 /**
  * Class Csrf
+ *
  * @package Pckg\Htmlbuilder\Element\Input\Hidden
  */
 class Csrf extends Hidden
 {
+
     /**
      *
      */

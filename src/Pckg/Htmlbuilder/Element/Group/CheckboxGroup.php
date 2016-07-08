@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\Snippet\Buildable\Checkboxable;
 
 /**
  * Class CheckboxGroup
+ *
  * @package Pckg\Htmlbuilder\Element\Group
  */
 class CheckboxGroup extends Group

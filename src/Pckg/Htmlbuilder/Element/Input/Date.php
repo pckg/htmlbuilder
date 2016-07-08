@@ -6,10 +6,12 @@ use Pckg\Htmlbuilder\Element\Input;
 
 /**
  * Class Date
+ *
  * @package Pckg\Htmlbuilder\Element\Input
  */
 class Date extends Input
 {
+
     /**
      *
      */

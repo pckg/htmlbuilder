@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\ElementObject;
 
 /**
  * Class Collection
+ *
  * @package Pckg\Htmlbuilder\Datasource\Method
  */
 class Collection extends AbstractDatasource
@@ -33,6 +34,7 @@ class Collection extends AbstractDatasource
 
     /**
      * @param ElementObject $context
+     *
      * @return mixed
      */
     public function overloadUseCollectionDatasource(callable $next, ElementObject $context)
@@ -46,6 +48,7 @@ class Collection extends AbstractDatasource
 
     /**
      * @param ElementObject $context
+     *
      * @return mixed
      */
     public function overloadDecorate(callable $next, ElementObject $context)

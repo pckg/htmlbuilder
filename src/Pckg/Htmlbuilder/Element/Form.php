@@ -11,13 +11,14 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
 
 /**
  * Class Form
+ *
  * @package Pckg\Htmlbuilder\Element
  */
 class Form extends Element
 {
 
     use Buildable, Datasourcable;
-    
+
     /**
      * @var string
      */
@@ -50,6 +51,7 @@ class Form extends Element
 
     /**
      * @param $child
+     *
      * @return $this
      */
     public function addChild($child)
@@ -65,7 +67,10 @@ class Form extends Element
         }
 
         // add another fieldset for buttons
-        if (($child instanceof Submit || $child instanceof Button) && (!$this->fieldsets || !end($this->fieldsets)->hasClass('submit'))) {
+        if (($child instanceof Submit || $child instanceof Button) && (!$this->fieldsets || !end(
+                    $this->fieldsets
+                )->hasClass('submit'))
+        ) {
             $this->addChild($this->elementFactory->create('Fieldset')->addClass('submit'));
         }
 
@@ -132,6 +137,7 @@ class Form extends Element
 
     /**
      * @param $action
+     *
      * @return $this
      */
     public function setAction($action)
@@ -151,6 +157,7 @@ class Form extends Element
 
     /**
      * @param $method
+     *
      * @return $this
      */
     public function setMethod($method)
@@ -170,6 +177,7 @@ class Form extends Element
 
     /**
      * @param bool $multipart
+     *
      * @return $this
      */
     public function setMultipart($multipart = true)

@@ -6,6 +6,7 @@ use Pckg\Concept\AbstractChainOfReponsibility;
 
 /**
  * Class AbstractService
+ *
  * @package Pckg\Htmlbuilder
  */
 abstract class AbstractService extends AbstractChainOfReponsibility

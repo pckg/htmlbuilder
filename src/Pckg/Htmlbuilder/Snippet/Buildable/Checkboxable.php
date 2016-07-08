@@ -7,18 +7,6 @@ trait Checkboxable
 
     protected $values = [];
 
-    /**
-     * @return Checkbox
-     */
-    public function addCheckbox()
-    {
-        $element = $this->elementFactory->create(Checkbox::class, func_get_args());
-
-        $this->addChild($element);
-
-        return $element;
-    }
-
     public function addOptions($options)
     {
         foreach ($options as $key => $option) {
@@ -32,6 +20,7 @@ trait Checkboxable
      * @param      $key
      * @param      $value
      * @param bool $checked
+     *
      * @return Checkbox
      */
     public function addOption($value, $label = null, $checked = null)
@@ -52,6 +41,18 @@ trait Checkboxable
         }
 
         return $checkbox;
+    }
+
+    /**
+     * @return Checkbox
+     */
+    public function addCheckbox()
+    {
+        $element = $this->elementFactory->create(Checkbox::class, func_get_args());
+
+        $this->addChild($element);
+
+        return $element;
     }
 
 }

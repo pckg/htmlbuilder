@@ -7,6 +7,7 @@ use Pckg\Htmlbuilder\AbstractService;
 
 /**
  * Class Service
+ *
  * @package Pckg\Htmlbuilder\Snippet
  */
 trait Service
@@ -16,14 +17,17 @@ trait Service
      * @var string
      */
     protected $name = 'services';
+
     /**
      * @var array
      */
     protected $services = [];
+
     /**
      * @var bool
      */
     protected $serviceable = true;
+
     /**
      * @var
      */
@@ -42,6 +46,7 @@ trait Service
 
     /**
      * @param AbstractService $service
+     *
      * @return $this
      */
     public function addService(AbstractService $service)
@@ -70,6 +75,7 @@ trait Service
 
     /**
      * @param bool $serviceable
+     *
      * @return $this
      */
     public function setServiceable($serviceable = true)
@@ -89,6 +95,7 @@ trait Service
 
     /**
      * @param AbstractFactory $serviceFactory
+     *
      * @return $this
      */
     public function setServiceFactory(AbstractFactory $serviceFactory)

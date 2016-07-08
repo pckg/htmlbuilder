@@ -7,6 +7,7 @@ use Pckg\Concept\AbstractObject;
 
 /**
  * Class DecorateElement
+ *
  * @package Pckg\Htmlbuilder\Event\Handler
  */
 class DecorateElement extends AbstractChainOfReponsibility
@@ -14,6 +15,7 @@ class DecorateElement extends AbstractChainOfReponsibility
 
     /**
      * @param AbstractObject $context
+     *
      * @return mixed
      */
     public function handle(callable $next, AbstractObject $context)

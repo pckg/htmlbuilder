@@ -7,10 +7,12 @@ use Pckg\Htmlbuilder\Validator\Method\Text;
 
 /**
  * Class Datetime
+ *
  * @package Pckg\Htmlbuilder\Validator\Method
  */
 class Datetime extends Text
 {
+
     /**
      * @var array
      */
@@ -21,6 +23,7 @@ class Datetime extends Text
      * @var
      */
     protected $bitwise;
+
     /**
      * @var array
      */
@@ -128,6 +131,7 @@ class Datetime extends Text
     /**
      * @param Element $element
      * @param         $args
+     *
      * @return bool
      */
     public function validate(Element $element, $args)
