@@ -35,7 +35,6 @@ class Unique extends AbstractValidator
      */
     public function validate($value)
     {
-        // @T00D00
         return !!$value;
     }
 }

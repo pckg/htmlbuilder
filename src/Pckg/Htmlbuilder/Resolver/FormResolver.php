@@ -6,6 +6,7 @@ use Pckg\Framework\Request;
 use Pckg\Framework\Request\Data\Flash;
 use Pckg\Framework\Response;
 use Pckg\Htmlbuilder\Element\Form;
+use Pckg\Htmlbuilder\Element\Form\ResolvesOnRequest;
 
 class FormResolver implements Resolver
 {
@@ -36,7 +37,7 @@ class FormResolver implements Resolver
             $this->form = Reflect::create($form);
             $this->request = context()->getOrCreate(Request::class);
 
-            if (in_array('Pckg\Htmlbuilder\Element\Form\ResolvesOnRequest', class_implements($form))) {
+            if (object_implements($form, ResolvesOnRequest::class)) {
                 if ($this->request->isPost()) {
                     $this->response = context()->getOrCreate(Response::class);
                     $this->flash = context()->getOrCreate(Flash::class);
