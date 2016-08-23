@@ -153,6 +153,15 @@ trait Attributes
         return $this;
     }
 
+    public function setAttributes($attributes)
+    {
+        foreach ($attributes as $key => $val) {
+            $this->setAttribute($key, $val);
+        }
+        
+        return $this;
+    }
+
     /**
      * @param null $class
      *
