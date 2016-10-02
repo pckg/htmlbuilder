@@ -18,7 +18,7 @@ class DecorateElement extends AbstractChainOfReponsibility
      *
      * @return mixed
      */
-    public function handle(callable $next, AbstractObject $context)
+    public function handle(AbstractObject $context)
     {
         if ($context->getElement()->hasDecorators()) {
             //$context->getElement()->decorate();
@@ -28,7 +28,7 @@ class DecorateElement extends AbstractChainOfReponsibility
             $context->getElement()->decorate();
         }
 
-        return $next();
+        return $this;
     }
 
 }
