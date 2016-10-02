@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder;
 
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
 use Pckg\Htmlbuilder\Handler\Method\Basic;
 use Pckg\Htmlbuilder\Handler\Method\Query;
 use Pckg\Htmlbuilder\Snippet\Attributes;

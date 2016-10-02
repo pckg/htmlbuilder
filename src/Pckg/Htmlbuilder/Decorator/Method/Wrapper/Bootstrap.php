@@ -324,7 +324,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function getFullFieldClassWithOffset()
     {
-        return $this->fullFieldClass . ' ' . $this->offsetFullFieldClass;
+        return $this->fieldClass . ' ' . $this->offsetFullFieldClass;
     }
 
     /**

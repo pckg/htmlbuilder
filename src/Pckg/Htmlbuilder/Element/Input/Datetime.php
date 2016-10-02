@@ -19,6 +19,6 @@ class Datetime extends Input
     {
         parent::__construct();
 
-        $this->setType("datetime");
+        $this->addClass('datetime');
     }
 }

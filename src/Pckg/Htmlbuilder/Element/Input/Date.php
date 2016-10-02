@@ -19,6 +19,6 @@ class Date extends Input
     {
         parent::__construct();
 
-        $this->setType("date");
+        $this->addClass('date');
     }
 }

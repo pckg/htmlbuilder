@@ -19,6 +19,6 @@ class Time extends Input
     {
         parent::__construct();
 
-        $this->setType("time");
+        $this->addClass("time");
     }
 }
