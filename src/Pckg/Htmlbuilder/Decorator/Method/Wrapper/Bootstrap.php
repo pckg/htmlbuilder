@@ -309,8 +309,13 @@ class Bootstrap extends AbstractDecorator
             $element->setDecoratedParent($bootstrapDiv);
         }
 
-        if ($element->getAttribute('type') == 'file' && $value = $element->getValue()) {
-            $bootstrapDiv->addChild('<img src="' . $value . '" class="img-responsive col-lg-2" />');
+        if ($element->getAttribute('type') == 'file') {
+            $value = $element->getValue();
+            $bootstrapDiv->addChild(
+                '<pckg-htmlbuilder-dropzone :current="\'' . $value . '\'" :url="\'' . $element->getAttribute(
+                    'data-url'
+                ) . '\'"></pckg-htmlbuilder-dropzone>'
+            );
         }
 
         if ($element->getTag() == 'select') {
