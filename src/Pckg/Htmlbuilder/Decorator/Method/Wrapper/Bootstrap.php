@@ -347,16 +347,20 @@ class Bootstrap extends AbstractDecorator
         }
 
         if (!$this->grouped) {
-            $formGroupWrapper = $this->elementFactory->createFromExpression('div')->addClass($this->formGroupClass);
+            $formGroup = $this->elementFactory->createFromExpression('div.' . $this->formGroupClass);
 
             if ($this->wrapped) {
-                $bootstrapDiv->setDecoratedParent($formGroupWrapper);
+                $bootstrapDiv->setDecoratedParent($formGroup);
             } else {
-                $checkboxDiv->setDecoratedParent($formGroupWrapper);
+                $checkboxDiv->setDecoratedParent($formGroup);
             }
         } else {
+            $formGroup = $this->elementFactory->createFromExpression('div.' . $this->formGroupClass);
+            $formGroup->addClass('grouped');
+
             if ($this->wrapped) {
-                $checkboxDiv->setDecoratedParent($bootstrapDiv);
+                $bootstrapDiv->setDecoratedParent($formGroup);
+                //$checkboxDiv->setDecoratedParent($bootstrapDiv);
             } else {
 
             }
@@ -366,14 +370,14 @@ class Bootstrap extends AbstractDecorator
 
         $this->addHiddenForCheckbox($element, $labelWrapper);
 
-        if ($this->help) {
+        /*if ($this->help) {
             $help = $this->elementFactory->create("Div");
             $help->addClass('help')->addChild(
                 '<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>'
             );
 
             $labelWrapper->addChild($help);
-        }
+        }*/
 
         if (!$element->getValue()) {
             $element->setValue(1);
