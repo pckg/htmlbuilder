@@ -23,6 +23,7 @@ use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
 use Pckg\Htmlbuilder\Element\Select;
 use Pckg\Htmlbuilder\Element\Textarea;
+use Pckg\Htmlbuilder\Element\Editor;
 
 /**
  * Class Buildable
@@ -100,7 +101,7 @@ trait Buildable
      */
     public function addEditor($name = null)
     {
-        return $this->addElementByClassAndName(Textarea::class, $name);
+        return $this->addElementByClassAndName(Editor::class, $name);
     }
 
     /**
