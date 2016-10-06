@@ -311,6 +311,9 @@ class Bootstrap extends AbstractDecorator
 
         if ($element->getAttribute('type') == 'file') {
             $value = $element->getValue();
+            /**
+             * @T00D00 - Refactor this to decorator.
+             */
             $bootstrapDiv->addChild(
                 '<pckg-htmlbuilder-dropzone :current="\'' . $value . '\'" :url="\'' . $element->getAttribute(
                     'data-url'
@@ -321,6 +324,11 @@ class Bootstrap extends AbstractDecorator
         if ($element->getTag() == 'select') {
             $element->addClass("selectpicker");
             $element->setAttribute("data-live-search", "true");
+
+            /**
+             * @T00D00 - Refactor this to decorator.
+             */
+            $bootstrapDiv->addChild('<pckg-htmlbuilder-select></pckg-htmlbuilder-select>');
         }
     }
 
