@@ -11,4 +11,4 @@ modules:
         - AcceptanceHelper
     config:
         PhpBrowser:
-            url: 'http://schtr4jhh:xkce569f@admin.demo.schtr4jh.net/'
+            url: 'http://'
