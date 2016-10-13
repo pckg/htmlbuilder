@@ -310,12 +310,13 @@ class Bootstrap extends AbstractDecorator
         }
 
         if ($element->getAttribute('type') == 'file') {
-            $value = $element->getValue();
             /**
              * @T00D00 - Refactor this to decorator.
              */
             $bootstrapDiv->addChild(
-                '<pckg-htmlbuilder-dropzone :current="\'' . $value . '\'" :url="\'' . $element->getAttribute(
+                '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute(
+                    'data-image'
+                ) . '\'" :url="\'' . $element->getAttribute(
                     'data-url'
                 ) . '\'"></pckg-htmlbuilder-dropzone>'
             );
