@@ -22,6 +22,7 @@ class Request extends AbstractDatasource
     public function populateToElement()
     {
         $elements = $this->getElements();
+
         foreach ($elements as $element) {
             $this->populateElement($element);
         }
