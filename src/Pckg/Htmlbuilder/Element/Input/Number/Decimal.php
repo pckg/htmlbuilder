@@ -19,6 +19,6 @@ class Decimal extends Number
     {
         parent::__construct();
 
-        $this->setStep(0.01);
+        $this->setAttribute('step', 0.01);
     }
 }
