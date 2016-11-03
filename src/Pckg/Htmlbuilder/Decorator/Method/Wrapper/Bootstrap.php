@@ -313,13 +313,19 @@ class Bootstrap extends AbstractDecorator
             /**
              * @T00D00 - Refactor this to decorator.
              */
-            $bootstrapDiv->addChild(
-                '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute(
-                    'data-image'
-                ) . '\'" :url="\'' . $element->getAttribute(
-                    'data-url'
-                ) . '\'"></pckg-htmlbuilder-dropzone>'
-            );
+            $type = $element->getAttribute('data-type');
+            if ($type == 'picture') {
+                $bootstrapDiv->addChild(
+                    '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute('data-image') . '\'" ' .
+                    ':url="\'' . $element->getAttribute('data-url') . '\'"></pckg-htmlbuilder-dropzone>'
+                );
+            } elseif (in_array($type, ['file', 'pdf'])) {
+                $bootstrapDiv->addChild(
+                    '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute('data-' . $type) . '\'" ' .
+                    ':url="\'' . $element->getAttribute('data-url') . '\'"></pckg-htmlbuilder-dropzone>'
+                );
+
+            }
         }
 
         if ($element->getTag() == 'select') {
