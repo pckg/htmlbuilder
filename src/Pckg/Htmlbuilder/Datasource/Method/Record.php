@@ -53,7 +53,16 @@ class Record extends AbstractDatasource
         $name = $element->getName();
 
         if ($name && $this->record->keyExists($name)) {
-            $element->setValue($this->record->{$name});
+            if ($element->getAttribute('type') == 'checkbox') {
+                $element->setValue(1);
+                if ($this->record->{$name}) {
+                    $element->setAttribute('checked', 'checked');
+                }
+
+            } else {
+                $element->setValue($this->record->{$name});
+
+            }
         }
     }
 
