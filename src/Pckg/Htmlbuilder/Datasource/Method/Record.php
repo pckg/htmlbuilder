@@ -34,7 +34,9 @@ class Record extends AbstractDatasource
     {
         $name = $element->getName();
         if ($name && $this->record->hasKey($name)) {
-            $this->record->{$name} = $element->getValue();
+            if ($element->getAttribute('type') != 'file') {
+                $this->record->{$name} = $element->getValue();
+            }
         }
     }
 
