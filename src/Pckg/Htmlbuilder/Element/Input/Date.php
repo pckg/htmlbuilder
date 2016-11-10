@@ -19,6 +19,7 @@ class Date extends Input
     {
         parent::__construct();
 
+        $this->setType('text');
         $this->addClass('date');
     }
 }
