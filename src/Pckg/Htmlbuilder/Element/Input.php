@@ -72,7 +72,7 @@ class Input extends Field
      *
      * @return $this
      */
-    function setReadOnly($readOnly = true)
+    function readonly($readOnly = true)
     {
         if ($readOnly) {
             $this->setAttribute('readonly', 'readonly');
@@ -86,7 +86,7 @@ class Input extends Field
     /**
      * @return bool
      */
-    function isReadOnly()
+    function isReadonly()
     {
         return !!$this->getAttribute('readonly');
     }

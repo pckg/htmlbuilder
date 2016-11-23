@@ -13,14 +13,14 @@ use Pckg\Htmlbuilder\Element\Form;
 class Bootstrap extends Form
 {
 
+    protected $classes = ['form-horizontal'];
+
     /**
      *
      */
     public function __construct()
     {
         parent::__construct();
-
-        $this->setHorizontal();
 
         foreach ($this->decoratorFactory->create([BootstrapDecoratorWrapper::class]) as $decorator) {
             $this->addDecorator($decorator);
@@ -42,4 +42,13 @@ class Bootstrap extends Form
     {
         $this->addClass("form-horizontal");
     }
+
+    /**
+     *
+     */
+    public function setVertical()
+    {
+        $this->addClass("form-vertical");
+    }
+
 }

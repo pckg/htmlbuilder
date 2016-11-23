@@ -158,7 +158,7 @@ trait Attributes
         foreach ($attributes as $key => $val) {
             $this->setAttribute($key, $val);
         }
-        
+
         return $this;
     }
 
@@ -221,6 +221,17 @@ trait Attributes
         return isset($this->attributes[$key])
             ? $this->attributes[$key]
             : $default;
+    }
+
+    public function addAttribute($key, $value)
+    {
+        if (!isset($this->attributes[$key])) {
+            $this->attributes[$key] = $value;
+        } else {
+            $this->attributes[$key] .= $value;
+        }
+
+        return $this;
     }
 
     /**

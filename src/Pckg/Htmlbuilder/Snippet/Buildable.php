@@ -6,6 +6,7 @@ use Pckg\Htmlbuilder\Element\Button\Submit;
 use Pckg\Htmlbuilder\Element\Div;
 use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
+use Pckg\Htmlbuilder\Element\Group;
 use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
 use Pckg\Htmlbuilder\Element\Group\RadioGroup;
 use Pckg\Htmlbuilder\Element\Input\Checkbox;
@@ -166,6 +167,14 @@ trait Buildable
     public function addRadioGroup($name = null)
     {
         return $this->addElementByClassAndName(RadioGroup::class, $name);
+    }
+
+    /**
+     * @return Group
+     */
+    public function addGroup($name = null)
+    {
+        return $this->addElementByClassAndName(Group::class, $name);
     }
 
     /**
