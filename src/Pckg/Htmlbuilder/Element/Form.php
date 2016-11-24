@@ -47,6 +47,8 @@ class Form extends Element
         }
 
         $this->formFactory = new FormFactory();
+        
+        $this->addFieldset();
     }
 
     /**
@@ -123,7 +125,7 @@ class Form extends Element
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
                 $name = $field->getName();
-                $data[$field->getName()] = $field->getValue();
+                $data[$name] = $field->getValue();
             }
         }
 
