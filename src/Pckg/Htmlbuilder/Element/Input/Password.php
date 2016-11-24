@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element\Input;
 
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Element\Form;
 use Pckg\Htmlbuilder\Element\Input;
 
 /**
@@ -23,6 +24,11 @@ class Password extends Input
         $this->setType("password");
 
         $this->setAttribute('autocomplete', 'off');
+        $this->readonly();
+        $this->setAttribute(
+            'onfocus',
+            "if (this.hasAttribute('readonly')) { this.removeAttribute('readonly'); this.blur(); this.focus(); }"
+        );
     }
 
     /**
@@ -32,8 +38,11 @@ class Password extends Input
     {
         parent::transferFromElement($element);
 
+        $topParent = $this->getTopParent();
         if (($form = $this->closest('form'))) {
             $form->setAttribute('autocomplete', 'off');
+        } elseif ($topParent instanceof Form) {
+            $topParent->setAttribute('autocomplete', 'off');
         }
     }
 }

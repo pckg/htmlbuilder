@@ -23,6 +23,13 @@ trait Parenthesis
         return $this->parent;
     }
 
+    public function getTopParent()
+    {
+        return $this->getParent()
+            ? $this->getParent()->getTopParent()
+            : $this;
+    }
+
     /**
      * @param $parent
      *

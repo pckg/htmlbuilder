@@ -34,7 +34,7 @@ class Record extends AbstractDatasource
     {
         $name = $element->getName();
         if ($name && $this->record->hasKey($name)) {
-            if ($element->getAttribute('type') != 'file') {
+            if (!in_array($element->getAttribute('type'), ['file', 'password'])) {
                 $this->record->{$name} = $element->getValue();
             }
         }
@@ -61,6 +61,9 @@ class Record extends AbstractDatasource
                     $element->setAttribute('checked', 'checked');
                 }
 
+            } elseif ($element->getAttribute('type') == 'password') {
+                // do nothing
+                
             } else {
                 $element->setValue($this->record->{$name});
 
