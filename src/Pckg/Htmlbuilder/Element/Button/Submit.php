@@ -25,7 +25,7 @@ class Submit extends Input
         parent::__construct();
 
         $this->setType("submit");
-        $this->setAttribute("value", "Submit");
+        $this->setAttribute("value", __('btn.submit'));
         $this->setAttribute("name", "submit");
     }
 
