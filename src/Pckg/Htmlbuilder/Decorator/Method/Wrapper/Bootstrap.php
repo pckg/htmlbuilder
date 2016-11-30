@@ -225,6 +225,8 @@ class Bootstrap extends AbstractDecorator
         } else if (in_array($element->getTag(), ['div'])) {
             if ($element instanceof Element\Group) {
                 $this->decorateGroup($element);
+            } elseif ($element instanceof Element\Div) {
+                $this->decorateGroup($element);
             }
 
         }

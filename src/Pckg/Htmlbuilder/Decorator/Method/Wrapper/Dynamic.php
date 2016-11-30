@@ -20,6 +20,8 @@ class Dynamic extends AbstractDecorator
      */
     protected $recursive = true;
 
+    protected $uploadable = true;
+
     /**
      *
      */
@@ -27,7 +29,15 @@ class Dynamic extends AbstractDecorator
     {
         $this->methods = [
             'decorate',
+            'setUploadable',
         ];
+    }
+
+    public function overloadSetUploadable(callable $next, AbstractObject $context)
+    {
+        $this->uploadable = $context->getArg(0);
+
+        return $next();
     }
 
     /**
@@ -82,7 +92,7 @@ class Dynamic extends AbstractDecorator
     {
         $decoratedParent = $element->getDecoratedParent();
 
-        if ($element->getAttribute('type') == 'file') {
+        if ($element->getAttribute('type') == 'file' && $this->uploadable) {
             $type = $element->getAttribute('data-type');
             if ($type == 'picture') {
                 $decoratedParent->addChild(
