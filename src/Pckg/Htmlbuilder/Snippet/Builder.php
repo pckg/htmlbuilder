@@ -5,6 +5,7 @@ namespace Pckg\Htmlbuilder\Snippet;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Event\DecorationRequested;
 use Pckg\Htmlbuilder\Event\PreDecorationRequested;
+use Throwable;
 
 /**
  * Class Builder
@@ -38,7 +39,7 @@ trait Builder
         if (!$this->html) {
             try {
                 $this->toHTML();
-            } catch (\Exception $e) {
+            } catch (Throwable $e) {
                 return '<!-- ' . $e->getMessage() . $e->getFile() . '-->';
             }
         }
