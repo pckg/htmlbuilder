@@ -77,6 +77,9 @@ class Dynamic extends AbstractDecorator
 
         } else if ($tag == 'input' && in_array($type, ['button', 'submit', 'reset'])) {
 
+        } else if ($tag == 'textarea') {
+            $this->decorateTextarea($element);
+
         } else {
             $this->decorateField($element);
 
@@ -110,6 +113,15 @@ class Dynamic extends AbstractDecorator
 
         if ($element->getTag() == 'select') {
             $decoratedParent->addChild('<pckg-htmlbuilder-select></pckg-htmlbuilder-select>');
+        }
+    }
+
+    protected function decorateTextarea($element)
+    {
+        if ($element->hasClass('editor')) {
+            $decoratedParent = $element->getDecoratedParent();
+            $label = $decoratedParent->findChild('label');
+            $label->addChild('<button type="button" class="pckg-editor-toggle btn btn-xs btn-default">Toggle editor</button>');
         }
     }
 
