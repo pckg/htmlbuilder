@@ -124,8 +124,10 @@ class Form extends Element
         $data = [];
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
-                $name = $field->getName();
-                $data[$name] = $field->getValue();
+                if ($field instanceof Input) {
+                    $name = $field->getName();
+                    $data[$name] = $field->getValue();
+                }
             }
         }
 
