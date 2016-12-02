@@ -112,7 +112,11 @@ class Dynamic extends AbstractDecorator
         }
 
         if ($element->getTag() == 'select') {
-            $decoratedParent->addChild('<pckg-htmlbuilder-select></pckg-htmlbuilder-select>');
+            $decoratedParent->addChild(
+                '<pckg-htmlbuilder-select :url="\'' . $element->getAttribute('data-url') .
+                '\'" :refresh-url="\'' . $element->getAttribute('data-refresh-url') .
+                '\'"></pckg-htmlbuilder-select>'
+            );
         }
     }
 
@@ -121,7 +125,9 @@ class Dynamic extends AbstractDecorator
         if ($element->hasClass('editor')) {
             $decoratedParent = $element->getDecoratedParent();
             $label = $decoratedParent->findChild('label');
-            $label->addChild('<button type="button" class="pckg-editor-toggle btn btn-xs btn-default">Toggle editor</button>');
+            $label->addChild(
+                '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default">Toggle editor</button>'
+            );
         }
     }
 
