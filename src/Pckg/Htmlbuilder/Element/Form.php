@@ -47,7 +47,7 @@ class Form extends Element
         }
 
         $this->formFactory = new FormFactory();
-        
+
         $this->addFieldset();
     }
 
@@ -132,9 +132,18 @@ class Form extends Element
         return $data;
     }
 
-    public function getRawData()
+    public function getRawData($keys = [])
     {
-        return $_POST;
+        if (!$keys) {
+            return $_POST;
+        }
+        $values = [];
+
+        foreach ($keys as $key) {
+            $values[$key] = $_POST[$key] ?? null;
+        }
+
+        return $values;
     }
 
     /**
