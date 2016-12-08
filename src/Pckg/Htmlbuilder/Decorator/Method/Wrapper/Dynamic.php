@@ -56,6 +56,9 @@ class Dynamic extends AbstractDecorator
         ) {
             $this->decorateParent($element);
 
+        } else if ($element->getTag() == 'select') {
+            $element->addClass("pckg-selectpicker");
+            $element->setAttribute("data-live-search", "true");
         }
 
         return $next();

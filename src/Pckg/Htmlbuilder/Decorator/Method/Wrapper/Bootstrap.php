@@ -310,11 +310,6 @@ class Bootstrap extends AbstractDecorator
         } else {
             $element->setDecoratedParent($bootstrapDiv);
         }
-
-        if ($element->getTag() == 'select') {
-            $element->addClass("selectpicker");
-            $element->setAttribute("data-live-search", "true");
-        }
     }
 
     /**
