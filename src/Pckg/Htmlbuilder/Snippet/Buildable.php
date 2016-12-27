@@ -4,6 +4,7 @@ use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Cancel;
 use Pckg\Htmlbuilder\Element\Button\Submit;
 use Pckg\Htmlbuilder\Element\Div;
+use Pckg\Htmlbuilder\Element\Editor;
 use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Element\Group;
@@ -15,16 +16,17 @@ use Pckg\Htmlbuilder\Element\Input\Datetime;
 use Pckg\Htmlbuilder\Element\Input\Email;
 use Pckg\Htmlbuilder\Element\Input\File;
 use Pckg\Htmlbuilder\Element\Input\File\Picture;
+use Pckg\Htmlbuilder\Element\Input\Geo;
 use Pckg\Htmlbuilder\Element\Input\Hidden;
 use Pckg\Htmlbuilder\Element\Input\Number;
 use Pckg\Htmlbuilder\Element\Input\Number\Decimal;
 use Pckg\Htmlbuilder\Element\Input\Number\Integer;
 use Pckg\Htmlbuilder\Element\Input\Password;
+use Pckg\Htmlbuilder\Element\Input\Point;
 use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
 use Pckg\Htmlbuilder\Element\Select;
 use Pckg\Htmlbuilder\Element\Textarea;
-use Pckg\Htmlbuilder\Element\Editor;
 
 /**
  * Class Buildable
@@ -87,6 +89,22 @@ trait Buildable
     public function addText($name = null)
     {
         return $this->addElementByClassAndName(Text::class, $name);
+    }
+
+    /**
+     * @return Text
+     */
+    public function addPoint($name = null)
+    {
+        return $this->addElementByClassAndName(Point::class, $name);
+    }
+
+    /**
+     * @return Text
+     */
+    public function addGeo($name = null)
+    {
+        return $this->addElementByClassAndName(Geo::class, $name);
     }
 
     /**

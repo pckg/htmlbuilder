@@ -120,6 +120,10 @@ class Dynamic extends AbstractDecorator
             $element->addClass("pckg-selectpicker");
             $element->setAttribute("data-live-search", "true");
         }
+
+        if ($element->hasClass('geo')) {
+            $decoratedParent->addChild('<pckg-htmlbuilder-geo></pckg-htmlbuilder-geo>');
+        }
     }
 
     protected function decorateTextarea($element)
