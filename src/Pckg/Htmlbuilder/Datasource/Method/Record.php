@@ -34,8 +34,24 @@ class Record extends AbstractDatasource
     {
         $name = $element->getName();
         if ($name && $this->record->hasKey($name)) {
-            if (!in_array($element->getAttribute('type'), ['file', 'password'])) {
+            if (in_array($element->getAttribute('type'), ['file', 'password'])) {
+                // file and password fields are handled manually ... currently ... ;-)
+
+            } elseif ($element->hasClass(['geo', 'point'])) {
+                // geometric point
+                $value = explode(';', $element->getValue());
+
+                if (count($value) == 1) {
+                    $value[] = 0;
+                } else if (count($value) > 2) {
+                    $value = array_slice($value, 0, 2);
+                }
+
+                $this->record->{$name} = $value ?? null;
+
+            } else {
                 $this->record->{$name} = $element->getValue();
+
             }
         }
     }
@@ -63,7 +79,10 @@ class Record extends AbstractDatasource
 
             } elseif ($element->getAttribute('type') == 'password') {
                 // do nothing
-                
+
+            } elseif ($element->hasClass(['geo', 'point'])) {
+                $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
+
             } else {
                 $element->setValue($this->record->{$name});
 

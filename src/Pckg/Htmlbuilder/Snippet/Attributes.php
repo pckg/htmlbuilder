@@ -274,7 +274,11 @@ trait Attributes
      */
     public function hasClass($class)
     {
-        foreach (explode(' ', $class) as $c) {
+        $classes = is_array($class)
+            ? $class
+            : explode(' ', $class);
+        
+        foreach ($classes as $c) {
             if (!in_array($c, $this->classes)) {
                 return false;
             }
