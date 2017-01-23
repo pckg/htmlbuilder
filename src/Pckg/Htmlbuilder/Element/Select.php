@@ -121,4 +121,16 @@ class Select extends Element
             return $option;
         }
     }
+
+    public function multiple($multiple = true)
+    {
+        if ($multiple) {
+            $this->setAttribute('multiple', 'multiple');
+        } else {
+            $this->removeAttribute('multiple');
+        }
+
+        return $this;
+    }
+
 }
