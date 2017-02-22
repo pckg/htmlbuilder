@@ -153,6 +153,15 @@ trait Attributes
         return $this;
     }
 
+    public function removeAttribute($key)
+    {
+        if (array_key_exists($key, $this->attributes)) {
+            unset($this->attributes[$key]);
+        }
+
+        return $this;
+    }
+
     public function setAttributes($attributes)
     {
         foreach ($attributes as $key => $val) {
@@ -277,7 +286,7 @@ trait Attributes
         $classes = is_array($class)
             ? $class
             : explode(' ', $class);
-        
+
         foreach ($classes as $c) {
             if (!in_array($c, $this->classes)) {
                 return false;

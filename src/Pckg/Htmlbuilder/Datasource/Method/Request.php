@@ -33,7 +33,7 @@ class Request extends AbstractDatasource
     protected function populateElement(Element $element)
     {
         $name = $element->getName();
-        if ($name && isset($_POST[$name])) {
+        if ($name && array_key_exists($name, $_POST)) {
             $element->setValue($_POST[$name]);
         }
     }

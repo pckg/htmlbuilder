@@ -212,7 +212,9 @@ class Form extends Element
         $errors = [];
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
-                if ($field->isValidatable() && !$field->isValid() && $errs = $field->getErrors()) {
+                if ($field instanceof Element && $field->isValidatable() && !$field->isValid(
+                    ) && $errs = $field->getErrors()
+                ) {
                     $errors[] = $errs;
                 }
             }
