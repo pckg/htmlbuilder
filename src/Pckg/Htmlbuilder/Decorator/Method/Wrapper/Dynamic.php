@@ -55,7 +55,6 @@ class Dynamic extends AbstractDecorator
             ) && $element->getAttribute('type') != 'hidden'
         ) {
             $this->decorateParent($element);
-
         }
 
         return $next();
@@ -72,17 +71,12 @@ class Dynamic extends AbstractDecorator
         $type = $element->getType();
 
         if ($tag == 'input' && $type == 'checkbox') {
-
         } else if ($tag == 'input' && $type == 'radio') {
-
         } else if ($tag == 'input' && in_array($type, ['button', 'submit', 'reset'])) {
-
         } else if ($tag == 'textarea') {
             $this->decorateTextarea($element);
-
         } else {
             $this->decorateField($element);
-
         }
 
         return $element;
@@ -107,7 +101,6 @@ class Dynamic extends AbstractDecorator
                     '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute('data-' . $type) . '\'" ' .
                     ':url="\'' . $element->getAttribute('data-url') . '\'"></pckg-htmlbuilder-dropzone>'
                 );
-
             }
         }
 
@@ -131,6 +124,9 @@ class Dynamic extends AbstractDecorator
         if ($element->hasClass('editor')) {
             $decoratedParent = $element->getDecoratedParent();
             $label = $decoratedParent->findChild('label');
+            if (!$label) {
+                $label = $decoratedParent;
+            }
             $label->addChild(
                 '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default">Turn Editor On/Off</button>'
             );

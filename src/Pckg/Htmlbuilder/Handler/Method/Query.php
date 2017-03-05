@@ -133,8 +133,7 @@ class Query extends AbstractHandler
             }
         }
 
-        return null;
-        $context->handleReturnNull();
+        $context->setReturnMethod('null');
 
         return $next();
     }

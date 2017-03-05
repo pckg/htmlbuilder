@@ -56,7 +56,7 @@ class Element
         if ($name == 'value') {
             return $this->getValue();
         }
-        
+
         $first = $this->findChild('name=' . $name);
 
         return $first;
