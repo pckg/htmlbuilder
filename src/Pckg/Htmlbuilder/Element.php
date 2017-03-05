@@ -2,7 +2,6 @@
 
 namespace Pckg\Htmlbuilder;
 
-use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
 use Pckg\Htmlbuilder\Handler\Method\Basic;
 use Pckg\Htmlbuilder\Handler\Method\Query;
 use Pckg\Htmlbuilder\Snippet\Attributes;
@@ -50,6 +49,17 @@ class Element
         }
 
         $this->initBuilder();
+    }
+
+    public function __get($name)
+    {
+        if ($name == 'value') {
+            return $this->getValue();
+        }
+        
+        $first = $this->findChild('name=' . $name);
+
+        return $first;
     }
 
     /*
@@ -180,13 +190,12 @@ class Element
     {
         if ($regex == '*') {
             return true;
-
         } else if (substr($regex, 0, 1) == '.') {
             return $this->hasClass(substr($regex, 1));
-
+        } else if (strpos($regex, 'name=') === 0) {
+            return $this->getAttribute('name') == substr($regex, strlen('name='));
         } else {
             return $this->getTag() == $regex;
-
         }
 
         return false;

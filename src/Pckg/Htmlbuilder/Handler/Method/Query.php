@@ -120,11 +120,20 @@ class Query extends AbstractHandler
         $regex = $context->getArg(0);
 
         foreach ($context->getElement()->getChildren() as $child) {
-            if ($child instanceof Element && $child->matchesRegex($regex)) {
-                return $child;
+            if ($child instanceof Element) {
+                if ($child->matchesRegex($regex)) {
+                    return $child;
+                } else {
+                    $result = $child->findChild($regex);
+
+                    if ($result) {
+                        return $result;
+                    }
+                }
             }
         }
 
+        return null;
         $context->handleReturnNull();
 
         return $next();
