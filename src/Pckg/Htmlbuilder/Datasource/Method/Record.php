@@ -48,10 +48,8 @@ class Record extends AbstractDatasource
                 }
 
                 $this->record->{$name} = $value ?? null;
-
             } else {
                 $this->record->{$name} = $element->getValue();
-
             }
         }
     }
@@ -76,16 +74,18 @@ class Record extends AbstractDatasource
                 if ($this->record->{$name}) {
                     $element->setAttribute('checked', 'checked');
                 }
-
             } elseif ($element->getAttribute('type') == 'password') {
                 // do nothing
 
             } elseif ($element->hasClass(['geo', 'point'])) {
                 $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
 
+            } elseif ($element->getTag() == 'textarea') {
+                $element->setValue(htmlspecialchars($this->record->{$name}));
+
             } else {
                 $element->setValue($this->record->{$name});
-
+                
             }
         }
     }
