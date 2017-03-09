@@ -1,6 +1,6 @@
 {
   "name": "pckg/htmlbuilder",
-  "description": "Build advanced forms in PHP with datasources, decorators, handlers and validators",
+  "description": "Build advanced forms in php with datasources, decorators, handlers and validators",
   "homepage": "https://bitbucket.org/lfw/htmlbuilder",
   "license": "MIT",
   "authors": [
