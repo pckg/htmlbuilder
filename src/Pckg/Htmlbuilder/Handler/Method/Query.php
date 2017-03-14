@@ -72,10 +72,8 @@ class Query extends AbstractHandler
 
         if (!$parent && $this->matches($regex)) {
             return $this;
-
         } else if ($parent && ($farest = $parent->overloadFarest($regex))) {
             return $farest;
-
         }
 
         $context->setReturn(false);
@@ -118,24 +116,23 @@ class Query extends AbstractHandler
     public function overloadFindChild(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
+        $element = $context->getElement();
 
-        foreach ($context->getElement()->getChildren() as $child) {
+        foreach ($element->getChildren() as $child) {
             if ($child instanceof Element) {
                 if ($child->matchesRegex($regex)) {
                     return $child;
-                } else {
-                    $result = $child->findChild($regex);
+                }
 
-                    if ($result) {
-                        return $result;
-                    }
+                $result = $child->findChild($regex);
+
+                if ($result) {
+                    return $result;
                 }
             }
         }
 
-        $context->setReturnMethod('null');
-
-        return $next();
+        return null;
     }
 
     /**
@@ -189,7 +186,6 @@ class Query extends AbstractHandler
 
         if (!$element->getParent()) {
             $context->setReturn(null);
-
         } else {
             foreach ($element->getParent()->getChildren() AS $i => $child) {
                 if ($child === $element) {
