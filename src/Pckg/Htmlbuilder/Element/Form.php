@@ -61,6 +61,8 @@ class Form extends Element
         if ($child instanceof Fieldset) {
             $this->fieldsets[] = $child;
 
+        } else if (!$this->fieldsets) {
+            $this->addFieldset();
         }
 
         if ($child instanceof Form && !$this->isStepped()) {
