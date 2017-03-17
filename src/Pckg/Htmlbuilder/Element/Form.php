@@ -4,7 +4,6 @@ namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Htmlbuilder\Datasource\Datasourcable;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Submit;
 use Pckg\Htmlbuilder\Handler\Method\Step;
 use Pckg\Htmlbuilder\Snippet\Buildable;
@@ -60,14 +59,12 @@ class Form extends Element
     {
         if ($child instanceof Fieldset) {
             $this->fieldsets[] = $child;
-
         } else if (!$this->fieldsets) {
             $this->addFieldset();
         }
 
         if ($child instanceof Form && !$this->isStepped()) {
             $child->setTag('div')->setClass('wrappedForm');
-
         }
 
         // add another fieldset for buttons
@@ -100,6 +97,18 @@ class Form extends Element
     public function getFieldsets()
     {
         return $this->fieldsets;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldset()
+    {
+        if (!$this->fieldsets) {
+            $this->addFieldset();
+        }
+
+        return end($this->fieldsets);
     }
 
     /**
@@ -214,8 +223,8 @@ class Form extends Element
         $errors = [];
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
-                if ($field instanceof Element && $field->isValidatable() && !$field->isValid(
-                    ) && $errs = $field->getErrors()
+                if ($field instanceof Element && $field->isValidatable() && !$field->isValid() &&
+                    $errs = $field->getErrors()
                 ) {
                     $errors[] = $errs;
                 }
