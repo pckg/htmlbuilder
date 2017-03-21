@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
+use Pckg\Collection;
 use Pckg\Htmlbuilder\Datasource\Datasourcable;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Button\Submit;
@@ -143,6 +144,11 @@ class Form extends Element
         }
 
         return $data;
+    }
+
+    public function getCollectionData()
+    {
+        return new Collection($this->getData());
     }
 
     public function getRawData($keys = [])
