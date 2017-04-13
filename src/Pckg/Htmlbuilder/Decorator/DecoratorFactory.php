@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder\Decorator;
 
+use Gnp\Old\Form\GnpDecorator;
 use Pckg\Concept\AbstractFactory;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJS;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJSValidator;
@@ -10,7 +11,6 @@ use Pckg\Htmlbuilder\Decorator\Method\Record;
 use Pckg\Htmlbuilder\Decorator\Method\Step;
 use Pckg\Htmlbuilder\Decorator\Method\Step\Horizontal;
 use Pckg\Htmlbuilder\Decorator\Method\Step\Tabbed;
-use Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
 use Pckg\Htmlbuilder\Validator\Method\Csrf;
 
@@ -36,6 +36,7 @@ class DecoratorFactory extends AbstractFactory
         'Step\Tabbed'        => Tabbed::class,
         'Step\Horizontal'    => Horizontal::class,
         'Wrapper\Bootstrap'  => Bootstrap::class,
+        'Gnp'                => GnpDecorator::class,
     ];
 
 }
