@@ -22,13 +22,6 @@ class Password extends Input
         parent::__construct();
 
         $this->setType("password");
-
-        $this->setAttribute('autocomplete', 'off');
-        $this->readonly();
-        $this->setAttribute(
-            'onfocus',
-            "if (this.hasAttribute('readonly')) { this.removeAttribute('readonly'); this.blur(); this.focus(); }"
-        );
     }
 
     /**
