@@ -3,6 +3,7 @@
 use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Cancel;
 use Pckg\Htmlbuilder\Element\Button\Submit;
+use Pckg\Htmlbuilder\Element\Column;
 use Pckg\Htmlbuilder\Element\Div;
 use Pckg\Htmlbuilder\Element\Editor;
 use Pckg\Htmlbuilder\Element\ElementFactory;
@@ -25,6 +26,7 @@ use Pckg\Htmlbuilder\Element\Input\Password;
 use Pckg\Htmlbuilder\Element\Input\Point;
 use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
+use Pckg\Htmlbuilder\Element\Row;
 use Pckg\Htmlbuilder\Element\Select;
 use Pckg\Htmlbuilder\Element\Textarea;
 
@@ -275,6 +277,38 @@ trait Buildable
     public function addDiv()
     {
         $element = $this->elementFactory->create(Div::class);
+
+        $this->addChild($element);
+
+        return $element;
+    }
+
+    /**
+     * @return Row
+     */
+    public function addRow($class = null)
+    {
+        $element = $this->elementFactory->create(Row::class);
+
+        if ($class) {
+            $element->addClass($class);
+        }
+
+        $this->addChild($element);
+
+        return $element;
+    }
+
+    /**
+     * @return Column
+     */
+    public function addColumn($class = null)
+    {
+        $element = $this->elementFactory->create(Column::class);
+
+        if ($class) {
+            $element->addClass($class);
+        }
 
         $this->addChild($element);
 

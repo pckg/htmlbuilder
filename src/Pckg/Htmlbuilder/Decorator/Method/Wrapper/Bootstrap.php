@@ -5,7 +5,6 @@ namespace Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Element\Input\Hidden;
 
 /*
  * Bootstrap decorator encapsulates elements in Bootstrap wrappers and classes
@@ -221,7 +220,6 @@ class Bootstrap extends AbstractDecorator
             ) && $element->getAttribute('type') != 'hidden'
         ) {
             $this->decorateParent($element);
-
         } else if (in_array($element->getTag(), ['div', 'fieldset'])) {
             if ($element instanceof Element\Group) {
                 $this->decorateGroup($element);
@@ -230,7 +228,6 @@ class Bootstrap extends AbstractDecorator
             } elseif ($element instanceof Element\Fieldset) {
                 $this->decorateGroup($element);
             }
-
         }
 
         return $next();
@@ -248,16 +245,12 @@ class Bootstrap extends AbstractDecorator
 
         if ($tag == 'input' && $type == 'checkbox') {
             $this->decorateCheckbox($element);
-
         } else if ($tag == 'input' && $type == 'radio') {
             $this->decorateRadio($element);
-
         } else if ($tag == 'input' && in_array($type, ['button', 'submit', 'reset'])) {
             $this->decorateButton($element);
-
         } else {
             $this->decorateField($element);
-
         }
 
         return $element;
@@ -333,11 +326,13 @@ class Bootstrap extends AbstractDecorator
         if ($this->wrapped) {
             $bootstrapDiv = $this->elementFactory
                 ->createFromExpression('div.' . $this->getFullFieldClassWithOffset());
+            $bootstrapDiv->addClass('wrapped');
             $checkboxDiv->setDecoratedParent($bootstrapDiv);
         }
 
         if (!$this->grouped) {
             $formGroup = $this->elementFactory->createFromExpression('div.' . $this->formGroupClass);
+            $formGroup->addClass('non-grouped');
 
             if ($this->wrapped) {
                 $bootstrapDiv->setDecoratedParent($formGroup);
@@ -352,7 +347,6 @@ class Bootstrap extends AbstractDecorator
                 $bootstrapDiv->setDecoratedParent($formGroup);
                 //$checkboxDiv->setDecoratedParent($bootstrapDiv);
             } else {
-
             }
         }
 
@@ -452,7 +446,9 @@ class Bootstrap extends AbstractDecorator
         if ($this->help) {
             $help = $this->elementFactory->create("Div");
             $help->addClass('help')->addChild(
-                '<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' . $this->help . '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>'
+                '<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="' .
+                $this->help .
+                '" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>'
             );
 
             $label->addChild($help);
@@ -474,10 +470,8 @@ class Bootstrap extends AbstractDecorator
 
         if ($element->getAttribute('type') == 'submit') {
             $element->addClass('btn-success');
-
         } else if ($element->getAttribute('type') == 'reset') {
             $element->addClass('btn-warning');
-
         }
     }
 

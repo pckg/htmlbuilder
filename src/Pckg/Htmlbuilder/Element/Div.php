@@ -17,12 +17,4 @@ class Div extends Element
      */
     protected $tag = 'div';
 
-    /**
-     *
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
 }
