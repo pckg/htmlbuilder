@@ -83,7 +83,7 @@ class Select extends Element
      */
     public function addOptions($options)
     {
-        if (is_callable($options)) {
+        if (is_only_callable($options)) {
             $options($this);
         } else {
             foreach ($options AS $key => $option) {
