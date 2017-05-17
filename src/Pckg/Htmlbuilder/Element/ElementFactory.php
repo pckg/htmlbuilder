@@ -41,6 +41,7 @@ class ElementFactory extends AbstractFactory
         'Div'           => Div::class,
         'Label'         => Label::class,
         'Ul'            => Ul::class,
+        'Field'         => Field::class,
         'Id'            => Hidden::class,
         'Hidden'        => Hidden::class,
         'Select'        => Select::class,

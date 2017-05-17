@@ -221,7 +221,9 @@ class Bootstrap extends AbstractDecorator
         ) {
             $this->decorateParent($element);
         } else if (in_array($element->getTag(), ['div', 'fieldset'])) {
-            if ($element instanceof Element\Group) {
+            if($element instanceof Element\Field){
+                $this->decorateParent($element);
+            }elseif ($element instanceof Element\Group) {
                 $this->decorateGroup($element);
             } elseif ($element instanceof Element\Div) {
                 $this->decorateGroup($element);

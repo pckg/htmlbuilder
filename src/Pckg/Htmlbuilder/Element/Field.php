@@ -15,4 +15,6 @@ class Field extends Element
 
     use Labeled;
 
+    protected $tag = 'div';
+
 }
