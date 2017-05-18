@@ -49,6 +49,7 @@ trait Buildable
         $element = $this->elementFactory->create($class, func_get_args());
 
         $this->addChild($element);
+        $this->addChildAlias($name, $element);
 
         if ($name) {
             $element->setName($name);

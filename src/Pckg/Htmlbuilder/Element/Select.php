@@ -87,7 +87,7 @@ class Select extends Element
             $options($this);
         } else {
             foreach ($options AS $key => $option) {
-                $this->addOption($key, $option, $key == $this->value);
+                $this->addOption($key, strip_tags($option), $key == $this->value);
             }
         }
 

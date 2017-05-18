@@ -2,6 +2,7 @@
 
 namespace Pckg\Htmlbuilder;
 
+use Pckg\Htmlbuilder\Element\Field;
 use Pckg\Htmlbuilder\Handler\Method\Basic;
 use Pckg\Htmlbuilder\Handler\Method\Query;
 use Pckg\Htmlbuilder\Snippet\Attributes;
@@ -35,6 +36,8 @@ class Element
      */
     protected $siblings = [];
 
+    protected $childrenAliases = [];
+
     /**
      *
      */
@@ -59,7 +62,20 @@ class Element
 
         $first = $this->findChild('name=' . $name);
 
+        if (!$first) {
+            $first = $this->findChild('class=' . $name);
+        }
+
+        if (!$first) {
+            $first = $this->findFirstByName($name);
+        }
+
         return $first;
+    }
+
+    public function __isset($name)
+    {
+        return array_key_exists($name, $this->childrenAliases);
     }
 
     /*
@@ -96,6 +112,13 @@ class Element
         );
 
         return $result;
+    }
+
+    public function addChildAlias($alias, $child)
+    {
+        $this->childrenAliases[$alias] = $child;
+
+        return $this;
     }
 
     /**
