@@ -68,8 +68,8 @@ class Select extends Element
                     $option->getId() => (!$depth ? '' : (str_repeat(
                                                              '=&nbsp;&nbsp;',
                                                              $depth
-                                                         ) . ' ')) . ($option->getTitle() ?: $option->getSlug(
-                            ) . ' #' . $option->getId()),
+                                                         ) . ' ')) .
+                                        ($option->getTitle() ?: $option->getSlug() . ' #' . $option->getId()),
                 ]
             );
             $this->addTreeOptions($option->getChildren, $depth + 1);
