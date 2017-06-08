@@ -121,6 +121,14 @@ class Select extends Field
         }
     }
 
+    public function addOptionGroup($label)
+    {
+        $option = $this->elementFactory->create(Option::class);
+        $option->setAttribute('label', $label);
+
+        return $option;
+    }
+
     public function multiple($multiple = true)
     {
         if ($multiple) {
