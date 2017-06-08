@@ -2,7 +2,6 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
-use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Select\Option;
 use Pckg\Htmlbuilder\Snippet\Labeled;
 
@@ -11,7 +10,7 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
  *
  * @package Pckg\Htmlbuilder\Element
  */
-class Select extends Element
+class Select extends Field
 {
 
     use Labeled;
