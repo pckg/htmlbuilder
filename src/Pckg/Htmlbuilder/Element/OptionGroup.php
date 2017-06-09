@@ -9,7 +9,7 @@ use Pckg\Htmlbuilder\Element\Select\Option;
  *
  * @package Pckg\Htmlbuilder\Element
  */
-class Select extends Field
+class OptionGroup extends Field
 {
 
     /**
