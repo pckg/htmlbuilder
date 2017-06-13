@@ -23,6 +23,11 @@ class OptionGroup extends Field
     protected $options = [];
 
     /**
+     * @var Select
+     */
+    protected $select;
+
+    /**
      * @param $options
      *
      * @return $this
@@ -58,7 +63,7 @@ class OptionGroup extends Field
             $option->setValue($key);
             $option->addChild($value);
 
-            if ($selected || $key == $this->value) {
+            if ($selected || ($this->select && $key == $this->select->getValue())) {
                 $option->setAttribute('selected', 'selected');
             }
 
@@ -66,6 +71,13 @@ class OptionGroup extends Field
 
             return $option;
         }
+    }
+
+    public function setSelect(Select $select)
+    {
+        $this->select = $select;
+
+        return $this;
     }
 
 }

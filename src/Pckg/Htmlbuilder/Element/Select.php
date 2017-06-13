@@ -50,7 +50,13 @@ class Select extends Field
     public function setSelected($value)
     {
         foreach ($this->children AS $child) {
-            $child->setSelected($child->getValue() == $value);
+            if ($child instanceof OptionGroup) {
+                foreach ($child->getChildren() as $option) {
+                    $option->setSelected($option->getValue() == $value);
+                }
+            } else {
+                $child->setSelected($child->getValue() == $value);
+            }
         }
     }
 
@@ -123,14 +129,16 @@ class Select extends Field
 
     public function addOptionGroup($label = null)
     {
-        $option = $this->elementFactory->create(OptionGroup::class);
-        $this->addChild($option);
+        $optionGroup = $this->elementFactory->create(OptionGroup::class);
+        $this->addChild($optionGroup);
 
         if ($label) {
-            $option->setAttribute('label', $label);
+            $optionGroup->setAttribute('label', $label);
         }
 
-        return $option;
+        $optionGroup->setSelect($this);
+
+        return $optionGroup;
     }
 
     public function multiple($multiple = true)
