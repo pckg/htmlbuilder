@@ -17,6 +17,8 @@ class Text extends AbstractGroupValidator
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->validators = $this->validatorFactory->create(
             [
                 'Text\Min',

@@ -1,8 +1,7 @@
-<?php
-
-namespace Pckg\Htmlbuilder;
+<?php namespace Pckg\Htmlbuilder;
 
 use Pckg\Htmlbuilder\Element\Field;
+use Pckg\Concept\ChainOfResponsibility;
 use Pckg\Htmlbuilder\Handler\Method\Basic;
 use Pckg\Htmlbuilder\Handler\Method\Query;
 use Pckg\Htmlbuilder\Snippet\Attributes;
@@ -70,6 +69,10 @@ class Element
             $first = $this->findFirstByName($name);
         }
 
+        if (!$first) {
+            $first = $this->findChild('.' . $name);
+        }
+
         return $first;
     }
 
@@ -111,7 +114,9 @@ class Element
             }
         );
 
-        return $result;
+        return !$handlers || $result instanceof ChainOfResponsibility
+            ? $this
+            : $result;
     }
 
     public function addChildAlias($alias, $child)

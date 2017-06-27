@@ -79,8 +79,6 @@ class Number extends Text
         ],
     ];
 
-    // overload text
-
     /**
      * @return bool
      */

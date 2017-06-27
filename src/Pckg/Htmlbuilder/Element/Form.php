@@ -101,7 +101,7 @@ class Form extends Element
     }
 
     /**
-     * @return array
+     * @return Fieldset
      */
     public function getFieldset()
     {

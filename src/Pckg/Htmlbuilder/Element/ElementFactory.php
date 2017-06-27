@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder\Element;
 
 use Pckg\Concept\AbstractFactory;
+use Pckg\Htmlbuilder\Decorator\Method\Wrapper\Bootstrap;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Button\Cancel;
 use Pckg\Htmlbuilder\Element\Button\Submit;
@@ -23,6 +24,9 @@ use Pckg\Htmlbuilder\Element\Input\Radio;
 use Pckg\Htmlbuilder\Element\Input\Text;
 use Pckg\Htmlbuilder\Element\Input\Time;
 use Pckg\Htmlbuilder\Element\Select\Option;
+use Pckg\Htmlbuilder\Validator\Method\Common;
+use Pckg\Htmlbuilder\Validator\Method\Number as NumberValidator;
+use Pckg\Htmlbuilder\Validator\Method\Text as TextValidator;
 
 /**
  * Class ElementFactory
@@ -141,6 +145,17 @@ class ElementFactory extends AbstractFactory
             'validator' => [
                 'Common',
             ],
+        ],
+        Number::class                             => [
+            'decorator' => [Bootstrap::class],
+            'validator' => [Common::class, NumberValidator::class],
+        ],
+        Number\Decimal::class                     => [
+            'decorator' => [Bootstrap::class],
+            'validator' => [Common::class, NumberValidator::class],
+        ],
+        Text::class                               => [
+            'validator' => [Common::class, TextValidator::class],
         ],
     ];
 
