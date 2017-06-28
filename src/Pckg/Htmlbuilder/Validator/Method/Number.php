@@ -143,10 +143,10 @@ class Number extends Text
      *
      * @return bool
      */
-    public function validate(Element $element, $args)
+    public function validate($value)
     {
         $this->errors = [];
-        $this->value = $element->getValue();
+        $this->value = $value;
 
         foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
