@@ -4,7 +4,6 @@ namespace Pckg\Htmlbuilder\Datasource\Method;
 
 use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Element\Form;
 
 /**
  * Class Request
@@ -32,9 +31,9 @@ class Request extends AbstractDatasource
 
     protected function populateElement(Element $element)
     {
-        $name = $element->getName();
-        if ($name && array_key_exists($name, $_POST)) {
-            $element->setValue($_POST[$name]);
+        if ($name = $element->getName()) {
+            $value = post(str_replace(['[', ']'], ['.', ''], $name));
+            $element->setValue($value);
         }
     }
 
