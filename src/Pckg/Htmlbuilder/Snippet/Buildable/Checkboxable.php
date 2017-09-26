@@ -25,7 +25,7 @@ trait Checkboxable
      */
     public function addOption($value, $label = null, $checked = null)
     {
-        $checkbox = null;
+        $option = null;
         if (is_object($value)) {
             $this->addChild($value);
             $checkbox = $value;

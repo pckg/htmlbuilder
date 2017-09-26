@@ -153,6 +153,11 @@ trait Attributes
         return $this;
     }
 
+    public function a($key, $val = '')
+    {
+        return $this->setAttribute($key, $val);
+    }
+
     public function removeAttribute($key)
     {
         if (array_key_exists($key, $this->attributes)) {
