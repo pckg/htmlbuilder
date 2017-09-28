@@ -114,9 +114,7 @@ class Select extends Field
             return $key;
         } else {
             $option = $this->elementFactory->create(Option::class);
-            if ($key) {
-                $option->setValue($key);
-            }
+            $option->setValue($key);
             if ($value) {
                 $option->addChild($value);
             }
