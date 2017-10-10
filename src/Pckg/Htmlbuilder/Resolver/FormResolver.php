@@ -31,6 +31,11 @@ class FormResolver implements Resolver
      */
     protected $form;
 
+    public function canResolve($class)
+    {
+        return class_exists($class) && is_subclass_of($class, Form::class);
+    }
+
     public function resolve($form)
     {
         if (is_subclass_of($form, Form::class)) {
