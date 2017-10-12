@@ -69,9 +69,9 @@ class Entity extends AbstractDatasource
      */
     protected function decorateSelect($element)
     {
-        $arr = $this->entity->all()->getList();
+        // $arr = $this->entity->all()->getList();
 
-        $element->addOptions($arr);
+        // $element->addOptions($arr);
     }
 
 }
