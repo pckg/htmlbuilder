@@ -10,6 +10,7 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Element\Fieldset;
 use Pckg\Htmlbuilder\Element\Group;
 use Pckg\Htmlbuilder\Element\Group\CheckboxGroup;
+use Pckg\Htmlbuilder\Element\Group\InputGroup;
 use Pckg\Htmlbuilder\Element\Group\RadioGroup;
 use Pckg\Htmlbuilder\Element\Input\Checkbox;
 use Pckg\Htmlbuilder\Element\Input\Date;
@@ -196,6 +197,14 @@ trait Buildable
     public function addGroup($name = null)
     {
         return $this->addElementByClassAndName(Group::class, $name);
+    }
+
+    /**
+     * @return InputGroup
+     */
+    public function addInputGroup($name = null)
+    {
+        return $this->addElementByClassAndName(InputGroup::class, $name);
     }
 
     /**
