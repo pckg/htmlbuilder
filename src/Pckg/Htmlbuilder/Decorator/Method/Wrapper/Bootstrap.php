@@ -471,7 +471,7 @@ class Bootstrap extends AbstractDecorator
         $element->addClass('btn btn-default');
 
         if ($element->getAttribute('type') == 'submit') {
-            $element->addClass('btn-success');
+            $element->addClass('btn-primary');
         } else if ($element->getAttribute('type') == 'reset') {
             $element->addClass('btn-warning');
         }
