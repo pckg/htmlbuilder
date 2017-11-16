@@ -76,7 +76,7 @@ class Form extends Element
             $this->addChild($this->elementFactory->create('Fieldset')->addClass('submit'));
         }
 
-        if ($child instanceof Field && $this->fieldsets) {
+        if (($child instanceof Field || $child instanceof Group) && $this->fieldsets) {
             /**
              * Add element to last fieldset.
              */
@@ -139,6 +139,11 @@ class Form extends Element
                 if ($field instanceof Field) {
                     $name = $field->getName();
                     $data[$name] = $field->getValue();
+                } elseif ($field instanceof Group) {
+                    foreach ($field->getChildren() AS $subfield) {
+                        $name = $subfield->getName();
+                        $data[$name] = $subfield->getValue();
+                    }
                 }
             }
         }
