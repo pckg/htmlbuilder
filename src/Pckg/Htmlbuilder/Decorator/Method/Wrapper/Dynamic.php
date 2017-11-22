@@ -109,6 +109,7 @@ class Dynamic extends AbstractDecorator
         if ($element->getTag() == 'select') {
             $decoratedParent->addChild(
                 '<pckg-htmlbuilder-select :url="\'' . $element->getAttribute('data-url') .
+                '\'" :view-url="\'' . $element->getAttribute('data-view-url') .
                 '\'" :refresh-url="\'' . $element->getAttribute('data-refresh-url') .
                 '\'"></pckg-htmlbuilder-select>'
             );
