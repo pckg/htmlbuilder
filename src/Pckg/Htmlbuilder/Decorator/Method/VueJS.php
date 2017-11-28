@@ -80,6 +80,8 @@ class VueJS extends AbstractDecorator
             return;
         }
 
+        $name = str_replace(['[', ']'], ['.', ''], $name);
+
         $element->setAttribute('v-model', 'form.' . $name);
     }
 }
