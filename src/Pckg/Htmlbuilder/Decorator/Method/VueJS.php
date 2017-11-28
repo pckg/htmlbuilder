@@ -75,6 +75,11 @@ class VueJS extends AbstractDecorator
             return;
         }
 
+        $type = $element->getAttribute('type');
+        if (in_array($type, ['file', 'button', 'submit', 'reset'])) {
+            return;
+        }
+
         $element->setAttribute('v-model', 'form.' . $name);
     }
 }

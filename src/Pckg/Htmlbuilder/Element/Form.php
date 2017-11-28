@@ -137,18 +137,31 @@ class Form extends Element
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
                 if ($field instanceof Field) {
-                    $name = $field->getName();
-                    $data[$name] = $field->getValue();
+                    $this->processDataField($field, $data);
                 } elseif ($field instanceof Group) {
                     foreach ($field->getChildren() AS $subfield) {
-                        $name = $subfield->getName();
-                        $data[$name] = $subfield->getValue();
+                        $this->processDataField($subfield, $data);
                     }
                 }
             }
         }
 
         return $data;
+    }
+
+    private function processDataField($field, &$data)
+    {
+        $type = $field->getAttribute('type');
+        if (in_array($type, ['submit', 'button', 'reset'])) {
+            return;
+        }
+        $name = $field->getName();
+
+        if ($type == 'checkbox') {
+            $data[$name] = $field->getAttribute('checked') == 'checked';
+        } else {
+            $data[$name] = $field->getValue();
+        }
     }
 
     public function getCollectionData()

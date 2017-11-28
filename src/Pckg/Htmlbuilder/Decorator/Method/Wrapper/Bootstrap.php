@@ -221,9 +221,9 @@ class Bootstrap extends AbstractDecorator
         ) {
             $this->decorateParent($element);
         } else if (in_array($element->getTag(), ['div', 'fieldset'])) {
-            if($element instanceof Element\Field){
+            if ($element instanceof Element\Field) {
                 $this->decorateParent($element);
-            }elseif ($element instanceof Element\Group) {
+            } elseif ($element instanceof Element\Group) {
                 $this->decorateGroup($element);
             } elseif ($element instanceof Element\Div) {
                 $this->decorateGroup($element);
@@ -273,7 +273,9 @@ class Bootstrap extends AbstractDecorator
      */
     protected function decorateField($element)
     {
-        $element->addClass('form-control');
+        if ($element->getType() != 'checkbox') {
+            $element->addClass('form-control');
+        }
 
         if ($this->wrapped) {
             $bootstrapDiv = $this->elementFactory
@@ -322,6 +324,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function decorateCheckbox($element)
     {
+        return $this->decorateField($element);
         $checkboxDiv = $this->elementFactory->createFromExpression("div.checkbox");
         $labelWrapper = $this->wrapIntoLabel($element);
 

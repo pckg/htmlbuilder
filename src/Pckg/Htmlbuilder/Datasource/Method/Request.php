@@ -32,7 +32,7 @@ class Request extends AbstractDatasource
     protected function populateElement(Element $element)
     {
         if ($name = $element->getName()) {
-            $value = post(str_replace(['[', ']'], ['.', ''], $name));
+            $value = post(str_replace(['[', ']'], ['.', ''], $name), null);
             $element->setValue($value);
         }
     }
