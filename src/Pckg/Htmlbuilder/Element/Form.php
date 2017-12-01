@@ -151,6 +151,10 @@ class Form extends Element
 
     private function processDataField($field, &$data)
     {
+        if (!is_object($field)) {
+            return;
+        }
+        
         $name = $field->getName();
 
         if (!$name) {
