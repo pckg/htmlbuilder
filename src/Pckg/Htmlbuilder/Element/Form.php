@@ -136,12 +136,12 @@ class Form extends Element
         $data = [];
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
-                if ($field instanceof Field) {
-                    $this->processDataField($field, $data);
-                } elseif ($field instanceof Group) {
+                if ($field instanceof Group) {
                     foreach ($field->getChildren() AS $subfield) {
                         $this->processDataField($subfield, $data);
                     }
+                } else {
+                    $this->processDataField($field, $data);
                 }
             }
         }
@@ -151,11 +151,16 @@ class Form extends Element
 
     private function processDataField($field, &$data)
     {
+        $name = $field->getName();
+
+        if (!$name) {
+            return;
+        }
+
         $type = $field->getAttribute('type');
         if (in_array($type, ['submit', 'button', 'reset'])) {
             return;
         }
-        $name = $field->getName();
 
         if ($type == 'checkbox') {
             $data[$name] = $field->getAttribute('checked') == 'checked';

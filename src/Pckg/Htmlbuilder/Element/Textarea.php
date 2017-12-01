@@ -2,18 +2,13 @@
 
 namespace Pckg\Htmlbuilder\Element;
 
-use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Snippet\Labeled;
-
 /**
  * Class Textarea
  *
  * @package Pckg\Htmlbuilder\Element
  */
-class Textarea extends Element
+class Textarea extends Field
 {
-
-    use Labeled;
 
     /**
      * @var string

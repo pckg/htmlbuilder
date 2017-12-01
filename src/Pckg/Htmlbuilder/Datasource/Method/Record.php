@@ -80,9 +80,6 @@ class Record extends AbstractDatasource
             } elseif ($element->hasClass(['geo', 'point'])) {
                 $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
 
-            } elseif ($element->getTag() == 'textarea') {
-                $element->setValue(htmlspecialchars($this->record->{$name}));
-
             } else {
                 $element->setValue($this->record->{$name});
                 
