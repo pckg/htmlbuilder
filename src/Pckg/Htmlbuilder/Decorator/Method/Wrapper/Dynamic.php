@@ -118,7 +118,7 @@ class Dynamic extends AbstractDecorator
         }
 
         if ($element->hasClass('geo')) {
-            $decoratedParent->addChild('<pckg-htmlbuilder-geo></pckg-htmlbuilder-geo>');
+            $decoratedParent->addChild('<pckg-htmlbuilder-geo v-model="form.' . $element->getName() . '"></pckg-htmlbuilder-geo>');
         }
     }
 
