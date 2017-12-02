@@ -83,5 +83,9 @@ class VueJS extends AbstractDecorator
         $name = str_replace(['[', ']'], ['.', ''], $name);
 
         $element->setAttribute('v-model', 'form.' . $name);
+
+        if ($element->hasClass('datetime')) {
+            $element->addClass('vue-takeover');
+        }
     }
 }
