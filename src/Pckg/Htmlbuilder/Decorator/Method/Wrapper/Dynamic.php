@@ -131,7 +131,7 @@ class Dynamic extends AbstractDecorator
                 $label = $decoratedParent;
             }
             $label->addChild(
-                '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default">Turn Editor On/Off</button>'
+                '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default" @click.prevent="toggleEditor(\'' . $element->getAttribute('name') . '\')">Turn Editor On/Off</button>'
             );
         }
     }
