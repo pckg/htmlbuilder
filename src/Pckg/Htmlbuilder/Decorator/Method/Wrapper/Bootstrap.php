@@ -97,7 +97,9 @@ class Bootstrap extends AbstractDecorator
         $this->methods = [
             'decorate',
             'setLabel',
+            'getLabel',
             'setHelp',
+            'getHelp',
             'setDecoratorClasses',
             'setWrapped',
             'setGrouped',
@@ -150,11 +152,31 @@ class Bootstrap extends AbstractDecorator
      *
      * @return mixed
      */
+    public function overloadGetLabel(callable $next, AbstractObject $context)
+    {
+        return $this->label;
+    }
+
+    /**
+     * @param AbstractObject $context
+     *
+     * @return mixed
+     */
     public function overloadSetHelp(callable $next, AbstractObject $context)
     {
         $this->help = $context->getArg(0);
 
         return $next();
+    }
+
+    /**
+     * @param AbstractObject $context
+     *
+     * @return mixed
+     */
+    public function overloadGetHelp(callable $next, AbstractObject $context)
+    {
+        return $this->help;
     }
 
     /**

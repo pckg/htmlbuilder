@@ -2,6 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Snippet;
 
+use Pckg\Htmlbuilder\Builder\AbstractBuilder;
+use Pckg\Htmlbuilder\Builder\Classic;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Event\DecorationRequested;
 use Pckg\Htmlbuilder\Event\PreDecorationRequested;
@@ -31,6 +33,11 @@ trait Builder
     protected $opened = false;
 
     /**
+     * @var
+     */
+    protected $builder = Classic::class;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -47,59 +54,65 @@ trait Builder
         return (string)$this->html;
     }
 
-    /*
-    Builds simple html
-    */
+    /**
+     * @return bool
+     */
+    public function isOpened()
+    {
+        return $this->opened;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSelfClosing()
+    {
+        return $this->selfClosing;
+    }
+
+    /**
+     * @return AbstractBuilder
+     */
+    public function getBuilder()
+    {
+        if (is_string($this->builder)) {
+            $builder = $this->builder;
+            $this->builder = new $builder($this);
+        }
+
+        return $this->builder;
+    }
+
+    /**
+     * @param AbstractBuilder $builder
+     *
+     * @return $this
+     */
+    public function setBuilder(AbstractBuilder $builder)
+    {
+        $this->builder = $builder;
+
+        return $this;
+    }
+
     /**
      * @return string
      */
     public function buildElement()
     {
-        return ($this->opened ? '' : $this->buildBeforeElement()) . $this->buildChildrenElements(
-        ) . $this->buildAfterElement();
-    }
-
-    /**
-     * @return string
-     */
-    private function buildBeforeElement()
-    {
-        return "<" . $this->tag . $this->buildAttributes() .
-               ($this->selfClosing
-                   ? " />"
-                   : ">");
-    }
-
-    /**
-     * @return string
-     */
-    private function buildChildrenElements()
-    {
-        return $this->selfClosing
-            ? ''
-            : $this->buildFromArray($this->children);
-    }
-
-    /**
-     * @return string
-     */
-    private function buildAfterElement()
-    {
-        return $this->selfClosing
-            ? ''
-            : ("</" . $this->tag . ">");
+        return $this->getBuilder()->build($this);
     }
 
     public function open()
     {
         $this->opened = true;
 
-        return $this->buildBeforeElement();
+        return $this->getBuilder()->buildBeforeElement();
     }
 
     public function close()
     {
-        return $this->buildAfterElement();
+        return $this->getBuilder()->buildAfterElement();
     }
 
     /*
@@ -135,18 +148,14 @@ trait Builder
 
         if (is_string($child) || is_int($child) || is_null($child) || is_bool($child)) { // simple child
             return $child;
-
         } else if (is_array($child)) { // array of 'something'
             foreach ($child AS $c) {
                 $childrenHTML .= $this->childToHTML($c);
             }
-
         } else if (is_object($child) && $child instanceof Element) { // should be Element
             $childrenHTML .= $child->toHTML();
-
         } else {
             throw new \Exception('Children is unknown type: ' . gettype($child) . get_class($child));
-
         }
 
         return $childrenHTML;

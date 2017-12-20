@@ -96,6 +96,9 @@ class Element
 
         $handlers = [];
 
+        /**
+         * Get all decorators, validators, ...
+         */
         foreach ($this->getServices() AS $service) {
             if (in_array($method, $service->getMethods())) {
                 $handlers[] = $service;

@@ -17,4 +17,14 @@ trait Labeled
         return $this;
     }
 
+    public function getLabel()
+    {
+        return $this->__call('getLabel', []);
+    }
+
+    public function getHelp($help)
+    {
+        return $this->__call('getHelp', []);
+    }
+
 }

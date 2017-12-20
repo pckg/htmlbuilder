@@ -262,6 +262,16 @@ trait Attributes
         return $this;
     }
 
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    public function hasAttribute($key)
+    {
+        return array_key_exists($key, $this->attributes);
+    }
+
     /*
       Gets element's attribute class
     */

@@ -57,6 +57,7 @@ class VueJS extends AbstractDecorator
 
         if ($element instanceof Form) {
             $element->a('@submit.prevent', 'submitForm');
+            $element->emptyAttribute('novalidate');
         } else {
             $this->decorateModel($element);
         }
@@ -86,6 +87,16 @@ class VueJS extends AbstractDecorator
 
         if ($element->hasClass('datetime')) {
             $element->addClass('vue-takeover');
+        }
+
+        if ($element->hasAttribute('required')) {
+            $element->a('v-validate', "'required'");
+            $label = $element->getLabel();
+            if ($label) {
+                $element->a('data-vv-as', lcfirst($label));
+            }
+            $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
+                                 '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
         }
     }
 }
