@@ -32,8 +32,12 @@ class Request extends AbstractDatasource
     protected function populateElement(Element $element)
     {
         if ($name = $element->getName()) {
-            $value = post(str_replace(['[', ']'], ['.', ''], $name), null);
+            $realName = str_replace(['[', ']'], ['.', ''], $name);
+            $value = post($realName, null);
             $element->setValue($value);
+            if ($element instanceof Element\Input\Checkbox) {
+                $element->setChecked($value);
+            }
         }
     }
 

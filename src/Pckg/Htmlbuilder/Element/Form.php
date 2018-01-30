@@ -154,7 +154,7 @@ class Form extends Element
         if (!is_object($field)) {
             return;
         }
-        
+
         $name = $field->getName();
 
         if (!$name) {
