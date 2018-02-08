@@ -78,7 +78,7 @@ class Record extends AbstractDatasource
                 // do nothing
 
             } elseif ($element->hasClass(['geo', 'point'])) {
-                $element->setValue($this->record->{$name . '_y'} . ';' . $this->record->{$name . '_x'});
+                $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
 
             } else {
                 $element->setValue($this->record->{$name});
