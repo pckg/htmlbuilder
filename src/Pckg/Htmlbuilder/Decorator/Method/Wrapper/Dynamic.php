@@ -4,8 +4,6 @@ namespace Pckg\Htmlbuilder\Decorator\Method\Wrapper;
 
 use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
-use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Element\Input\Hidden;
 
 /**
  * Class Dynamic
@@ -118,7 +116,8 @@ class Dynamic extends AbstractDecorator
         }
 
         if ($element->hasClass('geo')) {
-            $decoratedParent->addChild('<pckg-htmlbuilder-geo v-model="form.' . $element->getName() . '"></pckg-htmlbuilder-geo>');
+            $decoratedParent->addChild('<pckg-htmlbuilder-geo v-model="form.' . $element->getName() .
+                                       '"></pckg-htmlbuilder-geo>');
         }
     }
 
@@ -131,7 +130,8 @@ class Dynamic extends AbstractDecorator
                 $label = $decoratedParent;
             }
             $label->addChild(
-                '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default" @click.prevent="toggleEditor(\'' . $element->getAttribute('name') . '\')">Turn Editor On/Off</button>'
+                '<button type="button" class="pckg-editor-toggle btn btn-xs btn-default" @click.prevent="toggleEditor(\'' .
+                $element->getAttribute('name') . '\')">Turn Editor On/Off</button>'
             );
         }
     }
