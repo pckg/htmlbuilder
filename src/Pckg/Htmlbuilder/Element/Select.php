@@ -151,6 +151,12 @@ class Select extends Field
             $this->removeAttribute('multiple');
         }
 
+        if ($multiple && !is_array($this->value)) {
+            $this->setValue((array)$this->value);
+        } else if (!$multiple && is_array($this->value)) {
+            $this->setValue((string)$this->value);
+        }
+
         return $this;
     }
 
