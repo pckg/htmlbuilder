@@ -295,7 +295,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function decorateField($element)
     {
-        if ($element->getType() != 'checkbox') {
+        if ($element->getType() != 'checkbox' && $element->getTag() != 'select') {
             $element->addClass('form-control');
         }
 
