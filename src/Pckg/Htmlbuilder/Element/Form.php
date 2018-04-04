@@ -166,10 +166,16 @@ class Form extends Element
             return;
         }
 
-        if ($type == 'checkbox') {
-            $data[$name] = $field->getAttribute('checked') == 'checked';
+        if (strpos($name, '[')) {
+            $name2 = substr($name, 0, strpos($name, '['));
+            $name3 = substr($name, strlen($name2) + 1, -1);
+            $data[$name2][$name3] = $type == 'checkbox'
+                ? $field->getAttribute('checked') == 'checked'
+                : $field->getValue();
         } else {
-            $data[$name] = $field->getValue();
+            $data[$name] = $type == 'checkbox'
+                ? $field->getAttribute('checked') == 'checked'
+                : $field->getValue();
         }
     }
 
