@@ -48,10 +48,8 @@ class FormResolver implements Resolver
                     $this->flash = context()->getOrCreate(Flash::class);
 
                     return $this->resolvePost();
-
                 } elseif ($this->request->isGet()) {
                     return $this->resolveGet();
-
                 }
             }
 
@@ -71,9 +69,9 @@ class FormResolver implements Resolver
          */
         $this->form->populateFromRequest();
 
-        if ($this->form->isValid()) {
+        $errors = [];
+        if ($this->form->isValid($errors)) {
             return $this->form;
-
         } else {
             /**
              * Fill session with form data.
@@ -81,11 +79,9 @@ class FormResolver implements Resolver
             $this->form->populateToSession();
 
             if ($this->request->isAjax()) {
-                return $this->ajaxErrorResponse();
-
+                return $this->ajaxErrorResponse($errors);
             } else {
                 return $this->postErrorResponse();
-
             }
         }
     }
@@ -121,31 +117,23 @@ class FormResolver implements Resolver
     protected function ajaxSuccessResponse()
     {
         return $this->response->code(200)
-                              ->respond(
-                                  json_encode(
-                                      [
-                                          'success' => true,
-                                          'error'   => false,
-                                      ]
-                                  )
-                              );
+                              ->respond([
+                                            'success' => true,
+                                            'error'   => false,
+                                        ]);
     }
 
     /**
      * Respond with code 422, return json data.
      */
-    protected function ajaxErrorResponse()
+    protected function ajaxErrorResponse($errors = ['@T00D002'])
     {
         return $this->response->code(422)
-                              ->respond(
-                                  json_encode(
-                                      [
-                                          'error'   => true,
-                                          'success' => false,
-                                          'errors'  => ['@T00D002'],
-                                      ]
-                                  )
-                              );
+                              ->respond([
+                                            'error'   => true,
+                                            'success' => false,
+                                            'errors'  => $errors,
+                                        ]);
     }
 
     /**

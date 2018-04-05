@@ -33,6 +33,8 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
      */
     protected $validatorFactory;
 
+    protected $errors = [];
+
     /**
      * @param bool $enabled
      *
