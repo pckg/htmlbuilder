@@ -90,6 +90,11 @@ class Bootstrap extends AbstractDecorator
     protected $offsetFullFieldClass = 'col-sm-offset-3';
 
     /**
+     * @var string
+     */
+    protected $labelType = 'label';
+
+    /**
      *
      */
     protected function initOverloadMethods()
@@ -97,6 +102,7 @@ class Bootstrap extends AbstractDecorator
         $this->methods = [
             'decorate',
             'setLabel',
+            'setLabelType',
             'getLabel',
             'setHelp',
             'getHelp',
@@ -143,6 +149,18 @@ class Bootstrap extends AbstractDecorator
     public function overloadSetLabel(callable $next, AbstractObject $context)
     {
         $this->label = $context->getArg(0);
+
+        return $next();
+    }
+
+    /**
+     * @param AbstractObject $context
+     *
+     * @return mixed
+     */
+    public function overloadSetLabelType(callable $next, AbstractObject $context)
+    {
+        $this->labelType = $context->getArg(0);
 
         return $next();
     }
@@ -285,7 +303,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function getFieldClassByLabel()
     {
-        return $this->label
+        return $this->label && $this->labelType == 'label'
             ? $this->fieldClass
             : $this->fullFieldClass;
     }
@@ -467,6 +485,12 @@ class Bootstrap extends AbstractDecorator
      */
     protected function decorateLabel($element, $div)
     {
+        if ($this->labelType == 'placeholder') {
+            $element->setPlaceholder($this->label);
+
+            return;
+        }
+
         $label = $this->elementFactory->create("Label");
         $label->addClass($this->labelClass)->addChild($this->label);
 

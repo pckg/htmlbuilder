@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Decorator\Method;
 
 use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
+use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Form;
 
 /**
@@ -20,6 +21,11 @@ class VueJS extends AbstractDecorator
     protected $record;
 
     /**
+     * @var string
+     */
+    protected $jsModel = 'data';
+
+    /**
      * @var bool
      */
     protected $recursive = true;
@@ -31,7 +37,22 @@ class VueJS extends AbstractDecorator
     {
         $this->methods = [
             'decorate',
+            'jsModel',
         ];
+    }
+
+    public function overloadJsModel(callable $next, AbstractObject $context)
+    {
+        $this->jsModel = $context->getArg(0);
+        $element = $context->getElement();
+        foreach ($element->getChildren() as $child) {
+            if (!($child instanceof Element)) {
+                continue;
+            }
+            $child->jsModel($context->getArg(0));
+        }
+
+        return $next();
     }
 
     /**
@@ -83,7 +104,7 @@ class VueJS extends AbstractDecorator
 
         $name = str_replace(['[', ']'], ['.', ''], $name);
 
-        $element->setAttribute('v-model', 'form.' . $name);
+        $element->setAttribute('v-model', $this->jsModel . '.' . $name);
 
         if ($element->hasClass('datetime')) {
             $element->addClass('vue-takeover');
