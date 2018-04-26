@@ -23,7 +23,7 @@ class VueJS extends AbstractDecorator
     /**
      * @var string
      */
-    protected $jsModel = 'data';
+    protected $jsModel = 'form';
 
     /**
      * @var bool
