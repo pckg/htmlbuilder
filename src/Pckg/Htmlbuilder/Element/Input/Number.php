@@ -21,4 +21,16 @@ class Number extends Input
 
         $this->setType("number");
     }
+
+    public function setValue($value)
+    {
+        if (static::class == Number::class) {
+            return parent::setValue(number_format($value, 0));
+        }
+        if (static::class == Input\Number\Decimal::class) {
+            return parent::setValue(number_format($value, 2));
+        }
+        return parent::setValue($value);
+    }
+
 }
