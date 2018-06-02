@@ -49,6 +49,10 @@ class Option extends Element
 
         $this->setAttribute('value', $value);
 
+        if (!$value) {
+            $this->a(':value', 'null');
+        }
+
         return $this;
     }
 }
