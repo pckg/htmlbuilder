@@ -116,6 +116,7 @@ class VueJS extends AbstractDecorator
             if ($label) {
                 $element->a('data-vv-as', lcfirst($label));
             }
+            $element->a('data-vv-name', $name);
             $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
                                  '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
         }
