@@ -89,31 +89,6 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     }
 
     /**
-     * @param AbstractObject $context
-     *
-     * @return bool
-     */
-    public function overloadIsValid(callable $next, AbstractObject $context)
-    {
-        $element = $context->getElement();
-        $value = $element->getValue();
-        // @DEBUG var_dump("value", $value);
-        $valid = $this->validate($value);
-
-        // @DEBUG var_dump(($valid ? ' valid ' : ' INVALID ') . " in " . get_class($this));
-
-        if ($this->next) {
-            // @DEBUG var_dump("next is " . get_class($this->next));
-        }
-
-        // @DEBUG var_dump("overloadIsValid #valid", $valid);
-
-        return $valid
-            ? $next()
-            : $valid;
-    }
-
-    /**
      * @param $value
      *
      * @return bool
@@ -155,14 +130,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
      */
     public function getMsg()
     {
-        $msgs = [];
-        foreach ($this->validators AS $validator) {
-            if (($msg = $validator->getMsg())) {
-                $msgs[] = $msg;
-            }
-        }
-
-        return implode(', ', $msgs);
+        return implode(', ', $this->msgs);
     }
 
     /**

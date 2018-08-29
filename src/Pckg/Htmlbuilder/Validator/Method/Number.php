@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Validator\Method;
 
+use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element;
-use Pckg\Htmlbuilder\Validator\Method\Text;
 
 /**
  * Class Number
@@ -22,7 +22,7 @@ class Number extends Text
     /**
      * @var
      */
-    protected $bitwise;
+    protected $bitwise = 0;
 
     /**
      * @var array
@@ -68,16 +68,66 @@ class Number extends Text
         ],
         // ranges
         128 => [
-            'msg'      => 'Must be lower or equals',
+            'msg'      => 'Must be higher or equals ',
             'function' => 'Min',
-            'exclude'  => ['Below'],
-        ],
-        256 => [
-            'msg'      => 'Must be higher or equal ',
-            'function' => 'Max',
             'exclude'  => ['Above'],
         ],
+        256 => [
+            'msg'      => 'Must be lower or equals ',
+            'function' => 'Max',
+            'exclude'  => ['Below'],
+        ],
     ];
+
+    public function initOverloadMethods()
+    {
+        parent::initOverloadMethods();
+
+        $this->mergeOverloadMethods(['min', 'max', 'above', 'below', 'isValid']);
+    }
+
+    public function overloadIsValid(callable $next, AbstractObject $context)
+    {
+        $valid = $this->validate($context->getElement()->getValue());
+
+        if (!$valid) {
+            return false;
+        }
+
+        return $next();
+    }
+
+    public function overloadMin(callable $next, AbstractObject $object)
+    {
+        $this->bitwise += 128;
+        $this->min = $object->getArg(0);
+
+        return $next();
+    }
+
+    public function overloadMax(callable $next, AbstractObject $object)
+    {
+        $this->bitwise += 256;
+        $this->max = $object->getArg(0);
+
+        return $next();
+    }
+
+    public function overloadAbove(callable $next, AbstractObject $object)
+    {
+        $this->bitwise += 64;
+        $this->above = $object->getArg(0);
+
+        return $next();
+    }
+
+    public function overloadBelow(callable $next, AbstractObject $object)
+    {
+        $this->bitwise += 32;
+        $this->below = $object->getArg(0);
+
+        return $next();
+    }
 
     /**
      * @return bool
@@ -92,7 +142,7 @@ class Number extends Text
      */
     public function validateMax()
     {
-        return $this->value >= $this->max;
+        return $this->value <= $this->max;
     }
 
     /**
@@ -100,7 +150,7 @@ class Number extends Text
      */
     public function validateBelow()
     {
-        return $this->value >= $this->below;
+        return $this->value < $this->below;
     }
 
     /**
@@ -108,7 +158,7 @@ class Number extends Text
      */
     public function validateAbove()
     {
-        return $this->value >= $this->above;
+        return $this->value > $this->above;
     }
 
     // number
@@ -145,18 +195,22 @@ class Number extends Text
      */
     public function validate($value)
     {
-        $this->errors = [];
+        if (!$this->bitwise) {
+            return true;
+        }
+
+        $this->msgs = [];
         $this->value = $value;
 
         foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
                 if (!$this->{'validate' . $arrBitwise['function']}()) {
-                    $this->addMsg($arrBitwise['msg']);
+                    $this->msgs[] = $arrBitwise['msg'] . (substr($arrBitwise['msg'], -1) == ' ' ? $this->{strtolower($arrBitwise['function'])} : '');
                 }
             }
         }
 
-        return !$this->errors;
+        return !$this->msgs;
     }
 
 }

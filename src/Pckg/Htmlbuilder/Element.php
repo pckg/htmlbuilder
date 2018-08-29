@@ -112,14 +112,12 @@ class Element
             $handlers,
             $overloadMethod,
             ['context' => $context],
-            function() {
-                return $this;
+            function() use ($method) {
+                return $method == 'isValid' ? null : ($method == 'getErrorMessages' ? [] : $this);
             }
         );
 
-        return !$handlers || $result instanceof ChainOfResponsibility
-            ? $this
-            : $result;
+        return $result;
     }
 
     public function addChildAlias($alias, $child)

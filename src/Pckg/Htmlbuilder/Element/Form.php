@@ -166,9 +166,23 @@ class Form extends Element
             return;
         }
 
-        if (strpos($name, '[')) {
-            $name2 = substr($name, 0, strpos($name, '['));
-            $name3 = substr($name, strlen($name2) + 1, -1);
+        $startFirst = strpos($name, '['); // foo[bar]
+        $startSecond = strpos($name, ']['); // foo[bar][baz]
+
+        if ($startFirst) {
+            $name2 = substr($name, 0, $startFirst);
+            $name3 = substr($name, strlen($name2) + 1, $startSecond ? $startSecond - $startFirst - 1 : -1);
+
+            if ($startSecond) {
+                $name4 = substr($name, strlen($name2) + strlen($name3) + 3, -1);
+
+                $data[$name2][$name3][$name4] = $type == 'checkbox'
+                    ? $field->getAttribute('checked') == 'checked'
+                    : $field->getValue();
+
+                return;
+            }
+
             $data[$name2][$name3] = $type == 'checkbox'
                 ? $field->getAttribute('checked') == 'checked'
                 : $field->getValue();
@@ -257,14 +271,13 @@ class Form extends Element
     /**
      * @return bool
      */
-    function isValid(&$errors = [])
+    function isValid(&$errors = [], &$descriptions = [])
     {
         foreach ($this->getFieldsets() AS $fieldset) {
             foreach ($fieldset->getFields() AS $field) {
-                if ($field instanceof Element && $field->isValidatable() && !$field->isValid() &&
-                    $errs = $field->getErrors()
-                ) {
+                if ($field instanceof Element && $field->isValidatable() && $messages = $field->getErrorMessages()) {
                     $errors[] = $field->getName();
+                    $descriptions[$field->getName()] = $messages;
                 }
             }
         }

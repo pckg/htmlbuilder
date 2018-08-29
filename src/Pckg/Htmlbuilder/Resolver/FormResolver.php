@@ -70,20 +70,21 @@ class FormResolver implements Resolver
         $this->form->populateFromRequest();
 
         $errors = [];
-        if ($this->form->isValid($errors)) {
+        $descriptions = [];
+        if ($this->form->isValid($errors, $descriptions)) {
             return $this->form;
-        } else {
-            /**
-             * Fill session with form data.
-             */
-            $this->form->populateToSession();
-
-            if ($this->request->isAjax()) {
-                return $this->ajaxErrorResponse($errors);
-            } else {
-                return $this->postErrorResponse();
-            }
         }
+
+        /**
+         * Fill session with form data.
+         */
+        $this->form->populateToSession();
+
+        if ($this->request->isAjax()) {
+            return $this->ajaxErrorResponse($errors, $descriptions);
+        }
+
+        return $this->postErrorResponse();
     }
 
     public function resolveGet()
@@ -126,13 +127,14 @@ class FormResolver implements Resolver
     /**
      * Respond with code 422, return json data.
      */
-    protected function ajaxErrorResponse($errors = ['@T00D002'])
+    protected function ajaxErrorResponse($errors = ['@T00D002'], $descriptions = [])
     {
         return $this->response->code(422)
                               ->respond([
                                             'error'   => true,
                                             'success' => false,
                                             'errors'  => $errors,
+                                            'descriptions' => $descriptions,
                                         ]);
     }
 

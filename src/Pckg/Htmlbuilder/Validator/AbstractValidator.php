@@ -72,7 +72,7 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     {
         parent::initOverloadMethods();
 
-        $this->mergeOverloadMethods(['isValid']);
+        $this->mergeOverloadMethods(['isValid', 'getErrorMessages']);
     }
 
     /**
@@ -83,12 +83,27 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     public function overloadIsValid(callable $next, AbstractObject $context)
     {
         $element = $context->getElement();
-        $value = null;
+        $value = $element->getValue();
         $valid = $this->validate($value);
 
         return $valid
             ? $next()
             : $valid;
+    }
+
+    public function overloadGetErrorMessages(callable $next, AbstractObject $context)
+    {
+        $element = $context->getElement();
+        $value = $element->getValue();
+        $valid = $this->validate($value);
+
+        if (!$valid) {
+            $msg = $this->getMsg();
+
+            return $msg;
+        }
+
+        return $next();
     }
 
     /**
