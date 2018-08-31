@@ -112,13 +112,17 @@ class VueJS extends AbstractDecorator
 
         if ($element->hasAttribute('required')) {
             $element->a('v-validate', "'required'");
-            $label = $element->getLabel();
-            if ($label) {
-                $element->a('data-vv-as', lcfirst($label));
-            }
-            $element->a('data-vv-name', $name);
-            $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
-                                 '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
+        } else {
+            $element->a('v-validate');
         }
+
+        $label = $element->getLabel();
+        if ($label) {
+            $element->a('data-vv-as', lcfirst($label));
+        }
+
+        $element->a('data-vv-name', $name);
+        $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
+                             '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
     }
 }

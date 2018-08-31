@@ -42,7 +42,8 @@ class FormResolver implements Resolver
             $this->form = Reflect::create($form);
             $this->request = context()->getOrCreate(Request::class);
 
-            if (object_implements($form, ResolvesOnRequest::class)) {
+            $resolve = object_implements($form, ResolvesOnRequest::class);
+            if ($resolve) {
                 if ($this->request->isPost()) {
                     $this->response = context()->getOrCreate(Response::class);
                     $this->flash = context()->getOrCreate(Flash::class);
