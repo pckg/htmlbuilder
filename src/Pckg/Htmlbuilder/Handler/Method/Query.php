@@ -143,11 +143,18 @@ class Query extends AbstractHandler
     public function overloadFindChildren(callable $next, AbstractObject $context)
     {
         $regex = $context->getArg(0);
+        $deep = $context->getArg(1);
 
         $arrChildren = [];
         foreach ($context->getElement()->getChildren() as $child) {
-            if ($child instanceof Element && $child->matchesRegex($regex)) {
-                $arrChildren[] = $child;
+            if ($child instanceof Element) {
+                if ($child->matchesRegex($regex)) {
+                    $arrChildren[] = $child;
+                } else if ($deep) {
+                    foreach ($child->findChildren($regex, $deep) as $c) {
+                        $arrChildren[] = $c;
+                    }
+                }
             }
         }
 

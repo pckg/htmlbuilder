@@ -69,18 +69,15 @@ class Form extends Element
         }
 
         // add another fieldset for buttons
-        if (($child instanceof Submit || $child instanceof Button) && (!$this->fieldsets || !end(
-                    $this->fieldsets
-                )->hasClass('submit'))
-        ) {
-            $this->addChild($this->elementFactory->create('Fieldset')->addClass('submit'));
+        if (($child instanceof Submit || $child instanceof Button) && (!end($this->fieldsets)->hasClass('submit'))) {
+            $this->addFieldset()->addClass('submit');
         }
 
         if (($child instanceof Field || $child instanceof Group) && $this->fieldsets) {
             /**
              * Add element to last fieldset.
              */
-            end($this->fieldsets)->addChild($child);
+            $parent = end($this->fieldsets)->addChild($child);
 
             if ($child instanceof Element) {
                 $child->transferFromElement($this);

@@ -68,22 +68,28 @@ class Record extends AbstractDatasource
     {
         $name = $element->getName();
 
-        if ($name && $this->record->keyExists($name)) {
-            if ($element->getAttribute('type') == 'checkbox') {
-                $element->setValue(1);
-                if ($this->record->{$name}) {
-                    $element->setAttribute('checked', 'checked');
-                }
-            } elseif ($element->getAttribute('type') == 'password') {
-                // do nothing
+        if (!$name) {
+            return;
+        }
 
-            } elseif ($element->hasClass(['geo', 'point'])) {
-                $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
+        if (!$this->record->keyExists($name)) {
+            return;
+        }
 
-            } else {
-                $element->setValue($this->record->{$name});
-                
+        if ($element->getAttribute('type') == 'checkbox') {
+            $element->setValue(1);
+            if ($this->record->{$name}) {
+                $element->setAttribute('checked', 'checked');
             }
+        } elseif ($element->getAttribute('type') == 'password') {
+            // do nothing
+
+        } elseif ($element->hasClass(['geo', 'point'])) {
+            $element->setValue($this->record->{$name . '_x'} . ';' . $this->record->{$name . '_y'});
+
+        } else {
+            $element->setValue($this->record->{$name});
+
         }
     }
 
