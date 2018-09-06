@@ -20,5 +20,7 @@ class Datetime extends Input
         parent::__construct();
 
         $this->addClass('datetime');
+        $this->setType('text');
     }
+
 }
