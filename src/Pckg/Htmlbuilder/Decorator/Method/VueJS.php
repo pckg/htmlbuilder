@@ -124,5 +124,9 @@ class VueJS extends AbstractDecorator
         $element->a('data-vv-name', $name);
         $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
                              '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
+
+        if (in_array($type, ['text', 'number', 'date'])) {
+            $element->a('@keyup.enter', 'submitForm');
+        }
     }
 }
