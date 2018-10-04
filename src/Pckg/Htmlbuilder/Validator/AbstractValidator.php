@@ -131,6 +131,16 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     }
 
     /**
+     * @return $this
+     */
+    public function setMsg($msg)
+    {
+        $this->msg = $msg;
+
+        return $this;
+    }
+
+    /**
      * @param $value
      *
      * @return bool

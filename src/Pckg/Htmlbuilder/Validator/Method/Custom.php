@@ -1,15 +1,18 @@
 <?php namespace Pckg\Htmlbuilder\Validator\Method;
 
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
-use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
-class Custom extends AbstractValidator implements ValidatorInterface
+class Custom extends AbstractValidator
 {
+
+    protected $recursive = false;
 
     protected $call;
 
     public function __construct(callable $call)
     {
+        parent::__construct();
+
         $this->call = $call;
     }
 
@@ -17,7 +20,7 @@ class Custom extends AbstractValidator implements ValidatorInterface
     {
         $call = $this->call;
 
-        return $call($value);
+        return $call($value, $this);
     }
 
 }
