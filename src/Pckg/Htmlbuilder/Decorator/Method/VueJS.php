@@ -79,6 +79,8 @@ class VueJS extends AbstractDecorator
         if ($element instanceof Form) {
             $element->a('@submit.prevent', 'submitForm');
             $element->emptyAttribute('novalidate');
+        } elseif ($element instanceof Element\Select) {
+            $this->decorateSelect($element);
         } else {
             $this->decorateModel($element);
         }
@@ -86,12 +88,53 @@ class VueJS extends AbstractDecorator
         return $next();
     }
 
+    private function decorateVModel($element)
+    {
+        $name = $this->getJSName($element);
+        $element->setAttribute('v-model', $this->jsModel . '.' . $name);
+    }
+
+    private function getJSName($element)
+    {
+        $name = $element->getName($element);
+
+        return str_replace(['[', ']'], ['.', ''], $name);
+    }
+
+    private function decorateVValidate($element)
+    {
+        if ($element->hasAttribute('required')) {
+            $element->a('v-validate', "'required'");
+        } else {
+            $element->a('v-validate');
+        }
+    }
+
+    private function decorateVVAs($element)
+    {
+        $name = $this->getJSName($element);
+        $label = $element->getLabel();
+        if ($label) {
+            $element->a('data-vv-as', lcfirst($label));
+        }
+
+        $element->a('data-vv-name', $name);
+    }
+
+    private function decorateKeyUp($element)
+    {
+        $type = $element->getType();
+        if (in_array($type, ['text', 'number', 'date'])) {
+            $element->a('@keyup.enter', 'submitForm');
+        }
+    }
+
     /**
      * @param $element
      */
     protected function decorateModel($element)
     {
-        $name = $element->getName();
+        $name = $this->getJSName($element);
 
         if (!$name) {
             return;
@@ -102,31 +145,45 @@ class VueJS extends AbstractDecorator
             return;
         }
 
-        $name = str_replace(['[', ']'], ['.', ''], $name);
+        $this->decorateValidator($element);
 
-        $element->setAttribute('v-model', $this->jsModel . '.' . $name);
+        $this->decorateKeyUp($element);
+    }
 
-        if ($element->hasClass('datetime')) {
+    private function decorateValidator($element, callable $before = null)
+    {
+        $name = $this->getJSName($element);
+
+        if ($element->hasClass('datetime') || $element->getTag() == 'select') {
             $element->addClass('vue-takeover');
         }
 
-        if ($element->hasAttribute('required')) {
-            $element->a('v-validate', "'required'");
-        } else {
-            $element->a('v-validate');
+        $this->decorateVModel($element);
+        $this->decorateVValidate($element);
+        $this->decorateVVAs($element);
+
+        if ($before) {
+            $before($element);
         }
 
-        $label = $element->getLabel();
-        if ($label) {
-            $element->a('data-vv-as', lcfirst($label));
-        }
-
-        $element->a('data-vv-name', $name);
-        $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name .
-                             '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
-
-        if (in_array($type, ['text', 'number', 'date'])) {
-            $element->a('@keyup.enter', 'submitForm');
-        }
+        $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name . '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
     }
+
+    public function decorateSelect($element)
+    {
+        $this->decorateValidator($element, function($element){
+
+            $options = collect($element->getChildren())->keyBy(function($option) {
+                return $option->getAttribute('value');
+            })->map(function($option) {
+                return implode($option->getChildren());
+            })->all();
+            $vModel = $element->getAttribute('v-model');
+
+            $element->addSibling('<pckg-select :initial-multiple="' . ($element->getAttribute('multiple') ? 'true' : 'false') . '"
+            :initial-options="' . htmlspecialchars(json_encode($options)) . '" v-model="' . $vModel . '" :with-empty="false"></pckg-select>');
+
+        });
+    }
+
 }
