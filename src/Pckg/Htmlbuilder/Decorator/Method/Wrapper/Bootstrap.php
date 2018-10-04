@@ -270,6 +270,8 @@ class Bootstrap extends AbstractDecorator
             } elseif ($element instanceof Element\Fieldset) {
                 $this->decorateGroup($element);
             }
+        } else if ($element->getTag() == 'pckg-select') {
+            $this->decorateParent($element);
         }
 
         return $next();
@@ -313,7 +315,7 @@ class Bootstrap extends AbstractDecorator
      */
     protected function decorateField($element)
     {
-        if ($element->getType() != 'checkbox' && $element->getTag() != 'select') {
+        if ($element->getType() != 'checkbox' && !in_array($element->getTag(), ['select', 'pckg-select'])) {
             $element->addClass('form-control');
         }
 

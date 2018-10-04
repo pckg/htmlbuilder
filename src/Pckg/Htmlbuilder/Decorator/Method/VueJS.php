@@ -98,7 +98,7 @@ class VueJS extends AbstractDecorator
         }
 
         $type = $element->getAttribute('type');
-        if (in_array($type, ['file', 'button', 'submit', 'reset'])) {
+        if (in_array($type, ['file', 'button', 'submit', 'reset', ''])) {
             return;
         }
 
