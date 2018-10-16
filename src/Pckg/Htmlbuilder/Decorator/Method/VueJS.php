@@ -79,7 +79,7 @@ class VueJS extends AbstractDecorator
         if ($element instanceof Form) {
             $element->a('@submit.prevent', 'submitForm');
             $element->emptyAttribute('novalidate');
-        } elseif (false && $element instanceof Element\Select) {
+        } elseif ($element instanceof Element\Select) {
             $this->decorateSelect($element);
         } else {
             $this->decorateModel($element);
@@ -180,6 +180,7 @@ class VueJS extends AbstractDecorator
             })->all();
             $vModel = $element->getAttribute('v-model');
 
+            return;
             $element->addSibling('<pckg-select :initial-multiple="' . ($element->getAttribute('multiple') ? 'true' : 'false') . '"
             :initial-options="' . htmlspecialchars(json_encode($options)) . '" v-model="' . $vModel . '" :with-empty="false"></pckg-select>');
 
