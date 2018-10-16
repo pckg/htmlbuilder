@@ -79,7 +79,7 @@ class VueJS extends AbstractDecorator
         if ($element instanceof Form) {
             $element->a('@submit.prevent', 'submitForm');
             $element->emptyAttribute('novalidate');
-        } elseif ($element instanceof Element\Select) {
+        } elseif (false && $element instanceof Element\Select) {
             $this->decorateSelect($element);
         } else {
             $this->decorateModel($element);
