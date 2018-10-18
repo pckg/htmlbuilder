@@ -183,8 +183,12 @@ class VueJS extends AbstractDecorator
             /**
              * We shall not add sibling, we should simply replace already rendered element.
              */
-            $element->a(':initial-multiple', $element->getAttribute('multiple') ? 'true' : 'false');
-            $element->a(':initial-options', json_encode($options));
+            if (!$element->getAttribute(':initial-multiple')) {
+                $element->a(':initial-multiple', $element->getAttribute('multiple') ? 'true' : 'false');
+            }
+            if (!$element->getAttribute(':initial-options')) {
+                $element->a(':initial-options', json_encode($options));
+            }
             $element->a(':with-empty', 'false');
             $element->setTag('pckg-select');
             $element->a('v-model', $vModel);
