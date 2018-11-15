@@ -192,9 +192,8 @@ class VueJS extends AbstractDecorator
             $element->a(':with-empty', 'true');
             $element->setTag('pckg-select');
             $element->a('v-model', $vModel);
-            /*$element->addSibling('<pckg-select :initial-multiple="' . ($element->getAttribute('multiple') ? 'true' : 'false') . '"
-            :initial-options="' . htmlspecialchars() . '" v-model="' . $vModel . '" :with-empty="false"></pckg-select>');*/
-
+            $element->a(':watch-initial', 'false');
+            $element->removeClass('pckg-selectpicker');
         });
     }
 
