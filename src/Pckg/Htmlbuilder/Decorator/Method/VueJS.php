@@ -8,7 +8,7 @@ use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Element\Form;
 
 /**
- * Class AngularJS
+ * Class VueJS
  *
  * @package Pckg\Htmlbuilder\Decorator\Method
  */
@@ -172,12 +172,6 @@ class VueJS extends AbstractDecorator
     public function decorateSelect($element)
     {
         $this->decorateValidator($element, function($element){
-
-            $options = collect($element->getChildren())->keyBy(function($option) {
-                return $option->getAttribute('value');
-            })->map(function($option) {
-                return implode($option->getChildren());
-            })->all();
             $vModel = $element->getAttribute('v-model');
 
             /**
@@ -187,14 +181,21 @@ class VueJS extends AbstractDecorator
                 $element->a(':initial-multiple', $element->getAttribute('multiple') ? 'true' : 'false');
             }
             if (!$element->getAttribute(':initial-options')) {
-                $element->a(':initial-options', json_encode($options));
+                if (!$element->getAttribute('data-options')) {
+                    $options = collect($element->getChildren())->keyBy(function($option) {
+                        return $option->getAttribute('value');
+                    })->map(function($option) {
+                        return implode($option->getChildren());
+                    })->all();
+                    $element->setAttribute(':initial-options', json_encode($options));
+                } else {
+                    $element->a(':initial-options', 'initialOptions.' . str_replace(['[', ']'], ['.', ''], $element->getAttribute('name')));
+                }
             }
+
             $element->a(':with-empty', 'true');
             $element->setTag('pckg-select');
             $element->a('v-model', $vModel);
-            /*$element->addSibling('<pckg-select :initial-multiple="' . ($element->getAttribute('multiple') ? 'true' : 'false') . '"
-            :initial-options="' . htmlspecialchars() . '" v-model="' . $vModel . '" :with-empty="false"></pckg-select>');*/
-
         });
     }
 

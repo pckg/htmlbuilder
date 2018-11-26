@@ -146,6 +146,32 @@ class Form extends Element
         return $data;
     }
 
+    /**
+     * Return initial options for select.
+     */
+    public function getInitialOptions() {
+        $data = [];
+        foreach ($this->getFieldsets() AS $fieldset) {
+            foreach ($fieldset->getFields() AS $field) {
+                if ($field instanceof Group) {
+                    foreach ($field->getChildren() AS $subfield) {
+                        if (!($subfield instanceof Select)) {
+                            continue;
+                        }
+                        $this->processDataFieldOptions($subfield, $data);
+                    }
+                } else {
+                    if (!($field instanceof Select)) {
+                        continue;
+                    }
+                    $this->processDataFieldOptions($field, $data);
+                }
+            }
+        }
+
+        return $data;
+    }
+
     private function processDataField($field, &$data)
     {
         if (!is_object($field)) {
@@ -187,6 +213,43 @@ class Form extends Element
             $data[$name] = $type == 'checkbox'
                 ? $field->getAttribute('checked') == 'checked'
                 : $field->getValue();
+        }
+    }
+
+    private function processDataFieldOptions(Select $element, &$data)
+    {
+        $name = $element->getName();
+
+        if (!$name) {
+            return;
+        }
+
+        $options = $element->getAttribute('data-options');
+
+        if ($options) {
+            $options = json_decode($options, true);
+        } else {
+            $options = [];
+        }
+
+        $startFirst = strpos($name, '['); // foo[bar]
+        $startSecond = strpos($name, ']['); // foo[bar][baz]
+
+        if ($startFirst) {
+            $name2 = substr($name, 0, $startFirst);
+            $name3 = substr($name, strlen($name2) + 1, $startSecond ? $startSecond - $startFirst - 1 : -1);
+
+            if ($startSecond) {
+                $name4 = substr($name, strlen($name2) + strlen($name3) + 3, -1);
+
+                $data[$name2][$name3][$name4] = $options;
+
+                return;
+            }
+
+            $data[$name2][$name3] = $options;
+        } else {
+            $data[$name] = $options;
         }
     }
 
