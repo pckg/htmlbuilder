@@ -196,6 +196,7 @@ class VueJS extends AbstractDecorator
             $element->a(':with-empty', 'true');
             $element->setTag('pckg-select');
             $element->a('v-model', $vModel);
+            $element->removeClass('pckg-selectpicker');
         });
     }
 
