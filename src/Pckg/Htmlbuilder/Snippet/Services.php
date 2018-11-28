@@ -109,7 +109,7 @@ trait Services
     private function addUnique(AbstractService $service, &$stack)
     {
         if (!in_array($service, $stack)) {
-            $stack[get_class($service)] = $service;
+            $stack[spl_object_hash($service)] = $service;
 
             //chain([$service], 'overloadInit', ['context' => $this->createContext()]);
             //$service->overloadInit($this->createContext());

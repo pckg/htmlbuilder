@@ -79,11 +79,9 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
             );
         }
 
-        $result = chain($arrChains, $method, ['context' => $arg]);
-
-        if ($result === true) {
-            return $this;
-        }
+        $result = chain($arrChains, $method, ['context' => $arg], function() use ($method, $args) {
+            return $method == 'isValid' ? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
+        });
 
         return $result;
     }

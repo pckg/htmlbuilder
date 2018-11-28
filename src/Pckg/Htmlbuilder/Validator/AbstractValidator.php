@@ -26,7 +26,7 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     /**
      * @var string
      */
-    protected $msg = '';
+    protected $msg = 'Field invalid';
 
     /**
      * @var ValidatorFactory

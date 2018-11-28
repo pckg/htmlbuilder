@@ -50,7 +50,7 @@ class Element
             $this->addHandler($handler);
         }
 
-        $this->initBuilder();
+        // $this->initBuilder();
     }
 
     public function __get($name)
@@ -108,12 +108,13 @@ class Element
         $context = $this->createContext();
         $context->setArgs($args);
 
+        $element = $this;
         $result = chain(
             $handlers,
             $overloadMethod,
             ['context' => $context],
-            function() use ($method) {
-                return $method == 'isValid' ? null : ($method == 'getErrorMessages' ? [] : $this);
+            function() use ($method, $element) {
+                return $method == 'isValid' ? null : ($method == 'getErrorMessages' ? [] : $element);
             }
         );
 

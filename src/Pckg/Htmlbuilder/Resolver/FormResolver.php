@@ -43,18 +43,18 @@ class FormResolver implements Resolver
             $this->request = context()->getOrCreate(Request::class);
 
             $resolve = object_implements($form, ResolvesOnRequest::class);
-            if ($resolve) {
-                if ($this->request->isPost()) {
-                    $this->response = context()->getOrCreate(Response::class);
-                    $this->flash = context()->getOrCreate(Flash::class);
-
-                    return $this->resolvePost();
-                } elseif ($this->request->isGet()) {
-                    return $this->resolveGet();
-                }
+            if (!$resolve) {
+                return $this->form;
             }
 
-            return $this->form;
+            if ($this->request->isPost()) {
+                $this->response = context()->getOrCreate(Response::class);
+                $this->flash = context()->getOrCreate(Flash::class);
+
+                return $this->resolvePost();
+            } elseif ($this->request->isGet()) {
+                return $this->resolveGet();
+            }
         }
     }
 
