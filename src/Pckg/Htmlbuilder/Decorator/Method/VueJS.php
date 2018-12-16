@@ -81,6 +81,8 @@ class VueJS extends AbstractDecorator
             $element->emptyAttribute('novalidate');
         } elseif ($element instanceof Element\Select) {
             $this->decorateSelect($element);
+        } elseif ($element instanceof Element\Input\Checkbox) {
+            $this->decorateCheckbox($element);
         } else {
             $this->decorateModel($element);
         }
@@ -196,6 +198,15 @@ class VueJS extends AbstractDecorator
             $element->setTag('pckg-select');
             $element->a('v-model', $vModel);
             $element->removeClass('pckg-selectpicker');
+        });
+    }
+
+    public function decorateCheckbox($element)
+    {
+        $this->decorateValidator($element, function($element){
+            $vModel = $element->getAttribute('v-model');
+            $element->setTag('d-input-checkbox');
+            $element->a('v-model', $vModel);
         });
     }
 
