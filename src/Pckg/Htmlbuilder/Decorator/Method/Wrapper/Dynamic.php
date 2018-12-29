@@ -91,13 +91,13 @@ class Dynamic extends AbstractDecorator
             $type = $element->getAttribute('data-type');
             if ($type == 'picture') {
                 $decoratedParent->addChild(
-                    '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute('data-image') . '\'" ' .
+                    '<pckg-htmlbuilder-dropzone accept="image/*" :current="\'' . $element->getAttribute('data-image') . '\'" ' .
                     ':url="\'' . $element->getAttribute('data-url') . '\'"
                     id="dynamic-dropzone-' . $element->getAttribute('id') . '"></pckg-htmlbuilder-dropzone>'
                 );
             } elseif (in_array($type, ['file', 'pdf'])) {
                 $decoratedParent->addChild(
-                    '<pckg-htmlbuilder-dropzone :current="\'' . $element->getAttribute('data-' . $type) . '\'" ' .
+                    '<pckg-htmlbuilder-dropzone accept="application/pdf" :current="\'' . $element->getAttribute('data-' . $type) . '\'" ' .
                     ':url="\'' . $element->getAttribute('data-url') . '\'"
                     id="dynamic-dropzone-' . $element->getAttribute('id') . '"></pckg-htmlbuilder-dropzone>'
                 );
