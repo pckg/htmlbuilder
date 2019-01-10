@@ -109,7 +109,8 @@ class Dynamic extends AbstractDecorator
                 '<pckg-htmlbuilder-select :url="\'' . $element->getAttribute('data-url') .
                 '\'" :view-url="\'' . $element->getAttribute('data-view-url') .
                 '\'" :refresh-url="\'' . $element->getAttribute('data-refresh-url') .
-                '\'"></pckg-htmlbuilder-select>'
+                '\'" :value="form.' . $element->getName() .
+                '"></pckg-htmlbuilder-select>'
             );
             $element->addClass("pckg-selectpicker");
             $element->setAttribute("data-live-search", "true");
