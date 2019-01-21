@@ -9,7 +9,9 @@ class Htmlbuilder extends Provider
     public function viewObjects()
     {
         return [
-            '_formService' => Form::class,
+            '_formService' => function() {
+                return new Form();
+            },
         ];
     }
 
