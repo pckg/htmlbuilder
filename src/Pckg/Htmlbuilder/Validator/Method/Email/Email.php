@@ -11,7 +11,7 @@ class Email extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements Val
 
     public function validate($value)
     {
-        return isValidEmail($value);
+        return isValidEmail($value, true);
     }
 
 }

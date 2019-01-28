@@ -489,6 +489,7 @@ class Bootstrap extends AbstractDecorator
     {
         if ($this->labelType == 'placeholder') {
             $element->setPlaceholder($this->label);
+            $this->decorateHelp($element);
 
             return;
         }
@@ -496,22 +497,25 @@ class Bootstrap extends AbstractDecorator
         $label = $this->elementFactory->create("Label");
         $label->addClass($this->labelClass)->addChild($this->label);
 
-        if ($this->help) {
-            $help = $this->elementFactory->create("Div");
-            $help->addClass('help')->addChild(
-                '<!--<button type="button" class="btn btn-info btn-xs btn-rounded" data-toggle="popover" data-trigger="focus" title="Help" data-content="-->' .
-                htmlspecialchars($this->help) .
-                '<!--" data-placement="top" data-container="body"><i class="fa fa-question" aria-hidden="true"></i></button>-->'
-            );
-
-            $element->getDecoratedParent()->addSibling($help);
-        }
-
         if ($id = $element->getAttribute('id')) {
             $label->setAttribute('for', $id);
         }
 
+        $this->decorateHelp($element->getDecoratedParent());
+
         $div->addChild($label);
+    }
+
+    protected function decorateHelp($sibling)
+    {
+        if (!$this->help) {
+            return;
+        }
+
+        $help = $this->elementFactory->create("Div");
+        $help->addClass('help')->addChild(htmlspecialchars($this->help));
+
+        $sibling->addSibling($help);
     }
 
     /**

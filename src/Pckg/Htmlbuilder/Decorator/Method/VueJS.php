@@ -168,7 +168,7 @@ class VueJS extends AbstractDecorator
             $before($element);
         }
 
-        $element->addSibling('<htmlbuilder-validator-error :shown="errors.has(\'' . $name . '\')" :message="errors.first(\'' . $name . '\')"></htmlbuilder-validator-error>');
+        $element->addSibling('<htmlbuilder-validator-error :bag="errors" name="' . $element->getName() . '"></htmlbuilder-validator-error>');
     }
 
     public function decorateSelect($element)
