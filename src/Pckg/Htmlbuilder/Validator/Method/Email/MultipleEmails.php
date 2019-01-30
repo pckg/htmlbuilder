@@ -7,16 +7,20 @@ class MultipleEmails extends \Pckg\Htmlbuilder\Validator\AbstractValidator imple
 
     protected $recursive = false;
 
-    protected $msg = 'Please enter emails separated by space and commas';
+    protected $msg = 'Please enter max 5 emails separated by space and commas';
+
+    protected $max = 5;
 
     public function validate($value)
     {
         $value = str_replace(',', ' ', $value);
         $value = str_replace('  ', '  ', $value);
 
-        return !collect(explode(' ', $value))->removeEmpty()->has(function($email) {
-            return !isValidEmail($email);
-        });
+        $collection = collect(explode(' ', $value))->removeEmpty();
+
+        return !$collection->has(function($email) {
+                return !isValidEmail($email);
+            }) && $collection->count() <= $this->max;
     }
 
 }
