@@ -48,6 +48,10 @@ class Required extends AbstractValidator
      */
     public function validate($value)
     {
+        if (is_array($value)) {
+            return count($value) > 0;
+        }
+        
         return strlen(trim($value)) > 0;
     }
 
