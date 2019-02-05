@@ -39,10 +39,11 @@ class Record extends AbstractDatasource
 
             } elseif ($element->hasClass(['geo', 'point'])) {
                 // geometric point
-                $value = explode(';', $element->getValue());
+                $raw = $element->getValue();
+                $value = $raw ? [0, 0] : explode(';', $raw);
 
-                if (count($value) == 1) {
-                    $value[] = 0;
+                if (count($value) <= 1) {
+                    $value = [0, 0];
                 } else if (count($value) > 2) {
                     $value = array_slice($value, 0, 2);
                 }
