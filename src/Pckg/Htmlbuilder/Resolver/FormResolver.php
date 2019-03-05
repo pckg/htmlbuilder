@@ -3,7 +3,6 @@
 use Pckg\Concept\Reflect;
 use Pckg\Concept\Reflect\Resolver;
 use Pckg\Framework\Request;
-use Pckg\Framework\Request\Data\Flash;
 use Pckg\Framework\Response;
 use Pckg\Htmlbuilder\Element\Form;
 use Pckg\Htmlbuilder\Element\Form\ResolvesOnRequest;
@@ -22,11 +21,6 @@ class FormResolver implements Resolver
     protected $response;
 
     /**
-     * @var Flash
-     */
-    protected $flash;
-
-    /**
      * @var Form
      */
     protected $form;
@@ -36,31 +30,92 @@ class FormResolver implements Resolver
         return class_exists($class) && is_subclass_of($class, Form::class);
     }
 
+    public function prepare()
+    {
+        $this->request = context()->getOrCreate(Request::class);
+
+        return $this;
+    }
+
+    public function setForm($form)
+    {
+        $this->form = $form;
+
+        return $this;
+    }
+
     public function resolve($form)
     {
         if (!is_subclass_of($form, Form::class)) {
             return;
         }
 
-        $this->form = Reflect::create($form);
-        $this->request = context()->getOrCreate(Request::class);
+        $this->setForm(Reflect::create($form));
+        $this->prepare();
 
         $resolve = object_implements($form, ResolvesOnRequest::class);
         if (!$resolve) {
             return $this->form;
         }
 
-        if ($this->request->isPost()) {
-            $this->response = context()->getOrCreate(Response::class);
-            $this->flash = context()->getOrCreate(Flash::class);
+        $this->resolveRequest();
+    }
 
+    /**
+     * @return mixed|Response
+     * @throws \Exception
+     */
+    protected function getResponse()
+    {
+        if (!$this->response) {
+            $this->response = context()->getOrCreate(Response::class);
+        }
+
+        return $this->response;
+    }
+
+    public function resolveRequest()
+    {
+        if ($this->request->isPost()) {
             return $this->resolvePost();
-        } elseif ($this->request->isGet()) {
+        }
+
+        if ($this->request->isGet()) {
             return $this->resolveGet();
         }
     }
 
     protected function resolvePost()
+    {
+        /**
+         * Initialize fields.
+         */
+        $this->form->initFields();
+
+        /**
+         * Fill form with request data.
+         */
+        $this->form->populateFromRequest();
+
+        $errors = [];
+        $descriptions = [];
+        if ($this->form->isValid($errors, $descriptions)) {
+            return $this->form;
+        }
+
+        /**
+         * Fill session with form data.
+         */
+        $this->form->populateToSession();
+
+        if ($this->request->isAjax()) {
+            return $this->ajaxErrorResponse($errors, $descriptions);
+        }
+
+        return $this->postErrorResponse();
+    }
+
+    protected function resolveArray()
     {
         /**
          * Initialize fields.
@@ -110,8 +165,6 @@ class FormResolver implements Resolver
      */
     protected function postSuccessResponse()
     {
-        $this->flash->set('form', 'Form submitted successfully');
-
         return $this->form;
     }
 
@@ -120,36 +173,31 @@ class FormResolver implements Resolver
      */
     protected function ajaxSuccessResponse()
     {
-        return $this->response->code(200)
-                              ->respond([
-                                            'success' => true,
-                                            'error'   => false,
-                                        ]);
+        return $this->getResponse()->code(200)->respond([
+                                                            'success' => true,
+                                                            'error'   => false,
+                                                        ]);
     }
 
     /**
      * Respond with code 422, return json data.
      */
-    protected function ajaxErrorResponse($errors = ['@T00D002'], $descriptions = [])
+    public function ajaxErrorResponse($errors = ['@T00D002'], $descriptions = [])
     {
-        return $this->response->code(422)
-                              ->respond([
-                                            'error'   => true,
-                                            'success' => false,
-                                            'errors'  => $errors,
-                                            'descriptions' => $descriptions,
-                                        ]);
+        return $this->getResponse()->code(422)->respond([
+                                                            'error'        => true,
+                                                            'success'      => false,
+                                                            'errors'       => $errors,
+                                                            'descriptions' => $descriptions,
+                                                        ]);
     }
 
     /**
      * Respond with code 400, redirect to get action
      */
-    protected function postErrorResponse()
+    public function postErrorResponse()
     {
-        $this->flash->set('form', 'Invalid data posted, check data and resubmit form');
-
-        return $this->response->code(400)
-                              ->redirect();
+        return $this->getResponse()->code(400)->redirect();
     }
 
 }

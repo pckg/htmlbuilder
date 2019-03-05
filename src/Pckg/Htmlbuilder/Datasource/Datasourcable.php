@@ -1,6 +1,7 @@
 <?php namespace Pckg\Htmlbuilder\Datasource;
 
 use Pckg\Database\Record as DatabaseRecord;
+use Pckg\Htmlbuilder\Datasource\Method\ArrayElement;
 use Pckg\Htmlbuilder\Datasource\Method\Record;
 use Pckg\Htmlbuilder\Datasource\Method\Request;
 use Pckg\Htmlbuilder\Datasource\Method\Session;
@@ -17,6 +18,14 @@ trait Datasourcable
     {
         (new Request())->setElement($this)
                        ->populateToElement();
+
+        return $this;
+    }
+
+    public function populateFromArray(array $data = [])
+    {
+        (new ArrayElement())->setElement($this)
+                       ->populateToElement($data);
 
         return $this;
     }
