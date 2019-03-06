@@ -58,7 +58,7 @@ class FormResolver implements Resolver
             return $this->form;
         }
 
-        $this->resolveRequest();
+        return $this->resolveRequest();
     }
 
     /**
