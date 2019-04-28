@@ -229,7 +229,19 @@ class Form extends Element
         if ($options) {
             $options = json_decode($options, true);
         } else {
+            /**
+             * Check for children?
+             */
             $options = [];
+            foreach ($element->getChildren() as $option) {
+                if (!is_object($option) || !($option instanceof Element\Select\Option)) {
+                    continue;
+                }
+
+                $key = $option->getAttribute('value', '');
+                $value = implode($option->getChildren());
+                $options[$key] = $value;
+            }
         }
 
         $startFirst = strpos($name, '['); // foo[bar]
