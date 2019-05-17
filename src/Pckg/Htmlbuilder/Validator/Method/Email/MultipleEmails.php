@@ -13,9 +13,6 @@ class MultipleEmails extends \Pckg\Htmlbuilder\Validator\AbstractValidator imple
 
     public function validate($value)
     {
-        $value = str_replace(',', ' ', $value);
-        $value = str_replace('  ', ' ', $value);
-
         $collection = collect(explode(' ', $value))->removeEmpty();
 
         return !$collection->has(function($email) {
