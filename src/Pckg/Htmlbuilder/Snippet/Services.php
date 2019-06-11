@@ -8,6 +8,7 @@ use Pckg\Htmlbuilder\Decorator\DecoratorInterface;
 use Pckg\Htmlbuilder\Element\ElementFactory;
 use Pckg\Htmlbuilder\Handler\HandlerFactory;
 use Pckg\Htmlbuilder\Handler\HandlerInterface;
+use Pckg\Htmlbuilder\Validator\Method\Custom;
 use Pckg\Htmlbuilder\Validator\ValidatorFactory;
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -169,6 +170,18 @@ trait Services
     public function addValidator(ValidatorInterface $validator)
     {
         $this->addUnique($validator, $this->validators);
+
+        return $this;
+    }
+
+    /**
+     * @param callable $validator
+     *
+     * @return $this
+     */
+    public function addCustomValidator(callable $validator)
+    {
+        $this->addUnique(new Custom($validator), $this->validators);
 
         return $this;
     }
