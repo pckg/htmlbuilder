@@ -108,7 +108,7 @@ class FormResolver implements Resolver
          */
         $this->form->populateToSession();
 
-        if ($this->request->isAjax()) {
+        if ($this->request->isAjax() || $this->request->isJson()) {
             return $this->ajaxErrorResponse($errors, $descriptions);
         }
 
