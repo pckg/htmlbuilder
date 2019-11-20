@@ -49,7 +49,7 @@ abstract class AbstractDatasource implements DatasourceInterface
         return $this;
     }
 
-    protected function getElements(Element $element = null)
+    public function getElements(Element $element = null)
     {
         $elements = [];
         if (!$element) {
