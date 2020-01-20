@@ -34,6 +34,9 @@ class Request extends AbstractDatasource
         if ($name = $element->getName()) {
             $realName = str_replace(['[', ']'], ['.', ''], $name);
             $value = post($realName, null);
+            if ($element instanceof Element\Input\File) {
+                $value = files($realName, null);
+            }
             $element->setValue($value);
             if ($element instanceof Element\Input\Checkbox) {
                 $element->setChecked($value);
