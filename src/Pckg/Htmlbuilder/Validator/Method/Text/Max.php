@@ -17,12 +17,17 @@ class Max extends AbstractValidator
     /**
      * @var string
      */
-    protected $msg = 'Field {field} should be max {max} characters long.';
+    protected $msg = 'Field should be max {max} characters long.';
 
     /**
      * @var int
      */
     protected $max = 1337;
+
+    /**
+     * @var array
+     */
+    protected $methods = ['max', 'isValid', 'getErrorMessages'];
 
     /**
      * @param AbstractObject $context
@@ -32,7 +37,7 @@ class Max extends AbstractValidator
     public function overloadMax(callable $next, AbstractObject $context)
     {
         $this->max = $context->getArg(0);
-        $context->getElement()->setAttribute('max', $this->max);
+        $this->setEnabled();
 
         return $next();
     }
@@ -54,6 +59,14 @@ class Max extends AbstractValidator
     {
         //return "true";
         //return 'formBaseRoute[\'' . $element->getAttribute('name') . '\'].$error.viewValue <= ' . $this->max;
+    }
+
+    /**
+     * @return string|string[]
+     */
+    public function getMsg()
+    {
+        return str_replace('{max}', $this->max, parent::getMsg());
     }
 
 }

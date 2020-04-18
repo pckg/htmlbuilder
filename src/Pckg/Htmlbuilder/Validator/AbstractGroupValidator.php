@@ -5,6 +5,7 @@ namespace Pckg\Htmlbuilder\Validator;
 use Exception;
 use Pckg\Concept\AbstractObject;
 use Pckg\Htmlbuilder\Element;
+use Pckg\Htmlbuilder\Validator\Method\Text;
 
 /**
  * Class AbstractGroupValidator
@@ -42,7 +43,8 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
         parent::initOverloadMethods();
 
         foreach ($this->validators AS $validator) {
-            $this->mergeOverloadMethods($validator->getMethods());
+            $methods = $validator->getMethods();
+            $this->mergeOverloadMethods($methods);
         }
     }
 

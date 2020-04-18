@@ -25,6 +25,11 @@ class Min extends AbstractValidator
     protected $min = 0;
 
     /**
+     * @var array
+     */
+    protected $methods = ['min', 'isValid', 'getErrorMessages'];
+
+    /**
      * @param AbstractObject $context
      *
      * @return mixed
@@ -32,6 +37,7 @@ class Min extends AbstractValidator
     public function overloadMin(callable $next, AbstractObject $context)
     {
         $this->min = $context->getArg(0);
+        $this->setEnabled();
 
         return $next();
     }
@@ -52,6 +58,14 @@ class Min extends AbstractValidator
     public function getAngularJSValidator(Element $element)
     {
         //return $element->getAttribute('ng-model') . '.length > 0';
+    }
+
+    /**
+     * @return string|string[]
+     */
+    public function getMsg()
+    {
+        return str_replace('{max}', $this->max, parent::getMsg());
     }
 
 }

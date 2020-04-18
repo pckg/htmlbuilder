@@ -48,7 +48,6 @@ trait Buildable
     private function addElementByClassAndName($class, $name)
     {
         $element = $this->elementFactory->create($class, func_get_args());
-
         $this->addChild($element);
         $this->addChildAlias($name, $element);
 

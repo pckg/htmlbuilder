@@ -100,9 +100,17 @@ class Element
          * Get all decorators, validators, ...
          */
         foreach ($this->getServices() AS $service) {
-            if (in_array($method, $service->getMethods())) {
+            $methods = $service->getMethods();
+            if (in_array($method, $methods)) {
                 $handlers[] = $service;
             }
+        }
+
+        /**
+         * Newly added? Works for validators?
+         */
+        if (!$handlers) {
+            throw new \Exception('No handlers defined for ' . $method);
         }
 
         $context = $this->createContext();
@@ -114,7 +122,9 @@ class Element
             $overloadMethod,
             ['context' => $context],
             function() use ($method, $element) {
-                return $method == 'isValid' ? null : ($method == 'getErrorMessages' ? [] : $element);
+                return $method == 'isValid'
+                    ? true // all ok
+                    : ($method == 'getErrorMessages' ? [] : $element);
             }
         );
 

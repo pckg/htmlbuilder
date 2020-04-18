@@ -25,6 +25,8 @@ class Text extends AbstractGroupValidator
                 'Text\Max',
             ]
         );
+
+        $this->initOverloadMethods();
     }
 
 }
