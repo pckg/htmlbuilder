@@ -19,6 +19,6 @@ class Integer extends Number
     {
         parent::__construct();
 
-        // $this->setStep(1);
+        $this->setStep(1);
     }
 }

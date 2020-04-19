@@ -110,6 +110,9 @@ class Element
          * Newly added? Works for validators?
          */
         if (!$handlers) {
+            return $method == 'isValid'
+                ? true // all ok
+                : ($method == 'getErrorMessages' ? [] : $this);
             throw new \Exception('No handlers defined for ' . $method);
         }
 
