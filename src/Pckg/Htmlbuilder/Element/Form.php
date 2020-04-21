@@ -273,12 +273,12 @@ class Form extends Element
     public function getRawData($keys = [])
     {
         if (!$keys) {
-            return $_POST;
+            return post()->all();
         }
         $values = [];
 
         foreach ($keys as $key) {
-            $values[$key] = $_POST[$key] ?? null;
+            $values[$key] = post($key, null);
         }
 
         return $values;

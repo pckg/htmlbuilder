@@ -138,7 +138,7 @@ class FormResolver implements Resolver
          */
         $this->form->populateToSession();
 
-        if ($this->request->isAjax()) {
+        if ($this->request->isAjax() || $this->request->isJson()) {
             return $this->ajaxErrorResponse($errors, $descriptions);
         }
 
@@ -173,10 +173,12 @@ class FormResolver implements Resolver
      */
     protected function ajaxSuccessResponse()
     {
-        return $this->getResponse()->code(200)->respond([
+        $this->getResponse()->code(200)->respond([
                                                             'success' => true,
                                                             'error'   => false,
                                                         ]);
+
+        return $this->form;
     }
 
     /**
@@ -184,12 +186,14 @@ class FormResolver implements Resolver
      */
     public function ajaxErrorResponse($errors = ['@T00D002'], $descriptions = [])
     {
-        return $this->getResponse()->code(422)->respond([
+        $this->getResponse()->code(422)->respond([
                                                             'error'        => true,
                                                             'success'      => false,
                                                             'errors'       => $errors,
                                                             'descriptions' => $descriptions,
                                                         ]);
+
+        return $this->form;
     }
 
     /**
@@ -197,7 +201,9 @@ class FormResolver implements Resolver
      */
     public function postErrorResponse()
     {
-        return $this->getResponse()->code(400)->redirect();
+        $this->getResponse()->code(400)->redirect();
+
+        return $this->form;
     }
 
 }
