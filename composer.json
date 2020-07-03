@@ -12,8 +12,7 @@
   "require": {
     "pckg/framework": "dev-master",
     "pckg/concept": "dev-master",
-    "pckg/database": "dev-master",
-    "mailchimp/mailchimp": "2.*"
+    "pckg/database": "dev-master"
   },
   "minimum-stability": "dev",
   "autoload": {

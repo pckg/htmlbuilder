@@ -42,7 +42,7 @@ class Form extends Element
         $this->setMethod('post');
         $this->setMultipart();
 
-        foreach ($this->handlerFactory->create([Step::class]) AS $handler) {
+        foreach ($this->handlerFactory->create([Step::class]) as $handler) {
             $this->addHandler($handler);
         }
 
@@ -116,8 +116,8 @@ class Form extends Element
     {
         $arrFields = [];
 
-        foreach ($this->fieldsets AS $fieldset) {
-            foreach ($fieldset->getFields() AS $field) {
+        foreach ($this->fieldsets as $fieldset) {
+            foreach ($fieldset->getFields() as $field) {
                 $arrFields[] = $field;
             }
         }
@@ -131,10 +131,10 @@ class Form extends Element
     public function getData()
     {
         $data = [];
-        foreach ($this->getFieldsets() AS $fieldset) {
-            foreach ($fieldset->getFields() AS $field) {
+        foreach ($this->getFieldsets() as $fieldset) {
+            foreach ($fieldset->getFields() as $field) {
                 if ($field instanceof Group) {
-                    foreach ($field->getChildren() AS $subfield) {
+                    foreach ($field->getChildren() as $subfield) {
                         $this->processDataField($subfield, $data);
                     }
                 } else {
@@ -149,12 +149,13 @@ class Form extends Element
     /**
      * Return initial options for select.
      */
-    public function getInitialOptions() {
+    public function getInitialOptions()
+    {
         $data = [];
-        foreach ($this->getFieldsets() AS $fieldset) {
-            foreach ($fieldset->getFields() AS $field) {
+        foreach ($this->getFieldsets() as $fieldset) {
+            foreach ($fieldset->getFields() as $field) {
                 if ($field instanceof Group) {
-                    foreach ($field->getChildren() AS $subfield) {
+                    foreach ($field->getChildren() as $subfield) {
                         if (!($subfield instanceof Select)) {
                             continue;
                         }
@@ -345,8 +346,8 @@ class Form extends Element
      */
     function isValid(&$errors = [], &$descriptions = [])
     {
-        foreach ($this->getFieldsets() AS $fieldset) {
-            foreach ($fieldset->getFields() AS $field) {
+        foreach ($this->getFieldsets() as $fieldset) {
+            foreach ($fieldset->getFields() as $field) {
                 if ($field instanceof Element && $field->isValidatable() && $messages = $field->getErrorMessages()) {
                     $errors[] = $field->getName();
                     $descriptions[$field->getName()] = $messages;
@@ -365,4 +366,30 @@ class Form extends Element
     {
         return $this;
     }
+
+    /**
+     * @param array $fields
+     * @return $this
+     */
+    public function fromArray(array $fields = [])
+    {
+        $auto = [
+            'id',
+            'hidden',
+            'email',
+            'text',
+            'textarea',
+            'editor',
+            'integer',
+            'decimal',
+            'point',
+        ];
+
+        foreach ($fields as $field => $config) {
+            $this->addText($field);
+        }
+
+        return $this;
+    }
+
 }
