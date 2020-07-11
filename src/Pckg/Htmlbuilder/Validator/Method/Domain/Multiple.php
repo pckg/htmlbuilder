@@ -19,9 +19,11 @@ class Multiple extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements 
 
         $collection = collect(explode(' ', $value))->trim()->removeEmpty()->unique();
 
-        return !$collection->has(function($domain) use ($okIp) {
-            return $okIp != gethostbyname($domain);
-        }) && $collection->count() <= $this->max;
+        return !$collection->has(function ($domain) {
+                return !Single::isValidDomain($domain);
+            }) && !$collection->has(function ($domain) use ($okIp) {
+                return $okIp != gethostbyname($domain);
+            }) && $collection->count() <= $this->max;
     }
 
 }
