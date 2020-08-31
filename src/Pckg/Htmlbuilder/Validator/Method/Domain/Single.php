@@ -32,10 +32,8 @@ class Single extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements Va
      */
     public static function isValidDomain($domain)
     {
-        return strlen($domain) <= 253 && (
-            preg_match('^(?!\-)(?:(?:[a-zA-Z\d][a-zA-Z\d\-]{0,61})?[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$', $domain)
-            ||
-            preg_match('/^([a-zA-Z0-9]([-a-zA-Z0-9]{0,61}[a-zA-Z0-9])?\.)?([a-zA-Z0-9]{1,2}([-a-zA-Z0-9]{0,252}[a-zA-Z0-9])?)\.([a-zA-Z]{2,63})$/', $domain));
+        return strlen($domain) <= 253
+            && preg_match('/^(?!\-)(?:(?:[a-zA-Z\d][a-zA-Z\d\-]{0,61})?[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/ig', $domain);
     }
 
 }
