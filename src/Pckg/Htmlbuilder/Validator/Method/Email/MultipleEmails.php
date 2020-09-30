@@ -7,7 +7,7 @@ class MultipleEmails extends \Pckg\Htmlbuilder\Validator\AbstractValidator imple
 
     protected $recursive = false;
 
-    protected $msg = 'Please enter max 5 emails separated by space and commas';
+    protected $msg = 'Please enter max 5 emails separated by space';
 
     protected $max = 5;
 
