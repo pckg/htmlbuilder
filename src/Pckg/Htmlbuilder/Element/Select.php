@@ -31,6 +31,11 @@ class Select extends Field
     protected $value = null;
 
     /**
+     * @var null
+     */
+    protected $defaultValue = null;
+
+    /**
      * @param null $value
      *
      * @return $this
@@ -147,12 +152,14 @@ class Select extends Field
     {
         if ($multiple) {
             $this->setAttribute('multiple', 'multiple');
+            $this->defaultValue = [];
         } else {
             $this->removeAttribute('multiple');
+            $this->defaultValue = null;
         }
 
         if ($multiple && !is_array($this->value)) {
-            $this->setValue((array)$this->value);
+            $this->setValue($this->value ? (array)$this->value : []);
         } else if (!$multiple && is_array($this->value)) {
             $this->setValue((string)$this->value);
         }

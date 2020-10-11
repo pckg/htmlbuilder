@@ -33,7 +33,7 @@ class Request extends AbstractDatasource
     {
         if ($name = $element->getName()) {
             $realName = str_replace(['[', ']'], ['.', ''], $name);
-            $value = post($realName, null);
+            $value = post($realName, $element->getDefaultValue());
             if ($element instanceof Element\Input\File) {
                 $value = files($realName, null);
             }

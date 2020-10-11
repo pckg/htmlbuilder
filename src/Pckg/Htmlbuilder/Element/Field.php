@@ -19,4 +19,11 @@ class Field extends Element
 
     protected $tag = 'div';
 
+    protected $defaultValue = null;
+
+    public function getDefaultValue()
+    {
+        return $this->defaultValue;
+    }
+
 }
