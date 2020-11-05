@@ -11,17 +11,7 @@ class Single extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements Va
 
     public function validate($value)
     {
-        if (!static::isValidDomain($value)) {
-            return false;
-        }
-
-        $okIp = gethostbyname('startcomms.com');
-
-        $this->msg .= ' pointing to ' . $okIp;
-
-        $ip = gethostbyname($value);
-
-        return $ip == $okIp;
+        return static::isValidDomain($value);
     }
 
     /**
