@@ -12,9 +12,9 @@
   "require": {
     "pckg/framework": "dev-master",
     "pckg/concept": "dev-master",
-    "pckg/database": "dev-master"
   },
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-0": {
       "Pckg\\Htmlbuilder": ["src\\"],
