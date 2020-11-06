@@ -11,7 +11,7 @@
   ],
   "require": {
     "pckg/framework": "dev-master",
-    "pckg/concept": "dev-master",
+    "pckg/concept": "dev-master"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
