@@ -76,7 +76,7 @@ class FormResolver implements Resolver
 
     public function resolveRequest()
     {
-        if ($this->request->isPost()) {
+        if ($this->request->isPost() || $this->request->isPatch() || $this->request->isPut()) {
             return $this->resolvePost();
         }
 
