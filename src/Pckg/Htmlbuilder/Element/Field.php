@@ -9,7 +9,7 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
  * Class Field
  *
  * @package Pckg\Htmlbuilder\Element
- * @method $this required
+ * @method $this required()
  * @method $this addValidator($validator)
  */
 class Field extends Element

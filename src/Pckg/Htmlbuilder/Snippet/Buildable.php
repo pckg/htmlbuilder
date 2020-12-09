@@ -143,7 +143,7 @@ trait Buildable
     }
 
     /**
-     * @return Int
+     * @return Integer
      */
     public function addInteger($name = null)
     {
