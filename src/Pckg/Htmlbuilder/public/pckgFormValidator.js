@@ -1,5 +1,14 @@
-const pckgFormValidator = {
+export const pckgFormValidator = {
     methods: {
+        patchForm: function (url, data, onSuccess, onError) {
+            http.patch(url, data, (data) => {
+                this.clearErrorResponse();
+                onSuccess && onSuccess(data);
+            }, (response) => {
+                this.hydrateErrorResponse(response);
+                onError && onError(response);
+            });
+        },
         validateAndSubmit: function (submit, invalid) {
             this.$validator.validateAll().then(function (ok) {
                 if (ok) {
@@ -56,5 +65,3 @@ const pckgFormValidator = {
         }
     }
 };
-
-export {pckgFormValidator};
