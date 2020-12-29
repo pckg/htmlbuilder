@@ -344,13 +344,17 @@ class Form extends Element
     /**
      * @return bool
      */
-    function isValid(&$errors = [], &$descriptions = [])
+    function isValid(&$errors = [], &$descriptions = [], $failFast = false)
     {
         foreach ($this->getFieldsets() as $fieldset) {
             foreach ($fieldset->getFields() as $field) {
                 if ($field instanceof Element && $field->isValidatable() && $messages = $field->getErrorMessages()) {
                     $errors[] = $field->getName();
                     $descriptions[$field->getName()] = $messages;
+
+                    if ($failFast) {
+                        return false;
+                    }
                 }
             }
         }

@@ -25,6 +25,23 @@ export const pckgFormValidator = {
                 }
             }.bind(this));
         },
+        syncErrors: function (task) {
+            return (new Promise(async (resolve, reject) => {
+                try {
+                    resolve(await task());
+                } catch (e) {
+                    reject(e);
+                }
+            })).then((resolved) => {
+                console.log('clearing because of success response', resolved);
+                this.clearErrorResponse();
+                return resolved;
+            }).catch((e) => {
+                console.log('hydrating error response', e);
+                this.hydrateErrorResponse(e);
+                return e;
+            });
+        },
         clearErrorResponse: function () {
             this.errors.clear();
         },
