@@ -26,7 +26,7 @@ trait Attributes
     /**
      * @var null
      */
-    protected $value = null;
+    protected $value;
 
     /*
     Set attribute
@@ -401,6 +401,11 @@ trait Attributes
         $this->setAttribute('value', $value);
 
         return $this;
+    }
+    
+    public function hasDefinedValue()
+    {
+        return isset($this->value) || !is_null($this->value) || $this->value;
     }
 
 }

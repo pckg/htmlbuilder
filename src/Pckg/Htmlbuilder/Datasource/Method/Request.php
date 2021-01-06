@@ -37,6 +37,9 @@ class Request extends AbstractDatasource
             if ($element instanceof Element\Input\File) {
                 $value = files($realName, null);
             }
+            /**
+             * Filter value to expected values?
+             */
             $element->setValue($value);
             if ($element instanceof Element\Input\Checkbox) {
                 $element->setChecked($value);
