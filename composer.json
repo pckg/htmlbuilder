@@ -13,12 +13,31 @@
     "pckg/framework": "dev-master",
     "pckg/concept": "dev-master"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
+  "require-dev": {
+    "pckg-app/frontend-dev": "dev-master"
+  },
   "autoload": {
     "psr-0": {
-      "Pckg\\Htmlbuilder": ["src\\"],
-      "Pckg\\Htmlbuilder\\Test": ["test\\"]
+      "Pckg\\Htmlbuilder": [
+        "src\\"
+      ],
+      "Pckg\\Htmlbuilder\\Test": [
+        "test\\"
+      ]
     }
-  }
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpunit --help --stop-on-defect",
+      "vendor/bin/phpcloc cloc src/",
+      "vendor/bin/phpstan analyse src/ --level=1 || true",
+      "vendor/bin/phpcs -p src/ || true",
+      "vendor/bin/codecept run"
+    ]
+  },
+  "scripts-descriptions": {
+    "test": "Run all tests and quality checks"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

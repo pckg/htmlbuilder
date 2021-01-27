@@ -1,4 +1,5 @@
 # About HtmlBuilder #
+![Build status](https://github.com/pckg/htmlbuilder/workflows/Pckg%20Htmlbuilder%20CI/badge.svg)
 Build advanced forms in PHP with datasources, decorators, handlers and validators.
 
 # Functionalities #

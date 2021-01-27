@@ -1,0 +1,5 @@
+.idea/
+vendor/
+tests/_data/*
+tests/_output/*
+codeception.yml
