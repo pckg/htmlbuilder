@@ -1,6 +1,9 @@
-<?php namespace Pckg\Htmlbuilder\Element\Form;
+<?php
+
+namespace Pckg\Htmlbuilder\Element\Form;
 
 interface ResolvesOnRequest
 {
+
 
 }

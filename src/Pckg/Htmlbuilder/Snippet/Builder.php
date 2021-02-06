@@ -128,7 +128,7 @@ trait Builder
     {
         $html = "";
 
-        foreach ($siblings AS $sibling) {
+        foreach ($siblings as $sibling) {
             $html .= $this->childToHTML($sibling)/* . "\n"*/
             ;
         }
@@ -149,7 +149,7 @@ trait Builder
         if (is_string($child) || is_int($child) || is_null($child) || is_bool($child)) { // simple child
             return $child;
         } else if (is_array($child)) { // array of 'something'
-            foreach ($child AS $c) {
+            foreach ($child as $c) {
                 $childrenHTML .= $this->childToHTML($c);
             }
         } else if (is_object($child) && $child instanceof Element) { // should be Element
@@ -166,7 +166,7 @@ trait Builder
      */
     protected function triggerPreBuildOnChildren()
     {
-        foreach ($this->children AS $child) {
+        foreach ($this->children as $child) {
             if ($child instanceof Element) {
                 triggerEvent('htmlbuilder.predecorate', ['context' => $child->createContext()]);
 
@@ -215,5 +215,4 @@ trait Builder
 
         return $this->html . "\n";
     }
-
 }

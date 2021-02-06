@@ -16,5 +16,4 @@ class Div extends Element
      * @var string
      */
     protected $tag = 'div';
-
 }

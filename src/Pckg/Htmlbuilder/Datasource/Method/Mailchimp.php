@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Datasource\Method;
+<?php
+
+namespace Pckg\Htmlbuilder\Datasource\Method;
 
 use Mailchimp as MailchimpAPI;
 use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
@@ -69,5 +71,4 @@ class Mailchimp extends AbstractDatasource implements DatasourceInterface
             true
         );
     }
-
 }

@@ -97,5 +97,4 @@ class Step extends AbstractHandler
 
         return $fieldset->hasClass('step');
     }
-
 }

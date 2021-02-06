@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method\Email;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method\Email;
 
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -15,9 +17,8 @@ class MultipleEmails extends \Pckg\Htmlbuilder\Validator\AbstractValidator imple
     {
         $collection = collect(explode(' ', $value))->removeEmpty();
 
-        return !$collection->has(function($email) {
+        return !$collection->has(function ($email) {
                 return !isValidEmail($email);
-            }) && $collection->count() <= $this->max;
+        }) && $collection->count() <= $this->max;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method\Email;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method\Email;
 
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -13,5 +15,4 @@ class Email extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements Val
     {
         return isValidEmail($value, true);
     }
-
 }

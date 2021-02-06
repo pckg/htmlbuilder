@@ -12,5 +12,4 @@ class Form extends AbstractDecorator
     {
         return $next();
     }
-
 }

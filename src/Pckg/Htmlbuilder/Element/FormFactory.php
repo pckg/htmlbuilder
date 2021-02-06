@@ -64,5 +64,4 @@ class FormFactory extends ElementFactory
             ],
         ],
     ];
-
 }

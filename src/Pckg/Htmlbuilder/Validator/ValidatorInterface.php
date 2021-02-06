@@ -42,5 +42,4 @@ interface ValidatorInterface
      * @return mixed
      */
     public function getErrors();
-
 }

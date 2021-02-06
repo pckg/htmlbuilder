@@ -29,5 +29,4 @@ class Common extends AbstractGroupValidator
 
         $this->initOverloadMethods();
     }
-
 }

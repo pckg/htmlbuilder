@@ -24,6 +24,16 @@ class Number extends Text
      */
     protected $bitwise = 0;
 
+    protected $value;
+
+    protected $min;
+
+    protected $max;
+
+    protected $below;
+
+    protected $above;
+
     /**
      * @var array
      */
@@ -202,7 +212,7 @@ class Number extends Text
         $this->msgs = [];
         $this->value = $value;
 
-        foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
+        foreach ($this->arrBitwise as $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
                 if (!$this->{'validate' . $arrBitwise['function']}()) {
                     $this->msgs[] = $arrBitwise['msg'] . (substr($arrBitwise['msg'], -1) == ' ' ? $this->{strtolower($arrBitwise['function'])} : '');
@@ -212,5 +222,4 @@ class Number extends Text
 
         return !$this->msgs;
     }
-
 }

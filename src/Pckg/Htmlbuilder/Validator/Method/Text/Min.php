@@ -65,7 +65,6 @@ class Min extends AbstractValidator
      */
     public function getMsg()
     {
-        return str_replace('{max}', $this->max, parent::getMsg());
+        return str_replace('{min}', $this->min, parent::getMsg());
     }
-
 }

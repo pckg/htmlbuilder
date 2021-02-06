@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Snippet;
+<?php
+
+namespace Pckg\Htmlbuilder\Snippet;
 
 trait Labeled
 {
@@ -6,14 +8,12 @@ trait Labeled
     public function setLabel($label)
     {
         $this->__call('setLabel', [$label]);
-
         return $this;
     }
 
     public function setHelp($help)
     {
         $this->__call('setHelp', [$help]);
-
         return $this;
     }
 
@@ -26,5 +26,4 @@ trait Labeled
     {
         return $this->__call('getHelp', []);
     }
-
 }

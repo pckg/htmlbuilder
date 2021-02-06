@@ -16,8 +16,8 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
  */
 class Form extends Element
 {
-
-    use Buildable, Datasourcable;
+    use Buildable;
+    use Datasourcable;
 
     /**
      * @var string
@@ -395,5 +395,4 @@ class Form extends Element
 
         return $this;
     }
-
 }

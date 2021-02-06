@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Snippet;
+<?php
+
+namespace Pckg\Htmlbuilder\Snippet;
 
 use Pckg\Htmlbuilder\Element\Button;
 use Pckg\Htmlbuilder\Element\Button\Cancel;
@@ -50,7 +52,6 @@ trait Buildable
         $element = $this->elementFactory->create($class, func_get_args());
         $this->addChild($element);
         $this->addChildAlias($name, $element);
-
         if ($name) {
             $element->setName($name);
         }
@@ -68,9 +69,7 @@ trait Buildable
     public function addFieldset($class = null)
     {
         $element = $this->elementFactory->create(Fieldset::class, func_get_args());
-
         $this->addChild($element);
-
         if ($class) {
             $element->addClass($class);
         }
@@ -286,9 +285,7 @@ trait Buildable
     public function addDiv()
     {
         $element = $this->elementFactory->create(Div::class);
-
         $this->addChild($element);
-
         return $element;
     }
 
@@ -298,13 +295,11 @@ trait Buildable
     public function addRow($class = null)
     {
         $element = $this->elementFactory->create(Row::class);
-
         if ($class) {
             $element->addClass($class);
         }
 
         $this->addChild($element);
-
         return $element;
     }
 
@@ -314,14 +309,11 @@ trait Buildable
     public function addColumn($class = null)
     {
         $element = $this->elementFactory->create(Column::class);
-
         if ($class) {
             $element->addClass($class);
         }
 
         $this->addChild($element);
-
         return $element;
     }
-
 }

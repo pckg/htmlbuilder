@@ -25,5 +25,4 @@ class DecorationRequested extends AbstractEvent
     {
         $this->handlers[] = new DecorateElement();
     }
-
 }

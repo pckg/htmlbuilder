@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Step extends AbstractDecorator
 {
-
     use Decorator\Strategy;
 
     protected $recursive = true;

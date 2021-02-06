@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method;
 
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
@@ -11,5 +13,4 @@ class Color extends AbstractValidator
     {
         return preg_match('/#([a-f0-9]{3}){1,2}\b/i', $value);
     }
-
 }

@@ -26,5 +26,4 @@ interface DecoratorInterface
      * @return mixed
      */
     public function canHandle($method);
-
 }

@@ -3,6 +3,7 @@
 namespace Pckg\Htmlbuilder;
 
 use Pckg\Concept\AbstractObject;
+use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 class ElementObject extends AbstractObject
 {
@@ -71,5 +72,4 @@ class ElementObject extends AbstractObject
     {
         return $this->value;
     }
-
 }

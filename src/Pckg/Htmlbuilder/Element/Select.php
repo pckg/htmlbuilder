@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
  */
 class Select extends Field
 {
-
     use Labeled;
 
     /**
@@ -54,7 +53,7 @@ class Select extends Field
      */
     public function setSelected($value)
     {
-        foreach ($this->children AS $child) {
+        foreach ($this->children as $child) {
             if ($child instanceof OptionGroup) {
                 foreach ($child->getChildren() as $option) {
                     $option->setSelected($option->getValue() == $value);
@@ -72,13 +71,13 @@ class Select extends Field
     public function addTreeOptions($arrOptions, $depth = 0)
     {
 
-        foreach ($arrOptions AS $option) {
+        foreach ($arrOptions as $option) {
             $this->addOptions(
                 [
                     $option->getId() => (!$depth ? '' : (str_repeat(
-                                                             '=&nbsp;&nbsp;',
-                                                             $depth
-                                                         ) . ' ')) .
+                        '=&nbsp;&nbsp;',
+                        $depth
+                    ) . ' ')) .
                                         ($option->getTitle() ?: $option->getSlug() . ' #' . $option->getId()),
                 ]
             );
@@ -96,7 +95,7 @@ class Select extends Field
         if (is_only_callable($options)) {
             $options($this);
         } else {
-            foreach ($options AS $key => $option) {
+            foreach ($options as $key => $option) {
                 $this->addOption($key, strip_tags($option), $key == $this->value);
             }
         }
@@ -166,5 +165,4 @@ class Select extends Field
 
         return $this;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Snippet\Buildable;
+<?php
+
+namespace Pckg\Htmlbuilder\Snippet\Buildable;
 
 use Pckg\Htmlbuilder\Element\Input\Radio;
 
@@ -43,10 +45,7 @@ trait Radioable
     public function addRadio()
     {
         $element = $this->elementFactory->create(Radio::class, func_get_args());
-
         $this->addChild($element);
-
         return $element;
     }
-
 }

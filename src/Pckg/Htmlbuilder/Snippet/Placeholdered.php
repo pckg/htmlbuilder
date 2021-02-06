@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Snippet;
+<?php
+
+namespace Pckg\Htmlbuilder\Snippet;
 
 trait Placeholdered
 {
@@ -6,8 +8,6 @@ trait Placeholdered
     public function setPlaceholder($label)
     {
         $this->__call('setPlaceholder', [$label]);
-
         return $this;
     }
-
 }

@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
  */
 class Fieldset extends Element
 {
-
     use Buildable;
 
     /**
@@ -83,11 +82,10 @@ class Fieldset extends Element
     {
         $arrFields = [];
 
-        foreach ($this->getChildren() AS $field) {
+        foreach ($this->getChildren() as $field) {
             $arrFields[] = $field;
         }
 
         return $arrFields;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder;
+<?php
+
+namespace Pckg\Htmlbuilder;
 
 use Pckg\Htmlbuilder\Element\Field;
 use Pckg\Concept\ChainOfResponsibility;
@@ -17,8 +19,11 @@ use Pckg\Htmlbuilder\Snippet\Services;
  */
 class Element
 {
-
-    use Attributes, Services, Builder, Children, Parenthesis;
+    use Attributes;
+    use Services;
+    use Builder;
+    use Children;
+    use Parenthesis;
 
     /**
      * @var null
@@ -46,7 +51,7 @@ class Element
 
         $this->rebuildClass();
 
-        foreach ($this->handlerFactory->create([Basic::class, Query::class,]) AS $handler) {
+        foreach ($this->handlerFactory->create([Basic::class, Query::class,]) as $handler) {
             $this->addHandler($handler);
         }
 
@@ -99,7 +104,7 @@ class Element
         /**
          * Get all decorators, validators, ...
          */
-        foreach ($this->getServices() AS $service) {
+        foreach ($this->getServices() as $service) {
             $methods = $service->getMethods();
             if (in_array($method, $methods)) {
                 $handlers[] = $service;
@@ -124,7 +129,7 @@ class Element
             $handlers,
             $overloadMethod,
             ['context' => $context],
-            function() use ($method, $element) {
+            function () use ($method, $element) {
                 return $method == 'isValid'
                     ? true // all ok
                     : ($method == 'getErrorMessages' ? [] : $element);
@@ -211,8 +216,8 @@ class Element
             'Handler'   => 'Handlers',
         ];
 
-        foreach ($arr AS $adder => $getter) {
-            foreach ($parent->{'get' . $getter}() AS $service) {
+        foreach ($arr as $adder => $getter) {
+            foreach ($parent->{'get' . $getter}() as $service) {
                 if ($service->isRecursive()) {
                     if ($getter == 'Handler') {
                         $this->{'add' . $adder}($service);
@@ -243,5 +248,4 @@ class Element
 
         return false;
     }
-
 }

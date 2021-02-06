@@ -23,5 +23,4 @@ class HandlerFactory extends AbstractFactory
         'Query' => Query::class,
         'Step'  => Step::class,
     ];
-
 }

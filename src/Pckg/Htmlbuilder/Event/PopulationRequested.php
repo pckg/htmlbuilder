@@ -25,5 +25,4 @@ class PopulationRequested extends AbstractEvent
     {
         $this->handlers[] = new PopulateElement();
     }
-
 }

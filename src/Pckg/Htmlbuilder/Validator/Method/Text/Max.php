@@ -68,5 +68,4 @@ class Max extends AbstractValidator
     {
         return str_replace('{max}', $this->max, parent::getMsg());
     }
-
 }

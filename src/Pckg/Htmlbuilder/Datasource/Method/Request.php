@@ -46,5 +46,4 @@ class Request extends AbstractDatasource
             }
         }
     }
-
 }

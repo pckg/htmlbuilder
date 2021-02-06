@@ -2,8 +2,8 @@
 
 namespace Pckg\Htmlbuilder\Validator\Method;
 
+use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
-use Pckg\Htmlbuilder\Validator\Element;
 
 /**
  * Class Unique

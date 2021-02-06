@@ -42,7 +42,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     {
         parent::initOverloadMethods();
 
-        foreach ($this->validators AS $validator) {
+        foreach ($this->validators as $validator) {
             $methods = $validator->getMethods();
             $this->mergeOverloadMethods($methods);
         }
@@ -69,7 +69,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
 
         $arrChains = [];
 
-        foreach ($this->validators AS $validator) {
+        foreach ($this->validators as $validator) {
             if ($validator->canHandle($method)) {
                 $arrChains[] = $validator;
             }
@@ -81,7 +81,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
             );
         }
 
-        $result = chain($arrChains, $method, ['context' => $arg], function() use ($method, $args) {
+        $result = chain($arrChains, $method, ['context' => $arg], function () use ($method, $args) {
             return $method == 'isValid' ? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
         });
 
@@ -96,7 +96,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     public function validate($value)
     {
         $this->msgs = [];
-        foreach ($this->validators AS $validator) {
+        foreach ($this->validators as $validator) {
             if ($validator->isEnabled() && !$validator->validate($value)) {
                 $this->msgs[] = $validator->getMsg();
             }
@@ -116,7 +116,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
      */
     public function canHandle($method)
     {
-        foreach ($this->validators AS $validator) {
+        foreach ($this->validators as $validator) {
             if ($validator->canHandle($method)) {
                 return true;
             }
@@ -142,7 +142,7 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     {
         $calls = [];
 
-        foreach ($this->validators AS $validator) {
+        foreach ($this->validators as $validator) {
             if (($call = $validator->getAngularJSValidator($element))) {
                 $calls[] = $call;
             }
@@ -152,5 +152,4 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
             ? implode(' && ', $calls)
             : '';
     }
-
 }

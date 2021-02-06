@@ -18,5 +18,4 @@ class Editor extends Textarea
 
         $this->addClass('editor');
     }
-
 }

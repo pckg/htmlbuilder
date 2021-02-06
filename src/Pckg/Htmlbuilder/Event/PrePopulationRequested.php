@@ -25,5 +25,4 @@ class PrePopulationRequested extends AbstractEvent
     {
         $this->handlers[] = new PrePopulateElement();
     }
-
 }

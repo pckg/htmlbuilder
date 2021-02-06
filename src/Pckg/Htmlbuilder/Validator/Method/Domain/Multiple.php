@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method\Domain;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method\Domain;
 
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -17,7 +19,6 @@ class Multiple extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements 
 
         return !$collection->has(function ($domain) {
                 return !Single::isValidDomain($domain);
-            }) && $collection->count() <= $this->max;
+        }) && $collection->count() <= $this->max;
     }
-
 }

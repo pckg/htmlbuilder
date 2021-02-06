@@ -16,5 +16,4 @@ class InlineGroup extends Group
      * @var array
      */
     protected $classes = ['group', 'group-inline'];
-
 }

@@ -16,5 +16,4 @@ class Label extends Element
      * @var string
      */
     protected $tag = 'label';
-
 }

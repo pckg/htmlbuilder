@@ -24,6 +24,16 @@ class Datetime extends Text
      */
     protected $bitwise;
 
+    protected $value;
+
+    protected $min;
+
+    protected $max;
+
+    protected $below;
+
+    protected $above;
+
     /**
      * @var array
      */
@@ -139,7 +149,7 @@ class Datetime extends Text
         $this->errors = [];
         $this->value = $element->getValue();
 
-        foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
+        foreach ($this->arrBitwise as $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
                 if (!$this->{'validate' . $arrBitwise['function']}()) {
                     $this->addMsg($arrBitwise['msg']);
@@ -149,5 +159,4 @@ class Datetime extends Text
 
         return !$this->errors;
     }
-
 }

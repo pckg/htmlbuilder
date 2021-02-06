@@ -74,7 +74,8 @@ class AngularJSValidator extends AbstractDecorator
      */
     protected function decorateModel($element)
     {
-        if ($element->getName()
+        if (
+            $element->getName()
             && in_array($element->getTag(), ['input', 'select', 'textarea'])
             && !in_array($element->getAttribute('type'), ['submit', 'button', 'hidden'])
         ) {
@@ -92,7 +93,7 @@ class AngularJSValidator extends AbstractDecorator
     {
         $arrValidators = $element->getValidators();
 
-        foreach ($arrValidators AS $validator) {
+        foreach ($arrValidators as $validator) {
             if (($message = $validator->getMsg())) {
                 $messageHolder = $this->elementFactory->create('Div');
 

@@ -27,5 +27,4 @@ class PreDecorateElement extends AbstractChainOfReponsibility
 
         return $this;
     }
-
 }

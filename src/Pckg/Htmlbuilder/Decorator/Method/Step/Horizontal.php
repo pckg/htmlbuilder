@@ -27,16 +27,13 @@ class Horizontal extends AbstractDecorator
             if ($element->isStep()) {
                 $this->decorateStepFieldset($element);
             }
-
         } else if ($element instanceof Form) {
             if ($element->isStepped()) {
                 $element->setTag('div')->addClass('formGroup panel-group')->setAttribute(
                     'role',
                     'tablist'
                 )->setAttribute('aria-multiselectable', 'true');
-
             }
-
         }
 
         return $next();
@@ -59,15 +56,15 @@ class Horizontal extends AbstractDecorator
                 '<h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#' . $fieldset->getForm()
                                                                                                             ->getId(
                                                                                                             ) . '" href="#collapse' . ucfirst(
-                    $fieldset->getForm()->getId()
-                ) . $fieldset->getIndex() . '" aria-expanded="true" aria-controls="collapse' . ucfirst(
-                    $fieldset->getForm()->getId()
-                ) . $fieldset->getIndex() . '">' . $this->title . '</a></h4>'
+                                                                                                                $fieldset->getForm()->getId()
+                                                                                                            ) . $fieldset->getIndex() . '" aria-expanded="true" aria-controls="collapse' . ucfirst(
+                                                                                                                $fieldset->getForm()->getId()
+                                                                                                            ) . $fieldset->getIndex() . '">' . $this->title . '</a></h4>'
             )
                   ->addClass('panel-heading')->setAttribute(
-                    'role',
-                    'tab'
-                )->setId('heading' . ucfirst($fieldset->getForm()->getId()) . $fieldset->getIndex());
+                      'role',
+                      'tab'
+                  )->setId('heading' . ucfirst($fieldset->getForm()->getId()) . $fieldset->getIndex());
             $fieldset->prependChild($title);
         }
     }
@@ -104,5 +101,4 @@ class Horizontal extends AbstractDecorator
             $fieldset->addChild($panelBody);
         }
     }
-
 }

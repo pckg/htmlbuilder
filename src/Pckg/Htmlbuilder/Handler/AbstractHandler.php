@@ -39,5 +39,4 @@ abstract class AbstractHandler extends AbstractService implements HandlerInterfa
 
         return $this;
     }
-
 }

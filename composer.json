@@ -28,11 +28,17 @@
   },
   "scripts": {
     "test": [
-      "vendor/bin/phpunit --help --stop-on-defect",
+      "true || vendor/bin/phpunit --help --stop-on-defect",
       "vendor/bin/phpcloc cloc src/",
       "vendor/bin/phpstan analyse src/ --level=1 || true",
-      "vendor/bin/phpcs -p src/ || true",
+      "vendor/bin/phpcs --extensions=php --warning-severity=8 --error-severity=1 --standard=PSR12 --parallel=2 -p src/",
       "vendor/bin/codecept run"
+    ],
+    "autofix": [
+      "vendor/bin/phpcs --extensions=php --report-diff=phpcs.diff --warning-severity=8 --error-severity=1 --standard=PSR12 --parallel=2 -p src/"
+    ],
+    "autopatch": [
+      "patch -p0 -ui phpcs.diff && rm phpcs.diff"
     ]
   },
   "scripts-descriptions": {

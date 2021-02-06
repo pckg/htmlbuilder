@@ -27,5 +27,4 @@ class PopulateElement extends AbstractChainOfReponsibility
 
         return $next();
     }
-
 }

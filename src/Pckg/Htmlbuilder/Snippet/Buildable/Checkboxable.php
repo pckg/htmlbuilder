@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Snippet\Buildable;
+<?php
+
+namespace Pckg\Htmlbuilder\Snippet\Buildable;
 
 use Pckg\Htmlbuilder\Element\Input\Checkbox;
 
@@ -6,7 +8,6 @@ trait Checkboxable
 {
 
     protected $values = [];
-
     public function addOptions($options)
     {
         foreach ($options as $key => $option) {
@@ -49,10 +50,7 @@ trait Checkboxable
     public function addCheckbox()
     {
         $element = $this->elementFactory->create(Checkbox::class, func_get_args());
-
         $this->addChild($element);
-
         return $element;
     }
-
 }

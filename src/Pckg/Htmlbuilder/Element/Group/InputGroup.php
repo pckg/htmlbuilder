@@ -16,5 +16,4 @@ class InputGroup extends Group
      * @var array
      */
     protected $classes = ['row', 'group', 'group-input'];
-
 }

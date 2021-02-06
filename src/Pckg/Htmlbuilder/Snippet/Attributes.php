@@ -113,7 +113,7 @@ trait Attributes
     {
         $html = "";
 
-        foreach ($this->attributes AS $key => $val) {
+        foreach ($this->attributes as $key => $val) {
             $html .= " " . $key . (!is_null($val) ? '="' . ($escape ? htmlspecialchars($val) : $val) . '"' : '');
         }
 
@@ -200,7 +200,7 @@ trait Attributes
      */
     public function addClass($class)
     {
-        foreach (explode(' ', $class) AS $c) {
+        foreach (explode(' ', $class) as $c) {
             if (!(in_array($c, $this->classes))) {
                 $this->classes[] = $c;
             }
@@ -402,10 +402,9 @@ trait Attributes
 
         return $this;
     }
-    
+
     public function hasDefinedValue()
     {
         return isset($this->value) || !is_null($this->value) || $this->value;
     }
-
 }

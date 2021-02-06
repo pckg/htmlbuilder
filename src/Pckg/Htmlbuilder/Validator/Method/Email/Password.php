@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method\Email;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method\Email;
 
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -17,5 +19,4 @@ class Password extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements 
 
         return true;
     }
-
 }

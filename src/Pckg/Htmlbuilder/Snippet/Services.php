@@ -125,7 +125,7 @@ trait Services
         $arrServices = [];
         foreach ($this->factories as $serviceKey => $conf) {
             if (isset($this->{lcfirst($serviceKey) . 's'})) {
-                foreach ($this->{lcfirst($serviceKey) . 's'} AS $service) {
+                foreach ($this->{lcfirst($serviceKey) . 's'} as $service) {
                     $arrServices[] = $service;
                 }
             }
@@ -365,5 +365,4 @@ trait Services
 
         return $this;
     }
-
 }

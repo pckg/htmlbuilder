@@ -38,5 +38,4 @@ class DecoratorFactory extends AbstractFactory
         'Wrapper\Bootstrap'  => Bootstrap::class,
         'Gnp'                => GnpDecorator::class,
     ];
-
 }

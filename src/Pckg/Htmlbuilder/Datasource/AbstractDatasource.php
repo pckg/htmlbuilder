@@ -66,5 +66,4 @@ abstract class AbstractDatasource implements DatasourceInterface
 
         return $elements;
     }
-
 }

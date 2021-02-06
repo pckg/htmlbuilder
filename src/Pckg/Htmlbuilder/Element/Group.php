@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
  */
 class Group extends Element
 {
-
     use Labeled;
 
     /**
@@ -24,5 +23,4 @@ class Group extends Element
      * @var array
      */
     protected $classes = ['group'];
-
 }

@@ -25,5 +25,4 @@ class PreDecorationRequested extends AbstractEvent
     {
         $this->handlers[] = new PreDecorateElement();
     }
-
 }

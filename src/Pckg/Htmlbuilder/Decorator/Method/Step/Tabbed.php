@@ -20,10 +20,8 @@ class Tabbed extends AbstractDecorator
 
         if ($element instanceof Fieldset && $element->isStep()) {
             $this->decorateHeading($element);
-
         } else if ($element instanceof Form) {
             $this->mergeFormSteps($element);
-
         }
 
         return $next();
@@ -45,7 +43,6 @@ class Tabbed extends AbstractDecorator
             $title = $fieldset->elementFactory->create('Div');
             $title->addChild($this->title)->addClass('legend');
             $fieldset->prependChild($title);
-
         }
     }
 
@@ -93,7 +90,7 @@ class Tabbed extends AbstractDecorator
 
         $pane = $form->elementFactory->create('Div')->addClass('tab-content');
 
-        foreach ($arrChildrenSteps AS $i => $step) {
+        foreach ($arrChildrenSteps as $i => $step) {
             $pane->addChild($step);
             $step->setId($form->getId() . 'Step' . $i);
 
@@ -108,5 +105,4 @@ class Tabbed extends AbstractDecorator
 
         $form->addChild($pane);
     }
-
 }

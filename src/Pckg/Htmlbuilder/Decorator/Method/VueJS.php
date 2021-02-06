@@ -173,7 +173,7 @@ class VueJS extends AbstractDecorator
 
     public function decorateSelect($element)
     {
-        $this->decorateValidator($element, function($element){
+        $this->decorateValidator($element, function ($element) {
             $vModel = $element->getAttribute('v-model');
 
             /**
@@ -184,9 +184,9 @@ class VueJS extends AbstractDecorator
             }
             if (!$element->getAttribute(':initial-options')) {
                 if (!$element->getAttribute('data-options')) {
-                    $options = collect($element->getChildren())->keyBy(function($option) {
+                    $options = collect($element->getChildren())->keyBy(function ($option) {
                         return $option->getAttribute('value');
-                    })->map(function($option) {
+                    })->map(function ($option) {
                         return implode($option->getChildren());
                     })->all();
                     $element->setAttribute(':initial-options', json_encode($options));
@@ -203,11 +203,10 @@ class VueJS extends AbstractDecorator
 
     public function decorateCheckbox($element)
     {
-        $this->decorateValidator($element, function($element){
+        $this->decorateValidator($element, function ($element) {
             $vModel = $element->getAttribute('v-model');
             $element->setTag('d-input-checkbox');
             $element->a('v-model', $vModel);
         });
     }
-
 }

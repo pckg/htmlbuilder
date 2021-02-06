@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Datasource;
+<?php
+
+namespace Pckg\Htmlbuilder\Datasource;
 
 use Pckg\Database\Record as DatabaseRecord;
 use Pckg\Htmlbuilder\Datasource\Method\ArrayElement;
@@ -18,7 +20,6 @@ trait Datasourcable
     {
         (new Request())->setElement($this)
                        ->populateToElement();
-
         return $this;
     }
 
@@ -26,7 +27,6 @@ trait Datasourcable
     {
         (new ArrayElement())->setElement($this)
                        ->populateToElement($data);
-
         return $this;
     }
 
@@ -35,16 +35,13 @@ trait Datasourcable
         (new Record())->setElement($this)
                       ->setRecord($record)
                       ->populateToDatasource();
-
         return $this;
     }
 
     public function populateToRecordAndSave(DatabaseRecord $record)
     {
         $this->populateToRecord($record);
-
         $record->save();
-
         return $this;
     }
 
@@ -52,7 +49,6 @@ trait Datasourcable
     {
         (new Session())->setElement($this)
                        ->populateToElement();
-
         return $this;
     }
 
@@ -60,7 +56,6 @@ trait Datasourcable
     {
         (new Session())->setElement($this)
                        ->populateToDatasource();
-
         return $this;
     }
 
@@ -69,7 +64,6 @@ trait Datasourcable
         (new Record())->setElement($this)
                       ->setRecord($record)
                       ->populateToElement();
-
         return $this;
     }
 
@@ -77,7 +71,6 @@ trait Datasourcable
     {
         $this->populateFromRequest();
         $this->populateToRecord($record);
-
         return $this;
     }
 
@@ -85,8 +78,6 @@ trait Datasourcable
     {
         $this->populateFromSession();
         $this->populateFromRecord($record);
-
         return $this;
     }
-
 }

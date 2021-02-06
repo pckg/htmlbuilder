@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Snippet\Labeled;
  */
 class Field extends Element
 {
-
     use Labeled;
 
     protected $tag = 'div';
@@ -25,5 +24,4 @@ class Field extends Element
     {
         return $this->defaultValue;
     }
-
 }

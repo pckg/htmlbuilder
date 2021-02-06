@@ -47,7 +47,8 @@ class Dynamic extends AbstractDecorator
     {
         $element = $context->getElement();
 
-        if (in_array(
+        if (
+            in_array(
                 $element->getTag(),
                 ['input', 'select', 'button', 'textarea']
             ) && $element->getAttribute('type') != 'hidden'
@@ -135,5 +136,4 @@ class Dynamic extends AbstractDecorator
             );
         }
     }
-
 }

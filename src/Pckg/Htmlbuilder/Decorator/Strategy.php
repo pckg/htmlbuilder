@@ -27,5 +27,4 @@ trait Strategy
 
         return $this;
     }
-
 }

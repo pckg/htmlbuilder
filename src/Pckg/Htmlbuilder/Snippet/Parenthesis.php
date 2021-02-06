@@ -93,5 +93,4 @@ trait Parenthesis
 
         return $this;
     }
-
 }

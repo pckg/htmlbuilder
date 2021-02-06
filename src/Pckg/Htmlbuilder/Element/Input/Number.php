@@ -35,5 +35,4 @@ class Number extends Input
         }
         return parent::setValue($value);
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method;
 
 use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
@@ -22,5 +24,4 @@ class Custom extends AbstractValidator
 
         return $call($value, $this);
     }
-
 }

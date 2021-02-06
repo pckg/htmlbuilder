@@ -31,10 +31,8 @@ class Basic extends AbstractHandler
                 if ($args[0]->getArg(0)) {
                     if ($child instanceof Fieldset) {
                         $child->addClass($args[0]->getArg(0));
-
                     } else {
                         $child->setName($args[0]->getArg(0));
-
                     }
                 }
                 $args[0]->getElement()->addChild($child);
@@ -71,7 +69,7 @@ class Basic extends AbstractHandler
         $this->mergeOverloadMethods($arrMapper);*/
 
         $arrMapper = $this->elementFactory->getMapperKeys();
-        foreach ($arrMapper AS &$mapper) {
+        foreach ($arrMapper as &$mapper) {
             $mapper = 'add' . ucfirst($mapper);
         }
 
@@ -90,10 +88,8 @@ class Basic extends AbstractHandler
 
             if (isset($this->mapper[$key])) {
                 return true;
-
             } else if ($this->elementFactory->canMap($key)) {
                 return true;
-
             }
         }
 
@@ -117,5 +113,4 @@ class Basic extends AbstractHandler
 
         return $child;
     }
-
 }

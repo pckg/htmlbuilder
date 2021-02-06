@@ -42,5 +42,4 @@ abstract class AbstractService extends AbstractChainOfReponsibility
     {
         return $next();
     }
-
 }

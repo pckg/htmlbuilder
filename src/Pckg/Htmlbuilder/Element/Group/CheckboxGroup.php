@@ -12,12 +12,10 @@ use Pckg\Htmlbuilder\Snippet\Buildable\Checkboxable;
  */
 class CheckboxGroup extends Group
 {
-
     use Checkboxable;
 
     /**
      * @var array
      */
     protected $classes = ['row', 'group', 'checkbox-group'];
-
 }

@@ -16,5 +16,4 @@ class Ul extends Element
      * @var string
      */
     protected $tag = 'ul';
-
 }

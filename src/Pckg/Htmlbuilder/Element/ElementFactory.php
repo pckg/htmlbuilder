@@ -219,5 +219,4 @@ class ElementFactory extends AbstractFactory
 
         return $element;
     }
-
 }

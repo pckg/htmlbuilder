@@ -37,7 +37,7 @@ class OptionGroup extends Field
         if (is_only_callable($options)) {
             $options($this);
         } else {
-            foreach ($options AS $key => $option) {
+            foreach ($options as $key => $option) {
                 $this->addOption($key, strip_tags($option), $key == $this->value);
             }
         }
@@ -79,5 +79,4 @@ class OptionGroup extends Field
 
         return $this;
     }
-
 }

@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Builder;
+<?php
+
+namespace Pckg\Htmlbuilder\Builder;
 
 use Pckg\Htmlbuilder\Element;
 
@@ -14,5 +16,4 @@ abstract class AbstractBuilder
     {
         $this->element = $element;
     }
-
 }

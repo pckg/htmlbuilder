@@ -30,5 +30,4 @@ class DecorateElement extends AbstractChainOfReponsibility
 
         return $this;
     }
-
 }

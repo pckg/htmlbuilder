@@ -30,5 +30,4 @@ class Cookie extends AbstractDatasource
     {
         return isset($_COOKIE) && parent::canHandle($method);
     }
-
 }

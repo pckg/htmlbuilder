@@ -48,5 +48,4 @@ class Slugged extends AbstractValidator
     {
         return $value === trim(sluggify($value), ' -');
     }
-
 }

@@ -23,5 +23,4 @@ class Related extends AbstractValidator
     {
         return $next();
     }
-
 }

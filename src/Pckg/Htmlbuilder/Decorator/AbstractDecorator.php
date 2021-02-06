@@ -47,5 +47,4 @@ abstract class AbstractDecorator extends AbstractService implements DecoratorInt
 
         return $this;
     }
-
 }

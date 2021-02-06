@@ -22,5 +22,4 @@ class Datetime extends Input
         $this->addClass('datetime');
         $this->setType('text');
     }
-
 }

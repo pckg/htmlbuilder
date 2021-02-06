@@ -149,5 +149,4 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     {
         return true;
     }
-
 }

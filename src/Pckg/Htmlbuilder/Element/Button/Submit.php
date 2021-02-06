@@ -28,5 +28,4 @@ class Submit extends Input
         $this->setAttribute("value", __('btn.submit'));
         $this->setAttribute("name", "submit");
     }
-
 }

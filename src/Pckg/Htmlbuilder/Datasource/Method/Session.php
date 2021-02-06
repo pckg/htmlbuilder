@@ -35,5 +35,4 @@ class Session extends AbstractDatasource
     {
         return isset($_SESSION) && parent::canHandle($method);
     }
-
 }

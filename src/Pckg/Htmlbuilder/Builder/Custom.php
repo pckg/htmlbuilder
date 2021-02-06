@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Builder;
+<?php
+
+namespace Pckg\Htmlbuilder\Builder;
 
 use Pckg\Htmlbuilder\Element;
 
@@ -20,5 +22,4 @@ class Custom extends AbstractBuilder
 
         return $this->builder($element);
     }
-
 }

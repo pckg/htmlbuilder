@@ -28,5 +28,4 @@ class Text extends AbstractGroupValidator
 
         $this->initOverloadMethods();
     }
-
 }

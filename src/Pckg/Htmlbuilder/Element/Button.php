@@ -20,5 +20,4 @@ class Button extends Input
         $this->setType('button');
         $this->setAttribute("value", "Button");
     }
-
 }

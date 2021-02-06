@@ -194,7 +194,7 @@ class Query extends AbstractHandler
         if (!$element->getParent()) {
             $context->setReturn(null);
         } else {
-            foreach ($element->getParent()->getChildren() AS $i => $child) {
+            foreach ($element->getParent()->getChildren() as $i => $child) {
                 if ($child === $element) {
                     return $i;
                 }
@@ -203,5 +203,4 @@ class Query extends AbstractHandler
 
         return $next();
     }
-
 }

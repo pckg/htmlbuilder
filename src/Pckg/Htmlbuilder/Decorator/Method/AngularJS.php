@@ -73,16 +73,15 @@ class AngularJS extends AbstractDecorator
      */
     protected function decorateModel($element)
     {
-        if ($element->getName() && in_array(
+        if (
+            $element->getName() && in_array(
                 $element->getTag(),
                 ['input', 'select', 'textarea']
             ) && !in_array($element->getAttribute('type'), ['submit', 'button'])
         ) {
             $this->setName($element);
-
         } else if ($element->getName() && in_array($element->getTag(), ['form'])) {
             $this->setForm($element);
-
         }
     }
 

@@ -12,12 +12,10 @@ use Pckg\Htmlbuilder\Snippet\Buildable\Radioable;
  */
 class RadioGroup extends Element\Group
 {
-
     use Radioable;
 
     /**
      * @var array
      */
     protected $classes = ['row', 'group', 'radio-group'];
-
 }

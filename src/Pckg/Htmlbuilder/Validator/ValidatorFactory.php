@@ -41,5 +41,4 @@ class ValidatorFactory extends AbstractFactory
         'Datetime'        => Datetime::class,
         'Related'         => Related::class,
     ];
-
 }

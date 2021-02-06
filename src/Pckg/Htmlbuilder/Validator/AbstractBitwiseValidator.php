@@ -38,7 +38,7 @@ class AbstractBitwiseValidator extends AbstractValidator
         $this->errors = [];
         $this->value = $element->getValue();
 
-        foreach ($this->arrBitwise AS $bitwise => $arrBitwise) {
+        foreach ($this->arrBitwise as $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
                 if (!$this->{'validate' . $arrBitwise['function']}()) {
                     $this->addMsg($arrBitwise['msg']);
@@ -57,7 +57,7 @@ class AbstractBitwiseValidator extends AbstractValidator
      */
     protected function addBitwiseByFunction($function, $args)
     {
-        foreach ($this->arrBitwise AS $bit => $arrBitwise) {
+        foreach ($this->arrBitwise as $bit => $arrBitwise) {
             if ($arrBitwise['function'] == $function) {
                 $this->addBitwise($bit, $args);
 
@@ -100,7 +100,7 @@ class AbstractBitwiseValidator extends AbstractValidator
      */
     protected function getBitByFunction($function)
     {
-        foreach ($this->arrBitwise AS $bit => $arrBitwise) {
+        foreach ($this->arrBitwise as $bit => $arrBitwise) {
             if ($arrBitwise['function'] == $function) {
                 return array_key_exists($bit, $this->bitwiseValues)
                     ? $this->bitwiseValues[$bit]
@@ -110,5 +110,4 @@ class AbstractBitwiseValidator extends AbstractValidator
 
         return false;
     }
-
 }

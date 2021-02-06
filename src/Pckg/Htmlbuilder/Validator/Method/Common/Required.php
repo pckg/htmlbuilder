@@ -51,7 +51,7 @@ class Required extends AbstractValidator
         if (is_array($value)) {
             return count($value) > 0;
         }
-        
+
         return strlen(trim($value)) > 0;
     }
 
@@ -71,5 +71,4 @@ class Required extends AbstractValidator
 
         return $formName . '[\'' . $name . '\'].$error.required';
     }
-
 }

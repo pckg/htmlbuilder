@@ -50,5 +50,4 @@ class Bootstrap extends Form
     {
         $this->addClass("form-vertical");
     }
-
 }

@@ -104,5 +104,4 @@ trait Service
 
         return $this;
     }
-
 }

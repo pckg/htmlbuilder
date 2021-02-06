@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Resolver;
+<?php
+
+namespace Pckg\Htmlbuilder\Resolver;
 
 use Pckg\Concept\Reflect;
 use Pckg\Concept\Reflect\Resolver;
@@ -14,17 +16,14 @@ class FormResolver implements Resolver
      * @var Request
      */
     protected $request;
-
-    /**
+/**
      * @var Response
      */
     protected $response;
-
-    /**
+/**
      * @var Form
      */
     protected $form;
-
     public function canResolve($class)
     {
         return class_exists($class) && is_subclass_of($class, Form::class);
@@ -33,14 +32,12 @@ class FormResolver implements Resolver
     public function prepare()
     {
         $this->request = context()->getOrCreate(Request::class);
-
         return $this;
     }
 
     public function setForm($form)
     {
         $this->form = $form;
-
         return $this;
     }
 
@@ -52,7 +49,6 @@ class FormResolver implements Resolver
 
         $this->setForm(Reflect::create($form));
         $this->prepare();
-
         $resolve = object_implements($form, ResolvesOnRequest::class);
         if (!$resolve) {
             return $this->form;
@@ -91,12 +87,10 @@ class FormResolver implements Resolver
          * Initialize fields.
          */
         $this->form->initFields();
-
-        /**
+/**
          * Fill form with request data.
          */
         $this->form->populateFromRequest();
-
         $errors = [];
         $descriptions = [];
         if ($this->form->isValid($errors, $descriptions)) {
@@ -107,7 +101,6 @@ class FormResolver implements Resolver
          * Fill session with form data.
          */
         $this->form->populateToSession();
-
         if ($this->request->isAjax() || $this->request->isJson()) {
             return $this->ajaxErrorResponse($errors, $descriptions);
         }
@@ -121,12 +114,10 @@ class FormResolver implements Resolver
          * Initialize fields.
          */
         $this->form->initFields();
-
-        /**
+/**
          * Fill form with request data.
          */
         $this->form->populateFromRequest();
-
         $errors = [];
         $descriptions = [];
         if ($this->form->isValid($errors, $descriptions)) {
@@ -137,7 +128,6 @@ class FormResolver implements Resolver
          * Fill session with form data.
          */
         $this->form->populateToSession();
-
         if ($this->request->isAjax() || $this->request->isJson()) {
             return $this->ajaxErrorResponse($errors, $descriptions);
         }
@@ -151,12 +141,10 @@ class FormResolver implements Resolver
          * Initialize fields.
          */
         $this->form->initFields();
-
-        /**
+/**
          * Fill form with session data.
          */
         $this->form->populateFromSession();
-
         return $this->form;
     }
 
@@ -177,7 +165,6 @@ class FormResolver implements Resolver
                                                             'success' => true,
                                                             'error'   => false,
                                                         ]);
-
         return $this->form;
     }
 
@@ -192,7 +179,6 @@ class FormResolver implements Resolver
                                                             'errors'       => $errors,
                                                             'descriptions' => $descriptions,
                                                         ]);
-
         return $this->form;
     }
 
@@ -202,8 +188,6 @@ class FormResolver implements Resolver
     public function postErrorResponse()
     {
         $this->getResponse()->code(400)->redirect();
-
         return $this->form;
     }
-
 }

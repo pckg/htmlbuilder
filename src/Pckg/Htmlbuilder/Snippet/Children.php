@@ -24,7 +24,7 @@ trait Children
      */
     public function addChildren($children)
     {
-        foreach ($children AS $child) {
+        foreach ($children as $child) {
             $this->addChild($child);
         }
 
@@ -96,5 +96,4 @@ trait Children
 
         return $this;
     }
-
 }

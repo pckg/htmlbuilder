@@ -21,5 +21,4 @@ class Decimal extends Number
 
         $this->setAttribute('step', '0.01');
     }
-
 }

@@ -71,7 +71,8 @@ class Record extends AbstractDecorator
      */
     public function decorateName($element)
     {
-        if (in_array(
+        if (
+            in_array(
                 $element->getTag(),
                 ['input', 'button', 'select', 'textarea']
             ) && !in_array(
@@ -80,12 +81,12 @@ class Record extends AbstractDecorator
             ) && $this->record
         ) {
             $name = lcfirst(
-                        str_replace(
-                            ['\\', 'Record'],
-                            '',
-                            get_class($this->record)
-                        )
-                    ) . '[' . $element->getName() . ']';
+                str_replace(
+                    ['\\', 'Record'],
+                    '',
+                    get_class($this->record)
+                )
+            ) . '[' . $element->getName() . ']';
             $element->setName($name);
         }
     }

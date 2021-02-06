@@ -1,4 +1,6 @@
-<?php namespace Pckg\Htmlbuilder\Validator\Method\Domain;
+<?php
+
+namespace Pckg\Htmlbuilder\Validator\Method\Domain;
 
 use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
@@ -25,5 +27,4 @@ class Single extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements Va
         return strlen($domain) <= 253
             && preg_match('/^(?:[-A-Za-z0-9\.]+)+[A-Za-z]{2,6}$/i', $domain);
     }
-
 }

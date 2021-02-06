@@ -18,5 +18,4 @@ class Geo extends Point
 
         $this->addClass('geo');
     }
-
 }
