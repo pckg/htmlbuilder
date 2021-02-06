@@ -15,7 +15,7 @@ class Decimal extends Number
     /**
      *
      */
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 

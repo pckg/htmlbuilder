@@ -15,7 +15,7 @@ class Checkbox extends Input
     /**
      *
      */
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 
@@ -28,7 +28,7 @@ class Checkbox extends Input
      *
      * @return $this
      */
-    function setChecked($checked = true)
+    public function setChecked($checked = true)
     {
         if ($checked) {
             $this->setAttribute("checked", "checked");

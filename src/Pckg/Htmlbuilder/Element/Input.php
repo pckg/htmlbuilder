@@ -28,7 +28,7 @@ class Input extends Field
      *
      * @return $this
      */
-    function setType($type)
+    public function setType($type)
     {
         $this->setAttribute("type", $type);
 
@@ -38,7 +38,7 @@ class Input extends Field
     /**
      * @return null
      */
-    function getType()
+    public function getType()
     {
         return $this->getAttribute("type");
     }
@@ -48,7 +48,7 @@ class Input extends Field
      *
      * @return $this
      */
-    function setDisabled($disabled = true)
+    public function setDisabled($disabled = true)
     {
         if ($disabled) {
             $this->setAttribute('disabled', 'disabled');
@@ -62,7 +62,7 @@ class Input extends Field
     /**
      * @return bool
      */
-    function isDisabled()
+    public function isDisabled()
     {
         return !!$this->getAttribute('disabled');
     }
@@ -72,7 +72,7 @@ class Input extends Field
      *
      * @return $this
      */
-    function readonly($readOnly = true)
+    public function readonly($readOnly = true)
     {
         if ($readOnly) {
             $this->setAttribute('readonly', 'readonly');
@@ -86,7 +86,7 @@ class Input extends Field
     /**
      * @return bool
      */
-    function isReadonly()
+    public function isReadonly()
     {
         return !!$this->getAttribute('readonly');
     }

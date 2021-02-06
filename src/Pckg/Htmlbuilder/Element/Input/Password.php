@@ -17,7 +17,7 @@ class Password extends Input
     /**
      *
      */
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 
@@ -27,7 +27,7 @@ class Password extends Input
     /**
      * @param Element $element
      */
-    function transferFromElement(Element $element)
+    public function transferFromElement(Element $element)
     {
         parent::transferFromElement($element);
 

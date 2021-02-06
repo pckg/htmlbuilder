@@ -20,7 +20,7 @@ class Textarea extends Field
      *
      * @return $this
      */
-    function setValue($value = null)
+    public function setValue($value = null)
     {
         $this->setChildren((string)$value);
 
@@ -30,7 +30,7 @@ class Textarea extends Field
     /**
      * @return string
      */
-    function getValue()
+    public function getValue()
     {
         return implode($this->getChildren());
     }

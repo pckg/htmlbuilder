@@ -344,7 +344,7 @@ class Form extends Element
     /**
      * @return bool
      */
-    function isValid(&$errors = [], &$descriptions = [], $failFast = false)
+    public function isValid(&$errors = [], &$descriptions = [], $failFast = false)
     {
         foreach ($this->getFieldsets() as $fieldset) {
             foreach ($fieldset->getFields() as $field) {
