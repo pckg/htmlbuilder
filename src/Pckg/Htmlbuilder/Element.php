@@ -130,9 +130,9 @@ class Element
             $overloadMethod,
             ['context' => $context],
             function () use ($method, $element) {
-                return $method == 'isValid'
+                return $method === 'isValid'
                     ? true // all ok
-                    : ($method == 'getErrorMessages' ? [] : $element);
+                    : ($method === 'getErrorMessages' ? [] : $element);
             }
         );
 

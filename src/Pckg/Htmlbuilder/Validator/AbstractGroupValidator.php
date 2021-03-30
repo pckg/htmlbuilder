@@ -62,6 +62,8 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     {
         if (isset($args[0]) && $args[0] instanceof AbstractObject) {
             $arg = $args[0];
+        } elseif (isset($args['context'])) {
+            $arg = $args['context'];
         } else {
             $arg = new AbstractObject();
             $arg->setArgs($args);
@@ -75,14 +77,14 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
             }
         }
 
-        if (!$arrChains) {
+        /*if (!$arrChains) {
             throw new Exception(
                 'Method ' . $method . " doesn't exist in " . get_class($this) . " (AbstractGroupValidator::__call)"
             );
-        }
+        }*/
 
         $result = chain($arrChains, $method, ['context' => $arg], function () use ($method, $args) {
-            return $method == 'isValid' ? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
+            return $method == 'isValid'? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
         });
 
         return $result;
