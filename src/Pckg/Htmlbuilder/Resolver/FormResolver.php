@@ -41,13 +41,13 @@ class FormResolver implements Resolver
         return $this;
     }
 
-    public function resolve($form)
+    public function resolve($form, $data = [])
     {
         if (!is_subclass_of($form, Form::class)) {
             return;
         }
 
-        $this->setForm(Reflect::create($form));
+        $this->setForm(Reflect::create($form, $data));
         $this->prepare();
         $resolve = object_implements($form, ResolvesOnRequest::class);
         if (!$resolve) {
