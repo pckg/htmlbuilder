@@ -4,6 +4,7 @@ namespace Pckg\Htmlbuilder\Datasource\Method;
 
 use Pckg\Database\Record as DatabaseRecord;
 use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
+use Pckg\Htmlbuilder\Datasource\Datasourcable;
 use Pckg\Htmlbuilder\Element;
 use Pckg\Htmlbuilder\ElementObject;
 
@@ -33,24 +34,37 @@ class Record extends AbstractDatasource
     protected function populateRecord(Element $element)
     {
         $name = $element->getName();
-        if ($name && $this->record->hasKey($name)) {
-            if (in_array($element->getAttribute('type'), ['file', 'password'])) {
-                // file and password fields are handled manually ... currently ... ;-)
-            } elseif ($element->hasClass(['geo', 'point'])) {
-                // geometric point
-                $raw = $element->getValue();
-                $value = $raw ? explode(';', $raw) : [0, 0];
+        $realName = str_replace(['[', ']'], ['.', ''], $name);
 
-                if (count($value) <= 1) {
-                    $value = [0, 0];
-                } else if (count($value) > 2) {
-                    $value = array_slice($value, 0, 2);
-                }
+        if (!$name) {
+            return;
+        }
+        if (!$this->record->hasKey($name)) {
+            return;
+        }
 
-                $this->record->{$name} = $value ?? null;
-            } else {
-                $this->record->{$name} = $element->getValue();
+        $value = $element->getValue();
+
+        if (request()->isPatch() && (post($realName, AbstractDatasource::EMPTY) === AbstractDatasource::EMPTY)) {
+            return;
+        }
+
+        if (in_array($element->getAttribute('type'), ['file', 'password'])) {
+            // file and password fields are handled manually ... currently ... ;-)
+        } elseif ($element->hasClass(['geo', 'point'])) {
+            // geometric point
+            $raw = $element->getValue();
+            $value = $raw ? explode(';', $raw) : [0, 0];
+
+            if (count($value) <= 1) {
+                $value = [0, 0];
+            } else if (count($value) > 2) {
+                $value = array_slice($value, 0, 2);
             }
+
+            $this->record->{$name} = $value ?? null;
+        } else {
+            $this->record->{$name} = $element->getValue();
         }
     }
 

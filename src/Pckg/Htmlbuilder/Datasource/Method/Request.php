@@ -31,19 +31,33 @@ class Request extends AbstractDatasource
 
     protected function populateElement(Element $element)
     {
-        if ($name = $element->getName()) {
-            $realName = str_replace(['[', ']'], ['.', ''], $name);
-            $value = post($realName, $element->getDefaultValue());
-            if ($element instanceof Element\Input\File) {
-                $value = files($realName, null);
-            }
-            /**
-             * Filter value to expected values?
-             */
-            $element->setValue($value);
-            if ($element instanceof Element\Input\Checkbox) {
-                $element->setChecked($value);
-            }
+        $name = $element->getName();
+        if (!$name) {
+            return;
+        }
+
+        $realName = str_replace(['[', ']'], ['.', ''], $name);
+        $value = post($realName, AbstractDatasource::EMPTY);
+
+        if (request()->isPatch() && ($value === AbstractDatasource::EMPTY)) {
+            return;
+        }
+
+        if (!$value) {
+            $value = $element->getDefaultValue();
+        }
+
+        if ($element instanceof Element\Input\File) {
+            $value = files($realName, null);
+        }
+
+        /**
+         * Filter value to expected (and valid!) values?
+         */
+        $element->setValue($value);
+
+        if ($element instanceof Element\Input\Checkbox) {
+            $element->setChecked($value);
         }
     }
 }

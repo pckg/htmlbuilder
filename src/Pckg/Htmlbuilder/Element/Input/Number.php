@@ -28,10 +28,10 @@ class Number extends Input
             return parent::setValue($value);
         }
         if (static::class == Number::class) {
-            return parent::setValue(number_format($value, 0));
+            return parent::setValue(number_format((float)$value, 0));
         }
         if (static::class == Input\Number\Decimal::class) {
-            return parent::setValue(number_format($value, 2, '.', ''));
+            return parent::setValue(number_format((float)$value, 2, '.', ''));
         }
         return parent::setValue($value);
     }

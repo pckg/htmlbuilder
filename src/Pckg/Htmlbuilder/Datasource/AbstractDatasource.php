@@ -17,6 +17,8 @@ abstract class AbstractDatasource implements DatasourceInterface
      */
     protected $element;
 
+    const EMPTY = "\n\r\t";
+
     /**
      * @param Element $element
      *
