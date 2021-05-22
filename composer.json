@@ -10,10 +10,10 @@
     }
   ],
   "require": {
-    "pckg/framework": "dev-master",
     "pckg/concept": "dev-master"
   },
   "require-dev": {
+    "pckg/framework": "dev-master || dev-master-yoda",
     "pckg-app/frontend-dev": "dev-master"
   },
   "autoload": {
