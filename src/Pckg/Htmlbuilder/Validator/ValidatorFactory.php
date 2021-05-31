@@ -27,7 +27,7 @@ class ValidatorFactory extends AbstractFactory
     /**
      * @var array
      */
-    protected $mapper = [
+    protected array $mapper = [
         'Csrf'            => Csrf::class,
         'Common'          => Common::class,
         'Common\Required' => Required::class,

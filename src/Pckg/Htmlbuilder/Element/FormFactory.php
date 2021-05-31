@@ -17,7 +17,7 @@ class FormFactory extends ElementFactory
     /**
      * @var array
      */
-    protected $mapper = [
+    protected array $mapper = [
         'Order'          => '\Test\Form\Order',
         'Order\Payee'    => '\Test\Form\Order\Payee',
         'Order\Shipping' => '\Test\Form\Order\Shipping',

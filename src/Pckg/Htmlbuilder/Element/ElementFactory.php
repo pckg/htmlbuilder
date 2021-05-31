@@ -39,7 +39,7 @@ class ElementFactory extends AbstractFactory
     /**
      * @var array
      */
-    protected $mapper = [
+    protected array $mapper = [
         'Element'       => Element::class,
         'Fieldset'      => Fieldset::class,
         'Div'           => Div::class,
