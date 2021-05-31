@@ -18,7 +18,7 @@ class HandlerFactory extends AbstractFactory
     /**
      * @var array
      */
-    protected $mapper = [
+    protected array $mapper = [
         'Basic' => Basic::class,
         'Query' => Query::class,
         'Step'  => Step::class,
