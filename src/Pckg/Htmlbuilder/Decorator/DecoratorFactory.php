@@ -25,7 +25,7 @@ class DecoratorFactory extends AbstractFactory
     /**
      * @var array
      */
-    protected $mapper = [
+    protected array $mapper = [
         'AngularJS'          => AngularJS::class,
         'AngularJSValidator' => AngularJSValidator::class,
         'Bootstrap'          => Bootstrap::class,
