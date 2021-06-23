@@ -37,7 +37,7 @@ class Request extends AbstractDatasource
         }
 
         $realName = str_replace(['[', ']'], ['.', ''], $name);
-        $value = post($realName, AbstractDatasource::EMPTY);
+        $value = post($realName, request()->isPatch() ? AbstractDatasource::EMPTY : null);
 
         if (request()->isPatch() && ($value === AbstractDatasource::EMPTY)) {
             return;
