@@ -366,6 +366,19 @@ class Form extends Element
         return true;
     }
 
+    public function throwIfInvalid(Exception $exception = null, $failFast = true, &$errors = [], &$descriptions = [])
+    {
+        if ($this->isValid($errors, $descriptions, $failFast)) {
+            return true;
+        }
+
+        if (!$exception) {
+            $exception = new \Exception('Invalid form data');
+        }
+
+        throw $exception;
+    }
+
     public function initFields()
     {
         return $this;
