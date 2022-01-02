@@ -274,7 +274,7 @@ trait Buildable
      *
      * @return Checkbox
      */
-    public function addCheckbox($name = null)
+    public function addCheckbox(?string $name)
     {
         return $this->addElementByClassAndName(Checkbox::class, $name);
     }

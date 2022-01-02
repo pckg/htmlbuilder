@@ -391,11 +391,9 @@ trait Attributes
     */
 
     /**
-     * @param null $value
-     *
      * @return $this
      */
-    public function setValue($value = null)
+    public function setValue(mixed $value)
     {
         $this->value = $value;
         $this->setAttribute('value', $value);
