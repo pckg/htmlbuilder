@@ -13,6 +13,8 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
  * Class Form
  *
  * @package Pckg\Htmlbuilder\Element
+ * @method setDecoratorClasses(array $classes)
+ * @method jsModel(string $model)
  */
 class Form extends Element
 {
