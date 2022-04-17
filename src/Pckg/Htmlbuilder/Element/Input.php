@@ -9,6 +9,8 @@ use Pckg\Htmlbuilder\Validator;
  * Class Input
  *
  * @package Pckg\Htmlbuilder\Element
+ * @method min(int|float $min)
+ * @method max(int|float $min)
  */
 class Input extends Field
 {
