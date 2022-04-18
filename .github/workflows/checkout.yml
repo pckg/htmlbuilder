@@ -2,9 +2,9 @@ name: Pckg Htmlbuilder CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, next-8.0 ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, next-8.0 ]
 
 jobs:
 
@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php-versions: [ '7.4', '8.0' ]
+        php-versions: [ '8.0' ]
     steps:
 
       - uses: actions/checkout@v2
