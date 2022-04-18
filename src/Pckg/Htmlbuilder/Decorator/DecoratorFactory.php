@@ -2,7 +2,6 @@
 
 namespace Pckg\Htmlbuilder\Decorator;
 
-use Gnp\Old\Form\GnpDecorator;
 use Pckg\Concept\AbstractFactory;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJS;
 use Pckg\Htmlbuilder\Decorator\Method\AngularJSValidator;
@@ -21,7 +20,6 @@ use Pckg\Htmlbuilder\Validator\Method\Csrf;
  */
 class DecoratorFactory extends AbstractFactory
 {
-
     /**
      * @var array
      */
@@ -36,6 +34,5 @@ class DecoratorFactory extends AbstractFactory
         'Step\Tabbed'        => Tabbed::class,
         'Step\Horizontal'    => Horizontal::class,
         'Wrapper\Bootstrap'  => Bootstrap::class,
-        'Gnp'                => GnpDecorator::class,
     ];
 }

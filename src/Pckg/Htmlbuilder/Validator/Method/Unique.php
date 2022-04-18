@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
  */
 class Unique extends AbstractValidator
 {
-
     /**
      * @var bool
      */
@@ -20,7 +19,6 @@ class Unique extends AbstractValidator
 
     /**
      * @param Element $element
-     * @param         $args
      *
      * @return mixed
      */
@@ -32,8 +30,6 @@ class Unique extends AbstractValidator
     }
 
     /**
-     * @param $value
-     *
      * @return bool
      */
     public function validate($value)

@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Element\Form;
  */
 class Vue extends Bootstrap
 {
-
     /**
      *
      */

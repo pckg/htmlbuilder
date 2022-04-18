@@ -13,11 +13,9 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
  */
 class Basic extends AbstractHandler
 {
+    protected $mapper = [];
 
     /**
-     * @param $method
-     * @param $args
-     *
      * @return bool|mixed|object
      */
     public function __call($method, $args)
@@ -77,8 +75,6 @@ class Basic extends AbstractHandler
     }
 
     /**
-     * @param $method
-     *
      * @return bool
      */
     public function canHandle($method)

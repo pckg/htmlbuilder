@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Post extends AbstractDecorator
 {
-
     /**
      *
      */
@@ -63,7 +62,7 @@ class Post extends AbstractDecorator
     {
         $form = $context->getElement();
 
-        return $this->overloadIsSubmitted($context) && $form->isValid();
+        return $this->overloadIsSubmitted($next, $context) && $form->isValid();
     }
 
     /**
@@ -77,8 +76,6 @@ class Post extends AbstractDecorator
     }
 
     /**
-     * @param $args
-     *
      * @return array
      */
     public function fetchPost($args)

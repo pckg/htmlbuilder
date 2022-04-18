@@ -19,15 +19,11 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
  */
 trait Services
 {
-
     /*
       Bootstrap (decorator/theme) - properly encapsulates fields
       Record (data io) - sets val
       Post/Get/Files (data io) - links post with form
     */
-    /**
-     * @var
-     */
     public $elementFactory;
 
     /*
@@ -44,9 +40,6 @@ trait Services
      */
     protected $decoratable = true;
 
-    /**
-     * @var
-     */
     public $decoratorFactory;
 
     /*
@@ -62,9 +55,6 @@ trait Services
      */
     protected $handlable = true;
 
-    /**
-     * @var
-     */
     public $handlerFactory;
 
     /*
@@ -80,9 +70,6 @@ trait Services
      */
     protected $validatable = true;
 
-    /**
-     * @var
-     */
     public $validatorFactory;
 
     /**
@@ -105,7 +92,6 @@ trait Services
 
     /**
      * @param AbstractService $service
-     * @param                 $stack
      */
     private function addUnique(AbstractService $service, &$stack)
     {
@@ -134,17 +120,12 @@ trait Services
         return $arrServices;
     }
 
-    /**
-     * @param $event
-     * @param $handler
-     */
     public function on($event, $handler)
     {
         listen($event, $handler);
     }
 
     /**
-     * @param       $event
      * @param array $args
      */
     public function trigger($event, $args = [])

@@ -11,11 +11,14 @@ use Pckg\Htmlbuilder\Element;
  */
 abstract class AbstractDatasource implements DatasourceInterface
 {
-
     /**
      * @var Element
      */
     protected $element;
+
+    protected array $methods = [];
+
+    protected bool $enabled = false;
 
     const EMPTY = "\n\r\t";
 

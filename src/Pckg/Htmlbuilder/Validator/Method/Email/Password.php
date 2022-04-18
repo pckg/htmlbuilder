@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 class Password extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements ValidatorInterface
 {
-
     protected $recursive = false;
 
     protected $msg = 'Password should be minimum 8 characters long';

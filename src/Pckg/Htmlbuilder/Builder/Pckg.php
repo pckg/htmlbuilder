@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element\Select;
 
 class Pckg extends Classic
 {
-
     /**
      * @return string
      */

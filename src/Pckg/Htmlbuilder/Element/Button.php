@@ -9,7 +9,6 @@ namespace Pckg\Htmlbuilder\Element;
  */
 class Button extends Input
 {
-
     /**
      *
      */

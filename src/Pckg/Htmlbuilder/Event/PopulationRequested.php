@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Event\Handler\PopulateElement;
  */
 class PopulationRequested extends AbstractEvent
 {
-
     /**
      * @var string
      */

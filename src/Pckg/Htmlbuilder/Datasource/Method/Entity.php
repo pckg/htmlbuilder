@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\ElementObject;
  */
 class Entity extends AbstractDatasource
 {
-
     /**
      * @var bool
      */
@@ -64,9 +63,6 @@ class Entity extends AbstractDatasource
         return $next();
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateSelect($element)
     {
         // $arr = $this->entity->all()->getList();

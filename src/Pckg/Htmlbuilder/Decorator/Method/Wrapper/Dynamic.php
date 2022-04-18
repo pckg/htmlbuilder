@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
  */
 class Dynamic extends AbstractDecorator
 {
-
     /**
      * @var bool
      */
@@ -60,8 +59,6 @@ class Dynamic extends AbstractDecorator
     }
 
     /**
-     * @param $element
-     *
      * @return mixed
      */
     public function decorateParent($element)
@@ -81,9 +78,6 @@ class Dynamic extends AbstractDecorator
         return $element;
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateField($element)
     {
         $decoratedParent = $element->getDecoratedParent();

@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
  */
 class Csrf extends AbstractValidator
 {
-
     /**
      * @var bool
      */

@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 class Color extends AbstractValidator
 {
-
     protected $msg = 'Color should be in hex form (#b4d455)';
 
     public function validate($value)

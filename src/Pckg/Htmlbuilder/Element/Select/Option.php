@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Snippet\AttributeValue;
  */
 class Option extends Element
 {
-
     /**
      * @var array
      */
@@ -26,9 +25,6 @@ class Option extends Element
         $this->setTag('option');
     }
 
-    /**
-     * @param $selected
-     */
     public function setSelected($selected)
     {
         if ($selected) {

@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Validator\Method\Text;
  */
 abstract class AbstractGroupValidator extends AbstractValidator implements ValidatorInterface
 {
-
     /**
      * @var array
      */
@@ -52,9 +51,6 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     Autoload subvalidators
     */
     /**
-     * @param $method
-     * @param $args
-     *
      * @return $this|mixed|null|object
      * @throws NotFound
      */
@@ -84,15 +80,13 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
         }*/
 
         $result = chain($arrChains, $method, ['context' => $arg], function () use ($method, $args) {
-            return $method == 'isValid'? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
+            return $method == 'isValid' ? true : (isset($args[1]) && is_only_callable($args[1]) ? $args[1]() : $this);
         });
 
         return $result;
     }
 
     /**
-     * @param $value
-     *
      * @return bool
      */
     public function validate($value)
@@ -112,8 +106,6 @@ abstract class AbstractGroupValidator extends AbstractValidator implements Valid
     }
 
     /**
-     * @param $method
-     *
      * @return bool
      */
     public function canHandle($method)

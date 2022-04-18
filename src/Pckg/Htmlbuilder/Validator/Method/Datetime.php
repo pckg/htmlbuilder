@@ -9,19 +9,16 @@ use Pckg\Htmlbuilder\Validator\Method\Text;
  * Class Datetime
  *
  * @package Pckg\Htmlbuilder\Validator\Method
+ * @method addMsg(strign $msg)
  */
 class Datetime extends Text
 {
-
     /**
      * @var array
      */
     protected $msgs = [];
 
     // bitwise ...
-    /**
-     * @var
-     */
     protected $bitwise;
 
     protected $value;
@@ -140,14 +137,13 @@ class Datetime extends Text
 
     /**
      * @param Element $element
-     * @param         $args
      *
      * @return bool
      */
-    public function validate(Element $element, $args)
+    public function validate($value)
     {
         $this->errors = [];
-        $this->value = $element->getValue();
+        $this->value = $value;
 
         foreach ($this->arrBitwise as $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {

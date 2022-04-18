@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Event\Handler\PrePopulateElement;
  */
 class PrePopulationRequested extends AbstractEvent
 {
-
     /**
      * @var string
      */

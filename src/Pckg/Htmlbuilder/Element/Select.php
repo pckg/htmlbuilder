@@ -48,9 +48,6 @@ class Select extends Field
         return $this;
     }
 
-    /**
-     * @param $value
-     */
     public function setSelected($value)
     {
         foreach ($this->children as $child) {
@@ -65,7 +62,6 @@ class Select extends Field
     }
 
     /**
-     * @param     $arrOptions
      * @param int $depth
      */
     public function addTreeOptions($arrOptions, $depth = 0)
@@ -86,8 +82,6 @@ class Select extends Field
     }
 
     /**
-     * @param $options
-     *
      * @return $this
      */
     public function addOptions($options)
@@ -104,7 +98,6 @@ class Select extends Field
     }
 
     /**
-     * @param      $key
      * @param null $value
      * @param bool $selected
      *

@@ -7,7 +7,6 @@ use Pckg\Htmlbuilder\Service\Form;
 
 class Htmlbuilder extends Provider
 {
-
     public function viewObjects()
     {
         return [

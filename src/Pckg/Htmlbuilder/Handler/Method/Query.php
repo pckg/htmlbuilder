@@ -11,10 +11,10 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
  * Class Query
  *
  * @package Pckg\Htmlbuilder\Handler\Method
+ * @method matches(string $regex)
  */
 class Query extends AbstractHandler
 {
-
     /**
      *
      */

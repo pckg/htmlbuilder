@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Input;
  */
 class Email extends Input
 {
-
     /**
      *
      */

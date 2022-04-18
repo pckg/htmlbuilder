@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
  */
 class Slugged extends AbstractValidator
 {
-
     /**
      * @var string
      */
@@ -40,8 +39,6 @@ class Slugged extends AbstractValidator
     }
 
     /**
-     * @param $value
-     *
      * @return bool
      */
     public function validate($value)

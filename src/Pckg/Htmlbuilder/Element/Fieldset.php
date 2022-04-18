@@ -50,8 +50,6 @@ class Fieldset extends Element
     }
 
     /**
-     * @param $form
-     *
      * @return $this
      */
     public function setForm($form)
@@ -62,8 +60,6 @@ class Fieldset extends Element
     }
 
     /**
-     * @param $child
-     *
      * @return $this
      */
     public function addChild($child)

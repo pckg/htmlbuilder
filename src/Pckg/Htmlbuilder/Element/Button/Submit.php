@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Input;
  */
 class Submit extends Input
 {
-
     /**
      * @var bool
      */

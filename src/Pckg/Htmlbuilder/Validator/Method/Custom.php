@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
 
 class Custom extends AbstractValidator
 {
-
     protected $recursive = false;
 
     protected $call;

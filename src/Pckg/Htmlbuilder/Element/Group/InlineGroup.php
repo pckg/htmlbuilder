@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Group;
  */
 class InlineGroup extends Group
 {
-
     /**
      * @var array
      */

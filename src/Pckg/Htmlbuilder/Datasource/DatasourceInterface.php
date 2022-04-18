@@ -9,5 +9,4 @@ namespace Pckg\Htmlbuilder\Datasource;
  */
 interface DatasourceInterface
 {
-
 }

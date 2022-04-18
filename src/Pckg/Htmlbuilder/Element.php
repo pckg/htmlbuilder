@@ -16,6 +16,9 @@ use Pckg\Htmlbuilder\Snippet\Services;
  * Class Element
  *
  * @package Pckg\Htmlbuilder
+ * @method findChild(string $name)
+ * @method findFirstByName(string $name)
+ * @method closest(string $name)
  */
 class Element
 {
@@ -41,6 +44,8 @@ class Element
     protected $siblings = [];
 
     protected $childrenAliases = [];
+
+    protected $tag = 'div';
 
     /**
      *
@@ -90,9 +95,6 @@ class Element
     Autoload decorators and validators
     */
     /**
-     * @param $method
-     * @param $args
-     *
      * @return self
      */
     public function __call($method, $args)
@@ -184,8 +186,6 @@ class Element
     }
 
     /**
-     * @param $sibling
-     *
      * @return $this
      */
     public function addSibling($sibling)
@@ -230,8 +230,6 @@ class Element
     }
 
     /**
-     * @param $regex
-     *
      * @return bool
      */
     public function matchesRegex($regex)

@@ -11,15 +11,12 @@ use Pckg\Concept\AbstractObject;
  */
 interface ValidatorInterface
 {
-
     /**
      * @return mixed
      */
     public function isRecursive();
 
     /**
-     * @param $method
-     *
      * @return mixed
      */
     public function canHandle($method);
@@ -32,8 +29,6 @@ interface ValidatorInterface
     public function overloadIsValid(callable $next, AbstractObject $context);
 
     /**
-     * @param $error
-     *
      * @return mixed
      */
     public function addError($error);

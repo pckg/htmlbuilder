@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Element\Form;
  */
 class Bootstrap extends Form
 {
-
     protected $classes = [];
 
     /**

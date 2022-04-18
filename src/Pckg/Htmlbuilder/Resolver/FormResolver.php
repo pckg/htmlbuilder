@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Form\ResolvesOnRequest;
 
 class FormResolver implements Resolver
 {
-
     /**
      * @var Request
      */

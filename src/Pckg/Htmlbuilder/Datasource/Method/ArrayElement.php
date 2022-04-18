@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class ArrayElement extends AbstractDatasource
 {
-
     /**
      * @var
      */

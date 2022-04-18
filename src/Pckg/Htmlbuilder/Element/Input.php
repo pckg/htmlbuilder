@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Validator;
  */
 class Input extends Field
 {
-
     /**
      * @var bool
      */
@@ -26,8 +25,6 @@ class Input extends Field
     protected $tag = 'input';
 
     /**
-     * @param $type
-     *
      * @return $this
      */
     public function setType($type)

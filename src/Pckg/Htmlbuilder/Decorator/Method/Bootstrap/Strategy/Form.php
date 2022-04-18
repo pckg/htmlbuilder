@@ -7,7 +7,6 @@ use Pckg\Htmlbuilder\ElementObject;
 
 class Form extends AbstractDecorator
 {
-
     public function overloadDecorate(callable $next, ElementObject $context)
     {
         return $next();

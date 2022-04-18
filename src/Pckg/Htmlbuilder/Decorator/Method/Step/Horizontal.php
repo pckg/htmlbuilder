@@ -9,7 +9,6 @@ use Pckg\Htmlbuilder\ElementObject;
 
 class Horizontal extends AbstractDecorator
 {
-
     public $heading;
 
     public $title;
@@ -45,9 +44,6 @@ class Horizontal extends AbstractDecorator
         $this->decorateTitle($fieldset);
     }
 
-    /**
-     * @param $fieldset
-     */
     protected function decorateTitle($fieldset)
     {
         if ($this->title) {
@@ -69,9 +65,6 @@ class Horizontal extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $fieldset
-     */
     protected function decorateHeading($fieldset)
     {
         $fieldset->addClass('panel panel-default decorateHeading');

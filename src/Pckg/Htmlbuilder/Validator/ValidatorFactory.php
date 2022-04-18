@@ -23,7 +23,6 @@ use Pckg\Htmlbuilder\Validator\Method\Unique;
  */
 class ValidatorFactory extends AbstractFactory
 {
-
     /**
      * @var array
      */

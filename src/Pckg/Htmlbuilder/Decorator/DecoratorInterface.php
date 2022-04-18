@@ -9,7 +9,6 @@ namespace Pckg\Htmlbuilder\Decorator;
  */
 interface DecoratorInterface
 {
-
     /**
      *
      */
@@ -21,8 +20,6 @@ interface DecoratorInterface
     public function isRecursive();
 
     /**
-     * @param $method
-     *
      * @return mixed
      */
     public function canHandle($method);

@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Ul extends Element
 {
-
     /**
      * @var string
      */

@@ -9,7 +9,6 @@ use Pckg\Htmlbuilder\ElementObject;
 
 class Tabbed extends AbstractDecorator
 {
-
     public $heading;
 
     public $title;
@@ -34,9 +33,6 @@ class Tabbed extends AbstractDecorator
         return $next();
     }
 
-    /**
-     * @param $fieldset
-     */
     protected function decorateTitle($fieldset)
     {
         if ($this->title) {
@@ -46,9 +42,6 @@ class Tabbed extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $fieldset
-     */
     protected function decorateHeading($fieldset)
     {
         $fieldset->setTag('div akaFieldset');
@@ -79,9 +72,6 @@ class Tabbed extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $form
-     */
     protected function mergeFormSteps($form)
     {
         $form->setTag('div')->addClass('formGroup');

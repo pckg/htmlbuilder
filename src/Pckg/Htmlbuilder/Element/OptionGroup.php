@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Select\Option;
  */
 class OptionGroup extends Field
 {
-
     /**
      * @var string
      */
@@ -28,8 +27,6 @@ class OptionGroup extends Field
     protected $select;
 
     /**
-     * @param $options
-     *
      * @return $this
      */
     public function addOptions($options)
@@ -46,7 +43,6 @@ class OptionGroup extends Field
     }
 
     /**
-     * @param      $key
      * @param null $value
      * @param bool $selected
      *

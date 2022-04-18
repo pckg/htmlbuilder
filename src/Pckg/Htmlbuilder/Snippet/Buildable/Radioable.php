@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element\Input\Radio;
 
 trait Radioable
 {
-
     public function addOptions($options, callable $callback = null)
     {
         foreach ($options as $key => $option) {

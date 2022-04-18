@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element;
 
 abstract class AbstractBuilder
 {
-
     /**
      * @var Element
      */

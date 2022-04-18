@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
  */
 class Max extends AbstractValidator
 {
-
     /**
      * @var string
      */
@@ -43,8 +42,6 @@ class Max extends AbstractValidator
     }
 
     /**
-     * @param $value
-     *
      * @return bool
      */
     public function validate($value)

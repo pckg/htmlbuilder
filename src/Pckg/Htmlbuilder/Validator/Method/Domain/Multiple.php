@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 class Multiple extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements ValidatorInterface
 {
-
     protected $recursive = false;
 
     protected $msg = 'Please enter valid domains separated by space';

@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 class MultipleEmails extends \Pckg\Htmlbuilder\Validator\AbstractValidator implements ValidatorInterface
 {
-
     protected $recursive = false;
 
     protected $msg = 'Please enter max 5 emails separated by space';

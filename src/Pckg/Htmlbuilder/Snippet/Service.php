@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\AbstractService;
  */
 trait Service
 {
-
     /**
      * @var string
      */
@@ -28,14 +27,10 @@ trait Service
      */
     protected $serviceable = true;
 
-    /**
-     * @var
-     */
     public $serviceFactory;
 
     /**
      * @param AbstractService $service
-     * @param                 $stack
      */
     private function addUnique(AbstractService $service, &$stack)
     {

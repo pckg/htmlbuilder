@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Event\Handler\PreDecorateElement;
  */
 class PreDecorationRequested extends AbstractEvent
 {
-
     /**
      * @var string
      */

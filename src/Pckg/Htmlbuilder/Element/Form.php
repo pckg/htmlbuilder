@@ -13,6 +13,7 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
  * Class Form
  *
  * @package Pckg\Htmlbuilder\Element
+ * @method isStepped()
  */
 class Form extends Element
 {
@@ -28,6 +29,8 @@ class Form extends Element
      * @var array
      */
     protected $fieldsets = [];
+
+    protected FormFactory $formFactory;
 
     /**
      *
@@ -52,8 +55,6 @@ class Form extends Element
     }
 
     /**
-     * @param $child
-     *
      * @return $this
      */
     public function addChild($child)
@@ -286,8 +287,6 @@ class Form extends Element
     }
 
     /**
-     * @param $action
-     *
      * @return $this
      */
     public function setAction($action)
@@ -306,8 +305,6 @@ class Form extends Element
     }
 
     /**
-     * @param $method
-     *
      * @return $this
      */
     public function setMethod($method)
@@ -366,7 +363,7 @@ class Form extends Element
         return true;
     }
 
-    public function throwIfInvalid(Exception $exception = null, $failFast = true, &$errors = [], &$descriptions = [])
+    public function throwIfInvalid(\Throwable $exception = null, $failFast = true, &$errors = [], &$descriptions = [])
     {
         if ($this->isValid($errors, $descriptions, $failFast)) {
             return true;

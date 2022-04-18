@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
  */
 abstract class AbstractDecorator extends AbstractService implements DecoratorInterface
 {
-
     /**
      * @var ElementFactory
      */

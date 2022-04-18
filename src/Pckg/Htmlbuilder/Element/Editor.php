@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Editor extends Textarea
 {
-
     public function __construct()
     {
         parent::__construct();

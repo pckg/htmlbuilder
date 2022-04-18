@@ -17,7 +17,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Bootstrap extends AbstractDecorator
 {
-
     /**
      * @var bool
      */
@@ -279,8 +278,6 @@ class Bootstrap extends AbstractDecorator
     }
 
     /**
-     * @param $element
-     *
      * @return mixed
      */
     public function decorateParent($element)
@@ -311,15 +308,13 @@ class Bootstrap extends AbstractDecorator
             : $this->fullFieldClass;
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateField($element)
     {
         if ($element->getType() != 'checkbox' && !in_array($element->getTag(), ['select', 'pckg-select'])) {
             $element->addClass('form-control');
         }
 
+        $bootstrapDiv = null;
         if ($this->wrapped) {
             $bootstrapDiv = $this->elementFactory
                 ->createFromExpression('div.' . $this->getFieldClassByLabel());
@@ -362,9 +357,6 @@ class Bootstrap extends AbstractDecorator
         return $this->fieldClass . ' ' . $this->offsetFullFieldClass;
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateCheckbox($element)
     {
         return $this->decorateField($element);
@@ -452,9 +444,6 @@ class Bootstrap extends AbstractDecorator
         return $hidden;
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateRadio($element)
     {
         $outerDiv = $this->elementFactory->create('Div');
@@ -482,10 +471,6 @@ class Bootstrap extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $element
-     * @param $div
-     */
     protected function decorateLabel($element, $div)
     {
         if ($this->labelType == 'placeholder') {
@@ -519,9 +504,6 @@ class Bootstrap extends AbstractDecorator
         $sibling->addSibling($help);
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateButton($element)
     {
         $element->addClass('btn btn-default');
@@ -533,9 +515,6 @@ class Bootstrap extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateGroup($element)
     {
         if (!$this->label) {

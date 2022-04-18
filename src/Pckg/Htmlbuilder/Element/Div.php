@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Div extends Element
 {
-
     /**
      * @var string
      */

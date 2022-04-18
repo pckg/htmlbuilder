@@ -7,8 +7,7 @@ use Pckg\Htmlbuilder\Element;
 
 trait Strategy
 {
-
-    // protected $strategy; // required in class
+    protected string $strategy; // required in class
 
     public function overloadUseStrategy(callable $next, AbstractObject $context)
     {

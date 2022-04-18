@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element\Input\Checkbox;
 
 trait Checkboxable
 {
-
     protected $values = [];
     public function addOptions($options)
     {
@@ -18,8 +17,6 @@ trait Checkboxable
     }
 
     /**
-     * @param      $key
-     * @param      $value
      * @param bool $checked
      *
      * @return Checkbox

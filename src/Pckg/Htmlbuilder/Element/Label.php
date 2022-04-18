@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element;
  */
 class Label extends Element
 {
-
     /**
      * @var string
      */

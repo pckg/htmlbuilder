@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element;
 
 class Classic extends AbstractBuilder
 {
-
     public function build(Element $element = null)
     {
         $this->element = $element;

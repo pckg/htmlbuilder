@@ -8,10 +8,10 @@ use Pckg\Htmlbuilder\Element;
  * Class AbstractBitwiseValidator
  *
  * @package Pckg\Htmlbuilder\Validator
+ * @method addMsg(string $msg)
  */
 class AbstractBitwiseValidator extends AbstractValidator
 {
-
     /**
      * @var int
      */
@@ -29,14 +29,12 @@ class AbstractBitwiseValidator extends AbstractValidator
 
     /**
      * @param Element $element
-     * @param         $args
      *
      * @return bool
      */
-    public function validate(Element $element, $args)
+    public function validate($value)
     {
         $this->errors = [];
-        $this->value = $element->getValue();
 
         foreach ($this->arrBitwise as $bitwise => $arrBitwise) {
             if ($this->bitwise & $bitwise) {
@@ -50,9 +48,6 @@ class AbstractBitwiseValidator extends AbstractValidator
     }
 
     /**
-     * @param $function
-     * @param $args
-     *
      * @return $this|bool
      */
     protected function addBitwiseByFunction($function, $args)
@@ -68,10 +63,6 @@ class AbstractBitwiseValidator extends AbstractValidator
         return false;
     }
 
-    /**
-     * @param $bit
-     * @param $values
-     */
     protected function addBitwise($bit, $values)
     {
         $arrBitwise = $this->bitwise[$bit];
@@ -94,8 +85,6 @@ class AbstractBitwiseValidator extends AbstractValidator
     }
 
     /**
-     * @param $function
-     *
      * @return bool|null
      */
     protected function getBitByFunction($function)

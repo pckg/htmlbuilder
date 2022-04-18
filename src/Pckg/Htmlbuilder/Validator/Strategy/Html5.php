@@ -9,5 +9,4 @@ namespace Pckg\Htmlbuilder\Validator\Strategy;
  */
 class Html5
 {
-
 }

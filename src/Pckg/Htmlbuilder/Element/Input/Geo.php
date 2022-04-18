@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Input;
  */
 class Geo extends Point
 {
-
     public function __construct()
     {
         parent::__construct();

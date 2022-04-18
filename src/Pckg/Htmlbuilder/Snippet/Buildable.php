@@ -40,11 +40,7 @@ use Pckg\Htmlbuilder\Element\Textarea;
  */
 trait Buildable
 {
-
     /**
-     * @param $class
-     * @param $name
-     *
      * @return mixed
      */
     private function addElementByClassAndName($class, $name)

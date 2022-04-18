@@ -15,10 +15,6 @@ use Pckg\Htmlbuilder\Datasource\AbstractDatasource;
  */
 class Session extends AbstractDatasource
 {
-
-    /**
-     * @var
-     */
     protected $session;
 
     public function populateFromSession()
@@ -27,12 +23,10 @@ class Session extends AbstractDatasource
     }
 
     /**
-     * @param $method
-     *
      * @return bool
      */
     public function canHandle($method)
     {
-        return isset($_SESSION) && parent::canHandle($method);
+        return isset($_SESSION);
     }
 }

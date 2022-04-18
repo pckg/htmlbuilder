@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Validator\AbstractGroupValidator;
  */
 class Text extends AbstractGroupValidator
 {
-
     /**
      *
      */

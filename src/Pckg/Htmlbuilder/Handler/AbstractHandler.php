@@ -12,11 +12,12 @@ use Pckg\Htmlbuilder\Element\ElementFactory;
  */
 abstract class AbstractHandler extends AbstractService implements HandlerInterface
 {
-
     /**
      * @var bool
      */
     protected $recursive = true;
+
+    protected ElementFactory $elementFactory;
 
     /**
      *

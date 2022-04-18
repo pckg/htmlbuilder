@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Input;
  */
 class Hidden extends Input
 {
-
     /**
      *
      */

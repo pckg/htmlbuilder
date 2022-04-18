@@ -35,7 +35,6 @@ use Pckg\Htmlbuilder\Validator\Method\Text as TextValidator;
  */
 class ElementFactory extends AbstractFactory
 {
-
     /**
      * @var array
      */
@@ -160,8 +159,6 @@ class ElementFactory extends AbstractFactory
     ];
 
     /**
-     * @param $expression
-     *
      * @return Element
      */
     public function createFromExpression($expression)

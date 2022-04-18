@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Handler\AbstractHandler;
  */
 class Step extends AbstractHandler
 {
-
     protected $recursive = 1;
 
     /**

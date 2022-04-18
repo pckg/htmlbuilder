@@ -16,7 +16,6 @@ use Throwable;
  */
 trait Builder
 {
-
     /**
      * @var null
      */
@@ -27,14 +26,8 @@ trait Builder
      */
     public $html = null;
 
-    /**
-     * @var
-     */
     protected $opened = false;
 
-    /**
-     * @var
-     */
     protected $builder = Classic::class;
 
     /**
@@ -119,8 +112,6 @@ trait Builder
     Builds childrens
     */
     /**
-     * @param $siblings
-     *
      * @return string
      * @throws \Exception
      */
@@ -137,8 +128,6 @@ trait Builder
     }
 
     /**
-     * @param $child
-     *
      * @return null|string
      * @throws \Exception
      */

@@ -19,14 +19,10 @@ use Pckg\Htmlbuilder\Element;
  */
 class AngularJSValidator extends AbstractDecorator
 {
-
     /*
      * User to determine form's and element's name
      * @setter, @chain - setRecord($record)
     */
-    /**
-     * @var
-     */
     protected $record;
 
     /**
@@ -69,9 +65,6 @@ class AngularJSValidator extends AbstractDecorator
     /*
      * Takes an element and chooses specific decorating method
      * */
-    /**
-     * @param $element
-     */
     protected function decorateModel($element)
     {
         if (

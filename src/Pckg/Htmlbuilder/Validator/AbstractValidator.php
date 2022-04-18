@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\AbstractService;
  */
 abstract class AbstractValidator extends AbstractService implements ValidatorInterface
 {
-
     /**
      * @var bool
      */
@@ -106,9 +105,6 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
         return $next();
     }
 
-    /**
-     * @param $value
-     */
     public function addError($value)
     {
         $this->errors[] = $value;
@@ -141,8 +137,6 @@ abstract class AbstractValidator extends AbstractService implements ValidatorInt
     }
 
     /**
-     * @param $value
-     *
      * @return bool
      */
     public function validate($value)

@@ -11,5 +11,4 @@ use Pckg\Htmlbuilder\Element\Input\File;
  */
 class Picture extends File
 {
-
 }

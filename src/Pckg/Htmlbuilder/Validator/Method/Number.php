@@ -12,16 +12,12 @@ use Pckg\Htmlbuilder\Element;
  */
 class Number extends Text
 {
-
     /**
      * @var array
      */
     protected $msgs = [];
 
     // bitwise ...
-    /**
-     * @var
-     */
     protected $bitwise = 0;
 
     protected $value;
@@ -199,7 +195,6 @@ class Number extends Text
 
     /**
      * @param Element $element
-     * @param         $args
      *
      * @return bool
      */

@@ -12,7 +12,6 @@ use Pckg\Concept\AbstractObject;
  */
 class PopulateElement extends AbstractChainOfReponsibility
 {
-
     /**
      * @param AbstractObject $context
      *

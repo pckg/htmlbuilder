@@ -12,7 +12,6 @@ use Pckg\Concept\AbstractObject;
  */
 class PreDecorateElement extends AbstractChainOfReponsibility
 {
-
     /**
      * @param AbstractObject $context
      *

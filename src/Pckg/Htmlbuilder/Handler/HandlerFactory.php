@@ -14,7 +14,6 @@ use Pckg\Htmlbuilder\Handler\Method\Step;
  */
 class HandlerFactory extends AbstractFactory
 {
-
     /**
      * @var array
      */

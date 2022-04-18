@@ -18,14 +18,10 @@ use Pckg\Htmlbuilder\Decorator\AbstractDecorator;
  */
 class AngularJS extends AbstractDecorator
 {
-
     /*
      * User to determine form's and element's name
      * @setter, @chain - setRecord($record)
     */
-    /**
-     * @var
-     */
     protected $record;
 
     /**
@@ -68,9 +64,6 @@ class AngularJS extends AbstractDecorator
     /*
      * Takes an element and chooses specific decorating method
      * */
-    /**
-     * @param $element
-     */
     protected function decorateModel($element)
     {
         if (
@@ -88,9 +81,6 @@ class AngularJS extends AbstractDecorator
     /*
      * Binds element to angular object
      * */
-    /**
-     * @param $element
-     */
     protected function setName($element)
     {
         $elementName = $element->getName();
@@ -121,9 +111,6 @@ class AngularJS extends AbstractDecorator
      * Decorates form with controller and submit handler
      * Also unsets action to prevent default action
      * */
-    /**
-     * @param $element
-     */
     protected function setForm($element)
     {
         //$element->setAttribute('ng-controller', 'FormController');

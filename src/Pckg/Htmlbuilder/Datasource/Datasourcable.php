@@ -10,7 +10,6 @@ use Pckg\Htmlbuilder\Datasource\Method\Session;
 
 trait Datasourcable
 {
-
     /**
      * Populate element from request.
      *

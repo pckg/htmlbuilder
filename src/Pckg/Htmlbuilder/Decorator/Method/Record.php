@@ -14,15 +14,11 @@ use Pckg\Htmlbuilder\Element;
  */
 class Record extends AbstractDecorator
 {
-
     /**
      * @var bool
      */
     protected $recursive = true;
 
-    /**
-     * @var
-     */
     protected $record;
 
     /**
@@ -66,9 +62,6 @@ class Record extends AbstractDecorator
         return $next();
     }
 
-    /**
-     * @param $element
-     */
     public function decorateName($element)
     {
         if (
@@ -92,8 +85,6 @@ class Record extends AbstractDecorator
     }
 
     /**
-     * @param $element
-     *
      * @return mixed
      */
     public function decorateID($element)

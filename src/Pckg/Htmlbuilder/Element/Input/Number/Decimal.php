@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Input\Number;
  */
 class Decimal extends Number
 {
-
     /**
      *
      */

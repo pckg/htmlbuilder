@@ -20,14 +20,8 @@ class Step extends AbstractDecorator
 
     protected $stepStrategy = 'Step\Tabbed'; // tabbed, horizontal/accordion
 
-    /**
-     * @var
-     */
     protected $title;
 
-    /**
-     * @var
-     */
     protected $heading;
 
     /**

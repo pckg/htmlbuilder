@@ -12,7 +12,6 @@ use Pckg\Htmlbuilder\Event\Handler\DecorateElement;
  */
 class DecorationRequested extends AbstractEvent
 {
-
     /**
      * @var string
      */

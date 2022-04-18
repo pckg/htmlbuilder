@@ -15,7 +15,6 @@ use Pckg\Htmlbuilder\ElementObject;
  */
 class Record extends AbstractDatasource
 {
-
     /**
      * @var DatabaseRecord
      */
@@ -139,8 +138,6 @@ class Record extends AbstractDatasource
     }
 
     /**
-     * @param $element
-     *
      * @return mixed
      */
     public function decorateValue($element)

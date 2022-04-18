@@ -13,7 +13,6 @@ namespace Pckg\Htmlbuilder\Element;
  */
 class FormFactory extends ElementFactory
 {
-
     /**
      * @var array
      */

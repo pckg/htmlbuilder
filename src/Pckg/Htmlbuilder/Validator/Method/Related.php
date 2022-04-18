@@ -12,10 +12,8 @@ use Pckg\Htmlbuilder\Validator\AbstractValidator;
  */
 class Related extends AbstractValidator
 {
-
     /**
      * @param Element $element
-     * @param         $args
      *
      * @return mixed
      */

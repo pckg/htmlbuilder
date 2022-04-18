@@ -6,7 +6,6 @@ use Pckg\Htmlbuilder\Element;
 
 class Custom extends AbstractBuilder
 {
-
     protected $builder;
 
     public function setBuilder(callable $builder)
@@ -20,6 +19,7 @@ class Custom extends AbstractBuilder
     {
         $this->element = $element;
 
-        return $this->builder($element);
+        $builder = $this->builder;
+        $builder($element);
     }
 }

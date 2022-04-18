@@ -11,7 +11,6 @@ use Pckg\Concept\AbstractChainOfReponsibility;
  */
 abstract class AbstractService extends AbstractChainOfReponsibility
 {
-
     /**
      * @var bool
      */

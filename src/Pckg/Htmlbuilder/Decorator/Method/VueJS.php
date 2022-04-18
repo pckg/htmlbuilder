@@ -14,10 +14,6 @@ use Pckg\Htmlbuilder\Element\Form;
  */
 class VueJS extends AbstractDecorator
 {
-
-    /**
-     * @var
-     */
     protected $record;
 
     /**
@@ -131,9 +127,6 @@ class VueJS extends AbstractDecorator
         }
     }
 
-    /**
-     * @param $element
-     */
     protected function decorateModel($element)
     {
         $name = $this->getJSName($element);

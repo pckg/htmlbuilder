@@ -31,9 +31,6 @@ use Pckg\Htmlbuilder\Element\Select\Option;
  */
 class GnpElementFactory extends ElementFactory
 {
-
-
-
     /**
      * @var array
      */

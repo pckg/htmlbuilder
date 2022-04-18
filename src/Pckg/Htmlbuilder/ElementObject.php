@@ -7,7 +7,6 @@ use Pckg\Htmlbuilder\Validator\ValidatorInterface;
 
 class ElementObject extends AbstractObject
 {
-
     /**
      * @var null
      */
@@ -54,8 +53,6 @@ class ElementObject extends AbstractObject
     }
 
     /**
-     * @param $value
-     *
      * @return $this
      */
     public function setValue($value)

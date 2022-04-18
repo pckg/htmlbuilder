@@ -11,7 +11,6 @@ use Pckg\Htmlbuilder\Element\Group;
  */
 class InputGroup extends Group
 {
-
     /**
      * @var array
      */

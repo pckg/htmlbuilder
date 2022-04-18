@@ -9,7 +9,6 @@ namespace Pckg\Htmlbuilder\Snippet;
  */
 trait Attributes
 {
-
     /**
      * @var array
      */
@@ -33,8 +32,6 @@ trait Attributes
     */
 
     /**
-     * @param $key
-     *
      * @return $this
      */
     public function emptyAttribute($key)
@@ -61,8 +58,6 @@ trait Attributes
     */
 
     /**
-     * @param        $key
-     * @param        $val
      * @param string $split
      *
      * @return $this
@@ -83,8 +78,6 @@ trait Attributes
     */
 
     /**
-     * @param        $key
-     * @param        $val
      * @param string $split
      *
      * @return $this
@@ -125,8 +118,6 @@ trait Attributes
     */
 
     /**
-     * @param $placeholder
-     *
      * @return $this
      */
     public function setPlaceholder($placeholder)
@@ -141,7 +132,6 @@ trait Attributes
     */
 
     /**
-     * @param        $key
      * @param string $val
      *
      * @return $this
@@ -194,8 +184,6 @@ trait Attributes
     */
 
     /**
-     * @param $class
-     *
      * @return $this
      */
     public function addClass($class)
@@ -225,7 +213,6 @@ trait Attributes
     }
 
     /**
-     * @param      $key
      * @param null $default
      *
      * @return null
@@ -249,8 +236,6 @@ trait Attributes
     }
 
     /**
-     * @param $key
-     *
      * @return $this
      */
     public function unsetAttribute($key)
@@ -263,8 +248,6 @@ trait Attributes
     }
 
     /**
-     * @param $key
-     *
      * @return bool
      */
     public function hasAttribute($key)
@@ -292,8 +275,6 @@ trait Attributes
     */
 
     /**
-     * @param $class
-     *
      * @return bool
      */
     public function hasClass($class)

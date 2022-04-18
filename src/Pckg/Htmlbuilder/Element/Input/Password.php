@@ -13,7 +13,6 @@ use Pckg\Htmlbuilder\Element\Input;
  */
 class Password extends Input
 {
-
     /**
      *
      */

@@ -9,15 +9,12 @@ namespace Pckg\Htmlbuilder\Handler;
  */
 interface HandlerInterface
 {
-
     /**
      * @return mixed
      */
     public function isRecursive();
 
     /**
-     * @param $method
-     *
      * @return mixed
      */
     public function canHandle($method);
