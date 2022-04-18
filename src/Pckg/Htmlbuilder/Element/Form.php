@@ -14,6 +14,8 @@ use Pckg\Htmlbuilder\Snippet\Buildable;
  *
  * @package Pckg\Htmlbuilder\Element
  * @method isStepped()
+ * @method setDecoratorClasses(array $classes)
+ * @method jsModel(string $model)
  */
 class Form extends Element
 {
