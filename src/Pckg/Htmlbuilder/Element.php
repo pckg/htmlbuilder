@@ -138,6 +138,10 @@ class Element
             }
         );
 
+        if (is_object($result) && $result === $handlers[0]) {
+            return $this;
+        }
+
         return $result;
     }
 
