@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "pckg/concept": "dev-master"
+    "pckg/concept": "dev-next-8.0 as dev-master"
   },
   "require-dev": {
     "pckg/framework": "dev-master || dev-master-yoda",
