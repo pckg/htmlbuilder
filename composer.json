@@ -10,11 +10,11 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
-    "pckg/concept": "dev-next-8.0 as dev-master"
+    "php": ">=8.0"
   },
   "require-dev": {
     "pckg/framework": "dev-master || dev-master-yoda",
+    "pckg/concept": "dev-next-8.0 as dev-master",
     "pckg-app/frontend-dev": "dev-master"
   },
   "autoload": {
